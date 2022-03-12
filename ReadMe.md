@@ -5,7 +5,7 @@
 ## 개념적 목표
 
 - [ ] SPA Routing 기능
-  - [ ] Routing with params
+  - [x] Routing with params
   - [x] Routing without Refresh
 - [ ] 유기적인 Event Handler 등록
 - [ ] Component 추상화
