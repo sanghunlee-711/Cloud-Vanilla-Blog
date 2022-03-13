@@ -3,10 +3,27 @@ const path = require('path');
 const fs = require('fs');
 const matter = require('gray-matter');
 const app = express();
+const marked = require('marked');
 
 app.use('/src', express.static(path.resolve(__dirname, 'src')));
 
-app.get('/post-list', (req, res) => {
+app.get('/each-post/:slug', (req, res) => {
+  const slug = req.params.slug;
+  const markdonwWithMeta = fs.readFileSync(
+    path.join('src/post', slug + '.md'),
+    'utf-8'
+  );
+
+  const { data: frontMatter, content } = matter(markdonwWithMeta);
+
+  res.json({
+    frontMatter,
+    slug,
+    content: JSON.stringify(marked.parse(content)),
+  });
+});
+
+app.get('/post-list/', (req, res) => {
   //파일을 루트의 post directoriy로부터 가져옴
   const files = fs.readdirSync(path.join('src/post'));
 

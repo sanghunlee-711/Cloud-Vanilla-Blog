@@ -6,7 +6,7 @@ class Posts extends AbstractView {
     this.data = [];
   }
 
-  async init() {
+  async getPostData() {
     const res = await fetch('/post-list');
     const resJson = await res.json();
     const data = await resJson;
@@ -14,8 +14,8 @@ class Posts extends AbstractView {
   }
 
   async getHtml() {
-    const data = await this.init();
-    console.log('data in getHTML', data);
+    const data = await this.getPostData();
+
     return `
     <main class="post_container">
       ${data
@@ -25,7 +25,7 @@ class Posts extends AbstractView {
             index
           ) => {
             return `
-          <a href="/posts/${index}" class="each_post_container" data-link>
+          <a href="/posts/${slug}" class="each_post_container" data-link>
             <img src=${image.src} alt=${title} ></img>
             <h1 class="post_title">${title}</h1>
             <span>${date.split(' ')[0]}</span>

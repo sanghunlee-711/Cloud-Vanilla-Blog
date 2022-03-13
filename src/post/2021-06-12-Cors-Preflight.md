@@ -1,4 +1,5 @@
 ---
+slug: 2021-06-12-Cors-Preflight
 title: Cors와 Preflight
 author: Sanghun Lee
 date: 2021-06-12 11:33:00 +0800

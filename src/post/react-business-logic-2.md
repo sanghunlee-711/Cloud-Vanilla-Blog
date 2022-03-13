@@ -1,4 +1,5 @@
 ---
+slug: react-business-logic-2
 title: 리액트에서 비즈니스 로직을 나눠보자[2 - Hooks 를 테스트 해보자]
 author: Sanghun lee
 date: 2022-01-18 11:33:00 +0800
@@ -90,7 +91,7 @@ onApply의 구조는 간단한데 들어온 인자들에 대해서 특정조건�
 그래서 두가지 케이스에서 테스트를 진행할 수 있게 되고 아래와 같이 진행했다.
 
 ```tsx
-describe("usePersonnel", () => {
+describe('usePersonnel', () => {
   const setup = () => {
     const store = createMockStore();
 
@@ -103,11 +104,11 @@ describe("usePersonnel", () => {
     return { store, result, waitForNextUpdate };
   };
 
-  describe("onApply", () => {
-    it("토큰이 존재하고 phase가 logout인 경우 로그아웃 요청을 위한 action 호출", () => {
+  describe('onApply', () => {
+    it('토큰이 존재하고 phase가 logout인 경우 로그아웃 요청을 위한 action 호출', () => {
       const { result, store } = setup();
       const MOCK_PHASE = phaseType.logout; //enum
-      const MOCK_TOKEN = "MOCK_TOKEN";
+      const MOCK_TOKEN = 'MOCK_TOKEN';
       act(() => {
         result.current.actions.onApply(MOCK_PHASE, MOCK_TOKEN);
       });

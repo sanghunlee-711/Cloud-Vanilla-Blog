@@ -1,4 +1,5 @@
 ---
+slug: test-2
 title: 리액트에서 비즈니스 로직을 나눠보자[2 - Hooks 를 테스트 해보자]
 author: Sanghun lee
 date: 2022-01-18 11:33:00 +0800

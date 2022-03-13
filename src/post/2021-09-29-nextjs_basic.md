@@ -1,4 +1,5 @@
 ---
+slug: 2021-09-29-nextjs_basic
 title: Next JS를 공부해보자[1편]
 author: Sanghun lee
 date: 2021-09-29 11:33:00 +0800

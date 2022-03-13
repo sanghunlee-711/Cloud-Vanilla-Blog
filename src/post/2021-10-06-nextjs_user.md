@@ -1,4 +1,5 @@
 ---
+slug: 2021-10-06-nextjs_user
 title: Next JS를 공부해보자[2편-Auth]
 author: Sanghun lee
 date: 2021-10-06 11:33:00 +0800
