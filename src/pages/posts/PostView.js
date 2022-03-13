@@ -20,8 +20,11 @@ class PostsView extends AbstractView {
     return `
         <h1>Post</h1>
         <p>You are viewing post #${this.postId}.</p>
-        <div id="each_post_target"></div>
-        ${data.content}
+        <div class="hljs">
+          ${JSON.parse(data.content)}
+        </div>
+
+        
     `;
   }
 }

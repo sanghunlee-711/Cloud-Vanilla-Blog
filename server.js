@@ -4,11 +4,28 @@ const fs = require('fs');
 const matter = require('gray-matter');
 const app = express();
 const marked = require('marked');
+const hljs = require('highlight.js');
 
 app.use('/src', express.static(path.resolve(__dirname, 'src')));
 
 app.get('/each-post/:slug', (req, res) => {
   const slug = req.params.slug;
+
+  marked.setOptions({
+    highlight: function (code, lang) {
+      const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+      return hljs.highlight(code, { language }).value;
+    },
+    // langPrefix: 'hljs language-', // highlight.js css expects a top-level 'hljs' class.
+    // pedantic: false,
+    // gfm: true,
+    // breaks: false,
+    // sanitize: false, //deprecated never use true!
+    // smartLists: true,
+    // smartypants: false,
+    // xhtml: false,
+  });
+
   const markdonwWithMeta = fs.readFileSync(
     path.join('src/post', slug + '.md'),
     'utf-8'
@@ -19,7 +36,7 @@ app.get('/each-post/:slug', (req, res) => {
   res.json({
     frontMatter,
     slug,
-    content: JSON.stringify(marked.parse(content)),
+    content: JSON.stringify(marked.parse(content.toString())),
   });
 });
 
