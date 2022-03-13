@@ -4,7 +4,7 @@
 
 ## 개념적 목표
 
-- [ ] SPA Routing 기능
+- [x] SPA Routing 기능
   - [x] Routing with params
   - [x] Routing without Refresh
 - [ ] 유기적인 Event Handler 등록
@@ -18,4 +18,9 @@
 - [ ] 메인 페이지
 - [ ] 이력서 페이지
 - [ ] 게시글 페이지
-  - [ ] MD파일을 특정 폴더 내에 추가 시 새로운 포스트가 자동으로 등록되도록 만들기.
+
+  ## UX
+
+  - [ ] MD파일을 활용한 블로그
+    - [x] MD파일 읽어오기
+    - [ ] CSS해주기

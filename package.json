@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "gray-matter": "^4.0.3",
+    "marked": "^4.0.12"
   }
 }
