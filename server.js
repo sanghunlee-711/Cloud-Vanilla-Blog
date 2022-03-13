@@ -28,7 +28,6 @@ app.get('/post-list', (req, res) => {
       frontMatter,
     };
   });
-  console.log('@@@@', posts);
   res.json(posts);
 });
 
