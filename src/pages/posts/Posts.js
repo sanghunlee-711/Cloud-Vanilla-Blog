@@ -3,20 +3,35 @@ class Posts extends AbstractView {
   constructor(params) {
     super(params);
     this.setTitle('Posts!');
-    this.init();
+    this.data = [];
   }
 
   async init() {
     const res = await fetch('/post-list');
     const resJson = await res.json();
     const data = await resJson;
-    console.log('get md file list and detail from src/post', data);
+    return data;
   }
 
   async getHtml() {
+    const data = await this.init();
+    console.log('this.posts in get HTML', this.posts);
     return `
       <h1>This is Posts List Page</h1>
-      <p>You are in Post List page! </h1>
+      ${data.map(
+        (
+          { slug, frontMatter: { title, date, excerpt, cover_Image } },
+          index
+        ) => {
+          return `
+          <a href="/posts/${index}" class="post_container" data-link>
+            <h1>${title}</h1>
+            <img src=${cover_Image} alt=${title} ></img>
+            <span>${date}</span>
+          </a>
+        `;
+        }
+      )}
     `;
   }
 }

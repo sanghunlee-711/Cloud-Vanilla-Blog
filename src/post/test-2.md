@@ -1,8 +1,8 @@
 ---
-title: 'This is Google Photo Contents'
+title: 'This is Howl photo contents'
 date: 'March 13 2022'
 exceprt: 'what is excerpt'
-cover_Image: 'src/images/posts/google.png'
+cover_Image: 'src/images/posts/howl.png'
 ---
 
 ## Heading Two
