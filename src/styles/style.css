@@ -1,4 +1,8 @@
 /* UI Ref: https://preview.themeforest.net/item/alia-minimal-personal-blog/full_screen_preview/21817200?_ga=2.93063645.1709639131.1647097242-1181632876.1647097242 */
+/* body margin  */
+body {
+  margin: 0px;
+}
 
 .nav {
   display: flex;
@@ -9,10 +13,6 @@
   height: 30px;
   padding: 20px 4px;
   margin-bottom: 12px;
-}
-
-h1 {
-  font-size: 24px;
 }
 
 .nav a {

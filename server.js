@@ -16,6 +16,23 @@ app.get('/each-post/:slug', (req, res) => {
       const language = hljs.getLanguage(lang) ? lang : 'plaintext';
       return hljs.highlight(code, { language }).value;
     },
+    baseUrl: null,
+    breaks: false,
+    extensions: null,
+    gfm: true,
+    headerIds: true,
+    headerPrefix: '',
+    langPrefix: 'hljs language-',
+    mangle: true,
+    pedantic: false,
+    sanitize: false,
+    sanitizer: null,
+    silent: false,
+    smartLists: false,
+    smartypants: false,
+    tokenizer: null,
+    walkTokens: null,
+    xhtml: false,
     // langPrefix: 'hljs language-', // highlight.js css expects a top-level 'hljs' class.
     // pedantic: false,
     // gfm: true,
