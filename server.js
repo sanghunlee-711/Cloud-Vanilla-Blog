@@ -11,6 +11,7 @@ app.use('/src', express.static(path.resolve(__dirname, 'src')));
 app.get('/each-post/:slug', (req, res) => {
   const slug = req.params.slug;
 
+  //https://marked.js.org/
   marked.setOptions({
     highlight: function (code, lang) {
       const language = hljs.getLanguage(lang) ? lang : 'plaintext';
