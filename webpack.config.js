@@ -27,4 +27,11 @@ module.exports = {
     port: 8800,
     open: true,
   },
+  resolve: {
+    fallback: {
+      fs: false,
+      path: false,
+      process: false,
+    },
+  },
 };
