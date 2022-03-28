@@ -5,13 +5,15 @@ const matter = require('gray-matter');
 const app = express();
 const marked = require('marked');
 const hljs = require('highlight.js');
+const cors = require('cors');
+app.use(cors());
+app.options('*', cors());
 
 app.use('/src', express.static(path.resolve(__dirname, 'src')));
 
 app.get('/each-post/:slug', (req, res) => {
   const slug = req.params.slug;
 
-  //https://marked.js.org/
   marked.setOptions({
     highlight: function (code, lang) {
       const language = hljs.getLanguage(lang) ? lang : 'plaintext';
@@ -34,14 +36,6 @@ app.get('/each-post/:slug', (req, res) => {
     tokenizer: null,
     walkTokens: null,
     xhtml: false,
-    // langPrefix: 'hljs language-', // highlight.js css expects a top-level 'hljs' class.
-    // pedantic: false,
-    // gfm: true,
-    // breaks: false,
-    // sanitize: false, //deprecated never use true!
-    // smartLists: true,
-    // smartypants: false,
-    // xhtml: false,
   });
 
   const markdonwWithMeta = fs.readFileSync(
@@ -87,6 +81,6 @@ app.get('/*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'src', 'index.html'));
 });
 
-app.listen(process.env.PORT || 3000, () =>
-  console.log(`Server is running on ${process.env.PORT || 3000}`)
+app.listen(process.env.SERVER_PORT || 3000, () =>
+  console.log(`Server is running on ${process.env.SERVER_PORT || 3000}`)
 );
