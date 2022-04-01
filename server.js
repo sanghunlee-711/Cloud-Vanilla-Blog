@@ -52,7 +52,7 @@ app.get('/each-post/:slug', (req, res) => {
   });
 });
 
-app.get('/post-list/', (req, res) => {
+app.get('/post-list', (req, res) => {
   //파일을 루트의 post directoriy로부터 가져옴
   const files = fs.readdirSync(path.join('src/post'));
 

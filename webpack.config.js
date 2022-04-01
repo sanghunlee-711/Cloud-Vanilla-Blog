@@ -15,6 +15,15 @@ module.exports = {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
+      {
+        test: /\.(eot|md|svg|ttf|woff|woff2)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+          },
+        },
+      },
     ],
   },
   devServer: {
@@ -32,6 +41,7 @@ module.exports = {
       fs: false,
       path: false,
       process: false,
+      buffer: require.resolve('buffer'),
     },
   },
 };

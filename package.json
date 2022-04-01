@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "buffer": "^6.0.3",
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "gray-matter": "^4.0.3",
@@ -26,6 +27,7 @@
     "babel-jest": "^27.5.1",
     "css-loader": "^6.7.1",
     "eslint": "^8.12.0",
+    "file-loader": "^6.2.0",
     "jest": "^27.5.1",
     "mini-css-extract-plugin": "^2.6.0",
     "process": "^0.11.10",
