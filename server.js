@@ -6,6 +6,31 @@ const app = express();
 const marked = require('marked');
 const hljs = require('highlight.js');
 const cors = require('cors');
+
+marked.setOptions({
+  highlight: function (code, lang) {
+    const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+    return hljs.highlight(code, { language }).value;
+  },
+  baseUrl: null,
+  breaks: false,
+  extensions: null,
+  gfm: true,
+  headerIds: true,
+  headerPrefix: '',
+  langPrefix: 'hljs language-',
+  mangle: true,
+  pedantic: false,
+  sanitize: false,
+  sanitizer: null,
+  silent: false,
+  smartLists: false,
+  smartypants: false,
+  tokenizer: null,
+  walkTokens: null,
+  xhtml: false,
+});
+
 app.use(cors());
 app.options('*', cors());
 
@@ -13,30 +38,6 @@ app.use('/src', express.static(path.resolve(__dirname, 'src')));
 
 app.get('/each-post/:slug', (req, res) => {
   const slug = req.params.slug;
-
-  marked.setOptions({
-    highlight: function (code, lang) {
-      const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-      return hljs.highlight(code, { language }).value;
-    },
-    baseUrl: null,
-    breaks: false,
-    extensions: null,
-    gfm: true,
-    headerIds: true,
-    headerPrefix: '',
-    langPrefix: 'hljs language-',
-    mangle: true,
-    pedantic: false,
-    sanitize: false,
-    sanitizer: null,
-    silent: false,
-    smartLists: false,
-    smartypants: false,
-    tokenizer: null,
-    walkTokens: null,
-    xhtml: false,
-  });
 
   const markdonwWithMeta = fs.readFileSync(
     path.join('src/post', slug + '.md'),
@@ -46,13 +47,15 @@ app.get('/each-post/:slug', (req, res) => {
   const { data: frontMatter, content } = matter(markdonwWithMeta);
 
   res.json({
-    frontMatter,
     slug,
+    frontMatter,
     content: JSON.stringify(marked.parse(content.toString())),
   });
 });
 
 app.get('/post-list', (req, res) => {
+  //each post처럼 긁어와서 일부 컨텐츠만 넘겨주고 끝내면 될듯 ㅇㅅㅇ..
+
   //파일을 루트의 post directoriy로부터 가져옴
   const files = fs.readdirSync(path.join('src/post'));
 
@@ -67,11 +70,12 @@ app.get('/post-list', (req, res) => {
     );
 
     //gray-matter라이브러리가 알아서 md파일을 객체화 해줌
-    const { data: frontMatter } = matter(markdownWithMeta);
-
+    const { data: frontMatter, content } = matter(markdownWithMeta);
+    console.log('Is html?', marked.parse(content));
     return {
       slug,
       frontMatter,
+      content: JSON.stringify(marked.parse(content)),
     };
   });
   res.json(posts);

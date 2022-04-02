@@ -15,15 +15,24 @@ class Posts extends AbstractView {
     return data;
   }
 
+  setPreview(html) {
+    const regEx = /(<([^>]+)>)/gi;
+    return html.replace(regEx, '').slice(0, 500) + '...';
+  }
+
   async getHtml() {
     const data = await this.getPostData();
-
+    console.log('undefined??', data);
     return `  
     <main class="post_container">
       ${data
         .map(
           (
-            { slug, frontMatter: { title, date, image, categories, tags } },
+            {
+              slug,
+              frontMatter: { title, date, image, categories, tags },
+              content,
+            },
             index
           ) => {
             return `
@@ -50,7 +59,9 @@ class Posts extends AbstractView {
                     </div>
                   </div>
                   </div>
-                  
+                  <div class="preview_content">
+                      ${this.setPreview(JSON.parse(content))}
+                  </div>
                 </div>
               </a>
           </article>

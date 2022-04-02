@@ -39,9 +39,9 @@ body {
 }
 
 .header_profile {
-  width: 80%;
-  /* border-bottom: 1px solid var(--basic-gray); */
+  width: 100%;
   background: var(--header-border-bottom);
+  margin: 12px 0px;
 }
 
 .header_profile_wrapper {
@@ -58,7 +58,8 @@ body {
   width: 130px;
   height: 130px;
   border-radius: 65px;
-  margin: 24px 0px;
+  margin-top: 24px;
+  margin-bottom: 8px;
 }
 
 .header_profile ul {
@@ -66,6 +67,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 0px;
+  margin: 24px 0px;
 }
 
 .header_profile ul li {
