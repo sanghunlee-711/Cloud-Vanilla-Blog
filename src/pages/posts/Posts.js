@@ -1,3 +1,4 @@
+// import * as marked from 'marked';
 import AbstractView from '../../components/AbstractView.js';
 class Posts extends AbstractView {
   constructor(params) {
@@ -14,26 +15,56 @@ class Posts extends AbstractView {
     return data;
   }
 
+  setPreview(html) {
+    const regEx = /(<([^>]+)>)/gi;
+    return html.replace(regEx, '').slice(0, 500) + '...';
+  }
+
   async getHtml() {
     const data = await this.getPostData();
-
-    return `
+    console.log('undefined??', data);
+    return `  
     <main class="post_container">
       ${data
         .map(
           (
-            { slug, frontMatter: { title, date, image, categories, tags } },
+            {
+              slug,
+              frontMatter: { title, date, image, categories, tags },
+              content,
+            },
             index
           ) => {
             return `
-          <a href="/posts/${slug}" class="each_post_container" data-link>
-            <img src=${image.src} alt=${title} ></img>
-            <h1 class="post_title">${title}</h1>
-            <span>${date.split(' ')[0]}</span>
-            <div class="post_category_wrapper">
-              ${categories.map((category) => `<span>${category}</span>`)}
-            </div>
-          </a>
+            <article class="each_post_container">
+              <a href="/posts/${slug}"  data-link>
+                <div class="title_image" style="background-image:url(${
+                  image.src
+                })"></div>
+                <div class="each_post_contents">
+                  <h1 class="post_title">${title}</h1>
+                  <div class="each_post_profile">
+                    <img src="../../static/images/profile/selfie_japan.jpeg" alt="profile_image">
+                  <div class ="each_post_profile_detail">
+                    <span>Cloud Lee</span>
+                    <div>
+                      <div class="post_category_wrapper">
+                        ${categories.map(
+                          (category) => `<span>${category}</span>`
+                        )}
+                      </div>
+                      <span class="each_post_profile_detail_date">${
+                        date.split(' ')[0]
+                      }</span>
+                    </div>
+                  </div>
+                  </div>
+                  <div class="preview_content">
+                      ${this.setPreview(JSON.parse(content))}
+                  </div>
+                </div>
+              </a>
+          </article>
         `;
           }
         )

@@ -1,4 +1,3 @@
-import Main from './pages/Main.js';
 import Portfolio from './pages/Portfolio.js';
 import Posts from './pages/posts/Posts.js';
 import PostView from './pages/posts/PostView.js';
@@ -24,7 +23,7 @@ const getParams = (match) => {
 
 export const router = async () => {
   const routes = [
-    { path: '/', view: Main },
+    { path: '/', view: Posts },
     { path: '/resume', view: Resume },
     { path: '/portfolio', view: Portfolio },
     { path: '/posts', view: Posts },

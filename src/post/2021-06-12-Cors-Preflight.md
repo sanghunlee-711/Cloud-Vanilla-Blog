@@ -8,7 +8,7 @@ tags: [Cors, Prefilght]
 math: true
 mermaid: true
 image:
-  src: 'public/images/posts/google.png'
+  src: '../static/images/posts/google.png'
   width: 850
   height: 585
 ---
