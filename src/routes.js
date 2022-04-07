@@ -21,15 +21,15 @@ const getParams = (match) => {
   );
 };
 
-export const router = async () => {
-  const routes = [
-    { path: '/', view: Posts },
-    { path: '/resume', view: Resume },
-    { path: '/portfolio', view: Portfolio },
-    { path: '/posts', view: Posts },
-    { path: '/posts/:id', view: PostView },
-  ];
+const routes = [
+  { path: '/', view: Posts },
+  { path: '/resume', view: Resume },
+  { path: '/portfolio', view: Portfolio },
+  { path: '/posts', view: Posts },
+  { path: '/posts/:id', view: PostView },
+];
 
+export const router = async () => {
   const potentialMatches = routes.map((route) => {
     return {
       route,

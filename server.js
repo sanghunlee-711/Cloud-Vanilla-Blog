@@ -54,8 +54,6 @@ app.get('/each-post/:slug', (req, res) => {
 });
 
 app.get('/post-list', (req, res) => {
-  //each post처럼 긁어와서 일부 컨텐츠만 넘겨주고 끝내면 될듯 ㅇㅅㅇ..
-
   //파일을 루트의 post directoriy로부터 가져옴
   const files = fs.readdirSync(path.join('src/post'));
 
@@ -71,7 +69,7 @@ app.get('/post-list', (req, res) => {
 
     //gray-matter라이브러리가 알아서 md파일을 객체화 해줌
     const { data: frontMatter, content } = matter(markdownWithMeta);
-    console.log('Is html?', marked.parse(content));
+
     return {
       slug,
       frontMatter,
@@ -81,9 +79,9 @@ app.get('/post-list', (req, res) => {
   res.json(posts);
 });
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'src', 'index.html'));
-});
+// app.get('/*', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, 'src', 'index.html'));
+// });
 
 app.listen(process.env.SERVER_PORT || 3000, () =>
   console.log(`Server is running on ${process.env.SERVER_PORT || 3000}`)

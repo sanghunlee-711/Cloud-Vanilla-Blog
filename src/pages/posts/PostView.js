@@ -8,7 +8,7 @@ class PostsView extends AbstractView {
   }
 
   async getPostData(slug) {
-    const res = await fetch(`/each-post/${slug}`);
+    const res = await fetch(`http://localhost:3000/each-post/${slug}`);
     const resJson = await res.json();
     const data = await resJson;
     return data;
@@ -24,7 +24,6 @@ class PostsView extends AbstractView {
           ${JSON.parse(data.content)}
         </div>
 
-        
     `;
   }
 }

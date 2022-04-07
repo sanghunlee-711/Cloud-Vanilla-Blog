@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js & webpack-dev-server --open",
+    "dev": "node server.js &webpack-dev-server --config webpack.config.js --hot --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -25,9 +25,11 @@
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.16.11",
     "babel-jest": "^27.5.1",
+    "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.1",
     "eslint": "^8.12.0",
     "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
     "jest": "^27.5.1",
     "mini-css-extract-plugin": "^2.6.0",
     "process": "^0.11.10",

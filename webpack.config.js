@@ -1,14 +1,28 @@
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
+//ref: https://stackoverflow.com/questions/43209666/react-router-v4-cannot-get-url
 module.exports = {
   mode: 'development',
   entry: './src/index.js',
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      hash: true,
+      template: './src/index.html', //적용될 html 경로
+      // filename:
+    }),
+    new MiniCssExtractPlugin({ filename: 'app.css' }),
+    new CleanWebpackPlugin({
+      cleanAfterEveryBuildPatterns: ['dist'],
+    }),
+  ],
   module: {
     rules: [
       {
@@ -30,6 +44,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'src'),
     },
+    historyApiFallback: true,
     compress: true,
     hot: true,
     host: 'localhost',
@@ -38,9 +53,9 @@ module.exports = {
   },
   resolve: {
     fallback: {
-      fs: false,
-      path: false,
-      process: false,
+      // fs: false,
+      // path: false,
+      // process: false,
       buffer: require.resolve('buffer'),
     },
   },
