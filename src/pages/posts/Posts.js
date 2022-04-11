@@ -69,7 +69,7 @@ class Posts extends AbstractView {
           }
         )
         .reverse()
-        .join(' ')};
+        .join(' ')}
     </main>
     `;
   }

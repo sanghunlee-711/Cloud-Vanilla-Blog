@@ -18,8 +18,18 @@ class PostsView extends AbstractView {
     const data = await this.getPostData(this.postId);
 
     return `
-        <h1>Post</h1>
-        <p>You are viewing post #${this.postId}.</p>
+        <div class="title-container">
+        <h1 class="title"> ${data.frontMatter.title}</h1>
+        <div class="title-info">
+          <div>
+            <span>${data.frontMatter.author}</span>
+            <span>${data.frontMatter.date.split(' ')[0]}</span>
+          </div>
+          <div>
+            <a href="/post" data-link>목록</a>
+          </div>
+        </div>
+        </div>
         <div class="hljs">
           ${JSON.parse(data.content)}
         </div>
