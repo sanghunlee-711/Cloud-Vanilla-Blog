@@ -34,7 +34,7 @@ marked.setOptions({
 app.use(cors());
 app.options('*', cors());
 
-app.use('/src', express.static(path.resolve(__dirname, 'src')));
+// app.use('/src', express.static(path.resolve(__dirname, 'src')));
 
 app.get('/each-post/:slug', (req, res) => {
   const slug = req.params.slug;

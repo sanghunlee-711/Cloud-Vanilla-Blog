@@ -45,6 +45,7 @@ module.exports = {
       directory: path.join(__dirname, 'src'),
     },
     historyApiFallback: true,
+    allowedHosts: 'all',
     compress: true,
     hot: true,
     host: 'localhost',

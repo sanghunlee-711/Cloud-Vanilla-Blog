@@ -1,3 +1,4 @@
+import Gnb from './components/Gnb.js';
 import Portfolio from './pages/Portfolio.js';
 import Posts from './pages/posts/Posts.js';
 import PostView from './pages/posts/PostView.js';
@@ -53,7 +54,12 @@ export const router = async () => {
   // getParams 메서드를 통해 찾아낸 params값을 props로 넘겨줌
   const view = new match.route.view(getParams(match));
   //뷰 인스턴스의 getHtml 메서드를 사용해서 바꿔 끼워 넣어줌
-  document.getElementById(' app').innerHTML = await view.getHtml();
+  const app = document.getElementById(' app');
+  // const gnb = GNB;
+  const nav = Gnb;
+  console.log('NAV IN ROTE', nav);
+  const temp = await view.getHtml();
+  app.innerHTML = temp;
 };
 
 //a link 의 새로고침과 동시의 이동이 아닌 history 객체를 이용해서 url만 변화시켜주고 router함수를 사용
