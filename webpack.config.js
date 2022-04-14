@@ -47,10 +47,10 @@ module.exports = {
     historyApiFallback: true,
     allowedHosts: 'all',
     compress: true,
-    hot: true,
+    // hot: true,
     host: 'localhost',
     port: 8800,
-    open: true,
+    // open: true,
   },
   resolve: {
     fallback: {
