@@ -22,7 +22,7 @@ class Posts extends AbstractView {
 
   async getHtml() {
     const data = await this.getPostData();
-    console.log('undefined??', data);
+
     return `  
     <main class="post_container">
       ${data
@@ -37,7 +37,7 @@ class Posts extends AbstractView {
           ) => {
             return `
             <article class="each_post_container">
-              <a href="/posts/${slug}"  data-link>
+              <a href="/posts/${slug}"  data-link class="nav_link">
                 <div class="title_image" style="background-image:url(${
                   image.src
                 })"></div>
@@ -68,7 +68,8 @@ class Posts extends AbstractView {
         `;
           }
         )
-        .join(' ')};
+        .reverse()
+        .join(' ')}
     </main>
     `;
   }

@@ -5,6 +5,7 @@ pre code.hljs {
 }
 code.hljs {
   padding: 3px 5px;
+  background-color: rgb(251, 251, 251);
 } /*!
   Theme: GitHub Dark Dimmed
   Description: Dark dimmed theme as seen on github.com
@@ -15,8 +16,11 @@ code.hljs {
   Colors taken from GitHub's CSS
 */
 .hljs {
-  color: #adbac7;
-  background: #22272e;
+  color: black;
+  background: white;
+  border: 1px solid #f1f8f7;
+  border-radius: 4px;
+  padding: 24px;
 }
 .hljs-doctag,
 .hljs-keyword,
@@ -90,4 +94,41 @@ code.hljs {
 .hljs-deletion {
   color: #ffd8d3;
   background-color: #78191b;
+}
+
+.hljs ol {
+  font-weight: 600;
+}
+
+.hljs p code {
+  background-color: #ffd8d3;
+  padding: 4px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.title-container {
+  border: 1px solid #f1f8f7;
+  border-radius: 4px;
+  padding: 24px;
+  margin: 24px 0px;
+}
+.title-container .title-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title-info > div > span:first-child {
+  margin-right: 12px;
+}
+
+.title-info > div > span:first-child {
+  margin-right: 12px;
+}
+
+.title-container .title {
+  color: black;
+  background: white;
+  border-radius: 4px;
 }

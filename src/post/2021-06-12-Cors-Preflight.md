@@ -9,8 +9,8 @@ math: true
 mermaid: true
 image:
   src: '../static/images/posts/google.png'
-  width: 850
-  height: 585
+#   width: 850
+#   height: 585
 ---
 
 # <span>참고!</span>
