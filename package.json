@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js &webpack-dev-server --config webpack.config.js --hot --open",
+    "dev": " webpack-dev-server --env=development --mode=development --config webpack.config.js --hot --open --progress &  node server.js ",
     "server": "node server.js &webpack-dev-server --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,6 +14,8 @@
   "dependencies": {
     "buffer": "^6.0.3",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.5.0",
@@ -28,6 +30,7 @@
     "babel-jest": "^27.5.1",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.1",
+    "dotenv-webpack": "^7.1.0",
     "eslint": "^8.12.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
