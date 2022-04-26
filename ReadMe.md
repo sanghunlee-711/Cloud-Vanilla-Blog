@@ -1,3 +1,7 @@
+# 링크
+
+[Cloud Sanghun Blog With Vanila JS](https://blog.cloud-sanghun.com/)
+
 # 설명
 
 - Vanilla JS, HTML5, CSS3만을 사용하여 SPA 및 MVC 패턴을 적용하여 개인 블로그를 만들고 있습니다.
@@ -11,11 +15,16 @@
 - [ ] Component 추상화
 - [ ] MVC pattern
 - [ ] Virtual DOM
+- [ ] Webpack
+  - [ ] Build Setting
+  - [x] Dev Setting
+- [x] Nginx Web server
+- [x] https setting with AWS load balance, Route 53
 
 ## UI
 
 - [ ] 포트폴리오 페이지
-- [ ] 메인 페이지
+- [x] 메인 페이지
 - [ ] 이력서 페이지
 - [ ] 게시글 페이지
 
@@ -24,6 +33,7 @@
   - [x] MD파일을 활용한 블로그
     - [x] MD파일 읽어오기
     - [x] CSS해주기
+  - [ ] 외부 플랫폼을 이용한 댓글
 
 ## Build
 
