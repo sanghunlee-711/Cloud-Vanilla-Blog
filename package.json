@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": " webpack-dev-server --env=development --mode=development --config webpack.config.js --hot --open --progress &  node server.js",
+    "build": "webpack --env=production --mode=production",
     "build:deploy": "webpack --env=production --mode=production --config webpack.config.js &  node server.js",
     "server": "node server.js &webpack-dev-server --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -38,7 +39,8 @@
     "mini-css-extract-plugin": "^2.6.0",
     "process": "^0.11.10",
     "style-loader": "^3.3.1",
-    "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.7.4"
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.0",
+    "webpack-dev-server": "^4.2.1"
   }
 }

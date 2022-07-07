@@ -83,6 +83,4 @@ app.get('/post-list', (req, res) => {
 //   res.sendFile(path.resolve(__dirname, 'src', 'index.html'));
 // });
 
-app.listen(process.env.SERVER_PORT || 3000, () =>
-  console.log(`Server is running on ${process.env.SERVER_PORT || 3000}`)
-);
+app.listen(3000, () => console.log(`Server is running on ${3000}`));
