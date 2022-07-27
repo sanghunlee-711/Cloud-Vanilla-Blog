@@ -1,69 +1,43 @@
-import Gnb from './components/Gnb.js';
-import Portfolio from './pages/Portfolio.js';
-import Posts from './pages/posts/Posts.js';
-import PostView from './pages/posts/PostView.js';
-import Resume from './pages/Resume.js';
+//ref: https://github.dev/kdydesign/spa-router
+import Home from './pages/Main.js';
+import PostsTest from './pages/posts/Posts-test.js';
 
-//path를 찾기 위한 정규표현식이 들어있는 함수
-const pathToRegex = (path) =>
-  new RegExp('^' + path.replace(/\//g, '\\/').replace(/:\w+/g, '(.+)') + '$');
-
-//파라미터를 찾아서 사용할 수 있는 형태로 반환하기 위한 함수
-const getParams = (match) => {
-  const values = match.result.slice(1);
-  const keys = Array.from(match.route.path.matchAll(/:(\w+)/g)).map(
-    (result) => result[1]
-  );
-
-  return Object.fromEntries(
-    keys.map((key, i) => {
-      return [key, values[i]];
-    })
-  );
-};
-
-const routes = [
-  { path: '/', view: Posts },
-  { path: '/resume', view: Resume },
-  { path: '/portfolio', view: Portfolio },
-  { path: '/posts', view: Posts },
-  { path: '/posts/:id', view: PostView },
+export const routes = [
+  { path: '/', component: Home },
+  { path: '#posts', component: PostsTest },
 ];
 
-export const router = async () => {
-  const potentialMatches = routes.map((route) => {
-    return {
-      route,
-      result: location.pathname.match(pathToRegex(route.path)), //매칭되는 라우터의 뷰를 보여주기 위한 속성
-    };
+// get hash history route
+//hash를 사용하면 경로가 먼저 이동하고 경로값을 본 뒤 렌더를 바꿔주는 방식임.
+function getHashRoute(pathName) {
+  let route = routes[0];
+
+  routes.forEach((route, idx) => {
+    if (pathName === route.path.replace('#', '')) {
+      route = routes[idx];
+    }
   });
 
-  let match = potentialMatches.find(
-    (potentialMatch) => potentialMatch.result !== null
-  ); // 매치된것 찾아냄
+  return route;
+}
 
-  if (!match) {
-    // 매치 안된 경우 404 대신 Main으로 보낸다.
-    match = {
-      route: routes[0],
-      result: [location.pathname],
-    };
-  }
+const initialRoutes = function ($target) {
+  renderInRoute($target, routes[0]);
 
-  //뷰 인스턴스를 불러옴
-  // getParams 메서드를 통해 찾아낸 params값을 props로 넘겨줌
-  const view = new match.route.view(getParams(match));
-  //뷰 인스턴스의 getHtml 메서드를 사용해서 바꿔 끼워 넣어줌
-  const app = document.getElementById(' app');
-  // const gnb = GNB;
-  const nav = Gnb;
-  console.log('NAV IN ROTE', nav);
-  const temp = await view.getHtml();
-  app.innerHTML = temp;
+  window.addEventListener('hashchange', function () {
+    return renderInRoute($target, getHashRoute(routes[0].path));
+  });
 };
 
-//a link 의 새로고침과 동시의 이동이 아닌 history 객체를 이용해서 url만 변화시켜주고 router함수를 사용
-export const navigateTo = (url) => {
-  history.pushState(null, null, url);
-  router();
-};
+// set hash history
+function hashRouterPush(pathName, el) {
+  renderInRoute(el, getHashRoute(pathName));
+}
+
+function renderInRoute($target, route) {
+  const Component = route.component;
+
+  new Component({ $target });
+}
+
+export { initialRoutes, hashRouterPush };

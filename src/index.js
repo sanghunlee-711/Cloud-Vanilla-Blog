@@ -1,16 +1,20 @@
-import { navigateTo, router } from './routes.js';
+import Layout from './components/Layout.js';
+import { hashRouterPush, initialRoutes } from './routes.js';
 
-window.addEventListener('popstate', router);
+const layout = new Layout();
+const routerWrapper = document.querySelector('#router-container');
 
-//Vanila js생명주기라고 생각하면 됨 (처음 DOM이 로드되는 시점)
-document.addEventListener('DOMContentLoaded', () => {
-  //초반에 nav 태그에 존재하는 a 태그의 이벤트를 변경해줌(디폴트는 새로고침 시키므로)
-  document.body.addEventListener('click', (e) => {
-    if (e.target.matches('[data-link]')) {
-      e.preventDefault();
-      navigateTo(e.target.href);
-    }
+initialRoutes(routerWrapper);
+
+window.onload = () => {
+  const hashLinker = document.querySelectorAll('a.nav-link');
+
+  hashLinker.forEach((el) => {
+    el.addEventListener('click', (e) => {
+      let pathName = e.target.getAttribute('href');
+      console.log(pathName);
+      pathName = pathName.replace('#', '/');
+      hashRouterPush(pathName, routerWrapper);
+    });
   });
-
-  router();
-});
+};

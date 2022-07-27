@@ -1,15 +1,10 @@
-import AbstractView from '../components/AbstractView.js';
+const Main = function ({ $target }) {
+  this.$target = $target;
 
-class Main extends AbstractView {
-  constructor(params) {
-    super(params);
-    this.setTitle('Main');
-  }
-
-  async getHtml() {
-    return `
-      <h1>This is Main Of Cloud Lee</h1>
-    `;
-  }
-}
+  this.render = function () {
+    const el = `this is main page!`;
+    this.$target.innerHTML = el;
+  };
+  this.render();
+};
 export default Main;

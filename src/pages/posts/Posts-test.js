@@ -1,31 +1,33 @@
 // import * as marked from 'marked';
-import AbstractView from '../../components/AbstractView.js';
-class Posts extends AbstractView {
-  constructor(params) {
-    super(params);
-    this.setTitle('Posts!');
-    this.data = [];
-  }
+const PostsTest = function ({ $target }) {
+  this.$target = $target;
+  this.dataState = [];
+  const postContainer = document.createElement('main');
+  postContainer.setAttribute('class', 'post_container');
+  this.$target.appendChild(postContainer);
 
-  async getPostData() {
-    const res = await fetch(`${process.env.SERVER_ADDRESS}/post-list`);
-    // const res = await fetch(`http://localhost:3000/post-list`);
+  this.setDataState = function (nextState) {
+    this.dataState = [...nextState];
+    this.render();
+  };
+
+  this.getPostData = async function () {
+    // const res = await fetch(`${process.env.SERVER_ADDRESS}/post-list`);
+    const res = await fetch(`http://localhost:3000/post-list`);
     const resJson = await res.json();
     const data = await resJson;
     return data;
-  }
+  };
 
-  setPreview(html) {
+  this.setPreview = function (html) {
     const regEx = /(<([^>]+)>)/gi;
     return html.replace(regEx, '').slice(0, 500) + '...';
-  }
+  };
 
-  async getHtml() {
-    const data = await this.getPostData();
-
-    return `  
-    <main class="post_container">
-      ${data
+  this.render = async function () {
+    const list = `  
+    
+      ${this.dataState
         .map(
           (
             {
@@ -70,9 +72,14 @@ class Posts extends AbstractView {
         )
         .reverse()
         .join(' ')}
-    </main>
+    
     `;
-  }
-}
+    postContainer.innerHTML = list;
+  };
 
-export default Posts;
+  const data = this.getPostData();
+  this.setDataState(data);
+  this.render();
+};
+
+export default PostsTest;
