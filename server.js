@@ -34,13 +34,11 @@ marked.setOptions({
 app.use(cors());
 app.options('*', cors());
 
-// app.use('/src', express.static(path.resolve(__dirname, 'src')));
-
 app.get('/each-post/:slug', (req, res) => {
   const slug = req.params.slug;
 
   const markdonwWithMeta = fs.readFileSync(
-    path.join('src/post', slug + '.md'),
+    path.join('post-dev', slug + '.md'),
     'utf-8'
   );
 
@@ -55,7 +53,7 @@ app.get('/each-post/:slug', (req, res) => {
 
 app.get('/post-list', (req, res) => {
   //파일을 루트의 post directoriy로부터 가져옴
-  const files = fs.readdirSync(path.join('src/post'));
+  const files = fs.readdirSync(path.join('post-dev'));
 
   //slug 과 formatter를 posts로부터 가져옴
   const posts = files.map((filename) => {
@@ -63,7 +61,7 @@ app.get('/post-list', (req, res) => {
 
     //frontMatter를 가져옴
     const markdownWithMeta = fs.readFileSync(
-      path.join('src/post', filename),
+      path.join('post-dev', filename),
       'utf-8'
     );
 
@@ -79,8 +77,4 @@ app.get('/post-list', (req, res) => {
   res.json(posts);
 });
 
-// app.get('/*', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, 'src', 'index.html'));
-// });
-
-app.listen(3000, () => console.log(`Server is running on ${3000}`));
+app.listen(4000, () => console.log(`Server is running on ${4000}`));

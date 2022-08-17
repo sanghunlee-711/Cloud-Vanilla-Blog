@@ -9,7 +9,7 @@ class PostsView extends AbstractView {
 
   async getPostData(slug) {
     console.log({ slug });
-    const res = await fetch(`http://localhost:3000/each-post/${slug}`);
+    const res = await fetch(`http://localhost:4000/each-post/${slug}`);
     const resJson = await res.json();
     const data = await resJson;
 

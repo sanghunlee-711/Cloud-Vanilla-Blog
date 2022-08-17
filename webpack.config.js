@@ -45,7 +45,6 @@ if (!isDevelopment) {
 }
 
 module.exports = (env) => {
-  console.log('@@@@env', env);
   return {
     mode,
     entry: './src/index.js',

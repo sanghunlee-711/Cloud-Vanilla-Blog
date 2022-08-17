@@ -13,7 +13,7 @@ const PostsTest = function ({ $target }) {
 
   this.getPostData = async function () {
     // const res = await fetch(`${process.env.SERVER_ADDRESS}/post-list`);
-    const res = await fetch(`http://localhost:3000/post-list`);
+    const res = await fetch(`http://localhost:4000/post-list`);
     const resJson = await res.json();
     const data = await resJson;
     return data;

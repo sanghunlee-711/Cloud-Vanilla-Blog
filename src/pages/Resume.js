@@ -1,15 +1,15 @@
 import AbstractView from '../components/AbstractView.js';
 
-class Main extends AbstractView {
+class Resume extends AbstractView {
   constructor(params) {
     super(params);
-    this.setTitle('Main');
+    this.setTitle('Resume');
   }
 
   async getHtml() {
     return `
-      <h1>This is Main Of Cloud Lee</h1>
+      <h1>This is Resume Of Cloud Lee</h1>
     `;
   }
 }
-export default Main;
+export default Resume;
