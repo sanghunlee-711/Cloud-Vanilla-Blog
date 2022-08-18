@@ -25,7 +25,7 @@ const Post = function ({ $target }) {
 
   const setPreview = (html) => {
     const regEx = /(<([^>]+)>)/gi;
-    return html.replace(regEx, '').slice(0, 500) + '...';
+    return html.replace(regEx, '').slice(0, 200) + '...';
   };
 
   this.render = () => {
@@ -74,8 +74,7 @@ const Post = function ({ $target }) {
       `;
         }
       )
-      .reverse()
-      .join(' ')}
+      .join('')}
   </main>
     `;
   };

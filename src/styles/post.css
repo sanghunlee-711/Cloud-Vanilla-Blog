@@ -1,7 +1,7 @@
 @import './style.css';
 
 .layout-container {
-  padding: 0px 24px;
+  padding: 24px;
   max-width: var(--basic-width);
   margin: 0px auto;
 }
@@ -63,8 +63,13 @@ a {
   border-radius: 4px;
 }
 
+@media screen and (min-width: 1024px) {
+  .each_post_container .each_post_contents {
+    margin: 0px 120px;
+  }
+}
 .each_post_container .each_post_contents {
-  margin: 0px 120px;
+  margin: 0px;
 }
 .each_post_contents h1 {
   margin-bottom: 16px;

@@ -6,6 +6,7 @@ const app = express();
 const marked = require('marked');
 const hljs = require('highlight.js');
 const cors = require('cors');
+const { reverse } = require('dns');
 
 marked.setOptions({
   highlight: function (code, lang) {
@@ -34,7 +35,7 @@ marked.setOptions({
 app.use(cors());
 app.options('*', cors());
 
-app.get('/each-post/:slug', (req, res) => {
+app.get('/post/:slug', (req, res) => {
   const slug = req.params.slug;
 
   const markdonwWithMeta = fs.readFileSync(
@@ -56,24 +57,86 @@ app.get('/post-list', (req, res) => {
   const files = fs.readdirSync(path.join('post-dev'));
 
   //slug 과 formatter를 posts로부터 가져옴
-  const posts = files.map((filename) => {
-    const slug = filename.replace('.md', '');
+  const posts = files
+    .map((filename) => {
+      const slug = filename.replace('.md', '');
 
-    //frontMatter를 가져옴
-    const markdownWithMeta = fs.readFileSync(
-      path.join('post-dev', filename),
-      'utf-8'
-    );
+      //frontMatter를 가져옴
+      const markdownWithMeta = fs.readFileSync(
+        path.join('post-dev', filename),
+        'utf-8'
+      );
 
-    //gray-matter라이브러리가 알아서 md파일을 객체화 해줌
-    const { data: frontMatter, content } = matter(markdownWithMeta);
+      //gray-matter라이브러리가 알아서 md파일을 객체화 해줌
+      const { data: frontMatter, content } = matter(markdownWithMeta);
 
-    return {
-      slug,
-      frontMatter,
-      content: JSON.stringify(marked.parse(content)),
-    };
-  });
+      return {
+        slug,
+        frontMatter,
+        content: JSON.stringify(marked.parse(content)),
+      };
+    })
+    .reverse();
+
+  res.json(posts);
+});
+
+app.get('/post-latest/:type', (req, res) => {
+  //파일을 루트의 post directoriy로부터 가져옴
+  const files = fs.readdirSync(path.join(`${type}`));
+
+  //slug 과 formatter를 posts로부터 가져옴
+  const posts = files
+    .map((filename) => {
+      const slug = filename.replace('.md', '');
+
+      //frontMatter를 가져옴
+      const markdownWithMeta = fs.readFileSync(
+        path.join(`${type}`, filename),
+        'utf-8'
+      );
+
+      //gray-matter라이브러리가 알아서 md파일을 객체화 해줌
+      const { data: frontMatter, content } = matter(markdownWithMeta);
+
+      return {
+        slug,
+        frontMatter,
+        content: JSON.stringify(marked.parse(content)),
+      };
+    })
+    .reverse()
+    .slice(0, 3);
+
+  res.json(posts);
+});
+
+app.get('/post-personnel', (req, res) => {
+  //파일을 루트의 post directoriy로부터 가져옴
+  const files = fs.readdirSync(path.join('post-personnel'));
+
+  //slug 과 formatter를 posts로부터 가져옴
+  const posts = files
+    .map((filename) => {
+      const slug = filename.replace('.md', '');
+
+      //frontMatter를 가져옴
+      const markdownWithMeta = fs.readFileSync(
+        path.join('post-personnel', filename),
+        'utf-8'
+      );
+
+      //gray-matter라이브러리가 알아서 md파일을 객체화 해줌
+      const { data: frontMatter, content } = matter(markdownWithMeta);
+
+      return {
+        slug,
+        frontMatter,
+        content: JSON.stringify(marked.parse(content)),
+      };
+    })
+    .reverse();
+
   res.json(posts);
 });
 

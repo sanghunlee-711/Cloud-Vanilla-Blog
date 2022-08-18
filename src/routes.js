@@ -1,4 +1,5 @@
 import { ROUTES } from './constants/route.js';
+
 function renderHTML(el, Component) {
   el.innerHTML = '';
   if (Component.name === 'Content') {

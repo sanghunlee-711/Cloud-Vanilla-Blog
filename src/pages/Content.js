@@ -1,3 +1,5 @@
+import { loadCommentBox } from '../utils/index.js';
+
 const Content = function ({ $target, contentId }) {
   this.$target = $target;
   this.contentId = contentId;
@@ -14,9 +16,7 @@ const Content = function ({ $target, contentId }) {
 
   this.getPostData = async (slug) => {
     console.log({ slug });
-    const res = await fetch(
-      `http://localhost:4000/each-post/${this.contentId}`
-    );
+    const res = await fetch(`http://localhost:4000/post/${this.contentId}`);
     const resJson = await res.json();
     const data = await resJson;
     this.setData(data);
@@ -24,6 +24,7 @@ const Content = function ({ $target, contentId }) {
   };
 
   this.render = () => {
+    loadCommentBox();
     const data = this.data;
     const { src, width, height } = this.data.frontMatter.image;
 
@@ -48,6 +49,7 @@ const Content = function ({ $target, contentId }) {
       <div class="hljs">
         ${JSON.parse(data.content)}
       </div>
+      <div id="disqus_thread"></div>
     `;
   };
   // this.render();
