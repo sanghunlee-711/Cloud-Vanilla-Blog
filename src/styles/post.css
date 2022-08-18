@@ -1,5 +1,11 @@
 @import './style.css';
 
+.layout-container {
+  padding: 0px 24px;
+  max-width: var(--basic-width);
+  margin: 0px auto;
+}
+
 .post_container {
   max-width: var(--basic-width);
   width: 100%;

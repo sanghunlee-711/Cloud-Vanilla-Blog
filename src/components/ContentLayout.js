@@ -4,10 +4,7 @@ const ContentLayout = function ({ $target }) {
   wrapper.setAttribute('class', 'layout-container');
   this.$target.appendChild(wrapper);
 
-  this.render = () => {
-    // wrapper.innerHTML = `
-    // `;
-  };
+  this.render = () => {};
 
   this.render();
 };

@@ -3,6 +3,7 @@ const HeaderContainer = function ({ $target }) {
   const wrapper = document.createElement('header');
   wrapper.setAttribute('class', 'header');
   this.$target.appendChild(wrapper);
+
   this.render = () => {
     wrapper.innerHTML = `
       <div class="header_container"></div>

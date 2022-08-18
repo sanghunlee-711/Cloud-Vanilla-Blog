@@ -42,7 +42,6 @@ class PostsView extends AbstractView {
         <div class="hljs">
           ${JSON.parse(data.content)}
         </div>
-
     `;
   }
 }
