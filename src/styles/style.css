@@ -23,6 +23,11 @@ body {
   padding: 0px 24px;
 }
 
+#disqus_thread {
+  max-width: 1042px !important;
+  margin: 0px auto !important;
+}
+
 .header_container {
   max-width: var(--basic-width);
   display: flex;

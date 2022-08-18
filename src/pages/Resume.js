@@ -1,15 +1,14 @@
-import AbstractView from '../components/AbstractView.js';
+const Resume = function ({ $target }) {
+  this.$target = $target;
 
-class Resume extends AbstractView {
-  constructor(params) {
-    super(params);
-    this.setTitle('Resume');
-  }
+  const wrapper = document.createElement('section');
+  this.$target.appendChild(wrapper);
 
-  async getHtml() {
-    return `
-      <h1>This is Resume Of Cloud Lee</h1>
+  this.render = () => {
+    wrapper.innerHTML = `
+      
     `;
-  }
-}
-export default Resume;
+  };
+
+  this.render();
+};
