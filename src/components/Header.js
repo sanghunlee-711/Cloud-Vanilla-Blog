@@ -5,6 +5,7 @@ const Header = function ({ $target }) {
   this.$target.appendChild(wrapper);
 
   this.render = () => {
+    console.log('call twice?');
     wrapper.innerHTML = `
       <div class="header_profile_wrapper">
         <img src="/static/images/profile/selfie_japan.jpeg" alt="profile_image" />

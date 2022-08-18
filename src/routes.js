@@ -1,8 +1,11 @@
 import { ROUTES } from './constants/route.js';
 
-function renderHTML(el, Component) {
+function renderHTML(el, route) {
   el.innerHTML = '';
-  if (Component.name === 'Content') {
+
+  const Component = route.components;
+
+  if (route.name === 'Content') {
     new Component({
       $target: el,
       contentId: getContentId(),
@@ -17,36 +20,38 @@ function renderHTML(el, Component) {
 const getContentId = () => {
   const hashLocation = window.location.hash;
   if (!hashLocation.includes('#contentId=')) return null;
-
+  console.log({ 'in route': hashLocation });
   const [_, contentId] = hashLocation.split('=');
   return contentId;
 };
 
 function getHashRoute() {
-  let route = ROUTES[0].components;
+  let route = ROUTES[0];
 
   ROUTES.forEach((hashRoute) => {
     const hashLocation = window.location.hash;
 
     if (getContentId()) {
-      route = ROUTES.filter((el) => el.name === 'Content')[0].components;
+      route = ROUTES.filter((el) => el.name === 'Content')[0];
       return route;
     }
 
     if (hashLocation === hashRoute.path) {
-      route = hashRoute.components;
+      route = hashRoute;
     }
   });
   return route;
 }
 
 export function initialRoutes({ el }) {
-  renderHTML(el, ROUTES[0].components);
+  renderHTML(el, ROUTES[0]);
 
   window.addEventListener('hashchange', () => {
     return renderHTML(el, getHashRoute());
   });
+  //얘가 두번 렌더링 시키는 이유일듯..
+  //*todo: 리팩토링 필요
   window.onload = () => {
-    renderHTML(el, getHashRoute());
+    return renderHTML(el, getHashRoute());
   };
 }

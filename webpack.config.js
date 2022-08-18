@@ -39,6 +39,10 @@ if (!isDevelopment) {
           from: path.resolve(__dirname, 'static/images'),
           to: path.resolve(__dirname, 'dist/static/images'),
         },
+        {
+          from: path.resolve(__dirname, 'src/styles'),
+          to: path.resolve(__dirname, 'dist/styles'),
+        },
       ],
     })
   );
@@ -57,7 +61,7 @@ module.exports = (env) => {
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'index.js',
-      assetModuleFilename: 'images/[hash][ext][query]',
+      // assetModuleFilename: 'images/[hash][ext][query]',
     },
     module: {
       rules: [
@@ -65,10 +69,10 @@ module.exports = (env) => {
           test: /\.(s[ac]|c)ss$/i,
           use: ['style-loader', 'css-loader', 'sass-loader'],
         },
-        {
-          test: /\.(png|jpe?g|gif|svg)$/i,
-          type: 'asset',
-        },
+        // {
+        //   test: /\.(png|jpe?g|gif|svg)$/i,
+        //   type: 'asset',
+        // },
       ],
     },
     plugins,
