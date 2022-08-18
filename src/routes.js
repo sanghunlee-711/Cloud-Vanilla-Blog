@@ -1,23 +1,51 @@
-//ref: https://github.dev/kdydesign/spa-router
-import Home from './pages/Home.js';
-import PostsTest from './pages/posts/Posts-test.js';
+import { ROUTES } from './constants/route.js';
+function renderHTML(el, Component) {
+  el.innerHTML = '';
+  if (Component.name === 'Content') {
+    new Component({
+      $target: el,
+      contentId: getContentId(),
+    });
+  } else {
+    new Component({
+      $target: el,
+    });
+  }
+}
 
-export const routes = [
-  { path: '/', component: Home },
-  { path: '#posts', component: PostsTest },
-];
+const getContentId = () => {
+  const hashLocation = window.location.hash;
+  if (!hashLocation.includes('#contentId=')) return null;
 
-const locationHandler = async () => {
-  let location = window.location.hash.replace('#', '');
-  if (location.length === 0) location = '/';
-  console.log(location);
-  let route = routes.filter((el) => el.path === location)[0];
-  console.log(route);
-  // if (!route.length) route = routes[0];
-  const routeWrapper = document.querySelector('#router-container');
-  const Comp = route.component;
-  //render in router-container
-  new Comp({ $target: routeWrapper });
+  const [_, contentId] = hashLocation.split('=');
+  return contentId;
 };
 
-export { locationHandler };
+function getHashRoute() {
+  let route = ROUTES[0].components;
+
+  ROUTES.forEach((hashRoute) => {
+    const hashLocation = window.location.hash;
+
+    if (getContentId()) {
+      route = ROUTES.filter((el) => el.name === 'Content')[0].components;
+      return route;
+    }
+
+    if (hashLocation === hashRoute.path) {
+      route = hashRoute.components;
+    }
+  });
+  return route;
+}
+
+export function initialRoutes({ el }) {
+  renderHTML(el, ROUTES[0].components);
+
+  window.addEventListener('hashchange', () => {
+    return renderHTML(el, getHashRoute());
+  });
+  window.onload = () => {
+    renderHTML(el, getHashRoute());
+  };
+}

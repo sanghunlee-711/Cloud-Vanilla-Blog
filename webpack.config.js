@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const webpack = require('webpack');
-// const webpack = require('webpack');
+
 const Dotenv = require('dotenv-webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const isDevelopment = process.env.NODE_ENV === 'development';
@@ -59,7 +59,6 @@ module.exports = (env) => {
       filename: 'index.js',
       assetModuleFilename: 'images/[hash][ext][query]',
     },
-
     module: {
       rules: [
         {
@@ -77,9 +76,9 @@ module.exports = (env) => {
       static: {
         directory: path.join(__dirname, 'src'),
       },
-      historyApiFallback: true,
+      // historyApiFallback: true,
       hot: true,
-      compress: true,
+      // compress: true,
       allowedHosts: 'all',
       host: 'localhost',
       port: 8800,

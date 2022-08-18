@@ -1,6 +1,10 @@
-import App from './app.js';
-import { locationHandler } from './routes.js';
-const app = new App({ $target: document.querySelector('#root') });
+import App from './App.js';
 
-locationHandler();
-window.addEventListener('hashchange', locationHandler);
+try {
+  new App({
+    $target: document.querySelector('#root'),
+  });
+} catch (e) {
+  alert(`인스턴스 에러발생 : ${e}`);
+  console.error(e);
+}

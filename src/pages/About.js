@@ -1,14 +1,14 @@
-const Home = function ({ $target }) {
+const About = function ({ $target }) {
   this.$target = $target;
 
   const wrapper = document.createElement('main');
-  wrapper.setAttribute('class', 'home-main-container');
+  wrapper.setAttribute('class', 'about-main-container');
   this.$target.appendChild(wrapper);
 
   this.render = () => {
     wrapper.innerHTML = `
       <div>
-        Home!
+      About!
       </div>
     `;
   };
@@ -16,4 +16,4 @@ const Home = function ({ $target }) {
   this.render();
 };
 
-export default Home;
+export default About;
