@@ -20,7 +20,7 @@ function renderHTML(el, route) {
 const getContentId = () => {
   const hashLocation = window.location.hash;
   if (!hashLocation.includes('#contentId=')) return null;
-  console.log({ 'in route': hashLocation });
+
   const [_, contentId] = hashLocation.split('=');
   return contentId;
 };

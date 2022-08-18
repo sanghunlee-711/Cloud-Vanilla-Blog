@@ -15,7 +15,6 @@ const Content = function ({ $target, contentId }) {
   };
 
   this.getPostData = async (slug) => {
-    console.log({ contentId: this.contentId });
     const res = await fetch(`http://localhost:4000/post/${this.contentId}`);
     const resJson = await res.json();
     const data = await resJson;
