@@ -36,7 +36,7 @@ if (!isDevelopment) {
     new CopyPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, 'src/static/images'),
+          from: path.resolve(__dirname, 'static/images'),
           to: path.resolve(__dirname, 'dist/static/images'),
         },
       ],
