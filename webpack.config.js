@@ -1,6 +1,5 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -15,14 +14,13 @@ let plugins = [
   new HtmlWebpackPlugin({
     hash: true,
     template: './src/index.html', //적용될 html 경로
-    // filename:
   }),
-  // new MiniCssExtractPlugin({ filename: 'app.css' }),
-  new CleanWebpackPlugin({
-    cleanAfterEveryBuildPatterns: ['dist'],
-  }),
+
   new webpack.ProvidePlugin({
     process: 'process/browser',
+  }),
+  new CleanWebpackPlugin({
+    cleanAfterEveryBuildPatterns: ['dist'],
   }),
 ];
 if (!isDevelopment) {
@@ -61,41 +59,42 @@ module.exports = (env) => {
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'index.js',
-      // assetModuleFilename: 'images/[hash][ext][query]',
     },
     module: {
       rules: [
         {
+          test: /\.js$/,
+          include: path.resolve(__dirname, 'src'),
+          exclude: /node_modules/,
+          loader: 'babel-loader', // 바벨 로더를 추가한다
+        },
+        {
           test: /\.(s[ac]|c)ss$/i,
           use: ['style-loader', 'css-loader', 'sass-loader'],
         },
-        // {
-        //   test: /\.(png|jpe?g|gif|svg)$/i,
-        //   type: 'asset',
-        // },
       ],
     },
     plugins,
-    devServer: {
-      static: {
-        directory: path.join(__dirname, 'src'),
-      },
-      // historyApiFallback: true,
-      hot: true,
-      // compress: true,
-      allowedHosts: 'all',
-      host: 'localhost',
-      port: 8800,
-    },
+    // devServer: {
+    //   static: {
+    //     directory: path.join(__dirname, 'src'),
+    //   },
+    //   // historyApiFallback: true,
+    //   hot: true,
+    //   // compress: true,
+    //   allowedHosts: 'all',
+    //   host: 'localhost',
+    //   port: 8800,
+    // },
     resolve: {
-      extensions: ['.js', '.css'],
-      fallback: {
-        buffer: require.resolve('buffer'),
-        process: require.resolve('process'),
-      },
-      alias: {
-        process: 'process',
-      },
+      extensions: ['.js'],
+      // fallback: {
+      //   buffer: require.resolve('buffer'),
+      //   process: require.resolve('process'),
+      // },
+      // alias: {
+      //   process: 'process',
+      // },
     },
   };
 };

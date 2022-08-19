@@ -8,3 +8,5 @@ try {
   alert(`인스턴스 에러발생 : ${e}`);
   console.error(e);
 }
+
+export default {};
