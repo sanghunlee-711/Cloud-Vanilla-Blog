@@ -27,10 +27,10 @@ if (!isDevelopment) {
   mode = 'production';
   target = 'browserslist';
   plugins.push(
-    new Dotenv({
-      systemvars: true,
-      path: `./.env.${isDevelopment ? 'development' : 'production'}`,
-    }),
+    // new Dotenv({
+    //   systemvars: true,
+    //   path: `./.env.${isDevelopment ? 'development' : 'production'}`,
+    // }),
     new CopyPlugin({
       patterns: [
         {
