@@ -88,6 +88,7 @@ module.exports = (env) => {
       port: 8800,
     },
     resolve: {
+      extensions: ['.js', '.css'],
       fallback: {
         buffer: require.resolve('buffer'),
         process: require.resolve('process'),
