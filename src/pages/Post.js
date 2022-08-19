@@ -1,8 +1,4 @@
-const POST_MAP = [
-  { id: 1, content: 'Content 1' },
-  { id: 2, content: 'Content 2' },
-];
-
+import { API_ADDRESS } from '../constants/config.js';
 const Post = function ({ $target }) {
   this.$target = $target;
   this.data = [];
@@ -17,7 +13,7 @@ const Post = function ({ $target }) {
   };
 
   const getPostData = async () => {
-    const res = await fetch(`http://localhost:4000/post-list`);
+    const res = await fetch(`${API_ADDRESS}/post-list`);
     const resJson = await res.json();
     const data = await resJson;
     this.setListData(data);
