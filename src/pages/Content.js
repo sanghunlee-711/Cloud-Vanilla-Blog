@@ -1,5 +1,5 @@
+import { API_ADDRESS } from '../constants/config.js';
 import { loadCommentBox } from '../utils/index.js';
-
 const Content = function ({ $target, contentId }) {
   this.$target = $target;
   this.contentId = contentId;
@@ -15,7 +15,7 @@ const Content = function ({ $target, contentId }) {
   };
 
   this.getPostData = async (slug) => {
-    const res = await fetch(`http://localhost:4000/post/${this.contentId}`);
+    const res = await fetch(`${API_ADDRESS}/post/${this.contentId}`);
     const resJson = await res.json();
     const data = await resJson;
     this.setData(data);
