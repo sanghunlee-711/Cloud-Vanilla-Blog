@@ -15,7 +15,8 @@ const Post = function ({ $target }) {
   const getPostData = async () => {
     const res = await fetch(`${API_ADDRESS}/post-list`);
     const resJson = await res.json();
-    const data = await resJson;
+
+    const data = await resJson.data;
     this.setListData(data);
   };
 

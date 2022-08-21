@@ -1,5 +1,4 @@
 ---
-slug: react-business-logic-1
 title: 리액트에서 비즈니스 로직을 나눠보자[1 - 비즈니스로직 분리]
 author: Sanghun lee
 date: 2021-12-15 11:33:00 +0800

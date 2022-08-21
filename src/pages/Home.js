@@ -8,7 +8,7 @@ const Home = function ({ $target }) {
   this.render = () => {
     wrapper.innerHTML = `
       <div>
-        Home!
+        Home!@@
       </div>
     `;
   };
