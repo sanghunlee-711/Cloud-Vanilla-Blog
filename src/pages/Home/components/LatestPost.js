@@ -1,16 +1,13 @@
-import Pagination from '../components/Pagination.js';
-import { API_ADDRESS } from '../constants/config.js';
-const Post = function ({ $target }) {
+import { API_ADDRESS, PAGE_ADDRESS } from '../../../constants/config.js';
+
+const LatestPost = function ({ $target }) {
   this.$target = $target;
-  this.data = [];
-  this.pageState = {
-    currentPage: 1,
-    totalItemCount: 2,
-    pagePerItemCount: 3,
-  };
+
   const wrapper = document.createElement('main');
-  wrapper.setAttribute('class', 'Post-main-container');
+  wrapper.setAttribute('class', 'main-post-container');
   this.$target.appendChild(wrapper);
+
+  this.data = [];
 
   this.setListData = (nextData) => {
     this.data = [...nextData];
@@ -18,51 +15,29 @@ const Post = function ({ $target }) {
   };
 
   const getPostData = async () => {
-    const res = await fetch(
-      `${API_ADDRESS}/post-list?countPerPage=${this.pageState.pagePerItemCount}&pageNo=${this.pageState.currentPage}`
-    );
+    const res = await fetch(`${API_ADDRESS}/post-list?countPerPage=2&pageNo=1`);
     const resJson = await res.json();
 
     const data = await resJson.data;
-    const pageState = await resJson.pagination;
     this.setListData(data);
-
-    this.pageState.totalItemCount = pageState.totalCount;
-    this.pageState.currentPage = pageState.pageNo;
   };
 
   const setPreview = (html) => {
     const regEx = /(<([^>]+)>)/gi;
-    return html.replace(regEx, '').slice(0, 200) + '...';
+    return html.replace(regEx, '').slice(0, 120) + '...';
   };
 
-  this.setPageState = function (nextState) {
-    this.state = nextState;
-    pagination.setState(this.state);
-    getPostData();
-  };
-
-  this.onNext = function (e) {
-    console.log('CLICK NEXT');
-    const nextState = {
-      ...this.pageState,
-      currentPage: ++this.pageState.currentPage,
-    };
-    this.setPageState(nextState);
-  };
-
-  this.onPrev = function (e) {
-    console.log('CLICK PREV');
-    const nextState = {
-      ...this.pageState,
-      currentPage: --this.pageState.currentPage,
-    };
-    this.setPageState(nextState);
+  const onSeeMore = () => {
+    window.location.assign(`${PAGE_ADDRESS}/#post`);
   };
 
   this.render = () => {
     wrapper.innerHTML = `
     <main class="post_container">
+    <div class="see-more">
+      <h1>Latest Post</h1>
+      <button class="basic-button" data-id="see-more">See more post</button>
+    </div>
     ${this.data
       .map(
         (
@@ -107,21 +82,20 @@ const Post = function ({ $target }) {
         }
       )
       .join('')}
-      <section class="pagination"></section>
   </main>
     `;
   };
 
-  const pagination = new Pagination({
-    target: document.querySelector('.pagination')
-      ? document.querySelector('.pagination')
-      : this.$target,
-    initialState: this.pageState,
-    onNext: this.onNext.bind(this),
-    onPrev: this.onPrev.bind(this),
-  });
-
   getPostData();
+
+  wrapper.addEventListener('click', (e) => {
+    if (
+      e.target.className !== 'basic-button' ||
+      e.target.dataset.id !== 'see-more'
+    )
+      return;
+    onSeeMore(e);
+  });
 };
 
-export default Post;
+export default LatestPost;

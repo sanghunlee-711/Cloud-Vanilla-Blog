@@ -2,7 +2,9 @@ const Header = function ({ $target }) {
   this.$target = $target;
   const wrapper = document.createElement('section');
   wrapper.setAttribute('class', 'header_profile');
-  this.$target.appendChild(wrapper);
+  if (!document.querySelector('.header_profile')) {
+    this.$target.appendChild(wrapper);
+  }
 
   this.render = () => {
     wrapper.innerHTML = `
