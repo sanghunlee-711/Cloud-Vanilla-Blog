@@ -1,8 +1,13 @@
+import Pagination from '../components/Pagination.js';
 import { API_ADDRESS } from '../constants/config.js';
 const Post = function ({ $target }) {
   this.$target = $target;
   this.data = [];
-
+  this.pageState = {
+    currentPage: 1,
+    totalItemCount: 2,
+    pagePerItemCount: 3,
+  };
   const wrapper = document.createElement('main');
   wrapper.setAttribute('class', 'Post-main-container');
   this.$target.appendChild(wrapper);
@@ -13,16 +18,46 @@ const Post = function ({ $target }) {
   };
 
   const getPostData = async () => {
-    const res = await fetch(`${API_ADDRESS}/post-list`);
+    const res = await fetch(
+      `${API_ADDRESS}/post-list?countPerPage=${this.pageState.pagePerItemCount}&pageNo=${this.pageState.currentPage}`
+    );
     const resJson = await res.json();
 
     const data = await resJson.data;
+    const pageState = await resJson.pagination;
     this.setListData(data);
+
+    this.pageState.totalItemCount = pageState.totalCount;
+    this.pageState.currentPage = pageState.pageNo;
   };
 
   const setPreview = (html) => {
     const regEx = /(<([^>]+)>)/gi;
     return html.replace(regEx, '').slice(0, 200) + '...';
+  };
+
+  this.setPageState = function (nextState) {
+    this.state = nextState;
+    pagination.setState(this.state);
+    getPostData();
+  };
+
+  this.onNext = function (e) {
+    console.log('CLICK NEXT');
+    const nextState = {
+      ...this.pageState,
+      currentPage: ++this.pageState.currentPage,
+    };
+    this.setPageState(nextState);
+  };
+
+  this.onPrev = function (e) {
+    console.log('CLICK PREV');
+    const nextState = {
+      ...this.pageState,
+      currentPage: --this.pageState.currentPage,
+    };
+    this.setPageState(nextState);
   };
 
   this.render = () => {
@@ -72,9 +107,19 @@ const Post = function ({ $target }) {
         }
       )
       .join('')}
+      <section class="pagination"></section>
   </main>
     `;
   };
+
+  const pagination = new Pagination({
+    target: document.querySelector('.pagination')
+      ? document.querySelector('.pagination')
+      : this.$target,
+    initialState: this.pageState,
+    onNext: this.onNext.bind(this),
+    onPrev: this.onPrev.bind(this),
+  });
 
   getPostData();
 };
