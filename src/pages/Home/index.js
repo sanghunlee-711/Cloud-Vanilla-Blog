@@ -1,3 +1,5 @@
+import LatestPost from './components/LatestPost';
+
 const Home = function ({ $target }) {
   this.$target = $target;
 
@@ -8,12 +10,18 @@ const Home = function ({ $target }) {
   this.render = () => {
     wrapper.innerHTML = `
       <div>
-        Home!@@
+        <section class="latest-post"></section>
       </div>
     `;
   };
 
   this.render();
+  const postContainer = document.querySelector('.latest-post');
+  if (postContainer) {
+    const latestPost = new LatestPost({
+      $target: postContainer,
+    });
+  }
 };
 
 export default Home;

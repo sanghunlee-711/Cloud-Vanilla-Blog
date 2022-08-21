@@ -12,6 +12,12 @@
   margin: 60px auto 30px auto;
 }
 
+.see-more {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .post_title {
   overflow: hidden;
   white-space: nowrap;
@@ -110,3 +116,5 @@ a {
   margin: 0px 8px;
   color: var(--basic-gray);
 }
+
+
