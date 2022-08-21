@@ -15,22 +15,21 @@ let plugins = [
     hash: true,
     template: './src/index.html', //적용될 html 경로
   }),
-
   new webpack.ProvidePlugin({
     process: 'process/browser',
   }),
   new CleanWebpackPlugin({
     cleanAfterEveryBuildPatterns: ['dist'],
   }),
+  new Dotenv({
+    systemvars: true,
+    path: `./.env.${isDevelopment ? 'development' : 'production'}`,
+  }),
 ];
 if (!isDevelopment) {
   mode = 'production';
   target = 'browserslist';
   plugins.push(
-    // new Dotenv({
-    //   systemvars: true,
-    //   path: `./.env.${isDevelopment ? 'development' : 'production'}`,
-    // }),
     new CopyPlugin({
       patterns: [
         {
@@ -75,17 +74,17 @@ module.exports = (env) => {
       ],
     },
     plugins,
-    // devServer: {
-    //   static: {
-    //     directory: path.join(__dirname, 'src'),
-    //   },
-    //   // historyApiFallback: true,
-    //   hot: true,
-    //   // compress: true,
-    //   allowedHosts: 'all',
-    //   host: 'localhost',
-    //   port: 8800,
-    // },
+    devServer: {
+      static: {
+        directory: path.join(__dirname, 'src'),
+      },
+      // historyApiFallback: true,
+      hot: true,
+      // compress: true,
+      // allowedHosts: 'all',
+      host: 'localhost',
+      port: 8800,
+    },
     resolve: {
       extensions: ['.js'],
       // fallback: {
