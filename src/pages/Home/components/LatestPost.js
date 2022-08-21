@@ -15,7 +15,7 @@ const LatestPost = function ({ $target }) {
   };
 
   const getPostData = async () => {
-    const res = await fetch(`${API_ADDRESS}/post-list?countPerPage=3&pageNo=1`);
+    const res = await fetch(`${API_ADDRESS}/post-list?countPerPage=2&pageNo=1`);
     const resJson = await res.json();
 
     const data = await resJson.data;

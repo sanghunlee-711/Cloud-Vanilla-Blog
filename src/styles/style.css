@@ -150,6 +150,7 @@ body {
 
 .pagination-container #page-wrapper {
   margin: 0px 12px;
+  color: gray;
 }
 
 .pagination-container button {
@@ -165,4 +166,9 @@ body {
 
 .current-page {
   font-weight: 700;
+  color: black;
+}
+
+.github-chart {
+  width: 100%;
 }

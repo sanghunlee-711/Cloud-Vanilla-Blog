@@ -1,5 +1,5 @@
-import LatestPost from './components/LatestPost';
-
+import Resume from './components/Contribution.js';
+import LatestPost from './components/LatestPost.js';
 const Home = function ({ $target }) {
   this.$target = $target;
 
@@ -10,17 +10,21 @@ const Home = function ({ $target }) {
   this.render = () => {
     wrapper.innerHTML = `
       <div>
-        <section class="latest-post"></section>
+        <section class="resume-container"></section>
+        <section class="latest-post-container"></section>
       </div>
     `;
   };
 
   this.render();
-  const postContainer = document.querySelector('.latest-post');
-  if (postContainer) {
+
+  const postContainer = document.querySelector('.latest-post-container');
+  const resumeContainer = document.querySelector('.resume-container');
+  if (postContainer && resumeContainer) {
     const latestPost = new LatestPost({
       $target: postContainer,
     });
+    new Resume({ $target: resumeContainer });
   }
 };
 
