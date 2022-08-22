@@ -21,10 +21,10 @@ let plugins = [
   new CleanWebpackPlugin({
     cleanAfterEveryBuildPatterns: ['dist'],
   }),
-  new Dotenv({
-    systemvars: true,
-    path: `./.env.${isDevelopment ? 'development' : 'production'}`,
-  }),
+  // new Dotenv({
+  //   systemvars: true,
+  //   path: `./.env.${isDevelopment ? 'development' : 'production'}`,
+  // }),
 ];
 if (!isDevelopment) {
   mode = 'production';
@@ -78,12 +78,12 @@ module.exports = (env) => {
       static: {
         directory: path.join(__dirname, 'src'),
       },
-      // historyApiFallback: true,
       hot: true,
-      // compress: true,
-      // allowedHosts: 'all',
       host: 'localhost',
       port: 8800,
+      // historyApiFallback: true,
+      // compress: true,
+      // allowedHosts: 'all',
     },
     resolve: {
       extensions: ['.js'],

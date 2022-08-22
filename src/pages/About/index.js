@@ -8,7 +8,7 @@ const About = function ({ $target }) {
   this.render = () => {
     wrapper.innerHTML = `
       <div>
-      About!
+        <button class="basic-button">See Resume</button>
       </div>
     `;
   };
