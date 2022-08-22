@@ -73,3 +73,73 @@
   /* width: 132px; */
   text-align: left;
 }
+
+.experience-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.experience-wrapper > div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 25%;
+}
+
+.experience-wrapper > div:last-child {
+  /* display: flex;
+  flex-direction: column;
+  align-items: flex-end; */
+  margin-left: 24px;
+  width: 75%;
+}
+
+.experience-wrapper > div:last-child > ul > li {
+  margin-top: 8px;
+}
+
+.experience-wrapper .skill-title {
+  font-weight: 700;
+}
+
+.experience-wrapper .tenure {
+  background-color: #3c78d8;
+  color: white;
+  border-radius: 4px;
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+}
+
+.experience-wrapper .experience-skill {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0px;
+  margin-top: 8px;
+}
+
+.experience-wrapper .experience-skill > li {
+  background-color: gray;
+  color: white;
+  border-radius: 4px;
+  padding: 0px 4px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 12px;
+}
+.experience-wrapper .corp-ex {
+  font-size: 16px;
+  font-weight: 400;
+  color: gray;
+}
+
+.experience-wrapper .experience-skill > li:not(:first-child) {
+  margin-left: 12px;
+}

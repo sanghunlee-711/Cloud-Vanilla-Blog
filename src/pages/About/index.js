@@ -1,4 +1,4 @@
-import Resume from './components/Resume.js';
+import Resume from './components/Resume/index.js';
 const About = function ({ $target }) {
   this.$target = $target;
 
