@@ -10,8 +10,8 @@ const Home = function ({ $target }) {
   this.render = () => {
     wrapper.innerHTML = `
       <div>
-        <section class="resume-container"></section>
         <section class="latest-post-container"></section>
+        <section class="resume-container"></section>
       </div>
     `;
   };

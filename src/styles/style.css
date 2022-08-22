@@ -99,6 +99,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .nav_list li {
@@ -168,7 +169,18 @@ body {
   font-weight: 700;
   color: black;
 }
+.contribution-wrapper {
+  width: 100%;
+}
 
 .github-chart {
   width: 100%;
+}
+
+.divider {
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }

@@ -1,4 +1,4 @@
-import About from '../pages/About.js';
+import About from '../pages/About/index.js';
 import Content from '../pages/Content.js';
 import Home from '../pages/Home/index.js';
 import Post from '../pages/Post.js';

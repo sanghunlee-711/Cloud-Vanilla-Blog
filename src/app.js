@@ -8,6 +8,7 @@ const App = function ({ $target }) {
   const headerContainer = document.querySelector('.header_container');
   //Basic Layout for this app
   new HeaderContainer({ $target: this.$target });
+
   //*todo: 리팩토링필요
   headerContainer &&
     new Header({ $target: headerContainer }) &&

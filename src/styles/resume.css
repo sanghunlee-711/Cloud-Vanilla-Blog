@@ -1,0 +1,145 @@
+.resume-container {
+  max-width: 1024px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.resume-common-wrapper {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  margin: 24px 0px;
+}
+
+.resume-common-wrapper p {
+  word-wrap: break-word;
+  white-space: pre-line;
+}
+
+.resume-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.resume-header > img {
+  width: 240px;
+  border-radius: 100%;
+}
+
+.resume-header > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 48px;
+}
+
+.resume-header > div > ul {
+  list-style: none;
+  padding: 0px;
+}
+
+.resume-header > div > ul > li {
+  margin-bottom: 12px;
+}
+
+.skill-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.skill-wrapper > ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2vw;
+  list-style: none;
+  margin: 0px;
+  max-width: 75%;
+  width: 75%;
+}
+
+.skill-wrapper > h2 {
+  color: gray;
+  margin: 0px;
+  width: 25%;
+  /* width: 132px; */
+  text-align: left;
+}
+
+.experience-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.experience-wrapper > div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 25%;
+}
+
+.experience-wrapper > div:last-child {
+  /* display: flex;
+  flex-direction: column;
+  align-items: flex-end; */
+  margin-left: 24px;
+  width: 75%;
+}
+
+.experience-wrapper > div:last-child > ul > li {
+  margin-top: 8px;
+}
+
+.experience-wrapper .skill-title {
+  font-weight: 700;
+}
+
+.experience-wrapper .tenure {
+  background-color: #3c78d8;
+  color: white;
+  border-radius: 4px;
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+}
+
+.experience-wrapper .experience-skill {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0px;
+  margin-top: 8px;
+}
+
+.experience-wrapper .experience-skill > li {
+  background-color: gray;
+  color: white;
+  border-radius: 4px;
+  padding: 0px 4px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 12px;
+}
+.experience-wrapper .corp-ex {
+  font-size: 16px;
+  font-weight: 400;
+  color: gray;
+}
+
+.experience-wrapper .experience-skill > li:not(:first-child) {
+  margin-left: 12px;
+}

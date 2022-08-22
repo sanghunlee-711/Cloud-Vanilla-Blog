@@ -12,17 +12,17 @@ const Header = function ({ $target }) {
         <img src="/static/images/profile/selfie_japan.jpeg" alt="profile_image" />
         <ul>
           <li>
-            <a>
+            <a href="https://www.instagram.com/hun__hoon/" target="_blank">
               <i class="fab fa-instagram"></i>
             </a>
           </li>
           <li>
-            <a>
+            <a href="https://github.com/sanghunlee-711" target="_blank">
               <i class="fab fa-github"></i>
             </a>
           </li>
           <li>
-            <a>
+            <a href="mailto:cloudlee711@gmail.com">
               <i class="fab fa-google"></i>
             </a>
           </li>
