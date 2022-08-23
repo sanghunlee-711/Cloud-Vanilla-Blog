@@ -4,6 +4,7 @@ const Resume = function ({ $target }) {
   this.$target = $target;
 
   this.render = () => {
+    console.log('resume target', this.$target);
     this.$target.innerHTML = `
       <div class="resume-header">
         <img src="/static/images/profile/selfie_japan.jpeg" alt="profile">
@@ -92,6 +93,53 @@ const Resume = function ({ $target }) {
         }
       ).join('')}
     </div>
+    <div class="resume-common-wrapper">
+      <h1>PROJECT</h1>
+      ${RESUME.PROJECT.map(({ period, title, company, list }) => {
+        return `
+        <div class="resume-education-wrapper">
+          <div>
+            <h3>${period}</h3>
+          </div>
+          <div>
+            <h2>${title}</h2>
+            <h4>${company}</h4>
+            <ul>
+              ${list
+                .map(({ explanation, subList, href }) => {
+                  return `
+                  <li>
+                    ${
+                      href.length
+                        ? `<a href=${href} target="_blank">${explanation}</a>`
+                        : explanation
+                    }
+                  </li>
+                  ${
+                    subList.length
+                      ? `<ul>
+                      ${subList.map(({ subExplanation, href }) => {
+                        return `
+                        ${
+                          href.length
+                            ? `<a href=${href} target="_blank">${subExplanation}</a>`
+                            : subExplanation
+                        }
+                        `;
+                      })}
+                    </ul>`
+                      : ''
+                  }
+                `;
+                })
+                .join('')}
+            </ul>
+          </div>
+        </div>
+        `;
+      }).join('')}
+    </div>
+
     <div class="resume-common-wrapper">
       <h1>EDUCATION</h1>
       ${RESUME.EDUCATION.map(({ period, title, explanation }) => {

@@ -15,6 +15,10 @@
   margin: 24px 0px;
 }
 
+.resume-common-wrapper > h1 {
+  color: #17a2b8;
+}
+
 .resume-common-wrapper p {
   word-wrap: break-word;
   white-space: pre-line;
@@ -87,6 +91,10 @@
   width: 25%;
 }
 
+.experience-wrapper > div:first-child > h3 {
+  color: gray;
+}
+
 .experience-wrapper > div:last-child {
   /* display: flex;
   flex-direction: column;
@@ -156,6 +164,10 @@
   width: 25%;
 }
 
+.resume-education-wrapper > div:first-child > h3 {
+  color: gray;
+}
+
 .resume-education-wrapper > div:last-child {
   margin-left: 24px;
   width: 75%;
@@ -165,4 +177,21 @@
   color: gray;
   font-weight: 400;
   font-style: italic;
+}
+
+.hide {
+  visibility: hidden;
+  width: 0vw;
+  height: 0vh;
+}
+
+.visible {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  visibility: visible;
+  background-color: white;
+  width: 100vw;
+  /* height: 100vh; */
 }
