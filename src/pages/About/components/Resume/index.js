@@ -56,8 +56,8 @@ const Resume = function ({ $target }) {
           return `
           <div class="experience-wrapper">
             <div>
-            <h3>${period}</h3>
-            <span class="tenure">${tenure}</span>
+              <h3>${period}</h3>
+              <span class="tenure">${tenure}</span>
             </div>
             <div>
               <h2>${corporation}</h2>
@@ -91,6 +91,38 @@ const Resume = function ({ $target }) {
         `;
         }
       ).join('')}
+    </div>
+    <div class="resume-common-wrapper">
+      <h1>EDUCATION</h1>
+      ${RESUME.EDUCATION.map(({ period, title, explanation }) => {
+        return `
+        <div class="resume-education-wrapper">
+          <div>
+            <h3>${period}</h3>
+          </div>
+          <div>
+            <h2>${title}</h2>
+            <h4>${explanation}</h4>
+          </div>
+        </div>
+        `;
+      }).join('')}
+    </div>
+    <div class="resume-common-wrapper">
+      <h1>ETC</h1>
+      ${RESUME.ETC.map(({ period, title, explanation }) => {
+        return `
+        <div class="resume-education-wrapper">
+          <div>
+            <h3>${period}</h3>
+          </div>
+          <div>
+            <h2>${title}</h2>
+            <h4>${explanation}</h4>
+          </div>
+        </div>
+        `;
+      }).join('')}
     </div>
     `;
   };

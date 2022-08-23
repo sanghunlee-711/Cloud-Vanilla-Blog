@@ -143,3 +143,26 @@
 .experience-wrapper .experience-skill > li:not(:first-child) {
   margin-left: 12px;
 }
+
+.resume-education-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.resume-education-wrapper > div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 25%;
+}
+
+.resume-education-wrapper > div:last-child {
+  margin-left: 24px;
+  width: 75%;
+}
+
+.resume-education-wrapper > div:last-child > h4 {
+  color: gray;
+  font-weight: 400;
+  font-style: italic;
+}
