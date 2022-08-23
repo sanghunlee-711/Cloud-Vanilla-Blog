@@ -1,3 +1,4 @@
+import Modal from '../../components/Modal.js';
 import Resume from './components/Resume/index.js';
 const About = function ({ $target }) {
   this.$target = $target;
@@ -11,11 +12,12 @@ const About = function ({ $target }) {
 
   this.setState = (nextState) => {
     this.state = { ...nextState };
+    modal.setState(nextState.isResumeModal);
     this.render();
-    resume.render();
   };
 
   const onHandleResumeModal = () => {
+    console.log('ishere?');
     this.setState({ ...this.state, isResumeModal: !this.state.isResumeModal });
   };
 
@@ -23,19 +25,24 @@ const About = function ({ $target }) {
     wrapper.innerHTML = `
       <div>
         <div class="resume-container"></div>
-        </div>
+        <button class="basic-button resume-button">See More Information</button>
       </div>
     `;
   };
 
   this.render();
-
-  const resume = new Resume({
-    $target: document.querySelector('.resume-container'),
+  console.log('@@?', this.state);
+  const modal = new Modal({
+    isVisible: this.state.isResumeModal,
+    Component: Resume,
+    handleModal: onHandleResumeModal,
   });
+  // const resume = new Resume({
+  //   $target: document.querySelector('#modal'),
+  // });
 
   wrapper.addEventListener('click', (e) => {
-    if (e.target.className !== 'resume-button') return;
+    if (!e.target.classList.contains('resume-button')) return;
     onHandleResumeModal();
   });
 };
