@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  margin: 24px 0px;
 }
 
 .resume-common-wrapper {
@@ -13,6 +14,10 @@
   justify-content: center;
   flex-direction: column;
   margin: 24px 0px;
+}
+
+.resume-common-wrapper > h1 {
+  color: #17a2b8;
 }
 
 .resume-common-wrapper p {
@@ -87,6 +92,10 @@
   width: 25%;
 }
 
+.experience-wrapper > div:first-child > h3 {
+  color: gray;
+}
+
 .experience-wrapper > div:last-child {
   /* display: flex;
   flex-direction: column;
@@ -142,4 +151,48 @@
 
 .experience-wrapper .experience-skill > li:not(:first-child) {
   margin-left: 12px;
+}
+
+.resume-education-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.resume-education-wrapper > div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 25%;
+}
+
+.resume-education-wrapper > div:first-child > h3 {
+  color: gray;
+}
+
+.resume-education-wrapper > div:last-child {
+  margin-left: 24px;
+  width: 75%;
+}
+
+.resume-education-wrapper > div:last-child > h4 {
+  color: gray;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.hide {
+  visibility: hidden;
+  width: 0vw;
+  height: 0vh;
+}
+
+.visible {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  visibility: visible;
+  background-color: white;
+  width: 100vw;
+  /* height: 100vh; */
 }
