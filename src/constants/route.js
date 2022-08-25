@@ -31,3 +31,8 @@ export const ROUTES = [
     components: Content,
   },
 ];
+
+export const UNWATCHABLE_LIST = ['Content', 'Resume'];
+export const SHOW_ROUTE = ROUTES.filter(
+  (el) => !UNWATCHABLE_LIST.includes(el.name)
+);

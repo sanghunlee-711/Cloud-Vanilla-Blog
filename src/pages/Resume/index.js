@@ -182,7 +182,6 @@ const Resume = function ({ $target }) {
   };
 
   this.render();
-  changeHeader();
 };
 
 export default Resume;

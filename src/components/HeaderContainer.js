@@ -3,7 +3,7 @@ const HeaderContainer = function ({ $target }) {
   const wrapper = document.createElement('header');
   wrapper.setAttribute('class', 'header');
   this.$target.appendChild(wrapper);
-  let prev = window.pageYOffset;
+  // let prev = window.pageYOffset;
 
   this.render = () => {
     wrapper.innerHTML = `
@@ -13,16 +13,16 @@ const HeaderContainer = function ({ $target }) {
 
   this.render();
 
-  window.addEventListener('scroll', (e) => {
-    let curr = window.pageYOffset;
+  // window.addEventListener('scroll', (e) => {
+  //   let curr = window.pageYOffset;
 
-    if (prev < curr) {
-      wrapper.classList.add('hide-header');
-    } else {
-      wrapper.classList.remove('hide-header');
-    }
-    prev = curr;
-  });
+  //   if (prev < curr) {
+  //     wrapper.classList.add('hide-header');
+  //   } else {
+  //     wrapper.classList.remove('hide-header');
+  //   }
+  //   prev = curr;
+  // });
 };
 
 export default HeaderContainer;
