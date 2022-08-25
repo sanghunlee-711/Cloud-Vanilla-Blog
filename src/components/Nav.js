@@ -1,5 +1,8 @@
 import { ROUTES } from '../constants/route.js';
 
+const UNWATCHABLE_LIST = ['Content', 'Resume'];
+const SHOW_ROUTE = ROUTES.filter((el) => !UNWATCHABLE_LIST.includes(el.name));
+
 const Nav = function ({ $target }) {
   this.$target = $target;
   const wrapper = document.createElement('nav');
@@ -10,15 +13,13 @@ const Nav = function ({ $target }) {
     wrapper.innerHTML = `
       <h1>Sanghun(Cloud) Lee</h1>
       <ul class="nav_list">
-        ${ROUTES.filter((el) => el.name !== 'Content')
-          .map((el) => {
-            return `
+        ${SHOW_ROUTE.map((el) => {
+          return `
             <li>
               <a href = "${el.path}">${el.name.toUpperCase()}</a>
             </li>
           `;
-          })
-          .join('')}
+        }).join('')}
       </ul>
     `;
   };

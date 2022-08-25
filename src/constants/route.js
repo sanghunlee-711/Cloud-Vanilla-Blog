@@ -2,6 +2,7 @@ import About from '../pages/About/index.js';
 import Content from '../pages/Content.js';
 import Home from '../pages/Home/index.js';
 import Post from '../pages/Post.js';
+import Resume from '../pages/Resume/index.js';
 
 export const ROUTES = [
   {
@@ -18,6 +19,11 @@ export const ROUTES = [
     path: '#post',
     name: 'Post',
     components: Post,
+  },
+  {
+    path: '#resume',
+    name: 'Resume',
+    components: Resume,
   },
   {
     path: '#contentId=:id',

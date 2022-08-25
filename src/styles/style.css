@@ -41,6 +41,8 @@ body {
 .header {
   border-bottom: var(--header-nav-bottom);
   padding: 0px 24px;
+  transition: all 0.3s ease-in-out;
+  max-height: 352px;
 }
 
 .header_profile {
@@ -223,4 +225,10 @@ body {
   color: white;
   border: 1px solid gray;
   transition: all 0.3s ease-in-out;
+}
+
+.hide-header {
+  visibility: hidden;
+  max-height: 0px;
+  transition: max-height 0.26s ease-out;
 }

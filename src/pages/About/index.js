@@ -1,5 +1,5 @@
-import Modal from '../../components/Modal.js';
-import Resume from './components/Resume/index.js';
+import { PAGE_ADDRESS } from '../../constants/config.js';
+import Explanation from './components/Explanation/index.js';
 const About = function ({ $target }) {
   this.$target = $target;
   this.state = {
@@ -13,37 +13,55 @@ const About = function ({ $target }) {
   this.setState = (nextState) => {
     this.state = { ...nextState };
     modal.setState(nextState.isResumeModal);
-    this.render();
   };
 
-  const onHandleResumeModal = () => {
-    console.log('ishere?');
-    this.setState({ ...this.state, isResumeModal: !this.state.isResumeModal });
+  // const onHandleResumeModal = () => {
+  //   this.setState({ ...this.state, isResumeModal: !this.state.isResumeModal });
+  // };
+
+  const onMovetoResume = () => {
+    window.location.assign(`${PAGE_ADDRESS}/#resume`);
+  };
+
+  const onMovetoPost = () => {
+    window.location.assign(`${PAGE_ADDRESS}/#post`);
   };
 
   this.render = () => {
-    wrapper.innerHTML = `
-      <div>
-        <div class="resume-container"></div>
-        <button class="basic-button resume-button">See More Information</button>
-      </div>
-    `;
+    const buttonWrapper = document.createElement('div');
+    const resumeButton = document.createElement('button');
+    const postButton = document.createElement('button');
+    resumeButton.className = 'resume-button basic-button';
+    resumeButton.textContent = '이력서 보기';
+    postButton.className = 'post-button basic-button';
+    postButton.textContent = '다양한 게시글 보기';
+
+    buttonWrapper.append(resumeButton, postButton);
+
+    new Explanation({
+      $target: wrapper,
+    });
+
+    wrapper.appendChild(buttonWrapper);
   };
 
   this.render();
-  console.log('@@?', this.state);
-  const modal = new Modal({
-    isVisible: this.state.isResumeModal,
-    Component: Resume,
-    handleModal: onHandleResumeModal,
-  });
-  // const resume = new Resume({
-  //   $target: document.querySelector('#modal'),
+
+  // const modal = new Modal({
+  //   isVisible: this.state.isResumeModal,
+  //   Component: Resume,
+  //   handleModal: onHandleResumeModal,
   // });
 
   wrapper.addEventListener('click', (e) => {
-    if (!e.target.classList.contains('resume-button')) return;
-    onHandleResumeModal();
+    if (e.target.classList.contains('resume-button')) {
+      // onHandleResumeModal();
+      onMovetoResume();
+    }
+
+    if (e.target.classList.contains('post-button')) {
+      onMovetoPost();
+    }
   });
 };
 
