@@ -44,7 +44,7 @@ function getHashRoute() {
 }
 
 export function initialRoutes({ el }) {
-  renderHTML(el, ROUTES[0]);
+  // renderHTML(el, ROUTES[0]);
 
   window.addEventListener('hashchange', () => {
     return renderHTML(el, getHashRoute());
