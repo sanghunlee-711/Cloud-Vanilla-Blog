@@ -1,7 +1,5 @@
 import { API_ADDRESS } from '../constants/config.js';
 
-const PAGE_PER_CONTENT = 3;
-
 const Post = function ({ $target }) {
   this.$target = $target;
   this.data = [];
@@ -26,7 +24,6 @@ const Post = function ({ $target }) {
   };
 
   this.setPageState = (nextState) => {
-    console.log({ 'page Next State': nextState });
     this.state = nextState;
   };
 

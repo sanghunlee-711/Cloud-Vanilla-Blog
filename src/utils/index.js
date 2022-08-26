@@ -1,3 +1,5 @@
+import { PAGE_ADDRESS } from '../constants/config.js';
+
 //path를 찾기 위한 정규표현식이 들어있는 함수
 export const pathToRegex = (path) =>
   new RegExp('^' + path.replace(/\//g, '\\/').replace(/:\w+/g, '(.+)') + '$');
@@ -20,7 +22,7 @@ export const navigateTo = (pathName) => {
   history.pushState(null, pathName, window.location.origin + pathName);
 };
 
-export const loadCommentBox = () => {
+export const loadCommentBox = (contentId) => {
   const dsq = document.querySelector('#dsq'),
     dsqId = document.querySelector('#dsq-count-scr');
   if (dsq || dsqId) return;
@@ -36,10 +38,17 @@ export const loadCommentBox = () => {
      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
       /*
       var disqus_config = function () {
-      this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = ${PAGE_ADDRESS};  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = ${contentId}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
       };
       */
+
+        var disqus_config = () =>  {
+          this.page.url = "${PAGE_ADDRESS}/#contentId"; 
+          this.page.identifier = "${contentId}";
+        };
+
+
       (function () { // DON'T EDIT BELOW THIS LINE
         var d = document, s = d.createElement('script')
         s.src = 'https://cloud-vanila-blog.disqus.com/embed.js'
@@ -51,7 +60,7 @@ export const loadCommentBox = () => {
   document.body.appendChild(dsqcount);
 
   window.addEventListener('hashchange', () => {
-    document.body.removeChild(script);
-    document.body.removeChild(dsqcount);
+    document.body.removeChild(dsq);
+    document.body.removeChild(dsqId);
   });
 };
