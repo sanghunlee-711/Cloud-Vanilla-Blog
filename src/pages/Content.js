@@ -23,7 +23,7 @@ const Content = function ({ $target, contentId }) {
   };
 
   this.render = () => {
-    loadCommentBox();
+    loadCommentBox(this.contentId);
     const data = this.data;
     const { src, width, height } = this.data.frontMatter.image;
 
