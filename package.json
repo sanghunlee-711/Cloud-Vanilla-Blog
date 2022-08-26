@@ -7,7 +7,7 @@
     "start:server": "node server.js",
     "dev": " webpack-dev-server --env=development --mode=development --config webpack.config.js --hot --open --progress &  node server.js",
     "build": "webpack --env=production --mode=production &  node server.js",
-    "build:deploy": "webpack --env=production --mode=production --config webpack.config.js &  node server.js",
+    "build:deploy": "webpack --env=production --mode=production --config webpack.config.js",
     "server": "node server.js &webpack-dev-server --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
