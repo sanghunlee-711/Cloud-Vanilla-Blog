@@ -1,5 +1,7 @@
-import Pagination from '../components/Pagination.js';
 import { API_ADDRESS } from '../constants/config.js';
+
+const PAGE_PER_CONTENT = 3;
+
 const Post = function ({ $target }) {
   this.$target = $target;
   this.data = [];
@@ -8,6 +10,12 @@ const Post = function ({ $target }) {
     totalItemCount: 2,
     pagePerItemCount: 3,
   };
+  this.state = {
+    currentPage: 1,
+    contentIncrease: 3,
+    totalItemCount: 1,
+  };
+
   const wrapper = document.createElement('main');
   wrapper.setAttribute('class', 'Post-main-container');
   this.$target.appendChild(wrapper);
@@ -17,18 +25,47 @@ const Post = function ({ $target }) {
     this.render();
   };
 
+  this.setPageState = (nextState) => {
+    console.log({ 'page Next State': nextState });
+    this.state = nextState;
+  };
+
   const getPostData = async () => {
     const res = await fetch(
-      `${API_ADDRESS}/post-list?countPerPage=${this.pageState.pagePerItemCount}&pageNo=${this.pageState.currentPage}`
+      `${API_ADDRESS}/post-list?countPerPage=${this.state.contentIncrease}&pageNo=${this.state.currentPage}`
     );
     const resJson = await res.json();
 
     const data = await resJson.data;
     const pageState = await resJson.pagination;
-    this.setListData(data);
+    this.setListData([...this.data, ...data]);
 
-    this.pageState.totalItemCount = pageState.totalCount;
-    this.pageState.currentPage = pageState.pageNo;
+    this.setPageState({
+      ...this.state,
+      totalItemCount: pageState.totalCount,
+      currentPage: pageState.pageNo,
+    });
+  };
+
+  const handleInfiniteScroll = async () => {
+    const endOfPage =
+      window.innerHeight + window.pageYOffset >=
+      document.body.offsetHeight - 10;
+
+    if (endOfPage) {
+      //페이지가 끝이면 끝내면 되긴 함.
+
+      if (
+        this.state.currentPage * this.state.contentIncrease <=
+        this.state.totalItemCount
+      ) {
+        this.setPageState({
+          ...this.state,
+          currentPage: ++this.state.currentPage,
+        });
+        await getPostData();
+      }
+    }
   };
 
   const setPreview = (html) => {
@@ -38,26 +75,6 @@ const Post = function ({ $target }) {
 
   this.setPageState = function (nextState) {
     this.state = nextState;
-    pagination.setState(this.state);
-    getPostData();
-  };
-
-  this.onNext = function (e) {
-    console.log('CLICK NEXT');
-    const nextState = {
-      ...this.pageState,
-      currentPage: ++this.pageState.currentPage,
-    };
-    this.setPageState(nextState);
-  };
-
-  this.onPrev = function (e) {
-    console.log('CLICK PREV');
-    const nextState = {
-      ...this.pageState,
-      currentPage: --this.pageState.currentPage,
-    };
-    this.setPageState(nextState);
   };
 
   this.render = () => {
@@ -112,16 +129,13 @@ const Post = function ({ $target }) {
     `;
   };
 
-  const pagination = new Pagination({
-    target: document.querySelector('.pagination')
-      ? document.querySelector('.pagination')
-      : this.$target,
-    initialState: this.pageState,
-    onNext: this.onNext.bind(this),
-    onPrev: this.onPrev.bind(this),
-  });
-
   getPostData();
+
+  window.addEventListener('scroll', handleInfiniteScroll);
+  //when unmount remove event listener;
+  window.addEventListener('hashchange', () => {
+    window.removeEventListener('scroll', handleInfiniteScroll);
+  });
 };
 
 export default Post;
