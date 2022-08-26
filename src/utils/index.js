@@ -1,4 +1,4 @@
-import { PAGE_ADDRESS } from '../constants/config.js';
+import { GA_ID, PAGE_ADDRESS } from '../constants/config.js';
 
 //path를 찾기 위한 정규표현식이 들어있는 함수
 export const pathToRegex = (path) =>
@@ -63,4 +63,23 @@ export const loadCommentBox = (contentId) => {
     document.body.removeChild(dsq);
     document.body.removeChild(dsqId);
   });
+};
+
+export const makeGA = () => {
+  const ga = document.createElement('script');
+  ga.setAttribute('async', '');
+  ga.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+  const script = document.createElement('script');
+
+  script.id = 'ga';
+  script.innerHTML = `
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '${GA_ID}');
+  `;
+
+  document.body.appendChild(ga);
+  document.body.appendChild(script);
 };
