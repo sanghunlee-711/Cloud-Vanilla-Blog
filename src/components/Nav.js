@@ -1,8 +1,10 @@
+import { $ROOT } from '../constants/common.js';
 import { SHOW_ROUTE } from '../constants/route.js';
 import BurgerNavPopup from './BurggerNavPopup.js';
 import Modal from './Modal.js';
 
 const Nav = function ({ $target }) {
+  console.log('nav ?');
   this.$target = $target;
   const wrapper = document.createElement('nav');
   wrapper.setAttribute('class', 'nav');
@@ -18,7 +20,6 @@ const Nav = function ({ $target }) {
   };
 
   const handleBurgerButton = () => {
-    const button = document.querySelector('.burger-button');
     this.setState({ ...this.state, isBurger: !this.state.isBurger });
   };
 
@@ -42,15 +43,14 @@ const Nav = function ({ $target }) {
     `;
   };
 
-  this.render();
-
   const modal = new Modal({
     isVisible: this.state.isBurger,
     Component: BurgerNavPopup,
     handleModal: handleBurgerButton,
   });
 
-  wrapper.addEventListener('click', (e) => {
+  $ROOT.addEventListener('click', (e) => {
+    console.log(e);
     if (
       e.target.classList.contains('burger-button') ||
       e.target.classList.contains('burger-button-line')

@@ -1,28 +1,22 @@
+import Header from './Header.js';
+import Nav from './Nav.js';
+
 const HeaderContainer = function ({ $target }) {
   this.$target = $target;
   const wrapper = document.createElement('header');
   wrapper.setAttribute('class', 'header');
-  this.$target.appendChild(wrapper);
-  // let prev = window.pageYOffset;
+  if (!document.querySelector('.header')) this.$target.appendChild(wrapper);
 
   this.render = () => {
-    wrapper.innerHTML = `
-      <div class="header_container"></div>
-    `;
+    const container = document.createElement('div');
+    container.className = 'header_container';
+    new Header({ $target: container }).render();
+    new Nav({ $target: container }).render();
+
+    wrapper.innerHTML = container.innerHTML;
   };
 
   this.render();
-
-  // window.addEventListener('scroll', (e) => {
-  //   let curr = window.pageYOffset;
-
-  //   if (prev < curr) {
-  //     wrapper.classList.add('hide-header');
-  //   } else {
-  //     wrapper.classList.remove('hide-header');
-  //   }
-  //   prev = curr;
-  // });
 };
 
 export default HeaderContainer;
