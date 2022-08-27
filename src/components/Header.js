@@ -30,8 +30,6 @@ const Header = function ({ $target }) {
       </div>
     `;
   };
-
-  this.render();
 };
 
 export default Header;

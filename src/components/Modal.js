@@ -26,7 +26,7 @@ const Modal = function ({ isVisible, Component, handleModal }) {
 
       this.$target.appendChild(container);
       document.body.style.overflow = 'hidden';
-      new Component({ $target: wrapper });
+      new Component({ $target: wrapper, handleModal });
     } else {
       this.$target.innerHTML = '';
       document.body.style.overflow = 'unset';
