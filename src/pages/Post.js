@@ -1,17 +1,15 @@
+import { POST_SELECT_MAP } from '../constants/common.js';
 import { API_ADDRESS } from '../constants/config.js';
 
 const Post = function ({ $target }) {
   this.$target = $target;
   this.data = [];
-  this.pageState = {
-    currentPage: 1,
-    totalItemCount: 2,
-    pagePerItemCount: 3,
-  };
+
   this.state = {
     currentPage: 1,
     contentIncrease: 3,
     totalItemCount: 1,
+    sortKey: POST_SELECT_MAP[0].key,
   };
 
   const wrapper = document.createElement('main');
@@ -23,13 +21,13 @@ const Post = function ({ $target }) {
     this.render();
   };
 
-  this.setPageState = (nextState) => {
+  this.setState = (nextState) => {
     this.state = nextState;
   };
 
   const getPostData = async () => {
     const res = await fetch(
-      `${API_ADDRESS}/post-list?countPerPage=${this.state.contentIncrease}&pageNo=${this.state.currentPage}`
+      `${API_ADDRESS}/post-list?type=${this.state.sortKey}&countPerPage=${this.state.contentIncrease}&pageNo=${this.state.currentPage}`
     );
     const resJson = await res.json();
 
@@ -37,7 +35,7 @@ const Post = function ({ $target }) {
     const pageState = await resJson.pagination;
     this.setListData([...this.data, ...data]);
 
-    this.setPageState({
+    this.setState({
       ...this.state,
       totalItemCount: pageState.totalCount,
       currentPage: pageState.pageNo,
@@ -56,7 +54,7 @@ const Post = function ({ $target }) {
         this.state.currentPage * this.state.contentIncrease <=
         this.state.totalItemCount
       ) {
-        this.setPageState({
+        this.setState({
           ...this.state,
           currentPage: ++this.state.currentPage,
         });
@@ -65,18 +63,35 @@ const Post = function ({ $target }) {
     }
   };
 
+  const onSelect = async (value) => {
+    this.setListData([]);
+    this.setState({
+      ...this.state,
+      currentPage: 1,
+      contentIncrease: 3,
+      totalItemCount: 1,
+      sortKey: value,
+    });
+    await getPostData();
+  };
+
   const setPreview = (html) => {
     const regEx = /(<([^>]+)>)/gi;
     return html.replace(regEx, '').slice(0, 200) + '...';
   };
 
-  this.setPageState = function (nextState) {
-    this.state = nextState;
-  };
-
   this.render = () => {
     wrapper.innerHTML = `
     <main class="post_container">
+    <ul class="post-selector-container">
+      ${POST_SELECT_MAP.map(({ name, key }) => {
+        return `
+          <li class="post-selector" data-key=${key}>
+            ${name}
+          </li>
+        `;
+      }).join('')}
+    </ul>
     ${this.data
       .map(
         (
@@ -89,9 +104,11 @@ const Post = function ({ $target }) {
         ) => {
           return `
           <article class="each_post_container">
-            <a href="#contentId=${slug}"  data-link class="nav_link">
+            <a href="#contentId=${slug}&type=${
+            this.state.sortKey
+          }"  data-link class="nav_link">
               <div class="title_image" style="background-image:url(${
-                image.src
+                image?.src
               })"></div>
               <div class="each_post_contents">
                 <h1 class="post_title">${title}</h1>
@@ -101,12 +118,12 @@ const Post = function ({ $target }) {
                   <span>Cloud Lee</span>
                   <div>
                     <div class="post_category_wrapper">
-                      ${categories.map(
+                      ${categories?.map(
                         (category) => `<span>${category}</span>`
                       )}
                     </div>
                     <span class="each_post_profile_detail_date">${
-                      date.split(' ')[0]
+                      date?.split(' ')[0]
                     }</span>
                   </div>
                 </div>
@@ -132,6 +149,12 @@ const Post = function ({ $target }) {
   //when unmount remove event listener;
   window.addEventListener('hashchange', () => {
     window.removeEventListener('scroll', handleInfiniteScroll);
+  });
+
+  this.$target.addEventListener('click', (e) => {
+    if (e.target.classList.contains('post-selector')) {
+      onSelect(e.target.dataset.key);
+    }
   });
 };
 

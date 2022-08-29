@@ -4,7 +4,6 @@ import BurgerNavPopup from './BurggerNavPopup.js';
 import Modal from './Modal.js';
 
 const Nav = function ({ $target }) {
-  console.log('nav ?');
   this.$target = $target;
   const wrapper = document.createElement('nav');
   wrapper.setAttribute('class', 'nav');
