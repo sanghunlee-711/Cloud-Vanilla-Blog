@@ -1,7 +1,11 @@
+import { POST_SELECT_MAP } from '../../../constants/common.js';
 import { API_ADDRESS, PAGE_ADDRESS } from '../../../constants/config.js';
-
 const LatestPost = function ({ $target }) {
   this.$target = $target;
+
+  this.state = {
+    sortKey: POST_SELECT_MAP[0].key,
+  };
 
   const wrapper = document.createElement('main');
   wrapper.setAttribute('class', 'main-post-container');
@@ -50,7 +54,9 @@ const LatestPost = function ({ $target }) {
         ) => {
           return `
           <article class="each_post_container">
-            <a href="#contentId=${slug}"  data-link class="nav_link">
+            <a href="#contentId=${slug}&type=${
+            this.state.sortKey
+          }"  data-link class="nav_link">
               <div class="title_image" style="background-image:url(${
                 image.src
               })"></div>

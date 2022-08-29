@@ -1,5 +1,6 @@
 import { POST_SELECT_MAP } from '../constants/common.js';
 import { API_ADDRESS } from '../constants/config.js';
+import { setPreview } from '../utils/index.js';
 
 const Post = function ({ $target }) {
   this.$target = $target;
@@ -73,11 +74,6 @@ const Post = function ({ $target }) {
       sortKey: value,
     });
     await getPostData();
-  };
-
-  const setPreview = (html) => {
-    const regEx = /(<([^>]+)>)/gi;
-    return html.replace(regEx, '').slice(0, 200) + '...';
   };
 
   this.render = () => {
