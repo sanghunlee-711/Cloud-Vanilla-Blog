@@ -78,6 +78,7 @@ module.exports = (env) => {
       static: {
         directory: path.join(__dirname, 'src'),
       },
+      open: true,
       hot: true,
       host: 'localhost',
       port: 8800,

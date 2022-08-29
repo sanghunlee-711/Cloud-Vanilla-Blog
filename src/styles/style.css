@@ -316,11 +316,24 @@ body {
 
 .post-selector-container > li {
   width: 33.333%;
-  height: 24px;
+  height: 36px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border: 1px solid gray;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.post-selector-container > li:hover {
+  background-color: black;
+  color: white;
+}
+
+@media screen and (max-width: 512px) {
+  .post-selector-container > li {
+    height: 24px;
+  }
 }
 
 .post-selector-container > li:nth-child(2n) {
@@ -331,4 +344,8 @@ body {
 .active {
   background-color: black;
   color: white;
+}
+
+.about-main-container {
+  margin-bottom: 24px;
 }
