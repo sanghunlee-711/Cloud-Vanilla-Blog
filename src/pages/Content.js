@@ -1,8 +1,10 @@
 import { API_ADDRESS } from '../constants/config.js';
 import { loadCommentBox } from '../utils/index.js';
-const Content = function ({ $target, contentId }) {
+const Content = function ({ $target, contentId, type }) {
   this.$target = $target;
   this.contentId = contentId;
+  this.type = type;
+
   const wrapper = document.createElement('main');
   wrapper.setAttribute('class', 'content-main-container');
   this.$target.appendChild(wrapper);
@@ -15,11 +17,12 @@ const Content = function ({ $target, contentId }) {
   };
 
   this.getPostData = async (slug) => {
-    const res = await fetch(`${API_ADDRESS}/post/${this.contentId}`);
+    const res = await fetch(
+      `${API_ADDRESS}/post?slug=${this.contentId}&type=${this.type}`
+    );
     const resJson = await res.json();
     const data = await resJson;
     this.setData(data);
-    // return data;
   };
 
   this.render = () => {

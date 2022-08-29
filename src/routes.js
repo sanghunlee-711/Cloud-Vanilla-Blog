@@ -8,7 +8,8 @@ function renderHTML(el, route) {
   if (route.name === 'Content') {
     new Component({
       $target: el,
-      contentId: getContentId(),
+      contentId: getContentId().contentId,
+      type: getContentId().type,
     });
   } else {
     new Component({
@@ -19,10 +20,11 @@ function renderHTML(el, route) {
 
 const getContentId = () => {
   const hashLocation = window.location.hash;
+
   if (!hashLocation.includes('#contentId=')) return null;
 
-  const [_, contentId] = hashLocation.split('=');
-  return contentId;
+  const [contentId, type] = hashLocation.split('&');
+  return { contentId: contentId.split('=')[1], type: type.split('=')[1] };
 };
 
 function getHashRoute() {
