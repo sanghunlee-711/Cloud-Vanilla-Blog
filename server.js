@@ -56,7 +56,6 @@ app.get('/post', (req, res) => {
 app.get('/post-list', (req, res) => {
   //페이지 크기
   const type = req.query.type ? req.query.type : 'post-dev';
-  console.log({ type });
   const countPerPage = req.query.countPerPage ? +req.query.countPerPage : 10;
   const pageNo = req.query.pageNo ? +req.query.pageNo : 0;
 

@@ -86,7 +86,9 @@ const Post = function ({ $target }) {
     <ul class="post-selector-container">
       ${POST_SELECT_MAP.map(({ name, key }) => {
         return `
-          <li class="post-selector" data-key=${key}>
+          <li class="post-selector ${
+            key === this.state.sortKey ? 'active' : ''
+          }" data-key=${key}>
             ${name}
           </li>
         `;

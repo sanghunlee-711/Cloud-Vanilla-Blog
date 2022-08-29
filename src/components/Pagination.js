@@ -17,7 +17,6 @@ export default function Pagination({ target, initialState, onNext, onPrev }) {
   };
 
   this.setState = (nextState) => {
-    console.log('set state in comp', { nextState });
     this.state = nextState;
     this.render();
   };

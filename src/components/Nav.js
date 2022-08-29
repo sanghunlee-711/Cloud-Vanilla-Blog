@@ -49,7 +49,6 @@ const Nav = function ({ $target }) {
   });
 
   $ROOT.addEventListener('click', (e) => {
-    console.log(e);
     if (
       e.target.classList.contains('burger-button') ||
       e.target.classList.contains('burger-button-line')

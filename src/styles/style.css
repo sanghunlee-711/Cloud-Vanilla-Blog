@@ -305,3 +305,30 @@ body {
   max-height: 0px;
   transition: max-height 0.26s ease-out;
 }
+
+.post-selector-container {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0px;
+  margin-top: 0px;
+}
+
+.post-selector-container > li {
+  width: 33.333%;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid gray;
+}
+
+.post-selector-container > li:nth-child(2n) {
+  border-right: 0px;
+  border-left: 0px;
+}
+
+.active {
+  background-color: black;
+  color: white;
+}
