@@ -36,16 +36,11 @@ export const loadCommentBox = (contentId) => {
     /**
      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-      /*
-      var disqus_config = function () {
-      this.page.url = ${PAGE_ADDRESS};  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = ${contentId}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-      };
-      */
+      
 
         var disqus_config = () =>  {
-          this.page.url = "${PAGE_ADDRESS}/#contentId"; 
-          this.page.identifier = "${contentId}";
+          this.page.url = "${PAGE_ADDRESS}"; // Replace PAGE_URL with your page's canonical URL variable
+          this.page.identifier = "${contentId}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
         };
 
 
@@ -82,4 +77,18 @@ export const makeGA = () => {
 
   document.body.appendChild(ga);
   document.body.appendChild(script);
+};
+
+export const getContentId = () => {
+  const hashLocation = window.location.hash;
+
+  if (!hashLocation.includes('#contentId=')) return null;
+
+  const [contentId, type] = hashLocation.split('&');
+  return { contentId: contentId.split('=')[1], type: type.split('=')[1] };
+};
+
+export const setPreview = (html) => {
+  const regEx = /(<([^>]+)>)/gi;
+  return html.replace(regEx, '').slice(0, 200) + '...';
 };

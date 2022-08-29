@@ -1,9 +1,9 @@
 import { API_ADDRESS } from '../constants/config.js';
-import { loadCommentBox } from '../utils/index.js';
-const Content = function ({ $target, contentId, type }) {
+import { getContentId, loadCommentBox } from '../utils/index.js';
+const Content = function ({ $target }) {
   this.$target = $target;
-  this.contentId = contentId;
-  this.type = type;
+  this.contentId = getContentId().contentId;
+  this.type = getContentId().type;
 
   const wrapper = document.createElement('main');
   wrapper.setAttribute('class', 'content-main-container');
@@ -26,7 +26,6 @@ const Content = function ({ $target, contentId, type }) {
   };
 
   this.render = () => {
-    loadCommentBox(this.contentId);
     const data = this.data;
     const { src, width, height } = this.data.frontMatter.image;
 
@@ -56,6 +55,7 @@ const Content = function ({ $target, contentId, type }) {
   };
   // this.render();
   this.getPostData();
+  loadCommentBox(`${this.type || 'error'}&${this.contentId || 'error'}`);
 };
 
 export default Content;

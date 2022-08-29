@@ -1,31 +1,15 @@
 import { ROUTES } from './constants/route.js';
+import { getContentId } from './utils/index.js';
 
 function renderHTML(el, route) {
   el.innerHTML = '';
 
   const Component = route.components;
 
-  if (route.name === 'Content') {
-    new Component({
-      $target: el,
-      contentId: getContentId().contentId,
-      type: getContentId().type,
-    });
-  } else {
-    new Component({
-      $target: el,
-    });
-  }
+  new Component({
+    $target: el,
+  });
 }
-
-const getContentId = () => {
-  const hashLocation = window.location.hash;
-
-  if (!hashLocation.includes('#contentId=')) return null;
-
-  const [contentId, type] = hashLocation.split('&');
-  return { contentId: contentId.split('=')[1], type: type.split('=')[1] };
-};
 
 function getHashRoute() {
   let route = ROUTES[0];

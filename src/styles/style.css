@@ -95,6 +95,8 @@ body {
   height: 30px;
   padding: 20px 4px;
   margin-bottom: 12px;
+  max-width: var(--basic-width);
+  margin: 0px auto 12px auto;
 }
 
 .nav_list {
