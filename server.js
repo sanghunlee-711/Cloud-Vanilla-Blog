@@ -13,7 +13,7 @@ marked.setOptions({
     return hljs.highlight(code, { language }).value;
   },
   baseUrl: null,
-  breaks: false,
+  breaks: true,
   extensions: null,
   gfm: true,
   headerIds: true,
@@ -121,6 +121,54 @@ app.get('/post-list', (req, res) => {
     success: true,
     data: posts,
   });
+});
+
+app.get('/post-latest', (req, res) => {
+  try {
+    //효율이 너무하다..
+    const types = ['post-algorithm', 'post-dev', 'post-personnel'];
+    let posts = [];
+
+    //3개 타입 게시물 다 가져오기..
+    //O(N^2)
+    types.forEach((type) => {
+      const files = fs.readdirSync(path.join(type));
+      //slug 과 formatter를 posts로부터 가져옴
+      posts = [
+        ...posts,
+        ...files.map((filename) => {
+          const slug = filename.replace('.md', '');
+
+          //frontMatter를 가져옴
+          const markdownWithMeta = fs.readFileSync(
+            path.join(type, filename),
+            'utf-8'
+          );
+
+          //gray-matter라이브러리가 알아서 md파일을 객체화 해줌
+          const { data: frontMatter, content } = matter(markdownWithMeta);
+
+          return {
+            slug,
+            frontMatter,
+            content: JSON.stringify(marked.parse(content)),
+          };
+        }),
+      ];
+    });
+
+    //정렬..
+    posts.sort((a, b) => a?.frontMatter?.date - b?.frontMatter?.date);
+    res.json({
+      success: true,
+      data: posts.slice(0, 3),
+    });
+  } catch (e) {
+    res.json({
+      success: false,
+      data: null,
+    });
+  }
 });
 
 app.listen(4000, () => console.log(`Server is running on ${4000}`));
