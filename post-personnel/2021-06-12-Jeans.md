@@ -4,6 +4,7 @@ title: Cors와 Preflight
 author: Sanghun Lee
 date: 2021-06-12 11:33:00 +0800
 categories: [BE, Resource]
+folder: [post-personnel]
 tags: [Cors, Prefilght]
 math: true
 mermaid: true

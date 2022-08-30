@@ -47,7 +47,7 @@ const LatestPost = function ({ $target }) {
         (
           {
             slug,
-            frontMatter: { title, date, image, categories, tags },
+            frontMatter: { title, date, image, categories, tags, folder },
             content,
           },
           index
@@ -55,7 +55,7 @@ const LatestPost = function ({ $target }) {
           return `
           <article class="each_post_container">
             <a href="#contentId=${slug}&type=${
-            this.state.sortKey
+            folder[0]
           }"  data-link class="nav_link">
               <div class="title_image" style="background-image:url(${
                 image.src

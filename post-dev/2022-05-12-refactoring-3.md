@@ -3,6 +3,7 @@ title: 리액트에서 비즈니스 로직을 나눠보자[3 - ContextAPI마저 
 author: Sanghun lee
 date: 2022-05-12 11:33:00 +0800
 categories: [FE, React]
+folder: [post-dev]
 tags: [Architecture]
 math: true
 mermaid: true
@@ -44,7 +45,7 @@ const PeriodSelector: React.FC<IPeriodSelectorProps> = ({
 }): JSX.Element => {
   return (
     <WrapperDate>
-      <span>{labelText || "기간 선택"}</span>
+      <span>{labelText || '기간 선택'}</span>
       <div>
         <div>
           <Calendar
@@ -221,13 +222,13 @@ Props의 전달만을 위한 Props전달이 보이는 코드인데 `BannerListPa
 그럼 마지막으로 PeriodSelector를 위한 로직이 구성된 별도의 훅까지 살펴보고 이를 어떻게 개선했는지를 살펴보자.
 
 ```tsx
-import { PREV_MONTH, TODAY } from "constant/dateConstants";
-import React, { useEffect, useState } from "react";
-import { dateAndTimeAssemble } from "utils/formatting";
+import { PREV_MONTH, TODAY } from 'constant/dateConstants';
+import React, { useEffect, useState } from 'react';
+import { dateAndTimeAssemble } from 'utils/formatting';
 
 const usePeriodSelector = () => {
   const [date, setDate] = useState<[Date, Date]>([PREV_MONTH, TODAY]);
-  const [selectTime, setSelectTime] = useState(["00:00", "00:00"]);
+  const [selectTime, setSelectTime] = useState(['00:00', '00:00']);
   const [assembleDate, setAssembleDate] = useState<[Date, Date]>([
     new Date(),
     new Date(),
@@ -243,17 +244,17 @@ const usePeriodSelector = () => {
 
   const handleTime = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
-    if (name === "startTime") {
+    if (name === 'startTime') {
       setSelectTime([value, selectTime[1]]);
     }
-    if (name === "endTime") {
+    if (name === 'endTime') {
       setSelectTime([selectTime[0], value]);
     }
   };
 
   const initializeDate = () => {
     setDate([PREV_MONTH, TODAY]);
-    setSelectTime(["00:00", "00:00"]);
+    setSelectTime(['00:00', '00:00']);
   };
 
   useEffect(() => {
@@ -401,10 +402,10 @@ export const BannerList: React.FC = (): JSX.Element => {
 ## 3. Hooks와 한쌍이었던 컴포넌트에 Context를 미리 심어놓자
 
 ```tsx
-import Calendar from "components/calendar";
-import { PeriodContext } from "hooks/usePeriodSelector";
-import React, { useContext } from "react";
-import { WrapperDate } from "./styles";
+import Calendar from 'components/calendar';
+import { PeriodContext } from 'hooks/usePeriodSelector';
+import React, { useContext } from 'react';
+import { WrapperDate } from './styles';
 
 interface IPeriodSelectorProps {
   withTimes: boolean;
@@ -417,7 +418,7 @@ const PeriodSelector: React.FC<IPeriodSelectorProps> = ({
 }): JSX.Element => {
   const periodContext = useContext(PeriodContext); //여기
   if (!periodContext?.state || !periodContext?.actions)
-    throw new Error("Period Context를 주입해주세요");
+    throw new Error('Period Context를 주입해주세요');
 
   const {
     state: { date, selectTime },
@@ -426,7 +427,7 @@ const PeriodSelector: React.FC<IPeriodSelectorProps> = ({
 
   return (
     <WrapperDate>
-      <span>{labelText || "기간 선택"}</span>
+      <span>{labelText || '기간 선택'}</span>
       <div>
         <div>
           <Calendar
@@ -465,8 +466,8 @@ ContextAPI는 Sugar Syntax와 비슷하게 실제로 코드상에서는 PropsDri
 ## Memoizing을 위한 컨테이너 만들기
 
 ```tsx
-import { PeriodContext } from "hooks/usePeriodSelector";
-import { useContext, useMemo } from "react";
+import { PeriodContext } from 'hooks/usePeriodSelector';
+import { useContext, useMemo } from 'react';
 
 interface IMemoizePeriodSelectorContainerProps {
   children: React.ReactNode;

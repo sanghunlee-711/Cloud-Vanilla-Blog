@@ -3,6 +3,7 @@ title: 리액트에서 비즈니스 로직을 나눠보자[2 - Hooks 를 테스�
 author: Sanghun lee
 date: 2022-01-18 11:33:00 +0800
 categories: [FE, React]
+folder: [post-dev]
 tags: [Architecture]
 math: true
 mermaid: true
