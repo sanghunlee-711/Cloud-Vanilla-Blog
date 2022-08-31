@@ -22,6 +22,7 @@ const Content = function ({ $target }) {
     );
     const resJson = await res.json();
     const data = await resJson;
+    loadCommentBox(`${this.type || 'error'}_${this.contentId || 'error'}`);
     this.setData(data);
   };
 
@@ -55,7 +56,6 @@ const Content = function ({ $target }) {
   };
   // this.render();
   this.getPostData();
-  loadCommentBox(`${this.type || 'error'}&${this.contentId || 'error'}`);
 };
 
 export default Content;

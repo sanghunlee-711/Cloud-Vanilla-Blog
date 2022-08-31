@@ -12,6 +12,7 @@ const App = function ({ $target }) {
 
   //routing
   initialRoutes({ el: document.querySelector('.layout-container') });
+
   if (process.env.NODE_ENV !== 'development') makeGA();
 };
 
