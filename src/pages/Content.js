@@ -1,5 +1,5 @@
 import { API_ADDRESS } from '../constants/config.js';
-import { getContentId, loadCommentBox } from '../utils/index.js';
+import { getContentId, resetDisqus } from '../utils/index.js';
 const Content = function ({ $target }) {
   this.$target = $target;
   this.contentId = getContentId().contentId;
@@ -22,7 +22,7 @@ const Content = function ({ $target }) {
     );
     const resJson = await res.json();
     const data = await resJson;
-    loadCommentBox(`${this.type || 'error'}_${this.contentId || 'error'}`);
+    // loadCommentBox(`${this.type || 'error'}_${this.contentId || 'error'}`);
     this.setData(data);
   };
 
@@ -53,6 +53,13 @@ const Content = function ({ $target }) {
       </div>
       <div id="disqus_thread"></div>
     `;
+    console.log();
+    resetDisqus(
+      `https://blog.cloud-sanghun.com/#!${data.frontMatter.title}`,
+      `https://blog.cloud-sanghun.com/#!${data.frontMatter.title}`,
+      data.frontMatter.title,
+      'ko'
+    );
   };
   // this.render();
   this.getPostData();
