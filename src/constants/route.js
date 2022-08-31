@@ -3,7 +3,7 @@ import Content from '../pages/Content.js';
 import Home from '../pages/Home/index.js';
 import Post from '../pages/Post.js';
 import Resume from '../pages/Resume/index.js';
-
+import GuestBook from '../pages/GuestBook/index.js';
 export const ROUTES = [
   {
     path: '#home',
@@ -19,6 +19,11 @@ export const ROUTES = [
     path: '#post',
     name: 'Post',
     components: Post,
+  },
+  {
+    path: '#guest',
+    name: 'GuestBook',
+    components: GuestBook,
   },
   {
     path: '#resume',

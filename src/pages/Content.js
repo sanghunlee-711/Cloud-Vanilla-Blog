@@ -53,7 +53,7 @@ const Content = function ({ $target }) {
       </div>
       <div id="disqus_thread"></div>
     `;
-    console.log();
+
     resetDisqus(
       `https://blog.cloud-sanghun.com/#!${data.frontMatter.title}`,
       `https://blog.cloud-sanghun.com/#!${data.frontMatter.title}`,
