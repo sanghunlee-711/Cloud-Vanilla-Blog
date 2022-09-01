@@ -26,12 +26,11 @@
 
 ## UI
 
-- [ ] 레이아웃
+- [x] 레이아웃
   - [x]GNB
-  - [ ]Pagination
-- [ ] 포트폴리오 페이지
-- [ ] 메인 페이지
-- [ ] 이력서 페이지
+- [x] 포트폴리오 페이지
+- [x] 메인 페이지
+- [x] 이력서 페이지
 - [x] 게시글 페이지
 
   ## UX
@@ -39,12 +38,14 @@
   - [x] MD파일을 활용한 블로그
     - [x] MD파일 읽어오기
     - [x] CSS해주기
+  - [x]Pagination
+  - [x]카테고리별 글 보기
   - [x] 외부 플랫폼을 이용한 댓글
     - Disqus
 
 ## Build
 
--[ ] server.js -> webpack을 통해 불필요한 작성파일 삭제
+-[x] FE: Webpack build
 
 # Front-End
 
@@ -85,5 +86,57 @@ const Component = new Component({$target}) {
   });
 
   this.render();
+}
+```
+
+## 2. 라우터
+
+- hashchange이벤트를 기반으로한 라우터 구축
+- window.onload 를 활용하여 새로고침 대응
+- 생성자 키워드를 통해 컴포넌트 인스턴스 생성
+
+```js
+//받은 컴포넌트를 렌더해주는 역할을 하는 함수
+function renderHTML(el, route) {
+  el.innerHTML = '';
+
+  const Component = route.components;
+
+  new Component({
+    $target: el,
+  });
+}
+
+//hash 값을 읽어 필요한 컴포넌트를 반환해주는 함수
+function getHashRoute() {
+  let route = ROUTES[0];
+
+  ROUTES.forEach((hashRoute) => {
+    const hashLocation = window.location.hash;
+
+    //id별로 값을 다르게 받아와야하는 컴포넌트인 경우 Content를 따로 불러와주기
+    //정규식으로 리팩토링하면 좋으련만 아직은 ..
+    if (getContentId()) {
+      route = ROUTES.filter((el) => el.name === 'Content')[0];
+      return route;
+    }
+
+    if (hashLocation === hashRoute.path) {
+      route = hashRoute;
+    }
+  });
+  return route;
+}
+
+export function initialRoutes({ el }) {
+  // hashchange 이벤트를 활용한 라우터 진행
+  window.addEventListener('hashchange', () => {
+    return renderHTML(el, getHashRoute());
+  });
+
+  // 새로고침 시 의도한대로 주소를 찾아가기 위해 onload에 renderHTML을 불러놓기
+  window.onload = () => {
+    return renderHTML(el, getHashRoute());
+  };
 }
 ```
