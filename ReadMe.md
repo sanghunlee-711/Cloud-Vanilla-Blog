@@ -92,39 +92,51 @@ const Component = new Component({$target}) {
 ## 2. 라우터
 
 - hashchange이벤트를 기반으로한 라우터 구축
-- 렌더함수를 통해 리렌더를 유발시키는 구조
-- setStating을 하는 경우 render함수를 다시 호출함으로서 state기반으로 리렌더가 발생하게 됨.
+- window.onload 를 활용하여 새로고침 대응
+- 생성자 키워드를 통해 컴포넌트 인스턴스 생성
 
 ```js
-const Component = new Component({$target}) {
-  this.$target = $target;
-  const wrapper = document.createElement("div");
-  wrapper.setAttribute('class', 'component-wrapper');
-  this.$target.appendChild(wrapper);
+//받은 컴포넌트를 렌더해주는 역할을 하는 함수
+function renderHTML(el, route) {
+  el.innerHTML = '';
 
-  this.state = false;
+  const Component = route.components;
 
-  this.setState = (nextState) => {
-    this.state = nextState;
-    this.render();
-  }
+  new Component({
+    $target: el,
+  });
+}
 
-  this.toggle = () => {
-    this.setState(!this.state);
-  }
+//hash 값을 읽어 필요한 컴포넌트를 반환해주는 함수
+function getHashRoute() {
+  let route = ROUTES[0];
 
-  this.render = () => {
-    this.wrapper.innerHTML=`
-      <button class="toggle-button"></button>
-      ${this.state ? '<div>Fun Vanila js!</div>' : '<div>Fun Coding!</div>'}
-    `
-  }
+  ROUTES.forEach((hashRoute) => {
+    const hashLocation = window.location.hash;
 
-  this.wrapper.addEventListener('click', (e)=>{
-    if(e.target.className !== 'toggle-button') return;
-    this.toggle()
+    //id별로 값을 다르게 받아와야하는 컴포넌트인 경우 Content를 따로 불러와주기
+    //정규식으로 리팩토링하면 좋으련만 아직은 ..
+    if (getContentId()) {
+      route = ROUTES.filter((el) => el.name === 'Content')[0];
+      return route;
+    }
+
+    if (hashLocation === hashRoute.path) {
+      route = hashRoute;
+    }
+  });
+  return route;
+}
+
+export function initialRoutes({ el }) {
+  // hashchange 이벤트를 활용한 라우터 진행
+  window.addEventListener('hashchange', () => {
+    return renderHTML(el, getHashRoute());
   });
 
-  this.render();
+  // 새로고침 시 의도한대로 주소를 찾아가기 위해 onload에 renderHTML을 불러놓기
+  window.onload = () => {
+    return renderHTML(el, getHashRoute());
+  };
 }
 ```
