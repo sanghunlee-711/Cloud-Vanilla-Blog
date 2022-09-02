@@ -158,7 +158,13 @@ app.get('/post-latest', (req, res) => {
     });
 
     //정렬..
-    posts.sort((a, b) => a?.frontMatter?.date - b?.frontMatter?.date);
+    posts.sort(
+      (a, b) => new Date(b?.frontMatter?.date) - new Date(a?.frontMatter?.date)
+    );
+    console.log(
+      '@@@',
+      posts.map((el) => el.frontMatter.date)
+    );
     res.json({
       success: true,
       data: posts.slice(0, 3),
