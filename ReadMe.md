@@ -4,7 +4,7 @@
 
 # 설명
 
-- Vanilla JS, HTML5, CSS3만을 사용하여 SPA 및 MVC 패턴을 적용하여 개인 블로그를 만들고 있습니다.
+- Vanilla JS, HTML5, CSS3만을 사용하여 state기반 rerendering, routing을 통한 SPA 개념을 적용하여 개인 블로그를 만들고 있습니다.
 
 ## 개념적 목표
 
@@ -13,8 +13,6 @@
   - [x] Routing without Refresh
 - [x] 유기적인 Event Handler 등록
 - [x] Component 추상화
-- [ ] MVC pattern
-- [ ] Virtual DOM
 - [x] Webpack
   - [x] Build Setting
   - [x] Dev Setting
@@ -38,14 +36,14 @@
   - [x] MD파일을 활용한 블로그
     - [x] MD파일 읽어오기
     - [x] CSS해주기
-  - [x]Pagination
-  - [x]카테고리별 글 보기
+  - [x] Pagination
+  - [x] 카테고리별 글 보기
   - [x] 외부 플랫폼을 이용한 댓글
-    - Disqus
+    - [x] Disqus
 
 ## Build
 
--[x] FE: Webpack build
+- [x] FE: Webpack build
 
 # Front-End
 
