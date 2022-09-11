@@ -1,15 +1,15 @@
 ---
 slug: 2022-08-16-ui-library
-title: 리액트로 UI 라이브러리를 만들어보자
+title: 리액트로 UI 라이브러리를 만들어보자 - 1편(번들링, 폴더구조)
 author: Sanghun lee
 date: 2022-08-16 11:33:00 +0800
 folder: [post-dev]
-categories: [FE, NPM, rollup.js]
+categories: [FE, rollup.js]
 tags: [Next JS]
 math: true
 mermaid: true
 image:
-  src: https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/440px-Npm-logo.svg.png
+  src: https://laravelnews.imgix.net/images/rollup1.png?dpr=2&ixlib=php-3.3.1
   width: 850
   height: 585
 ---
@@ -39,168 +39,385 @@ image:
 아래 예시를 보면 이해가 편하니 잠깐 코드를 봐보자.
 
 ```tsx
-const App = ({ Component, pageProps }) => {
-  const apolloClient = useApollo(pageProps);
-
+const PeriodSelector: React.FC<IPeriodSelectorProps> = ({
+  selectTime,
+  //...생략
+}): JSX.Element => {
   return (
-    <ApolloProvider client={apolloClient}>
-      <Wrapper>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </Wrapper>
-    </ApolloProvider>
+    <WrapperDate>
+      <span>{labelText || '기간 선택'}</span>
+      <div>
+        <div>
+          <Calendar date={startDate} handleDate={handleStartDate} />
+          {withTimes && handleTime && selectTime && (
+            <input
+              type="time"
+              value={selectTime && selectTime[0]}
+              name="startTime"
+              onChange={handleTime}
+            />
+          )}
+        </div>
+        <span>~</span>
+        <div>
+          <Calendar date={endDate} handleDate={handleEndDate} />
+          {withTimes && handleTime && selectTime && (
+            <input
+              type="time"
+              value={selectTime && selectTime[1]}
+              name="endTime"
+              onChange={handleTime}
+            />
+          )}
+        </div>
+      </div>
+    </WrapperDate>
   );
 };
 
-export default wrapper.withRedux(App);
+export default React.memo(PeriodSelector);
 ```
 
-별도로 생성한 useApollo를 통해 생성한 클라이언트를 ApolloProvider로 넣어주고 Wrapper를 통해 전역 스타일을 넣어주었다
+편의를 위해 import, style, props들을 생략하였다.
+이런식의 기본적인 컴포넌트가 있으면 handleTime, selectTime과 같은 값들은 hooks를 통해 생성되어 결합되도록 만들었다.
 
-LayOut을 통해 Header, Footer를 모든 컴포넌트 내에서 동일하게 보여주는 방식을 취한다
+아래 hooks를 보자
 
-리액트로 진행할때는 loggedInRouter, loggedOutRouter를 나눠서 진행했던 라우팅방시에서 조금 차이를 둬야하는 부분이다.
-그래서 useMe라는 별도의 HOC를 만들어 쿼리를 리턴시키는 용도로 사용하고있다.
+```javascript
 
-# 2. 유저 인증을 위한 hook
 
-사실 코드만 보면 진짜 별 것 없이 간단한 코드인데 next js에 별도로 apollo가 얹어있는 세팅을 진행하다보니 몇가지 문제가 발생했었다.
+export const PeriodContext = createContext<IPeriodContext | undefined>(
+  undefined,
+);
 
-1번의 세팅에서 보이듯 아폴로서버가 최상단에 존재하므로 next js 기반에서 두가지 경우 localStorage의 값을 보고 업데이트가 되었다.
+const usePeriodSelector = (defaultDate: [Date, Date] = [PREV_MONTH, TODAY]) => {
+  const [date, setDate] = useState<[Date, Date]>(defaultDate);
+  const [selectTime, setSelectTime] = useState(['00:00', '00:00']);
+  const [assembleDate, setAssembleDate] = useState<[Date, Date]>([
+    new Date(),
+    new Date(),
+  ]);
 
-1.  앱이 최초 빌드될때
-2.  refresh가 일어나서 처음부터 렌더가 되는 시점을 제외하고는 별도로 apollo를 위해 세팅해준 값이 apolloClient.ts내에서 변경되지 않는 문제가 있었다.
+  const handleStartDate = (startDate: Date) => {
+    setDate([startDate, date[1]]);
+  };
 
-```tsx
-import { useLazyQuery, useQuery } from '@apollo/client';
-import { ME_QUERY } from '../graphql/queries';
-import { meQuery } from '../src/__generated__/meQuery';
+  const handleEndDate = (endDate: Date) => {
+    setDate([date[0], endDate]);
+  };
 
-export const useMe = () => {
-  return useQuery<meQuery>(ME_QUERY);
+  const handleTime = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.currentTarget;
+    if (name === 'startTime') {
+      setSelectTime([value, selectTime[1]]);
+    }
+    if (name === 'endTime') {
+      setSelectTime([selectTime[0], value]);
+    }
+  };
+
+  const initializeDate = () => {
+    setDate([PREV_MONTH, TODAY]);
+    setSelectTime(['00:00', '00:00']);
+  };
+
+  useEffect(() => {
+    const { startModifed, endModified } = dateAndTimeAssemble({
+      startDate: date[0],
+      startTime: selectTime[0],
+      endDate: date[1],
+      endTime: selectTime[1],
+    });
+
+    setAssembleDate([startModifed, endModified]);
+  }, [date, selectTime]);
+
+  const state = {
+    date,
+    assembleDate,
+    selectTime,
+  };
+
+  const actions = {
+    setDate,
+    setSelectTime,
+    initializeDate,
+    handleStartDate,
+    handleEndDate,
+    handleTime,
+  };
+
+  const periodContextValue = { state, actions };
+
+  return {
+    state: {
+      date,
+      assembleDate,
+      selectTime,
+    },
+    actions: {
+      setDate,
+      setSelectTime,
+      initializeDate,
+      handleStartDate,
+      handleEndDate,
+      handleTime,
+    },
+    periodContextValue,
+  };
 };
+
+export default usePeriodSelector;
 ```
 
-> UseMe.tsx
+편의를 위해 utils, constant, import는 생략하였다.
 
-세팅을 조금 더 설명하자면 useReactiveVar는 typePolicies에 미리 설정해준 fields의 값에 해당하는 값이 들어간 query들을 다시 한번 refresh할 용도로 사용하려했다.
-(그리고 추가적으로 apollo.ts의 변수값도 곧바로 변경이 될 줄 알았다 ㅎ...)
+위와 같이 필요한 로직들과 state, context들을 미리 hooks에 선언해놓고 사용하는 방식으로 진행하였다.
 
-일단 여기까지는 작동을하였고 헤더에서 로그인이 되지않은 경우 로그인 버튼을, 로그인 된경우 로그인 된 유저의 프로필사진을 보여주는 기능을 구현하는 것에 문제가 없었다.
+# 2. 번들링
 
-문제는 유저의 프로필 사진이 나타나는 시점이었다.
+결론부터 말하면 라이브러리와 훅을 임포트해서 사용하기 위한 번들링 툴은 `rollup.js`를 사용하였다.
 
-즉 초기 렌더시 서버사이드로 진행되는 경우 apollo.ts에 설정된 localStorage와 관련된 값인 isTokenVar또는 isLoggedInVar를 사용할 수 없게 되어 에러가 발생하였고 이걸 해결하는 것이 필요했다.
+스토리북으로 static하게 컴포넌트들을 보여주는 것과 동시에 hook과 component들을 import해서 사용하는 것이 목적이었기 때문인데 여기서 시행착오가 있었다.
 
-아래는 apollo.ts로 apollo-client를 설정하는 파일이다.
+초반에는 익숙한 webpack을 통해 번들링을 진행하려 하였으나 `storybook-cli`를 통해 스토리북 번들링을 사용할 목적이었고 웹팩의 세팅을 건들게 되면
 
-```ts
-const token =
-  typeof window !== 'undefined' ? localStorage.getItem('folks-token') : '';
+이러한 지원을 활용할 수 가 없게 되어 다른 번들링 툴을 찾게 된 것이다.
 
-export const isLoggedInVar = makeVar(false);
-export const authTokenVar = makeVar(token); //요주의 인물
+물론 웹팩으로 두가지 다 세팅하면 번들링 툴 하나를 줄일 수 있게 되지만 그럴 시간과 실력이 안되었으므로 따로 번들링을 시키기로 결정하고 rollup.js를 활용하기로 마음 먹었다.
 
-const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql',
-  headers: {
-    'folks-token': authTokenVar() || '',
-  },
-});
+## 2.1 컴포넌트와 훅 번들링하기
 
-function createApolloClient() {
-  return new ApolloClient({
-    ssrMode: typeof window === 'undefined',
-    link: httpLink,
-    cache: new InMemoryCache({
-      typePolicies: {
-        Query: {
-          fields: {
-            token: {
-              read() {
-                return authTokenVar();
-              },
-            },
-            isLoggedIn: {
-              read() {
-                return isLoggedInVar();
-              },
-            },
-            allPosts: concatPagination(),
-          },
+아래 config 파일을 우선 먼저 보고 하나씩 뜯어 설명을 봐보자
+
+```javascript
+import commonjs from '@rollup/plugin-commonjs';
+import rollupJson from '@rollup/plugin-json';
+import resolve, { nodeResolve } from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
+import typescript from '@rollup/plugin-typescript';
+import babel from 'rollup-plugin-babel';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import postcss from 'rollup-plugin-postcss';
+import { terser } from 'rollup-plugin-terser';
+
+export default [
+  {
+    // for calendar.css
+
+    input: 'src/index.ts',
+    output: {
+      dir: 'dist',
+      format: 'cjs',
+      sourcemap: true,
+      exports: 'named',
+      preserveModules: true,
+    },
+
+    plugins: [
+      // peerDepsExtenral plugin automatically make external list in rollup.config by refering peerDepenencies in pakcage.json
+      peerDepsExternal(),
+      resolve({ jsnext: true, preferBuiltins: true, browser: true }),
+      commonjs(),
+      // for replacing origin process to string
+      // Need do write process.env.sth as string not as process method
+
+      replace({
+        preventAssignment: true,
+        values: {
+          'process.env.UI_API_ENDPOINT': 'http://15.164.231.190:8081',
+          'process.env.UI_KAKAO_MAP_KEY': '3f6bc37442403680a61d253d2d3c5efc',
+          'process.env.UI_TOKEN_NAME': 'oa-token',
         },
-      },
-    }),
-  });
+      }),
+      typescript({ tsconfig: './tsconfig.json', declarationDir: 'dist' }),
+      postcss({
+        modules: true,
+        extract: false,
+        minimize: true,
+        // use:['sass']
+      }),
+      nodeResolve({
+        extensions: ['.css'],
+      }),
+      babel({ include: ['./src/**/*'] }), // Babel을 사용 할 수 있게 해줌
+      rollupJson(),
+      terser(),
+    ],
+    // external: ['react', 'react-dom', 'styled-components'],
+  },
+];
+```
+
+### 2.1.1 peerDepsExternal
+
+package.json에 존재하는 `peerDependencies`의 라이브러리를 제외하고 번들링을 실행해준다.
+
+<!-- 이를 사용한 이유는 라이브러리를 install해서 사용하는곳에 이미 해당 라이브러리들이 존재할 것이고 라이브러리를 번들링할때
+이 라이브러리들을 함께 번들링해주면, 번들링된 패키지를 설치해서 사용하는 곳에서 두개의 라이브러리 인스턴스가 존재하며 충돌이 생기기 때문이다. -->
+
+peerDependencies의 목적은 해당 패키지를 받아서 사용하는 곳에 이 패키지 사용을 위해서는 이러한 의존들이 필요하다는 것을 알려주는 용도이고
+번들링 시에는 이 라이브러리들을 제외하고 번들링을 시켜준다.
+
+이 라이브러리들을 그냥 dependencies에 넣게되면 받아쓰는 곳에서 해당 라이브러리와 동일한 라이브러리의 instance가 `node_modules` 트리에 꼬이며 여러가지 존재하는 것을 막기 위해서이다.
+
+아래는 UI-library에서 `package.json`에 `peerDependencies`에 존재하는 것이다.
+
+리액트 프로젝트에서 이 라이브러리를 사용하는 것이 목적이므로 기존 프로젝트에서 사용하고 있는 라이브러리 중 인스턴스가 생기면 안되는것들로 넣어줬다.
+`react-query` 를 사용하고 있다면 이 또한 넣어주는 것이 좋다.
+
+또한 이 라이브러리를 사용하면 위에 주석으로 처리되어있는 external에 들어있는 리스트들을 직접 타이핑 하는 것이 필요없어진다.
+라이브러리 자체로 peerDependencies를 external로 넣어주게 된다.
+
+```json
+  "peerDependencies": {
+    "axios": "^0.27.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.1",
+    "styled-components": "^4.4.1",
+    "styled-reset": "^4.3.4"
+  },
+```
+
+### 2.1.2 @rollup/plugin-node-resolve
+
+엔트리포인트와 어떤방식으로 번들을 할건지 설정해주는 라이브러리다.
+`preferBuiltins`는 내장모듈(fs, path)등의 로컬모듈을 선호할 건지에 대한 옵션이고 default가 true 이다.
+
+browser는 브라우저에 번들로 묶어 사용할 용도인 경우 사용하게 되며 default가 false 이다.
+
+사용하려면 mainfields옵션에 browser를 추가해야하는데 없으면 그냥 무시된다. 나중을 위해 true로 일단 만들어 놨다.
+
+원래 jsnext옵션도 있었는데 이제 사용안된다고 해서 그냥 날렸다.
+
+### 2.1.2 @rollup/plugin-commonjs
+
+node_modules의 패키지가 js모듈이 아닌 레거시의 commonJs로 지원될 확률이 높기 때문이 commonJS를 사용하여 잘못된 번들을 방지하기 위해 사용하게 된다.
+
+### 2.1.3 @rollup/plugin-replace
+
+이 플러그인은 타겟된 string을 원하는 값으로 바꿔주는 역할을 하게 되며
+나는 process.env에 기존에 사용하던 값들을 여기서 변경해주는 역할을 하기 위해 사용하였다.
+
+### 2.1.4 @rollup/plugin-typescript
+
+ts번들링을 하기 위해 사용하였다. 간단하게 tsconfig의 위치와 어디에 번들될지에 대한 설정만 해두고 버전에 대한 설정을 남겨두었다.
+
+### 2.1.5 rollup-plugin-postcss
+
+css를 번들링하여 index.html의 헤드에 넣거나, 모듈화 하여 사용할 수 있게 해주는 번들링 툴이다.
+
+Calendar 컴포넌트를 `react-datepicker`라이브러리를 이용하여 만들었는데 커스터마이징을 위해 `.css` 파일이 필요하여
+이를 처리하기 위해 사용하였다.
+
+따로 모듈로 빼내지 않고 js로 inject하는 방식을 활용하기 위해 nodeResolve도 사용해야했다 (필요하다고 하니까..)
+
+module화는 시키지만 따로 css로 extract를 하지않아 .module.css파일이 생기지 않고 minimize를 통해 불필요한 css를 제거한다.
+
+```javascript
+  postcss({
+    modules: true,
+    extract: false,
+    minimize: true,
+  }),
+```
+
+### 2.1.6 @rollup/plugin-json
+
+package.json을 불러와서 버전을 알아내고 하는 용도로 사용하기 위해 넣어놨었는데 필요가 없어졌지만 내버려두고 있다.
+
+### 2.1.7 rollup-plugin-terser
+
+얘는 번들링 된 파일의 용량을 최소화하기 위해서 사용하는 플러그인이다.
+코멘트(주석)을 지우거나 등의 옵션이 가능하다.
+
+## 2.2 tsconfig
+
+```json
+// For bundling
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "jsx": "react",
+    "module": "ESNext",
+    "declaration": true,
+    "declarationDir": "types",
+    "sourceMap": true,
+    "outDir": "dist",
+    "moduleResolution": "node",
+    "emitDeclarationOnly": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+  },
+  "exclude": [
+    "dist",
+    "node_modules",
+    "src/**/*.test.tsx",
+    "src/**/*.stories.tsx"
+  ]
 }
 ```
 
-> apolloClient.ts
-
-그래서 이런 설정을 활용하며 원하는 요구조건을 실행하기 위해서
-
-문제와 해결방법의 정리를 위한 사고흐름을 정리 해보았다.
-
-1. 로그아웃 후 다른 아이디로 로그인시 토큰은 변경되었으나 Header의 프로필은 그전의 아이디의 값이 존재했음
-2. 중간에 redux toolkit을 다른 이유로 설치하고 편하게 관리하기 위해 user를 별도로 글로벌 State로 활용한것이 설마 문제가 있을까 하여 다 걷어냄
-3. 현상이 유지가 되어서 next js의 문제 인지 apollo의 캐시인지 확인이 필요했음
-4. apollo devtool 확인결과 애초에 최초로그인 시에는 cache에 저장되지도 않았음 -> 데이터가 안들어온 것. -> 네트워크 헤더에 토큰값 비어있음..
-5. 조금 더 살펴보니 로그인 직 후 profile에서 변경된 makeVar로 만든 토큰값은 변경되어있지만 apollo client는 이미 세팅된 직후라 변경되지 않음 -> 그래서 요청때 비어있음.
-6. 또다른 문제는 최초 로그인 후 다른 아이디로 로그인시 새롭게 query가 호출이 되지 않음
-7. client.resetStore()를 하라는 공식문서 따라 해보려했으나 next js에서는 아폴로를 인스턴스로 가져와서 사용해야하기 때문에 쿼리가 그냥 다깨짐
-   그래서 작동이 안되었음, 그래서 clearStore => resetStore로직이 편하게 먹질 못함
-8. readQeury를 사용해 로그아웃일때 writeQuery를 사용해서 해당 쿼리의 유저값을 비워주려했음 -> 적절하게 사용할 곳이 아님 -> 공식문서 더 봐야함
-   찾아보니 wrtieFragment와 readQuery의 조합으로 쓰면 될 것 같음 -> 생각해보면 무조건 관련 세팅이 있을 것 같음
-9. 모두가 이렇게 긴 쿼리를 쓰며 시간을 낭비하지 않을 것 같음.
-10. 역시 .. useQuery에 세팅을 할 수가 있음
-
-위 사고흐름을 통해 공식문서를 찾아보니 ..
-
-너무나도 당연하게 관련 세팅이 있었고
-
-쿼리의 세팅은 이렇게 바뀌었다.
-
-```tsx
-const [getMeInfo, { data, error, loading }] = useLazyQuery<meQuery>(ME_QUERY, {
-  context: {
-    headers: {
-      'folks-token':
-        typeof window !== 'undefined'
-          ? localStorage.getItem('folks-token')
-          : '',
-    },
-  },
-  nextFetchPolicy: 'network-only',
-});
+```json
+// For linting
+{
+  // ...same
+  "exclude": ["dist", "node_modules", "src/**/*.test.tsx"]
+}
 ```
 
-꽤 복잡(?)해졌으나 크게 두가지 문제를 모두 해결하게 된 방법이다
+주요하게 볼 부분만 설명을 더하면 될 것 같다(귀찮은게 절 대 아님)
+plugins에 `typescript-plugin-css-modules` 를 지정해놓았는데 이 역할은 css모듈을 사용할 경우 클래스를 IDE에서 잡을 수 있게 도와주는 역할이다.
 
-1번 문제였던 캐싱된 데이터가 업데이트 되지 않던 현상 => nextFetchPolicy를 통해서 캐시를 사용하지 않고 매번 네트워크 요청을 만드는 것
-2번 문제였던 헤더에 localStorage에 있는 정보를 사용해야 할 경우 apollo.ts에서 설정해준것이 반영되지 않던 현상 -> context에 직접 주입
+린트용에서는 exclude에 stroybook이 없는것을 볼 수 있는데 storybook파일에 tsconfig의 린트를 걸면 난장판이 되기때문에 빼줫다.
 
-을 통해서 해결하였다.
+그래서 `.eslintrc`의 옵션은 아래와 같이 가리키게 되고
 
-어떻게보면 정말 간단하고 당연한(REST API 짱.. 익숙한게 최고.. 읍읍) 접근법일 수 있으나
+```json
+"parserOptions": { "project": "./tsconfig.eslint.json" },
+```
 
-SSR과 query방식의 데이터 호출을 제대로 사용해보려고 한 것은 처음이라 문제점을 찾는 과정까지도 시간이 좀 걸린 것 같다.
+rollup의 config를 보면 아래와 같이 가리키게 된다.
 
-이 외에도 lazyQuery를 쓴 이유는 앱이 렌더되는 시점은 useEffect에서 해당 쿼리를 부르기 위해서이다.
+```json
+typescript({ tsconfig: './tsconfig.json', declarationDir: 'dist' }),
+```
 
-# 3. 결론
+## 2.3 babelrc.json
 
-기본적으로 프로젝트를 진행하는데에 있어 프론트 부분에서 중요하다고 생각한 유저의 데이터 활용 및 Auth 관련문제를 해결하게 되었다.
-뭔가 어이없게 설정 몇개로 해결된 것에 있어 사고과정을 진행한 시간이 아깝다 생각이 들기도 하고 그렇다..
+```json
+{
+  "presets": [["react-app", { "flow": false, "typescript": true }]],
+  "plugins": ["babel-plugin-styled-components"]
+}
+```
 
-주니어를 벗어나기가 쉽지않다.
-추가로 SSR은 유저들이 작성한 게시글을 뿌려줄때 쿼리를 이용해 받은 포스트번호를 써서 활용할 수 있을 것 같다.(이러면 애초에 보안상 큰 문제도 없을것 같다.)
+styled-components를 위한 바벨 플러그인을 추가해줬다.
+flow는 주석을 통해 타입을 확인하게 해주는 것인데 ts를 쓰므로 필요가 없어 false이다.
 
-다음편은 Toast UI를 통해 Editor를 가져오는 방법을 다른 멋진분의 블로그를 통해 구현한 일부분을 포스팅해보겠다.
+이렇게 React Component, Hooks, css를 번들링하기 위한 세팅이 끝났다.
 
-끝
+# 3. 폴더구조
+
+![folder-structure](../static/images/posts/rollup-folders.png)
+
+여러명이서 작업을 할 것으로 예상이 되어 간단하게 husky를 사용해 lint를 커밋전에 먼저 돌리게 설정해놓았다.
+
+스토리북의 번들링은 Docker파일을 설정해놓아 CI/CD에 사용되고 스토리북과 실제 작성된 컴포넌트 간의 린트 조절을 위해
+tsconfig를 린트용과 실제 번들링용으로 별도로 두었다.
+
+아무래도 2편으로 나눠서 작업을 해야할 것 같다..
+
+다음편에는 npm에 호스팅을 하고 실제로 어떤방식으로 에러를 잡으면서 작업을 해야하는지에 관해 포스팅하고
+
+만들어놓은 공통 컴포넌트를 어떻게 storybook에서 활용하는지를 포스팅해야겠다.
+
+1편 끝!
 
 ## 참고
 
-- [Queries - Fetch data with the useQuery hook](https://www.apollographql.com/docs/react/data/queries/)
-- [Nextjs Docs - Authentication](https://nextjs.org/docs/authentication)
+- [npm/peer-dependencies](https://nodejs.org/es/blog/npm/peer-dependencies/)
+  참고 추후 추가 예정..
