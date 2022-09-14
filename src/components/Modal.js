@@ -7,7 +7,9 @@ const Modal = function ({ isVisible, Component, handleModal }) {
     container.setAttribute('class', 'modal-container');
     const wrapper = document.createElement('div');
     const button = document.createElement('button');
-    button.textContent = 'X';
+    button.innerHTML = `
+    <i class="fa fa-times" aria-hidden="true"></i>
+    `;
     button.className = 'quit-modal-button';
     wrapper.className = 'modal-wrapper';
     wrapper.appendChild(button);
