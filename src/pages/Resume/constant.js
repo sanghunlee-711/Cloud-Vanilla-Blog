@@ -229,12 +229,17 @@ export const PROJECT = [
       {
         explanation:
           '기기 데이터 및 현장 자료 관제와 TCP서버로부터의 데이터 활용을 위한 백오피스',
-        href: 'https://www.npmjs.com/package/@oysterable_public/oysterable-ui',
+        href: 'https://oa-console.oysterable.com/',
         subList: [],
       },
       {
         explanation:
           'React, Hooks, ContextAPI, React-Query를 적극활용하여 개발 진행',
+        href: '',
+        subList: [],
+      },
+      {
+        explanation: '권한별 메뉴 접근 및 렌더링을 통한 다양한 UX 제공',
         href: '',
         subList: [],
       },
@@ -254,7 +259,7 @@ export const PROJECT = [
       {
         explanation:
           '오늘의 분리수거 앱의 데이터 및 유저 관리를 위한 백오피스 개발',
-        href: 'https://www.npmjs.com/package/@oysterable_public/oysterable-ui',
+        href: 'https://tr-console.oysterable.com/',
         subList: [],
       },
       {
@@ -266,6 +271,11 @@ export const PROJECT = [
       {
         explanation:
           '앱의 실제 렌더 모습과 싱크로율을 맞춘 다양한 미리보기 기능 제공',
+        href: '',
+        subList: [],
+      },
+      {
+        explanation: '권한별 메뉴 접근 및 렌더링을 통한 다양한 UX 제공',
         href: '',
         subList: [],
       },
