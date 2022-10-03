@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
-const Dotenv = require('dotenv-webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const isDevelopment = process.env.NODE_ENV === 'development';
 //ref: https://stackoverflow.com/questions/43209666/react-router-v4-cannot-get-url
@@ -21,10 +20,6 @@ let plugins = [
   new CleanWebpackPlugin({
     cleanAfterEveryBuildPatterns: ['dist'],
   }),
-  // new Dotenv({
-  //   systemvars: true,
-  //   path: `./.env.${isDevelopment ? 'development' : 'production'}`,
-  // }),
 ];
 if (!isDevelopment) {
   mode = 'production';
@@ -82,19 +77,9 @@ module.exports = (env) => {
       hot: true,
       host: 'localhost',
       port: 8800,
-      // historyApiFallback: true,
-      // compress: true,
-      // allowedHosts: 'all',
     },
     resolve: {
       extensions: ['.js'],
-      // fallback: {
-      //   buffer: require.resolve('buffer'),
-      //   process: require.resolve('process'),
-      // },
-      // alias: {
-      //   process: 'process',
-      // },
     },
   };
 };
