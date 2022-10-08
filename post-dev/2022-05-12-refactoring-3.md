@@ -1,5 +1,6 @@
 ---
 title: 리액트에서 비즈니스 로직을 나눠보자[3 - ContextAPI마저 활용해보자]
+summary: 자유로운 리액트에 자유롭게 틀을 짜보려 노력하는 글이다.
 author: Sanghun lee
 date: 2022-05-12 11:33:00 +0800
 categories: [FE, React]

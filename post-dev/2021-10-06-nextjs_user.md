@@ -1,6 +1,7 @@
 ---
 slug: 2021-10-06-nextjs_user
 title: Next JS를 공부해보자[2편-Auth]
+summary: 인증 인가는 아무리 해도 어려운 것이다.
 author: Sanghun lee
 date: 2021-10-06 11:33:00 +0800
 folder: [post-dev]
