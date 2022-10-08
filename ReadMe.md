@@ -54,9 +54,9 @@
 - setStating을 하는 경우 render함수를 다시 호출함으로서 state기반으로 리렌더가 발생하게 됨.
 
 ```js
-const Component = new Component({$target}) {
+const Component = function ({ $target }) {
   this.$target = $target;
-  const wrapper = document.createElement("div");
+  const wrapper = document.createElement('div');
   wrapper.setAttribute('class', 'component-wrapper');
   this.$target.appendChild(wrapper);
 
@@ -65,26 +65,26 @@ const Component = new Component({$target}) {
   this.setState = (nextState) => {
     this.state = nextState;
     this.render();
-  }
+  };
 
   this.toggle = () => {
     this.setState(!this.state);
-  }
+  };
 
   this.render = () => {
-    this.wrapper.innerHTML=`
+    this.wrapper.innerHTML = `
       <button class="toggle-button"></button>
       ${this.state ? '<div>Fun Vanila js!</div>' : '<div>Fun Coding!</div>'}
-    `
-  }
+    `;
+  };
 
-  this.wrapper.addEventListener('click', (e)=>{
-    if(e.target.className !== 'toggle-button') return;
-    this.toggle()
+  this.wrapper.addEventListener('click', (e) => {
+    if (e.target.className !== 'toggle-button') return;
+    this.toggle();
   });
 
   this.render();
-}
+};
 ```
 
 ## 2. 라우터
