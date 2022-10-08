@@ -1,6 +1,7 @@
 ---
 slug: 2021-06-12-Cors-Preflight
 title: Cors와 Preflight
+summary: Cors와 Preflight를 정리 해본 글이다.
 author: Sanghun Lee
 date: 2021-06-12 11:33:00 +0800
 categories: [BE, Resource]

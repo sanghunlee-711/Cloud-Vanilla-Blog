@@ -1,6 +1,7 @@
 ---
 slug: 2022-04-13-JS-data-structure
 title: 자바스크립트로 자료구조와 알고리즘 기본을 배워보자-1 [자료구조]
+summary: 기초체력 증진이 나의 살길이라 생각해 열심히 정리해보았다.
 author: Sanghun lee
 date: 2022-04-13 11:33:00 +0800
 categories: [DataStructure, Javascript]

@@ -95,7 +95,7 @@ const Post = function ({ $target }) {
         (
           {
             slug,
-            frontMatter: { title, date, image, categories, tags },
+            frontMatter: { title, date, image, categories, tags, summary },
             content,
           },
           index
@@ -127,7 +127,7 @@ const Post = function ({ $target }) {
                 </div>
                 </div>
                 <div class="preview_content">
-                    ${setPreview(JSON.parse(content))}
+                    ${summary ? summary : setPreview(JSON.parse(content))}
                 </div>
               </div>
             </a>
