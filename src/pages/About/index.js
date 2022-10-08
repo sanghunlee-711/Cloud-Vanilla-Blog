@@ -15,10 +15,6 @@ const About = function ({ $target }) {
     modal.setState(nextState.isResumeModal);
   };
 
-  // const onHandleResumeModal = () => {
-  //   this.setState({ ...this.state, isResumeModal: !this.state.isResumeModal });
-  // };
-
   const onMovetoResume = () => {
     window.location.assign(`${PAGE_ADDRESS}/#resume`);
   };
@@ -47,15 +43,8 @@ const About = function ({ $target }) {
 
   this.render();
 
-  // const modal = new Modal({
-  //   isVisible: this.state.isResumeModal,
-  //   Component: Resume,
-  //   handleModal: onHandleResumeModal,
-  // });
-
   wrapper.addEventListener('click', (e) => {
     if (e.target.classList.contains('resume-button')) {
-      // onHandleResumeModal();
       onMovetoResume();
     }
 
