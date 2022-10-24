@@ -1,3 +1,7 @@
+/*
+customized md style
+*/
+
 pre code.hljs {
   display: block;
   overflow-x: auto;
@@ -6,15 +10,7 @@ pre code.hljs {
 code.hljs {
   padding: 3px 5px;
   background-color: rgb(251, 251, 251);
-} /*!
-  Theme: GitHub Dark Dimmed
-  Description: Dark dimmed theme as seen on github.com
-  Author: github.com
-  Maintainer: @Hirse
-  Updated: 2021-05-15
-
-  Colors taken from GitHub's CSS
-*/
+}
 .hljs {
   color: black;
   background: white;
