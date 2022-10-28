@@ -47,7 +47,15 @@ const LatestPost = function ({ $target }) {
         (
           {
             slug,
-            frontMatter: { title, date, image, categories, tags, folder },
+            frontMatter: {
+              title,
+              date,
+              image,
+              categories,
+              tags,
+              folder,
+              summary,
+            },
             content,
           },
           index
@@ -79,7 +87,7 @@ const LatestPost = function ({ $target }) {
                 </div>
                 </div>
                 <div class="preview_content">
-                    ${setPreview(JSON.parse(content))}
+                    ${summary || setPreview(JSON.parse(content))}
                 </div>
               </div>
             </a>
