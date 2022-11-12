@@ -5,7 +5,7 @@ summary: TDD, 클린코드에 조금 더 가까이!
 author: Sanghun lee
 date: 2022-11-12 11:33:00 +0800
 categories: [TDD, Javascript]
-folder: [post-dev]
+folder: [post-personnel]
 tags: [TDD]
 math: true
 mermaid: true
