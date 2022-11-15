@@ -1,5 +1,5 @@
 ---
-slug: 2022-11-12-next-step-tdd-1
+slug: 2022-11-12-next-step-tdd-2
 title: 넥스트스텝 스터디 참여후기(2주차)
 summary: TDD, 클린코드에 조금 더 가까이!
 author: Sanghun lee
