@@ -1,12 +1,16 @@
 import * as EXPLANATION from './constant.js';
 
-const Explanation = function ({ $target }) {
-  this.$target = $target;
-  const wrapper = document.createElement('div');
-  this.$target.appendChild(wrapper);
+class Explanation {
+  constructor({ $target }) {
+    this.$target = $target;
+    this.$wrapper = document.createElement('div');
+    $target.appendChild(this.$wrapper);
 
-  this.render = () => {
-    wrapper.innerHTML = `
+    this.render();
+  }
+
+  render = () => {
+    this.$wrapper.innerHTML = `
     <div class="resume-common-wrapper">
       <h1>EXPLANAITON</h1>
       <p>
@@ -15,7 +19,6 @@ const Explanation = function ({ $target }) {
     </div>
     `;
   };
-  this.render();
-};
+}
 
 export default Explanation;

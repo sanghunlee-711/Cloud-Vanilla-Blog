@@ -1,45 +1,57 @@
 import { API_ADDRESS } from '../constants/config.js';
 import { getContentId, resetDisqus } from '../utils/index.js';
-const Content = function ({ $target }) {
-  this.$target = $target;
-  this.contentId = getContentId().contentId;
-  this.type = getContentId().type;
+import { addRouteEventListener } from '../utils/navigate.js';
 
-  const wrapper = document.createElement('main');
-  wrapper.setAttribute('class', 'content-main-container');
-  this.$target.appendChild(wrapper);
+class Content {
+  constructor({ $target }) {
+    this.$target = $target;
+    this.contentId = getContentId().contentId;
+    this.type = getContentId().type;
+    this.$wrapper = document.createElement('main');
+    this.$wrapper.setAttribute('class', 'content-main-container');
+    $target.appendChild(this.$wrapper);
 
-  this.data = {};
+    this.data = {};
 
-  this.setData = (nextData) => {
+    this.getPostData();
+  }
+
+  setData = (nextData) => {
     this.data = { ...nextData };
     this.render();
   };
 
-  this.getPostData = async (slug) => {
-    const res = await fetch(
-      `${API_ADDRESS}/post?slug=${this.contentId}&type=${this.type}`
-    );
-    const resJson = await res.json();
-    const data = await resJson;
-    // loadCommentBox(`${this.type || 'error'}_${this.contentId || 'error'}`);
-    this.setData(data);
+  getPostData = async () => {
+    try {
+      const res = await fetch(
+        `${API_ADDRESS}/post?slug=${this.contentId}&type=${this.type}`
+      );
+      const resJson = await res.json();
+      const data = await resJson;
+      this.setData(data);
+    } catch (e) {
+      console.error('게시물 데이터 불러오기 에러', e);
+    }
   };
 
-  this.render = () => {
-    const data = this.data;
-    const { src, width, height } = this.data.frontMatter.image;
+  render = () => {
+    const {
+      image: { src, width, height },
+      title,
+      author,
+      date,
+    } = this.data.frontMatter;
 
-    wrapper.innerHTML = `
+    this.$wrapper.innerHTML = `
       <div class="title-container">
-      <h1 class="title"> ${data.frontMatter.title}</h1>
+      <h1 class="title"> ${title}</h1>
       <div class="title-info">
         <div>
-          <span>${data.frontMatter.author}</span>
-          <span>${data.frontMatter.date.split(' ')[0]}</span>
+          <span>${author}</span>
+          <span>${date?.split(' ')[0]}</span>
         </div>
         <div>
-          <a href="#post"> 목록 </a>
+          <a href="/post"> 목록 </a>
         </div>
       </div>
       </div>
@@ -49,20 +61,24 @@ const Content = function ({ $target }) {
           style="width: ${width}px; height: ${height}px">
       </div>
       <div class="hljs">
-        ${JSON.parse(data.content)}
+        ${JSON.parse(this.data.content)}
       </div>
       <div id="disqus_thread"></div>
     `;
 
     resetDisqus(
-      `https://blog.cloud-sanghun.com/#!${data.frontMatter.title}`,
-      `https://blog.cloud-sanghun.com/#!${data.frontMatter.title}`,
-      data.frontMatter.title,
+      `https://blog.cloud-sanghun.com/#!${title}`,
+      `https://blog.cloud-sanghun.com/#!${title}`,
+      title,
       'ko'
     );
   };
-  // this.render();
-  this.getPostData();
-};
+
+  addEventListener = () => {
+    this.$wrapper.addEventListener('click', (e) => {
+      addRouteEventListener(e);
+    });
+  };
+}
 
 export default Content;

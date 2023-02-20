@@ -67,12 +67,11 @@ export const makeGA = () => {
 };
 
 export const getContentId = () => {
-  const hashLocation = window.location.hash;
+  const urlParams = new URLSearchParams(window.location.search);
 
-  if (!hashLocation.includes('#contentId=')) return null;
+  const [contentId, type] = [urlParams.get('id'), urlParams.get('type')];
 
-  const [contentId, type] = hashLocation.split('&');
-  return { contentId: contentId.split('=')[1], type: type.split('=')[1] };
+  return { contentId, type };
 };
 
 export const setPreview = (html) => {

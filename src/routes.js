@@ -1,43 +1,68 @@
 import { ROUTES } from './constants/route.js';
-import { getContentId } from './utils/index.js';
 
-function renderHTML(el, route) {
-  el.innerHTML = '';
+export default class Router {
+  constructor({ $target }) {
+    this.$target = $target;
+    this.routeList = ROUTES;
+    this.doInitialRouting();
+    this.addEventListener();
+  }
 
-  const Component = route.components;
+  renderHTML = ({ $element, routeObject }) => {
+    $element.innerHTML = '';
 
-  new Component({
-    $target: el,
-  });
-}
+    const Component = routeObject.components;
 
-function getHashRoute() {
-  let route = ROUTES[0];
+    new Component({
+      $target: $element,
+    });
+  };
 
-  ROUTES.forEach((hashRoute) => {
-    const hashLocation = window.location.hash;
+  doInitialRouting = () => {
+    this.renderHTML({
+      $element: this.$target,
+      routeObject: this.routeList[0],
+    });
+  };
 
-    if (getContentId()) {
-      route = ROUTES.filter((el) => el.name === 'Content')[0];
-      return route;
-    }
+  getRouteObject = () => {
+    let route = this.routeList[0];
 
-    if (hashLocation === hashRoute.path) {
-      route = hashRoute;
-    }
-  });
-  return route;
-}
+    this.routeList.forEach((historyRoute) => {
+      const url = new URL(window.location);
+      const pathName = url.pathname;
 
-export function initialRoutes({ el }) {
-  // renderHTML(el, ROUTES[0]);
+      const { path } = historyRoute;
 
-  window.addEventListener('hashchange', () => {
-    return renderHTML(el, getHashRoute());
-  });
-  //얘가 두번 렌더링 시키는 이유일듯..
-  //*todo: 리팩토링 필요
-  window.onload = () => {
-    return renderHTML(el, getHashRoute());
+      if (pathName === path) route = historyRoute;
+    });
+
+    return route;
+  };
+
+  addEventListener = () => {
+    window.addEventListener('routechange', (event) => {
+      const {
+        detail: { to, isReplace },
+      } = event;
+
+      const isChangeComponent =
+        isReplace === false || detail.to !== location.pathname;
+
+      if (isChangeComponent) window.history.pushState(null, '', to);
+      else window.history.replaceState(null, '', to);
+
+      this.renderHTML({
+        $element: this.$target,
+        routeObject: this.getRouteObject(),
+      });
+    });
+
+    window.addEventListener('popstate', () => {
+      this.renderHTML({
+        $element: this.$target,
+        routeObject: this.getRouteObject(),
+      });
+    });
   };
 }
