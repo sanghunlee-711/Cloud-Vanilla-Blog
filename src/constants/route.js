@@ -1,37 +1,37 @@
 import About from '../pages/About/index.js';
 import Content from '../pages/Content.js';
-import Home from '../pages/Home/index.js';
-import Post from '../pages/Post.js';
-import Resume from '../pages/Resume/index.js';
 import GuestBook from '../pages/GuestBook/index.js';
+import Home from '../pages/Home/index.js';
+import { Posts } from '../pages/Posts.js';
+import Resume from '../pages/Resume/index.js';
 export const ROUTES = [
   {
-    path: '#home',
+    path: '/',
     name: 'Home',
     components: Home,
   },
   {
-    path: '#about',
+    path: '/about',
     name: 'About',
     components: About,
   },
   {
-    path: '#post',
+    path: '/post',
     name: 'Post',
-    components: Post,
+    components: Posts,
   },
   {
-    path: '#guest',
+    path: '/guest',
     name: 'GuestBook',
     components: GuestBook,
   },
   {
-    path: '#resume',
+    path: '/resume',
     name: 'Resume',
     components: Resume,
   },
   {
-    path: '#contentId=:id',
+    path: '/content',
     name: 'Content',
     components: Content,
   },

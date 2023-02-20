@@ -1,5 +1,6 @@
 import { API_ADDRESS } from '../constants/config.js';
 import { getContentId, resetDisqus } from '../utils/index.js';
+
 const Content = function ({ $target }) {
   this.$target = $target;
   this.contentId = getContentId().contentId;
@@ -61,7 +62,7 @@ const Content = function ({ $target }) {
       'ko'
     );
   };
-  // this.render();
+
   this.getPostData();
 };
 

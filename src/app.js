@@ -1,7 +1,7 @@
 import ContentLayout from './components/ContentLayout.js';
 import HeaderContainer from './components/HeaderContainer.js';
 import ScrollTopButton from './components/ScrollTopButton.js';
-import { initialRoutes } from './routes.js';
+import Router from './routes.js';
 
 const App = function ({ $target }) {
   this.$target = $target;
@@ -12,7 +12,8 @@ const App = function ({ $target }) {
   new ScrollTopButton({ $target: this.$target });
 
   //routing
-  initialRoutes({ el: document.querySelector('.layout-container') });
+  new Router({ $target: document.querySelector('.layout-container') });
+  // initialRoutes({ el: document.querySelector('.layout-container') });
 
   // if (process.env.NODE_ENV !== 'development') makeGA();
 };

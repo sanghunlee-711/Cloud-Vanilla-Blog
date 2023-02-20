@@ -1,5 +1,6 @@
 import { POST_SELECT_MAP } from '../../../constants/common.js';
-import { API_ADDRESS, PAGE_ADDRESS } from '../../../constants/config.js';
+import { API_ADDRESS } from '../../../constants/config.js';
+import { addRouteEventListener } from '../../../utils/navigate.js';
 const LatestPost = function ({ $target }) {
   this.$target = $target;
 
@@ -7,9 +8,9 @@ const LatestPost = function ({ $target }) {
     sortKey: POST_SELECT_MAP[0].key,
   };
 
-  const wrapper = document.createElement('main');
-  wrapper.setAttribute('class', 'main-post-container');
-  this.$target.appendChild(wrapper);
+  const $wrapper = document.createElement('main');
+  $wrapper.setAttribute('class', 'main-post-container');
+  this.$target.appendChild($wrapper);
 
   this.data = [];
 
@@ -31,16 +32,12 @@ const LatestPost = function ({ $target }) {
     return html.replace(regEx, '').slice(0, 120) + '...';
   };
 
-  const onSeeMore = () => {
-    window.location.assign(`${PAGE_ADDRESS}/#post`);
-  };
-
   this.render = () => {
-    wrapper.innerHTML = `
+    $wrapper.innerHTML = `
     <main class="post_container">
     <div class="see-more">
       <h1>Latest Post</h1>
-      <button class="basic-button" data-id="see-more">See more post</button>
+      <a href="/post" class="basic-button" data-id="see-more">See more post</a>
     </div>
     ${this.data
       .map(
@@ -62,9 +59,7 @@ const LatestPost = function ({ $target }) {
         ) => {
           return `
           <article class="each_post_container">
-            <a href="#contentId=${slug}&type=${
-            folder[0]
-          }"  data-link class="nav_link">
+            <a href="/content" class="nav_link">
               <div class="title_image" style="background-image:url(${
                 image.src
               })"></div>
@@ -102,13 +97,8 @@ const LatestPost = function ({ $target }) {
 
   getPostData();
 
-  wrapper.addEventListener('click', (e) => {
-    if (
-      e.target.className !== 'basic-button' ||
-      e.target.dataset.id !== 'see-more'
-    )
-      return;
-    onSeeMore(e);
+  this.$target.addEventListener('click', (e) => {
+    addRouteEventListener(e);
   });
 };
 

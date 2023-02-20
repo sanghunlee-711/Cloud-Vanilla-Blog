@@ -1,5 +1,6 @@
 import { $ROOT } from '../constants/common.js';
 import { SHOW_ROUTE } from '../constants/route.js';
+import { addRouteEventListener } from '../utils/navigate.js';
 import BurgerNavPopup from './BurggerNavPopup.js';
 import Modal from './Modal.js';
 
@@ -33,6 +34,9 @@ const Nav = function ({ $target }) {
             </li>
           `;
         }).join('')}
+        <li>
+          <a href = "/post?id=test&type=test1">TEST</a>
+        </li>
       </ul>
       <button class="burger-button">
         <div class="burger-button-line"></div>
@@ -55,10 +59,8 @@ const Nav = function ({ $target }) {
     ) {
       handleBurgerButton();
     }
-  });
 
-  window.addEventListener('hashchange', () => {
-    this.setState({ ...this.state, isBurger: false });
+    addRouteEventListener(e);
   });
 };
 
