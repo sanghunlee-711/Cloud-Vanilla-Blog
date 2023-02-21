@@ -4,7 +4,7 @@ export default class Router {
   constructor({ $target }) {
     this.$target = $target;
     this.routeList = ROUTES;
-    this.doInitialRouting();
+    // this.doInitialRouting();
     this.addEventListener();
   }
 
