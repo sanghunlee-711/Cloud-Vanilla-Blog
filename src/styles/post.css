@@ -1,5 +1,9 @@
 @import './style.css';
 
+.post-list-container {
+  list-style: none;
+}
+
 .layout-container {
   padding: 24px;
   max-width: var(--basic-width);
@@ -106,8 +110,18 @@ a {
   margin: 0px;
 }
 .each_post_contents h1 {
-  margin-bottom: 16px;
-  padding-bottom: 22px;
+  margin-bottom: 8px;
+  /* padding-bottom: 22px; */
+  width: 100%;
+}
+
+.each_post_contents h1 a {
+  display: block;
+  font-size: 24px;
+  width: calc(85vw);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .each_post_profile {

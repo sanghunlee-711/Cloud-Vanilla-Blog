@@ -8,7 +8,7 @@ export class Posts {
     this.$target = $target;
     this.data = [];
     this.$wrapper = document.createElement('main');
-    this.$wrapper.setAttribute('class', 'Post-main-container');
+    this.$wrapper.setAttribute('class', 'post-main-container');
     $target.appendChild(this.$wrapper);
 
     this.state = {
@@ -101,7 +101,7 @@ export class Posts {
         `;
       }).join('')}
     </ul>
-    <ul>
+    <ul class="post-list-container">
     ${this.data
       .map(
         ({
@@ -140,7 +140,16 @@ export class Posts {
         this.onSelectPostMenu(e.target.dataset.key);
       }
 
-      addRouteEventListener(e);
+      // addRouteEventListener(e);
+    });
+    const anchorList = this.$wrapper.querySelectorAll('.post-anchor');
+    console.log(anchorList);
+    anchorList.forEach((el) => {
+      console.log(el, 'HEllo??');
+      el.addEventListener('click', (e) => {
+        console.log('hello?');
+        addRouteEventListener(e);
+      });
     });
   };
 }

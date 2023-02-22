@@ -16,6 +16,7 @@ class LatestPost {
     this.data = [];
 
     this.getPostData();
+    this.render();
     this.addEventListeners();
   }
 
@@ -39,7 +40,7 @@ class LatestPost {
       <h1>Latest Post</h1>
       <a href="/post" class="basic-button" data-id="see-more">See more post</a>
     </div>
-    <ul>
+    <ul class="post-list-container">
     ${this.data
       .map(
         (
@@ -81,6 +82,17 @@ class LatestPost {
   };
 
   addEventListeners = () => {
+    const anchorList = this.$wrapper.querySelectorAll('.post-anchor');
+    console.log(anchorList);
+
+    anchorList.forEach((el) => {
+      console.log(el, 'HEllo??');
+      el.addEventListener('click', (e) => {
+        console.log('hello?');
+        addRouteEventListener(e);
+      });
+    });
+
     this.$wrapper.addEventListener('click', (e) => {
       addRouteEventListener(e);
     });
