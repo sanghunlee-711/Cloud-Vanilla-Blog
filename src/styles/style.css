@@ -363,6 +363,10 @@ body {
   margin-bottom: 24px;
 }
 
+.about-main-container a:first-child {
+  margin-right: 12px;
+}
+
 .guest-book-wrapper {
   display: flex;
   flex-direction: column;

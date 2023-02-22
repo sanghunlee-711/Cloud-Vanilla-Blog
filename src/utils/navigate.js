@@ -12,7 +12,6 @@ export const routeEvent = (to, isReplace = false) => {
 };
 
 export const addRouteEventListener = (e) => {
-  console.log(e.target);
   e.preventDefault();
 
   const target = e.target;

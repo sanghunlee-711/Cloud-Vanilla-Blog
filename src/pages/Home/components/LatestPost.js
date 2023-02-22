@@ -82,17 +82,6 @@ class LatestPost {
   };
 
   addEventListeners = () => {
-    const anchorList = this.$wrapper.querySelectorAll('.post-anchor');
-    console.log(anchorList);
-
-    anchorList.forEach((el) => {
-      console.log(el, 'HEllo??');
-      el.addEventListener('click', (e) => {
-        console.log('hello?');
-        addRouteEventListener(e);
-      });
-    });
-
     this.$wrapper.addEventListener('click', (e) => {
       addRouteEventListener(e);
     });

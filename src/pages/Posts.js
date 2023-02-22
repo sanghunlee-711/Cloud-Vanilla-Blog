@@ -1,7 +1,6 @@
 import { PostCard } from '../components/PostCard.js';
 import { POST_SELECT_MAP } from '../constants/common.js';
 import { API_ADDRESS } from '../constants/config.js';
-import { addRouteEventListener } from '../utils/navigate.js';
 
 export class Posts {
   constructor({ $target }) {
@@ -140,16 +139,7 @@ export class Posts {
         this.onSelectPostMenu(e.target.dataset.key);
       }
 
-      // addRouteEventListener(e);
-    });
-    const anchorList = this.$wrapper.querySelectorAll('.post-anchor');
-    console.log(anchorList);
-    anchorList.forEach((el) => {
-      console.log(el, 'HEllo??');
-      el.addEventListener('click', (e) => {
-        console.log('hello?');
-        addRouteEventListener(e);
-      });
+      addRouteEventListener(e);
     });
   };
 }
