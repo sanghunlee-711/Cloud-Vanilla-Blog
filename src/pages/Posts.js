@@ -1,6 +1,7 @@
 import { PostCard } from '../components/PostCard.js';
 import { POST_SELECT_MAP } from '../constants/common.js';
 import { API_ADDRESS } from '../constants/config.js';
+import { addRouteEventListener, routeEvent } from '../utils/navigate.js';
 
 export class Posts {
   constructor({ $target }) {
@@ -9,12 +10,12 @@ export class Posts {
     this.$wrapper = document.createElement('main');
     this.$wrapper.setAttribute('class', 'post-main-container');
     $target.appendChild(this.$wrapper);
-
+    this.urlParams = new URLSearchParams(window.location.search);
     this.state = {
       currentPage: 1,
       contentIncrease: 3,
       totalItemCount: 1,
-      sortKey: POST_SELECT_MAP[0].key,
+      sortKey: this.urlParams.get('type') || POST_SELECT_MAP[0].key,
     };
 
     this.getPostData();
@@ -49,7 +50,6 @@ export class Posts {
       });
     } catch (e) {
       console.error('포스팅 데이터 불러오기 에러 발생');
-      window.location.href = '/';
     }
   };
 
@@ -74,7 +74,8 @@ export class Posts {
     }
   };
 
-  onSelectPostMenu = async (value) => {
+  onChangePostType = (value) => {
+    const targetURL = `/post?type=${value}`;
     this.setListData([]);
     this.setState({
       ...this.state,
@@ -83,62 +84,64 @@ export class Posts {
       totalItemCount: 1,
       sortKey: value,
     });
-    await this.getPostData();
+
+    routeEvent(targetURL);
   };
 
   render = () => {
     this.$wrapper.innerHTML = `
-    <main class="post_container">
-    <ul class="post-selector-container">
+    <div class="post_container">
+      <select class="post-selector">
       ${POST_SELECT_MAP.map(({ name, key }) => {
         return `
-          <li class="post-selector ${
-            key === this.state.sortKey ? 'active' : ''
-          }" data-key=${key}>
+          <option ${
+            key === this.state.sortKey ? 'selected' : ''
+          } value=${key} data-key=${key}>
             ${name}
-          </li>
+          </option>
         `;
       }).join('')}
-    </ul>
-    <ul class="post-list-container">
-    ${this.data
-      .map(
-        ({
-          slug,
-          frontMatter: { title, date, image, categories, tags, summary },
-          content,
-        }) => {
-          return `
-          <li>
-            ${PostCard({
-              imgUrl: image?.src,
-              slug,
-              sortKey: this.state.sortKey,
-              title,
-              categories,
-              date,
-              summary,
-              content,
-            })}
-        </li>
-      `;
-        }
-      )
-      .join('')}
+      </select>
+      <ul class="post-list-container">
+      ${this.data
+        .map(
+          ({
+            slug,
+            frontMatter: { title, date, image, categories, tags, summary },
+            content,
+          }) => {
+            return `
+            <li>
+              ${PostCard({
+                imgUrl: image?.src,
+                slug,
+                sortKey: this.state.sortKey,
+                title,
+                categories,
+                date,
+                summary,
+                content,
+              })}
+          </li>
+        `;
+          }
+        )
+        .join('')}
       </ul>
-      <section class="pagination"></section>
-  </main>
+  </div>
     `;
   };
 
   addEventListener = () => {
     window.addEventListener('scroll', this.handleInfiniteScroll);
 
-    this.$target.addEventListener('click', (e) => {
+    this.$wrapper.addEventListener('change', (e) => {
       if (e.target.classList.contains('post-selector')) {
-        this.onSelectPostMenu(e.target.dataset.key);
+        this.onChangePostType(e.target.value);
       }
+    });
 
+    this.$target.addEventListener('click', (e) => {
       addRouteEventListener(e);
     });
   };

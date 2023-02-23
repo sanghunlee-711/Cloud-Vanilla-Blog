@@ -14,7 +14,7 @@
 .post_container {
   max-width: var(--basic-width);
   width: 100%;
-  margin: 60px auto 30px auto;
+  margin: 30px auto;
 }
 
 .content-link {
@@ -32,7 +32,7 @@
   }
 
   .post_container {
-    margin: 0px auto 12px auto;
+    margin: 16px auto;
   }
 }
 
