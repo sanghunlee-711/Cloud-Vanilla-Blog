@@ -27,10 +27,10 @@ class About {
     const postButton = document.createElement('a');
 
     resumeButton.className = 'resume-button basic-button';
-    resumeButton.textContent = '이력서 보기';
+    resumeButton.textContent = 'Resume';
     resumeButton.href = '/resume';
     postButton.className = 'post-button basic-button';
-    postButton.textContent = '다양한 게시글 보기';
+    postButton.textContent = 'More Post';
     postButton.href = '/post';
 
     buttonWrapper.append(resumeButton, postButton);

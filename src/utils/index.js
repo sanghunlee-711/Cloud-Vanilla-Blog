@@ -24,8 +24,6 @@ export const navigateTo = (pathName) => {
 
 export const loadCommentBox = (contentId) => {
   // contentId = contentId.split('-').join('_');
-  console.log('@?@#?@#?@#?@#?', PAGE_ADDRESS, contentId);
-
   /* * * Disqus Reset Function * * */
 };
 
