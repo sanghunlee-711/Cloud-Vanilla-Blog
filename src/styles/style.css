@@ -319,6 +319,26 @@ body {
   transition: max-height 0.26s ease-out;
 }
 
+.post-selector {
+  width: calc(100vw * 160 / 1140);
+  min-width: 120px;
+  max-width: 160px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border: none;
+  border: 1px solid var(--basic-gray);
+  border-radius: 6px;
+  background-color: white;
+}
+
+.post-selector:hover {
+  background-color: var(--basic-gray);
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+
 .post-selector-container {
   display: flex;
   justify-content: space-between;
@@ -385,6 +405,7 @@ body {
   border-radius: 100%;
   border: 1px solid gray;
   cursor: pointer;
+  color: black;
 }
 
 .scroll-top-button:hover {
