@@ -4,7 +4,7 @@ export default class Router {
   constructor({ $target }) {
     this.$target = $target;
     this.routeList = ROUTES;
-
+    // this.doInitialRouting();
     this.addEventListener();
   }
 
@@ -46,10 +46,10 @@ export default class Router {
         detail: { to, isReplace },
       } = event;
 
-      const isReplaceable =
-        isReplace === true || to === location.pathname + location.search;
+      const isChangeComponent =
+        isReplace === false || detail.to !== location.pathname;
 
-      if (!isReplaceable) window.history.pushState(null, '', to);
+      if (isChangeComponent) window.history.pushState(null, '', to);
       else window.history.replaceState(null, '', to);
 
       this.renderHTML({

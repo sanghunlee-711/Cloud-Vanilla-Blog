@@ -1,13 +1,14 @@
 import { PostCard } from '../components/PostCard.js';
 import { POST_SELECT_MAP } from '../constants/common.js';
 import { API_ADDRESS } from '../constants/config.js';
+import { addRouteEventListener } from '../utils/navigate.js';
 
 export class Posts {
   constructor({ $target }) {
     this.$target = $target;
     this.data = [];
     this.$wrapper = document.createElement('main');
-    this.$wrapper.setAttribute('class', 'post-main-container');
+    this.$wrapper.setAttribute('class', 'Post-main-container');
     $target.appendChild(this.$wrapper);
 
     this.state = {
@@ -100,7 +101,7 @@ export class Posts {
         `;
       }).join('')}
     </ul>
-    <ul class="post-list-container">
+    <ul>
     ${this.data
       .map(
         ({

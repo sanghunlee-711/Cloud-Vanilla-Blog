@@ -15,11 +15,10 @@ export const addRouteEventListener = (e) => {
   e.preventDefault();
 
   const target = e.target;
+  console.log({ target });
+  if (!(target instanceof HTMLAnchorElement)) return;
 
-  // if (!(target instanceof HTMLAnchorElement)) return;
-  if (target.href) {
-    const targetURL = e.target.href.replace(PAGE_ADDRESS, '');
-
-    routeEvent(targetURL);
-  }
+  const targetURL = e.target.href.replace(PAGE_ADDRESS, '');
+  console.log({ targetURL });
+  routeEvent(targetURL);
 };
