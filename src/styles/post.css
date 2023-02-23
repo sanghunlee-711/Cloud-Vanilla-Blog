@@ -1,5 +1,10 @@
 @import './style.css';
 
+.post-list-container {
+  list-style: none;
+  padding: 0px;
+}
+
 .layout-container {
   padding: 24px;
   max-width: var(--basic-width);
@@ -87,6 +92,9 @@ a {
   /* background-attachment: fixed; */
   background-position: center;
   border-radius: 8px;
+
+  /* box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15); */
+  margin: 24px 0px;
 }
 
 @media screen and (max-width: 512px) {
@@ -105,13 +113,40 @@ a {
 .each_post_container .each_post_contents {
   margin: 0px;
 }
+
+.each_post_contents {
+  padding: 12px 0px;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15);
+  /* border: 1px solid var(--basic-gray);
+  */
+
+  /* border-radius: 6px; */
+  /* box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15); */
+}
+
 .each_post_contents h1 {
-  margin-bottom: 16px;
-  padding-bottom: 22px;
+  margin-bottom: 8px;
+  margin-left: 12px;
+  /* padding-bottom: 22px; */
+  width: 100%;
+}
+
+.each_post_contents h1 a {
+  display: block;
+  font-size: 24px;
+  width: calc(85vw);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .each_post_profile {
   display: flex;
+  margin-left: 12px;
+}
+
+.preview_content {
+  margin-left: 12px;
 }
 
 .each_post_profile img {

@@ -34,9 +34,6 @@ const Nav = function ({ $target }) {
             </li>
           `;
         }).join('')}
-        <li>
-          <a href = "/post?id=test&type=test1">TEST</a>
-        </li>
       </ul>
       <button class="burger-button">
         <div class="burger-button-line"></div>

@@ -16,6 +16,7 @@ class LatestPost {
     this.data = [];
 
     this.getPostData();
+    this.render();
     this.addEventListeners();
   }
 
@@ -39,7 +40,7 @@ class LatestPost {
       <h1>Latest Post</h1>
       <a href="/post" class="basic-button" data-id="see-more">See more post</a>
     </div>
-    <ul>
+    <ul class="post-list-container">
     ${this.data
       .map(
         (
