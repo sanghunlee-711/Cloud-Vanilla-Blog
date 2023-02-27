@@ -7,13 +7,13 @@ const App = function ({ $target }) {
   this.$target = $target;
 
   //Basic Layout for this app
+
   new HeaderContainer({ $target: this.$target });
   new ContentLayout({ $target: this.$target });
   new ScrollTopButton({ $target: this.$target });
 
   //routing
   new Router({ $target: document.querySelector('.layout-container') });
-  // initialRoutes({ el: document.querySelector('.layout-container') });
 
   // if (process.env.NODE_ENV !== 'development') makeGA();
 };

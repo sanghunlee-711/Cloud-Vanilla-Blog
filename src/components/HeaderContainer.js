@@ -8,8 +8,6 @@ class HeaderContainer {
     this.$wrapper = document.createElement('header');
     this.$wrapper.setAttribute('class', 'header');
 
-    $target.appendChild(this.$wrapper);
-
     this.render();
     this.addListeners();
   }
@@ -17,6 +15,7 @@ class HeaderContainer {
   render = () => {
     new Header({ $target: this.$wrapper });
     new Nav({ $target: this.$wrapper });
+    this.$target.appendChild(this.$wrapper);
   };
 
   addListeners = () => {

@@ -70,12 +70,5 @@ export default class Router {
         routeObject: this.getRouteObject(),
       });
     });
-
-    // window.onload = () => {
-    // this.renderHTML({
-    //   $element: this.$target,
-    //   routeObject: this.getRouteObject(),
-    // });
-    // };
   };
 }
