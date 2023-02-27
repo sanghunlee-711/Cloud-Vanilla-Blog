@@ -7,12 +7,6 @@ const BurgerNavPopup = function ({ $target, handleModal }) {
   $wrapper.className = 'burger_list';
   this.$target.appendChild($wrapper);
 
-  /**
-   * todo
-   * 경로 맞춰서 path모양 바꾸깅
-   * 여기랑 다른 nav도
-   */
-
   this.render = () => {
     $wrapper.innerHTML = `
         ${SHOW_ROUTE.map((el) => {
@@ -31,8 +25,8 @@ const BurgerNavPopup = function ({ $target, handleModal }) {
     $wrapper.addEventListener('click', (e) => {
       const target = e.target;
       if (target instanceof HTMLAnchorElement) {
-        handleModal();
         addRouteEventListener(e);
+        handleModal(false);
       }
     });
   };

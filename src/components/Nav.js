@@ -23,8 +23,8 @@ class Nav {
     this.renderModal();
   };
 
-  handleBurgerButton = () => {
-    this.setState({ ...this.state, isBurger: !this.state.isBurger });
+  handleBurgerButton = (visible = !this.state.isBurger) => {
+    this.setState({ ...this.state, isBurger: visible });
   };
 
   render = () => {
@@ -51,7 +51,7 @@ class Nav {
     new Modal({
       isVisible: this.state.isBurger,
       Component: BurgerNavPopup,
-      handleModal: this.handleBurgerButton,
+      handleModal: this.handleBurgerButton.bind(this),
     });
   };
 

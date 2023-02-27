@@ -1,14 +1,15 @@
-const ContentLayout = function ({ $target }) {
-  this.$target = $target;
-  const wrapper = document.createElement('main');
-  wrapper.setAttribute('class', 'layout-container');
+class ContentLayout {
+  constructor({ $target }) {
+    this.$target = $target;
+    this.$wrapper = document.createElement('main');
 
-  if (!document.querySelector('.layout-container'))
-    this.$target.appendChild(wrapper);
+    this.render();
+  }
 
-  this.render = () => {};
-
-  this.render();
-};
+  render = () => {
+    this.$wrapper.setAttribute('class', 'layout-container');
+    this.$target.appendChild(this.$wrapper);
+  };
+}
 
 export default ContentLayout;

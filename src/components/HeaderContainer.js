@@ -7,8 +7,7 @@ class HeaderContainer {
     this.$target = $target;
     this.$wrapper = document.createElement('header');
     this.$wrapper.setAttribute('class', 'header');
-    this.$navContainer = document.createElement('div');
-    this.$wrapper.appendChild(this.$navContainer);
+
     $target.appendChild(this.$wrapper);
 
     this.render();
@@ -16,9 +15,8 @@ class HeaderContainer {
   }
 
   render = () => {
-    this.$navContainer.className = 'header_container';
-    new Header({ $target: this.$navContainer });
-    new Nav({ $target: this.$navContainer });
+    new Header({ $target: this.$wrapper });
+    new Nav({ $target: this.$wrapper });
   };
 
   addListeners = () => {
