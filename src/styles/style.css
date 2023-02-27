@@ -101,6 +101,7 @@ body {
 }
 
 .nav_list {
+  visibility: visible;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,7 +124,9 @@ body {
 }
 
 .burger-button {
-  display: none;
+  visibility: visible;
+  /* width: 0px;
+  height: 0px; */
 }
 
 @media screen and (max-width: 512px) {
@@ -132,12 +135,31 @@ body {
     justify-content: center;
     align-items: center;
   }
+
   .nav_list {
-    display: none;
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+    margin: 0px;
+    /* display: none; */
+  }
+
+  .nav_list li {
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+    /* color: transparent; */
+    /* display: none; */
+  }
+
+  .nav_list a {
+    width: 0px;
+    height: 0px;
+    /* display: none; */
   }
 
   .burger-button {
-    display: block;
+    visibility: visible;
     width: 45px;
     height: 45px;
     position: fixed;
@@ -159,6 +181,30 @@ body {
     margin: 2px 0;
     transition: all 0.15s ease-in-out;
   }
+}
+
+.burger-button {
+  visibility: visible;
+  width: 45px;
+  height: 45px;
+  position: fixed;
+  left: 12px;
+  top: 12px;
+  background-color: white;
+  border: none;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 100%;
+}
+
+.burger-button > div {
+  border-bottom: 2px solid #000;
+  width: 100%;
+  margin: 2px 0;
+  transition: all 0.15s ease-in-out;
 }
 
 .burger-contaier {

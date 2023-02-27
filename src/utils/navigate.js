@@ -1,5 +1,3 @@
-import { PAGE_ADDRESS } from '../constants/config.js';
-
 export const routeEvent = (to, isReplace = false) => {
   const customRouteEvent = new CustomEvent('routechange', {
     detail: {
@@ -16,9 +14,8 @@ export const addRouteEventListener = (e) => {
 
   const target = e.target;
 
-  // if (!(target instanceof HTMLAnchorElement)) return;
-  if (target.href) {
-    const targetURL = e.target.href.replace(PAGE_ADDRESS, '');
+  if (target.href && target.href.length) {
+    const targetURL = e.target.href;
 
     routeEvent(targetURL);
   }

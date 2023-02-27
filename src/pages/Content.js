@@ -14,6 +14,7 @@ class Content {
     this.data = {};
 
     this.getPostData();
+    this.addEventListeners();
   }
 
   setData = (nextData) => {
@@ -74,7 +75,7 @@ class Content {
     );
   };
 
-  addEventListener = () => {
+  addEventListeners = () => {
     this.$wrapper.addEventListener('click', (e) => {
       addRouteEventListener(e);
     });

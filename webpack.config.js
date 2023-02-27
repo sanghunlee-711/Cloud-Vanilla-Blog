@@ -77,6 +77,7 @@ module.exports = (env) => {
       hot: true,
       host: 'localhost',
       port: 8800,
+      historyApiFallback: false,
     },
     resolve: {
       extensions: ['.js'],

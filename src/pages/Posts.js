@@ -2,7 +2,6 @@ import { PostCard } from '../components/PostCard.js';
 import { POST_SELECT_MAP } from '../constants/common.js';
 import { API_ADDRESS } from '../constants/config.js';
 import { addRouteEventListener, routeEvent } from '../utils/navigate.js';
-
 export class Posts {
   constructor({ $target }) {
     this.$target = $target;
@@ -19,7 +18,7 @@ export class Posts {
     };
 
     this.getPostData();
-    this.render();
+
     this.addEventListener();
   }
 
@@ -60,16 +59,21 @@ export class Posts {
 
     if (endOfPage) {
       //페이지가 끝이면 끝내면 되긴 함.
-
+      let timer = null;
       if (
         this.state.currentPage * this.state.contentIncrease <=
         this.state.totalItemCount
       ) {
-        this.setState({
-          ...this.state,
-          currentPage: ++this.state.currentPage,
-        });
-        await this.getPostData();
+        if (!timer) {
+          timer = setTimeout(() => {
+            timer = null;
+            this.setState({
+              ...this.state,
+              currentPage: ++this.state.currentPage,
+            });
+            this.getPostData();
+          }, 400);
+        }
       }
     }
   };
@@ -133,6 +137,7 @@ export class Posts {
   };
 
   addEventListener = () => {
+    //* Todo: need debounce
     window.addEventListener('scroll', this.handleInfiniteScroll);
 
     this.$wrapper.addEventListener('change', (e) => {
@@ -141,7 +146,7 @@ export class Posts {
       }
     });
 
-    this.$target.addEventListener('click', (e) => {
+    this.$wrapper.addEventListener('click', (e) => {
       addRouteEventListener(e);
     });
   };

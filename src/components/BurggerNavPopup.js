@@ -29,9 +29,6 @@ const BurgerNavPopup = function ({ $target, handleModal }) {
 
   this.addEventListeners = () => {
     $wrapper.addEventListener('click', (e) => {
-      // if (e.target.classList.contains('burger-target')) {
-      //   handleModal();
-      // }
       const target = e.target;
       if (target instanceof HTMLAnchorElement) {
         handleModal();

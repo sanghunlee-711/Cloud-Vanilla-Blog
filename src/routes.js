@@ -41,13 +41,19 @@ export default class Router {
   };
 
   addEventListener = () => {
+    /* for initial render */
+    this.renderHTML({
+      $element: this.$target,
+      routeObject: this.getRouteObject(),
+    });
+    /* */
+
     window.addEventListener('routechange', (event) => {
       const {
         detail: { to, isReplace },
       } = event;
 
-      const isReplaceable =
-        isReplace === true || to === location.pathname + location.search;
+      const isReplaceable = isReplace === true || to === window.location.href;
 
       if (!isReplaceable) window.history.pushState(null, '', to);
       else window.history.replaceState(null, '', to);
@@ -65,11 +71,11 @@ export default class Router {
       });
     });
 
-    window.onload = () => {
-      this.renderHTML({
-        $element: this.$target,
-        routeObject: this.getRouteObject(),
-      });
-    };
+    // window.onload = () => {
+    // this.renderHTML({
+    //   $element: this.$target,
+    //   routeObject: this.getRouteObject(),
+    // });
+    // };
   };
 }
