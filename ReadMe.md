@@ -28,11 +28,11 @@
 
 ### 2023
 
-- [] Hash Routing -> History Routing for google adsense 👀 and ready for server side
+- [x] Hash Routing -> History Routing for google adsense 👀 and ready for server side
   - [x] apply custom event for a tag and popstate
-  - [] do nginx 404 redirect setting in blog subpath
-- [] client side -> server side with state manange and component structure
-- [] state manage -> apply web standards components with shadow dom
+  - [x] do nginx 404 redirect setting in blog subpath
+- [ ] client side -> server side with state manange and component structure
+- [ ] state manage -> apply web standards components with shadow dom
 
 ## UI
 
@@ -47,8 +47,8 @@
 
 ### 2023
 
-- [] 이력서 페이지 개선
-- [] 게시글 타입 선택박스 UI 개선
+- [ ] 이력서 페이지 개선
+- [x] 게시글 타입 선택박스 UI 개선
 
 ## UX
 
@@ -64,7 +64,7 @@
 
 ### 2023
 
-- [] FE스러운 재미있는 이벤트가 필요하다.
+- [ ] FE스러운 재미있는 이벤트가 필요하다.
 
 ## Build
 
@@ -74,4 +74,4 @@
 
 ### 2023
 
-- [] FE: Vite build
+- [ ] FE: Vite build
