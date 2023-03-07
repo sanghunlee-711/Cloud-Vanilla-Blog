@@ -4,10 +4,9 @@
   "description": "Vanila js 를 통해 SPA 개념으로 만드는 개인 블로그",
   "main": "index.js",
   "scripts": {
-    "start:server": "node server.js",
-    "dev": "webpack-dev-server --env=development --mode=development &  node server.js",
-    "build:dev": "webpack --env=production --mode=production &  node server.js",
-    "build:deploy": "webpack --env=production --mode=production --config webpack.config.js",
+    "start": "node server.js",
+    "dev": "NODE_ENV=development webpack-dev-server &  node server.js",
+    "build:deploy": "NODE_ENV=production webpack --config webpack.config.js",
     "server": "node server.js &webpack-dev-server --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

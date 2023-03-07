@@ -212,7 +212,7 @@ body {
   margin: auto;
 }
 
-.burger_list {
+.burger-list {
   margin: auto;
   padding: 0px;
   list-style: none;
@@ -224,7 +224,7 @@ body {
   justify-content: space-between;
 }
 
-.burger_list > li {
+.burger-list > li {
   height: calc(100% / 3);
   width: 100%;
   font-size: 24px;
@@ -234,7 +234,7 @@ body {
   border-radius: 4px;
 }
 
-.burger_list > li > a {
+.burger-list > li > a {
   text-decoration: none;
 }
 
