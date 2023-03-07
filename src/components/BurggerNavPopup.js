@@ -1,14 +1,21 @@
 import { SHOW_ROUTE } from '../constants/route.js';
 import { addRouteEventListener } from '../utils/navigate.js';
 
-const BurgerNavPopup = function ({ $target, handleModal }) {
-  this.$target = $target;
-  const $wrapper = document.createElement('ul');
-  $wrapper.className = 'burger_list';
-  this.$target.appendChild($wrapper);
+class BurgerNavPopup {
+  constructor({ $target, handleModal }) {
+    this.$target = $target;
 
-  this.render = () => {
-    $wrapper.innerHTML = `
+    this.$wrapper = document.createElement('ul');
+    this.$wrapper.className = 'burger-list';
+    this.handleModal = handleModal;
+    $target.appendChild(this.$wrapper);
+
+    this.render();
+    this.addEventListeners();
+  }
+
+  render = () => {
+    this.$wrapper.innerHTML = `
         ${SHOW_ROUTE.map((el) => {
           return `
             <li>
@@ -21,18 +28,15 @@ const BurgerNavPopup = function ({ $target, handleModal }) {
     `;
   };
 
-  this.addEventListeners = () => {
+  addEventListeners = () => {
     $wrapper.addEventListener('click', (e) => {
       const target = e.target;
       if (target instanceof HTMLAnchorElement) {
         addRouteEventListener(e);
-        handleModal(false);
+        this.handleModal(false);
       }
     });
   };
-
-  this.render();
-  this.addEventListeners();
-};
+}
 
 export default BurgerNavPopup;

@@ -2,14 +2,15 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
-
 const CopyPlugin = require('copy-webpack-plugin');
-const isDevelopment = process.env.NODE_ENV === 'development';
-//ref: https://stackoverflow.com/questions/43209666/react-router-v4-cannot-get-url
+const mode = process.env.NODE_ENV;
+const isDevelopment = mode === 'development';
+const target = isDevelopment ? 'web' : 'browserslist';
 
-let mode = 'development';
-let target = 'web';
-let plugins = [
+const plugins = [
+  new webpack.EnvironmentPlugin({
+    NODE_ENV: 'development',
+  }),
   new HtmlWebpackPlugin({
     hash: true,
     template: './src/index.html', //적용될 html 경로
@@ -20,25 +21,19 @@ let plugins = [
   new CleanWebpackPlugin({
     cleanAfterEveryBuildPatterns: ['dist'],
   }),
+  new CopyPlugin({
+    patterns: [
+      {
+        from: path.resolve(__dirname, 'static/images'),
+        to: path.resolve(__dirname, 'dist/static/images'),
+      },
+      {
+        from: path.resolve(__dirname, 'src/styles'),
+        to: path.resolve(__dirname, 'dist/styles'),
+      },
+    ],
+  }),
 ];
-if (!isDevelopment) {
-  mode = 'production';
-  target = 'browserslist';
-  plugins.push(
-    new CopyPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, 'static/images'),
-          to: path.resolve(__dirname, 'dist/static/images'),
-        },
-        {
-          from: path.resolve(__dirname, 'src/styles'),
-          to: path.resolve(__dirname, 'dist/styles'),
-        },
-      ],
-    })
-  );
-}
 
 module.exports = (env) => {
   return {
@@ -77,7 +72,7 @@ module.exports = (env) => {
       hot: true,
       host: 'localhost',
       port: 8800,
-      historyApiFallback: false,
+      historyApiFallback: isDevelopment,
     },
     resolve: {
       extensions: ['.js'],
