@@ -29,7 +29,7 @@ class BurgerNavPopup {
   };
 
   addEventListeners = () => {
-    $wrapper.addEventListener('click', (e) => {
+    this.$wrapper.addEventListener('click', (e) => {
       const target = e.target;
       if (target instanceof HTMLAnchorElement) {
         addRouteEventListener(e);

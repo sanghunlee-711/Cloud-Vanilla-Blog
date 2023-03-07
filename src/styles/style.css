@@ -152,10 +152,11 @@ body {
     /* display: none; */
   }
 
-  .nav_list a {
+  .nav_list li a {
     width: 0px;
     height: 0px;
-    /* display: none; */
+    /* visibility: hidden; */
+    display: none;
   }
 
   .burger-button {

@@ -10,7 +10,6 @@ export const PostCard = ({
 }) => {
   return `
   <article class="each_post_container">
-    
     <div class="each_post_contents">
       <h1>
         <a href="/content?id=${slug}&type=${sortKey}">${title}</a>
