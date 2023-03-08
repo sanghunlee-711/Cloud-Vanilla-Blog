@@ -40,6 +40,7 @@ export class Posts {
 
       const data = await resJson.data;
       const pageState = await resJson.pagination;
+
       this.setListData([...this.data, ...data]);
 
       this.setState({
@@ -48,11 +49,16 @@ export class Posts {
         currentPage: pageState.pageNo,
       });
     } catch (e) {
-      console.error('포스팅 데이터 불러오기 에러 발생');
+      console.error('포스팅 데이터 불러오기 에러 발생', e);
     }
   };
 
   handleInfiniteScroll = async () => {
+    // if (!this.state.isContinue) return false;
+    const isStop =
+      this.state.totalItemCount <= this.data.length ||
+      this.state.totalItemCount <= this.state.currentPage * 3;
+    if (isStop) return;
     const endOfPage =
       window.innerHeight + window.pageYOffset >=
       document.body.offsetHeight - 10;
@@ -93,6 +99,8 @@ export class Posts {
   };
 
   render = () => {
+    console.log(this.data);
+
     this.$wrapper.innerHTML = `
     <div class="post_container">
       <select class="post-selector">

@@ -87,10 +87,10 @@ app.get('/post-list', (req, res) => {
   //*todo: 리팩토링 필요
   const totalCount = posts.length;
   const pageCondition = countPerPage * pageNo > totalCount;
-  let start = pageCondition
+  const start = pageCondition
     ? (pageNo - 2) * countPerPage
     : (pageNo - 1) * countPerPage;
-  let end = pageCondition ? totalCount : countPerPage * pageNo;
+  const end = pageCondition ? totalCount : countPerPage * pageNo;
 
   if (pageCondition) {
     return res.json({
@@ -105,10 +105,9 @@ app.get('/post-list', (req, res) => {
   }
 
   if (pageNo > 0) {
-    posts = posts.slice(start, end);
     return res.json({
       success: true,
-      data: posts,
+      data: posts.slice(start, end),
       pagination: {
         totalCount,
         countPerPage,
