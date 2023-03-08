@@ -15,6 +15,7 @@ export class Posts {
       contentIncrease: 3,
       totalItemCount: 1,
       sortKey: this.urlParams.get('type') || POST_SELECT_MAP[0].key,
+      isContinue: false,
     };
 
     this.getPostData();
@@ -38,8 +39,9 @@ export class Posts {
       );
       const resJson = await res.json();
 
-      const data = await resJson.data;
-      const pageState = await resJson.pagination;
+      const data = resJson.data;
+      const pageState = resJson.pagination;
+      const isContinue = resJson.success;
 
       this.setListData([...this.data, ...data]);
 
@@ -47,6 +49,7 @@ export class Posts {
         ...this.state,
         totalItemCount: pageState.totalCount,
         currentPage: pageState.pageNo,
+        isContinue,
       });
     } catch (e) {
       console.error('포스팅 데이터 불러오기 에러 발생', e);
@@ -54,17 +57,18 @@ export class Posts {
   };
 
   handleInfiniteScroll = async () => {
-    // if (!this.state.isContinue) return false;
     const isStop =
       this.state.totalItemCount <= this.data.length ||
-      this.state.totalItemCount <= this.state.currentPage * 3;
+      this.state.totalItemCount <= this.state.currentPage * 3 ||
+      !this.state.isContinue; //얘는 임시방편..
+
     if (isStop) return;
+
     const endOfPage =
       window.innerHeight + window.pageYOffset >=
       document.body.offsetHeight - 10;
 
     if (endOfPage) {
-      //페이지가 끝이면 끝내면 되긴 함.
       let timer = null;
       if (
         this.state.currentPage * this.state.contentIncrease <=
@@ -99,8 +103,6 @@ export class Posts {
   };
 
   render = () => {
-    console.log(this.data);
-
     this.$wrapper.innerHTML = `
     <div class="post_container">
       <select class="post-selector">
