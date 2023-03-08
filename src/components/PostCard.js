@@ -1,3 +1,5 @@
+import { setPreview } from '../utils/index.js';
+
 export const PostCard = ({
   imgUrl,
   slug,
