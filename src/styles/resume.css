@@ -75,7 +75,6 @@
   color: gray;
   margin: 0px;
   width: 25%;
-  /* width: 132px; */
   text-align: left;
 }
 
@@ -97,9 +96,6 @@
 }
 
 .experience-wrapper > div:last-child {
-  /* display: flex;
-  flex-direction: column;
-  align-items: flex-end; */
   margin-left: 24px;
   width: 75%;
 }
@@ -113,7 +109,7 @@
 }
 
 .experience-wrapper .tenure {
-  background-color: #3c78d8;
+  background-color: var(--basic-blue);
   color: white;
   border-radius: 4px;
   display: inline-block;
@@ -135,22 +131,57 @@
 }
 
 .experience-wrapper .experience-skill > li {
-  background-color: gray;
+  background-color: var(--basic-gray);
   color: white;
   border-radius: 4px;
-  padding: 0px 4px;
+  padding: 2px 4px;
   text-align: center;
   vertical-align: middle;
   font-size: 12px;
+  margin: 4px 0px;
 }
 .experience-wrapper .corp-ex {
   font-size: 16px;
   font-weight: 400;
-  color: gray;
+  color: var(--basic-gray);
 }
 
-.experience-wrapper .experience-skill > li:not(:first-child) {
-  margin-left: 12px;
+.experience-wrapper .experience-skill > li:not(:last-child) {
+  margin-right: 12px;
+}
+
+.experience-list-link-icon {
+  color: var(--basic-blue);
+}
+
+.experience-list-wrapper {
+  list-style: none;
+  font-weight: 700;
+  padding: 0px;
+}
+
+.experience-detail-list-wrapper {
+  font-weight: 500;
+  color: var(--basic-gray);
+  /* padding: 0px; */
+}
+
+.experience-detail-list-wrapper li {
+  margin: 4px 0px;
+  font-size: 14px;
+  margin-left: 4px;
+}
+
+.experience-period {
+  margin: 12px 0px;
+  color: var(--basic-gray);
+  font-size: 20px;
+}
+
+.experience-explanation {
+  margin: 12px 0px;
+  color: var(--basic-gray);
+  font-size: 14px;
 }
 
 .resume-education-wrapper {
@@ -194,7 +225,6 @@
   visibility: visible;
   background-color: white;
   width: 100vw;
-  /* height: 100vh; */
 }
 
 @media screen and (max-width: 512px) {

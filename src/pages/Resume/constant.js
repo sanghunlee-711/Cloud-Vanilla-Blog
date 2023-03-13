@@ -16,37 +16,40 @@ export const LINKS = [
   },
 ];
 export const INTRODUCTION = `
-반갑습니다! 프론트엔드 개발자 이상훈입니다.\n
-활용을 통해 유용함을 만들어 내는 경험을 추구하다보니 개발자가 되었습니다.\n
-자만심을 가지지 않고 항상 모르는 것들에 대한 경계심을 가지며 학습해 나아가기 위해 노력하고 있습니다.\n
-프론트엔드 개발자는 웹 서비스 전반에 대한 이해와 구현력을 가지며 UI,UX에 조금 더 중점을 두고 개발을 진행하는 포지션이라는 생각을 가지고 있습니다.\n
-근본적인 지식을 중요시 여기며 가치있는 UI 및 의미있는 UX의 구현을 위해, 아직은 맞이하지 못한 기술과 개념을 무던하게 받아들이는 태도를 가진 개발자로 성장하기 위해 노력중입니다.\n
-<strong>프레임워크 없는 프론트엔드개발</strong>이라는 책을 의미깊게 읽어 Javascript 언어 자체가 할 수 있는 많은 역할들에 대해 관심을 가지고 있으며 \n
-이 과정을 통해 다양한 상황에 대처할 수 있는 기반지식을 가지며 성장 하기 위해 노력하고 있습니다.
+인트로덕션은 우대사항에 맞춰서 작성해보자 \n
+<strong>3년차</strong> 프론트엔드 개발자 이상훈입니다.\n
 `;
 
 export const SKILL = [
   {
-    title: 'Front-end',
-    skill: [
-      'HTML/CSS',
-      'Javascript',
-      'TypeScript',
-      'React.js',
-      'Next.js',
-      'Redux',
-      'Redux-Toolkit',
-      'Redux-saga',
-      'Apollo-client',
-      'Cypress',
-      'Jest',
-    ],
+    title: 'CORE',
+    skill: ['ES5/ES6', 'TypeScript', 'React.js', 'Next.js'],
   },
-  { title: 'Back-end', skill: ['Express.js', 'Nest.js'] },
-  { title: 'Database', skill: ['Postgresql', 'MySQL'] },
+  {
+    title: 'STATE MANAGEMENT',
+    skill: ['Redux', 'Redux-Toolkit', 'Redux-saga', 'Apollo-client'],
+  },
+  {
+    title: 'BUILD SYSTEM',
+    skill: ['Webpack', 'Rollup.js'],
+  },
+  {
+    title: 'STYLE',
+    skill: ['Styled-components', 'SCSS'],
+  },
+  {
+    title: 'TEST',
+    skill: ['Cypress', 'Jest', 'testing-library'],
+  },
+  { title: 'SERVER', skill: ['Express.js', 'Nest.js', 'NginX'] },
+  { title: 'DATABASE', skill: ['Postgresql', 'MySQL'] },
+  {
+    title: 'CI/CD',
+    skill: ['Jenkins', 'Github Action'],
+  },
   {
     title: 'ETC',
-    skill: ['Git', 'Jira', 'Agile', 'VS Code', 'Bitbucket', 'GitHub', 'Figma'],
+    skill: ['Git', 'Jira'],
   },
 ];
 
@@ -55,14 +58,56 @@ export const EXPERIENCE = [
     period: '2022.02 ~ ',
     tenure: '재직 중',
     corporation: '오이스터에이블(Oysterable)',
+    explanation:
+      '지구를 지키는 히어로들의 플랫폼이라는 명목으로 일회용컵, 도시락 반납기 등을 Iot, Sass기술 개념 기반으로 개발하며 환경보호 플랫폼으로 거듭나고 있는 회사입니다.',
     coprEx: '개발팀 프론트엔드 개발자',
     list: [
-      '배달음식 일회용기 반납 후 보증금 반환을 위한 페이지 개발',
-      'IoT 기반 데이터 관리를 위한 백오피스 개발',
-      '오늘의 분리수거 앱 관리를 위한 백오피스 개발',
-      '반납기기를 통해 전송되는 데이터 관제 및 관리를 위한 백오피스 개발',
-      '백오피스 공통으로 사용이 될 UI라이브러리 개발',
-      '프론트엔드 팀 코드리뷰 문화 도입',
+      {
+        title: '배달음식 일회용기 반납 후 보증금 반환을 위한 서비스 개발',
+        link: '',
+        detailList: [
+          '디쉬 페이지',
+          '은행선택을 위한 Bottom Sheet',
+          '기기 위치를 제공해주는 지도페이지',
+        ],
+      },
+      {
+        title: 'IoT 기반 데이터 관리를 위한 사내 관리 시스템 개발',
+        link: '',
+        detailList: [],
+      },
+      {
+        title: '오늘의 분리수거 앱 관리를 위한 사내 관리 시스템 개발',
+        link: '',
+        detailList: [],
+      },
+      {
+        title:
+          '반납기기를 통해 전송되는 데이터 관제 및 관리를 위한 사내 관리 시스템 개발',
+        link: '',
+        detailList: [],
+      },
+      {
+        title: '사내 관리 시스템 공통으로 사용이 될 사내 UI라이브러리 개발',
+        link: 'https://www.npmjs.com/package/@oysterable_public/oysterable-ui',
+        detailList: [
+          '백오피스에서 공통적으로 사용될 리액트 기반 컴포넌트 및 로직(Custom Hooks)을 NPM에 배포',
+          'Storybook을 활용하여 디자이너와 컴포넌트 협업을 위한 Static사이트 개발',
+          '라이브러리용 빌드를 Rollup.js로 진행하여 Storybook-cli를 별도로 활용',
+        ],
+      },
+      {
+        title: '프론트엔드 팀 코드리뷰 문화 도입',
+        detailList: [],
+      },
+      {
+        title: '프론트 테스트 환경 구축',
+        detailList: [],
+      },
+      {
+        title: '프론트엔드팀 리더 역임',
+        detailList: [],
+      },
     ],
     skill: [
       'React.js',
@@ -76,16 +121,34 @@ export const EXPERIENCE = [
     ],
   },
   {
-    period: '2021.04 ~ 2022.01 (폐업)',
+    period: '2021.04 ~ 2022.01',
     tenure: '10개월',
     corporation: '디타임(Dtime)',
     coprEx: '개발팀 프론트엔드 개발자',
+    explanation:
+      '디타임은 기업이 겪는 조직에 관한 다양한 어려움을 해결하는것을 목표로 교보생명의 엑셀러레이팅 프로그램에 선발된 스타트업입니다.',
     list: [
-      '뷰 ,로직 분리 위한 비동기 전역 상태관리 도입(Redux-Saga) 및 hooks 적극 활용',
-      'Props drilling 개선 위한 패턴 변경 참여',
-      'Unit Test 위한 jest 도입',
-      'E2E 테스트를 위한 Cypress 도입',
-      '협력업체 서비스 제공을 위해 커스텀엘리먼츠 및 웹팩 활용',
+      {
+        title:
+          '뷰 ,로직 분리 위한 비동기 전역 상태관리 도입(Redux-Saga) 및 hooks 적극 활용',
+        detailList: [],
+      },
+      {
+        title: 'Props drilling 개선 위한 패턴 변경 참여',
+        detailList: [],
+      },
+      {
+        title: 'Unit Test 위한 jest 도입',
+        detailList: [],
+      },
+      {
+        title: 'E2E 테스트를 위한 Cypress 도입',
+        detailList: [],
+      },
+      {
+        title: '협력업체 서비스 제공을 위해 커스텀엘리먼츠 및 웹팩 활용',
+        detailList: [],
+      },
     ],
     skill: [
       'React.js',
@@ -102,9 +165,17 @@ export const EXPERIENCE = [
     tenure: '2개월',
     corporation: '브랜디(BRANDI)',
     coprEx: '프론트엔드 개발 인턴',
+    explanation:
+      '빅데이터를 활용한 새벽배송 서비스를 제공하는 쇼핑 플랫폼 브랜디에서 프론트엔드 개발 인턴으로 참여하였습니다.',
     list: [
-      'Vue.js 기반으로 기존 쇼핑몰 사이트 클론 프로젝트 진행',
-      '캐러셀, GNB, 제품리스트 렌더 등 다양한 UI/UX를 진행',
+      {
+        title: 'Vue.js 기반으로 기존 쇼핑몰 사이트 클론 프로젝트 진행',
+        detailList: [],
+      },
+      {
+        title: '캐러셀, GNB, 제품리스트 렌더 등 다양한 UI/UX를 진행',
+        detailList: [],
+      },
     ],
     skill: ['Vue.js', 'Vuex'],
   },
@@ -126,20 +197,10 @@ export const EDUCATION = [
 
 export const ETC = [
   {
-    period: '2019.11 ~ 2020.05',
-    title: '베올리아 코리아',
-    explanation: '사업개발 팀 / SK하이닉스 계약 담당으로 기술 기획 업무 진행',
-  },
-  {
-    period: '2018.10 ~ 2019.11',
+    period: '2018.10 ~ 2020.05',
     title: '베올리아 코리아',
     explanation:
-      '수처리(폐수 초순수) 엔지니어링팀에서 엔지니어로 구미지점 근무',
-  },
-  {
-    period: '2013.01 ~ 2015.01',
-    title: '공군 병장 만기 전역',
-    explanation: '방공포병',
+      '수처리(폐수 초순수) 엔지니어 근무 후 사업개발 팀 / SK하이닉스 계약 담당으로 기술 기획 업무 진행',
   },
 ];
 export const PROJECT = [
@@ -151,18 +212,12 @@ export const PROJECT = [
     list: [
       {
         explanation:
-          '바닐라 자바스크립트를 통해 라이브러리 또는 프레임 워크 없는 프론트엔드 개발 진행',
+          '바닐라 자바스크립트를 통해 자체 프레임 워크로 만든 프론트엔드 개발 진행',
         href: 'https://blog.cloud-sanghun.com/',
         subList: [],
       },
       {
-        explanation:
-          '라이브러리 최소화를 위해 ES6, HTML5, CSS3만을 활용한 프론트엔드 개발 진행',
-        href: '',
-        subList: [],
-      },
-      {
-        explanation: '생성자 함수를 통한 state기반 렌더링 로직을 가진 컴포넌트',
+        explanation: 'ES 통한 state기반 렌더링 로직을 가진 컴포넌트',
         href: '',
         subList: [],
       },
@@ -209,12 +264,6 @@ export const PROJECT = [
       {
         explanation:
           'Storybook을 활용하여 디자이너와 컴포넌트 협업을 위한 Static사이트 개발',
-        href: '',
-        subList: [],
-      },
-      {
-        explanation:
-          '라이브러리용 빌드를 Rollup.js로 진행하여 Storybook-cli를 별도로 활용',
         href: '',
         subList: [],
       },
@@ -295,7 +344,7 @@ export const PROJECT = [
     list: [
       {
         explanation:
-          '유기적인 패션커뮤니티 서비스 제공을 위해 기획, 디자인, 구현까지 1인 진행',
+          '유기적인 패션커뮤니티 서비스 제공을 위해 기획, 디자인, 구현까지 1인 진행 여기 깃헙링크로 하고 깃헙 정리하자',
         href: 'http://www.the-folks.com',
         subList: [],
       },

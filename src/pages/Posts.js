@@ -2,6 +2,7 @@ import { PostCard } from '../components/PostCard.js';
 import { POST_SELECT_MAP } from '../constants/common.js';
 import { API_ADDRESS } from '../constants/config.js';
 import { addRouteEventListener, routeEvent } from '../utils/navigate.js';
+
 export class Posts {
   constructor({ $target }) {
     this.$target = $target;
@@ -69,22 +70,11 @@ export class Posts {
       document.body.offsetHeight - 10;
 
     if (endOfPage) {
-      let timer = null;
-      if (
-        this.state.currentPage * this.state.contentIncrease <=
-        this.state.totalItemCount
-      ) {
-        if (!timer) {
-          timer = setTimeout(() => {
-            timer = null;
-            this.setState({
-              ...this.state,
-              currentPage: ++this.state.currentPage,
-            });
-            this.getPostData();
-          }, 400);
-        }
-      }
+      this.setState({
+        ...this.state,
+        currentPage: ++this.state.currentPage,
+      });
+      this.getPostData();
     }
   };
 
