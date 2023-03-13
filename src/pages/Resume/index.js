@@ -54,38 +54,63 @@ const Resume = function ({ $target }) {
             }).join('')}
         </div>
         <div class="resume-common-wrapper">
-        <h1>Experience</h1>
+        <h1>Careers</h1>
         ${RESUME.EXPERIENCE.map(
-          ({ period, corporation, coprEx, list, skill, tenure }, index) => {
+          (
+            { period, corporation, coprEx, list, skill, tenure, explanation },
+            index
+          ) => {
             return `
             <div class="experience-wrapper">
               <div>
-                <h3>${period}</h3>
                 <span class="tenure">${tenure}</span>
+                <span class="experience-period">
+                  ${period}
+                </span>
+                <span class="experience-explanation">
+                  ${explanation}
+                </span>
+                <span class="tenure">Skills</span>
+                <ul class="experience-skill">
+                  ${skill
+                    .map((s) => {
+                      return `
+                        <li>
+                          ${s}
+                        </li>
+                      `;
+                    })
+                    .join('')}
+                </ul>
               </div>
               <div>
                 <h2>${corporation}</h2>
                 <h4 class="corp-ex">${coprEx}</h4>
-                <ul>
+                <ul class="experience-list-wrapper">
                   ${list
-                    .map((exp) => {
+                    .map(({ title, detailList, link }) => {
                       return `
                       <li>
-                        ${exp}
+                        ${title} ${
+                        link
+                          ? `<a href=${link} target="_blank"><i class="fa fa-globe experience-list-link-icon"></i></a>`
+                          : ''
+                      }
+                        <ul class="experience-detail-list-wrapper">
+                        ${detailList
+                          .map((detail) => {
+                            return `
+                            <li>
+                              ${detail}
+                            </li>
+                          `;
+                          })
+                          .join('')}
+                        </ul>
                       </li>
                     `;
                     })
                     .join('')}
-                    <li class="skill-title">Skill Keywords</li>
-                    <ul class="experience-skill">
-                      ${skill
-                        .map((s) => {
-                          return `
-                            <li>${s}</li>
-                          `;
-                        })
-                        .join('')}
-                    </ul>
                 </ul>
               </div>
             </div>
@@ -100,6 +125,7 @@ const Resume = function ({ $target }) {
       </div>
       <div class="resume-common-wrapper">
         <h1>PROJECT</h1>
+        <span>개인프로젝트만 넣기</span>
         ${RESUME.PROJECT.map(({ period, title, company, list }) => {
           return `
           <div class="resume-education-wrapper">
