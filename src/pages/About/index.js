@@ -26,14 +26,15 @@ class About {
     const resumeButton = document.createElement('a');
     const postButton = document.createElement('a');
 
-    resumeButton.className = 'resume-button basic-button';
-    resumeButton.textContent = 'Resume';
-    resumeButton.href = '/resume';
+    // resumeButton.className = 'resume-button basic-button';
+    // resumeButton.textContent = 'Resume';
+    // resumeButton.href = '/resume';
     postButton.className = 'post-button basic-button';
     postButton.textContent = 'More Post';
     postButton.href = '/post';
 
-    buttonWrapper.append(resumeButton, postButton);
+    // buttonWrapper.append(resumeButton, postButton);
+    buttonWrapper.append(postButton);
 
     new Explanation({
       $target: this.$wrapper,

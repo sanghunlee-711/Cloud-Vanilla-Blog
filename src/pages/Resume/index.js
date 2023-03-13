@@ -9,8 +9,10 @@ const Resume = function ({ $target }) {
   this.render = () => {
     wrapper.innerHTML = `
       <div id="resume-container">
-        <div class="resume-header">
-          <img src="/static/images/profile/selfie_japan.jpeg" alt="profile">
+        <div class="resume-common-wrapper">
+          <h1>INTRODUCTION</h1>
+          <div class="resume-header">
+          <img src="https://avatars.githubusercontent.com/u/57477415?v=4" alt="profile">
           <div>
             <h1>이상훈</h1>
             <ul>
@@ -25,8 +27,6 @@ const Resume = function ({ $target }) {
             </ul>
           </div>
         </div>
-        <div class="resume-common-wrapper">
-          <h1>INTRODUCTION</h1>
           <p>
           ${RESUME.INTRODUCTION}
           </p>
