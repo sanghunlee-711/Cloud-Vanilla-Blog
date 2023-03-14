@@ -125,42 +125,63 @@ const Resume = function ({ $target }) {
       </div>
       <div class="resume-common-wrapper">
         <h1>PROJECT</h1>
-        <span>개인프로젝트만 넣기</span>
-        ${RESUME.PROJECT.map(({ period, title, company, list }) => {
-          return `
+        ${RESUME.PROJECT.map(
+          ({ period, title, company, list, explanation, skill, link }) => {
+            return `
           <div class="resume-education-wrapper">
             <div>
-              <h3>${period}</h3>
+                <span class="experience-period">
+                  ${period}
+                </span>
+                <span class="experience-explanation">
+                  ${explanation}
+                </span>
+                <span class="tenure">Skills</span>
+                <ul class="experience-skill">
+                  ${skill
+                    .map((s) => {
+                      return `
+                        <li>
+                          ${s}
+                        </li>
+                      `;
+                    })
+                    .join('')}
+                </ul>
             </div>
             <div>
-              <h2>${title}</h2>
+              <h2>
+              ${title}
+              ${
+                link
+                  ? `<a href=${link} target="_blank"><i class="fa fa-globe experience-list-link-icon"></i></a>`
+                  : ''
+              }
+              </h2>
               <h4>${company}</h4>
-              <ul>
+              
+              <ul class="experience-list-wrapper">
                 ${list
-                  .map(({ explanation, subList, href }) => {
+                  .map(({ title, detailList, link }) => {
                     return `
                     <li>
-                      ${
-                        href.length
-                          ? `<a href=${href} target="_blank">${explanation}</a>`
-                          : explanation
-                      }
-                    </li>
-                    ${
-                      subList.length
-                        ? `<ul>
-                        ${subList.map(({ subExplanation, href }) => {
-                          return `
-                          ${
-                            href.length
-                              ? `<a href=${href} target="_blank">${subExplanation}</a>`
-                              : subExplanation
-                          }
-                          `;
-                        })}
-                      </ul>`
+                      ${title} ${
+                      link
+                        ? `<a href=${link} target="_blank"><i class="fa fa-globe experience-list-link-icon"></i></a>`
                         : ''
                     }
+                      <ul class="experience-detail-list-wrapper">
+                      ${detailList
+                        .map((detail) => {
+                          return `
+                          <li>
+                            ${detail}
+                          </li>
+                        `;
+                        })
+                        .join('')}
+                      </ul>
+                    </li>
                   `;
                   })
                   .join('')}
@@ -168,7 +189,8 @@ const Resume = function ({ $target }) {
             </div>
           </div>
           `;
-        }).join('')}
+          }
+        ).join('')}
       </div>
 
       <div class="resume-common-wrapper">
