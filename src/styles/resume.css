@@ -5,19 +5,9 @@
   align-items: center;
   justify-content: flex-start;
   margin: 24px 12px;
-}
-
-@media print {
-  #resume-container {
-    overflow: visible;
-    width: auto;
-    height: auto;
-  }
-  .resume-common-wrapper {
-    overflow: visible;
-    width: auto;
-    height: auto;
-  }
+  overflow: visible;
+  width: auto;
+  height: auto;
 }
 
 .resume-common-wrapper {
@@ -27,6 +17,8 @@
   justify-content: center;
   flex-direction: column;
   margin: 24px 0px;
+  overflow: visible;
+  height: auto;
 }
 
 .resume-common-wrapper > h1 {

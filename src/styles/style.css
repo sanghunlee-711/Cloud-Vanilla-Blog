@@ -16,6 +16,22 @@
   --header-nav-bottom: 1px solid #eee;
 }
 
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+  }
+  #resume-container {
+    overflow: visible;
+    width: auto;
+    height: auto;
+  }
+  .resume-common-wrapper {
+    overflow: visible;
+    width: auto;
+    height: auto;
+  }
+}
+
 body {
   margin: 0px;
 }
