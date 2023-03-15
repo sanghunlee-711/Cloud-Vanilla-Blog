@@ -32,7 +32,7 @@
   - [x] apply custom event for a tag and popstate
   - [x] do nginx 404 redirect setting in blog subpath
 - [ ] client side -> server side with state manange and component structure
-- [ ] state manage -> apply web standards components with shadow dom
+- [ ] state manage -> apply web standards components with shadow dom and use Proxy for managing global state
 
 ## UI
 
@@ -47,7 +47,7 @@
 
 ### 2023
 
-- [ ] 이력서 페이지 개선
+- [x] 이력서 페이지 개선
 - [x] 게시글 타입 선택박스 UI 개선
 
 ## UX
