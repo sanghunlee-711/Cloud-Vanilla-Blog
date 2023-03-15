@@ -13,29 +13,29 @@ class Resume {
 
   layerPrint = () => {
     const elem = 'resume-container';
-    let mywindow = window.open('', 'PRINT', 'height=400,width=600');
+    const printWindow = window.open('', 'PRINT', 'height=400,width=600');
 
-    mywindow.document.write(
+    printWindow.document.write(
       '<html><head><title>' + document.title + '</title>'
     );
-    mywindow.document.write(`
+    printWindow.document.write(`
     <link href="styles/resume.css" rel="stylesheet">
     <link href="styles/style.css" rel="stylesheet">
     <link href="styles/post.css" rel="stylesheet">
     <link href="styles/mdStyle.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/eb264fff85.js" crossorigin="anonymous"></script>
     `);
-    mywindow.document.write('</head><body >');
-    mywindow.document.write('<h1>' + document.title + '</h1>');
-    mywindow.document.write(document.getElementById(elem).innerHTML);
-    mywindow.document.write('</body></html>');
+    printWindow.document.write('</head><body >');
+    // printWindow.document.write('<h1>' + document.title + '</h1>');
+    printWindow.document.write(document.getElementById(elem).innerHTML);
+    printWindow.document.write('</body></html>');
 
-    mywindow.document.close(); // necessary for IE >= 10
+    printWindow.document.close(); // necessary for IE >= 10
 
     setTimeout(() => {
-      mywindow.focus(); // necessary for IE >= 10*/
-      mywindow.print();
-      mywindow.close();
+      printWindow.focus(); // necessary for IE >= 10*/
+      printWindow.print();
+      printWindow.close();
     }, 1000);
 
     return true;
@@ -43,7 +43,11 @@ class Resume {
 
   render = () => {
     this.$wrapper.innerHTML = `
-      <button class="print-resume">프린트하기</button>
+      <div class="print-resume-wrapper">
+        <button class="print-resume">
+          <i class="fa fa-print fa-1x"></i>
+        </button>
+      </div>
       <div id="resume-container">
         <div class="resume-common-wrapper">
           <h1>INTRODUCTION</h1>
