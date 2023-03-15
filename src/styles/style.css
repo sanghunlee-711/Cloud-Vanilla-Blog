@@ -319,8 +319,6 @@ body {
   width: 100vw;
   height: 100vh;
   z-index: 100;
-  /* opacity: 0; */
-  /* visibility: hidden; */
   transition: all 0.3s ease;
   top: 0;
   left: 0;
@@ -329,12 +327,23 @@ body {
   justify-content: center;
   background-color: white;
 }
+
+@media print {
+  .modal-container {
+    overflow: visible;
+  }
+  .modal-wrapper {
+    overflow: visible;
+  }
+}
+
 .modal-wrapper {
-  width: 90vw;
-  height: 90vh;
+  min-width: 90vw;
+  min-height: 90vh;
+  height: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  overflow-y: scroll;
 }
 
 .quit-modal-button {

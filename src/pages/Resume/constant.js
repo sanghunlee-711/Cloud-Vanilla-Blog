@@ -67,7 +67,6 @@ export const EXPERIENCE = [
         detailList: [
           'C Level, 백엔드 팀 리더 추천으로 팀 리더 지정',
           '팀원 업무 일정 관리 및 분배 진행',
-          '기타 업무 문화 도입',
         ],
       },
       {
@@ -220,23 +219,28 @@ export const PROJECT = [
     link: 'https://blog.cloud-sanghun.com/',
     list: [
       {
-        title: '클래스 기반 컴포넌트 제공',
+        title: '컴포넌트 기반 개발',
         link: '',
-        detailList: ['state기반 렌더링 로직을 가진 컴포넌트'],
+        detailList: [
+          'V1: 생성자 함수 기반 컴포넌트',
+          'V2: 클래스 기반 컴포넌트',
+          '상태기반 렌더링',
+        ],
       },
       {
         title: '커스텀 라우팅 시스템을 통한 CSR 제공',
         link: '',
         detailList: [
-          'hashChange이벤트를 활용한 라우터 -> History API를 활용한 라우터',
+          'V1: hashChange이벤트를 활용한 라우터',
+          'V2: History API를 활용한 라우터',
         ],
       },
       {
         title: 'Express.js를 사용하여 Markdown을 읽어오는 api 서버 개발',
         link: '',
         detailList: [
-          'highlight.js 라이브러리를 이용해 Markdown -> Html로 변환',
-          '배포 시 Nginx포트 포워딩을 통해 하나의 EC2만 활용',
+          'highlight.js 라이브러리를 이용해 Markdown에서 Html로 변환',
+          'Nginx의 포트 포워딩을 통해 하나의 EC2만 활용',
         ],
       },
       {
@@ -256,7 +260,7 @@ export const PROJECT = [
     title: 'The Folks',
     company: '개인 프로젝트',
     explanation: '새로운 형태의 패션 커뮤니티를 지향한 프로젝트',
-    link: 'http://www.the-folks.com',
+    link: 'https://github.com/stylefolks/stylefolks-frontend',
     skill: [
       'Next.js',
       'Nest.js',
