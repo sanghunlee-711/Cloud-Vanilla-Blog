@@ -137,7 +137,6 @@ export class Posts {
   };
 
   addEventListener = () => {
-    //* Todo: need debounce
     window.addEventListener('scroll', this.handleInfiniteScroll);
 
     this.$wrapper.addEventListener('change', (e) => {
@@ -147,7 +146,18 @@ export class Posts {
     });
 
     this.$wrapper.addEventListener('click', (e) => {
-      addRouteEventListener(e);
+      const target = e.target;
+      if (target instanceof HTMLAnchorElement) {
+        window.removeEventListener(this.handleInfiniteScroll);
+        addRouteEventListener(e);
+      }
+    });
+
+    window.addEventListener('beforeunload', (event) => {
+      // 표준에 따라 기본 동작 방지
+      event.preventDefault();
+      // Chrome에서는 returnValue 설정이 필요함
+      event.returnValue = '';
     });
   };
 }
