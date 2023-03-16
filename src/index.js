@@ -1,6 +1,5 @@
 import App from './app.js';
 
-console.log('call index.js');
 try {
   const $root = document.querySelector('#root');
   $root.innerHTML = '';

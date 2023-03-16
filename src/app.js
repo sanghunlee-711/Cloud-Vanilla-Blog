@@ -16,7 +16,6 @@ class App {
     new Router({ $target: document.querySelector('.layout-container') });
 
     // if (process.env.NODE_ENV !== 'development') makeGA();
-    console.log('initialize app');
   }
 }
 
