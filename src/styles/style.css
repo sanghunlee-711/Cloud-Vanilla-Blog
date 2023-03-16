@@ -5,7 +5,9 @@
   --basic-width: 1024px;
   --phone-width: 512px;
   --basic-gray: #adbac7;
-  --basic-blue: #3c78d8;
+  --strong-gray: #1e262f;
+  --basic-blue: #4a7fd5;
+  --strong-blue: #2a70db;
   --header-border-bottom: -webkit-linear-gradient(
     left,
     #fff 0,
