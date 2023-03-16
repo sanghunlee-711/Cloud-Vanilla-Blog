@@ -3,19 +3,21 @@ import HeaderContainer from './components/HeaderContainer.js';
 import ScrollTopButton from './components/ScrollTopButton.js';
 import Router from './routes.js';
 
-const App = function ({ $target }) {
-  this.$target = $target;
+class App {
+  constructor({ $target }) {
+    this.$target = $target;
+    //Basic Layout for this app
 
-  //Basic Layout for this app
+    new HeaderContainer({ $target: this.$target });
+    new ContentLayout({ $target: this.$target });
+    new ScrollTopButton({ $target: this.$target });
 
-  new HeaderContainer({ $target: this.$target });
-  new ContentLayout({ $target: this.$target });
-  new ScrollTopButton({ $target: this.$target });
+    //routing
+    new Router({ $target: document.querySelector('.layout-container') });
 
-  //routing
-  new Router({ $target: document.querySelector('.layout-container') });
-
-  // if (process.env.NODE_ENV !== 'development') makeGA();
-};
+    // if (process.env.NODE_ENV !== 'development') makeGA();
+    console.log('initialize app');
+  }
+}
 
 export default App;

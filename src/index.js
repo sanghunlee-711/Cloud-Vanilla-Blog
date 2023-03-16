@@ -1,5 +1,6 @@
 import App from './app.js';
 
+console.log('call index.js');
 try {
   const $root = document.querySelector('#root');
   $root.innerHTML = '';
@@ -11,6 +12,5 @@ try {
   alert(`인스턴스 에러발생 : ${e}`);
   console.error(e);
 }
-this.$target.appendChild;
-this.$target.appendChild;
+
 export default {};

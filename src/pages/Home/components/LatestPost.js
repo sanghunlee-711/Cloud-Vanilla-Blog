@@ -18,6 +18,7 @@ class LatestPost {
     this.getPostData();
     this.render();
     this.addEventListeners();
+    console.log('initialize');
   }
 
   setListData = (nextData) => {
@@ -26,6 +27,7 @@ class LatestPost {
   };
 
   getPostData = async () => {
+    console.log('call api');
     const res = await fetch(`${API_ADDRESS}/post-latest`);
     const resJson = await res.json();
 
