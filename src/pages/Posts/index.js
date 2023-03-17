@@ -1,11 +1,10 @@
-import { POST_SELECT_MAP } from '../common/constants/common.js';
-import { PostCard } from '../components/PostCard.js';
-import { addRouteEventListener, routeEvent } from '../utils/navigate.js';
+import { POST_SELECT_MAP } from '../../common/constants/common.js';
+import { PostCard } from '../../components/PostCard.js';
+import { addRouteEventListener, routeEvent } from '../../utils/navigate.js';
 
-export class Posts {
+class Posts {
   constructor({ $target }) {
     this.$target = $target;
-    this.data = [];
     this.$wrapper = document.createElement('main');
     this.$wrapper.setAttribute('class', 'post-main-container');
     $target.appendChild(this.$wrapper);
@@ -16,20 +15,16 @@ export class Posts {
       totalItemCount: 1,
       sortKey: this.urlParams.get('type') || POST_SELECT_MAP[0].key,
       isContinue: false,
+      list: [],
     };
 
     this.getPostData();
-
     this.addEventListener();
   }
 
-  setListData = (nextData) => {
-    this.data = [...nextData];
-    this.render();
-  };
-
   setState = (nextState) => {
     this.state = nextState;
+    this.render();
   };
 
   getPostData = async () => {
@@ -43,14 +38,14 @@ export class Posts {
       const pageState = resJson.pagination;
       const isContinue = resJson.success;
 
-      this.setListData([...this.data, ...data]);
-
-      this.setState({
-        ...this.state,
-        totalItemCount: pageState.totalCount,
-        currentPage: pageState.pageNo,
-        isContinue,
-      });
+      console.log({ data }),
+        this.setState({
+          ...this.state,
+          totalItemCount: pageState.totalCount,
+          currentPage: pageState.pageNo,
+          isContinue,
+          list: [...this.state.list, ...data],
+        });
     } catch (e) {
       console.error('포스팅 데이터 불러오기 에러 발생', e);
     }
@@ -58,7 +53,7 @@ export class Posts {
 
   handleInfiniteScroll = async () => {
     const isStop =
-      this.state.totalItemCount <= this.data.length ||
+      this.state.totalItemCount <= this.state.list.length ||
       this.state.totalItemCount <= this.state.currentPage * 3 ||
       !this.state.isContinue; //얘는 임시방편..
 
@@ -79,13 +74,14 @@ export class Posts {
 
   onChangePostType = (value) => {
     const targetURL = `/post?type=${value}`;
-    this.setListData([]);
+
     this.setState({
       ...this.state,
       currentPage: 1,
       contentIncrease: 3,
       totalItemCount: 1,
       sortKey: value,
+      list: [],
     });
 
     routeEvent(targetURL);
@@ -106,7 +102,7 @@ export class Posts {
       }).join('')}
       </select>
       <ul class="post-list-container">
-      ${this.data
+      ${this.state.list
         .map(
           ({
             slug,
@@ -153,3 +149,5 @@ export class Posts {
     });
   };
 }
+
+export default Posts;
