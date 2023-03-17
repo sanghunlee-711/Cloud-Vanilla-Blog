@@ -1,6 +1,5 @@
+import { POST_SELECT_MAP } from '../common/constants/common.js';
 import { PostCard } from '../components/PostCard.js';
-import { POST_SELECT_MAP } from '../constants/common.js';
-import { API_ADDRESS } from '../constants/config.js';
 import { addRouteEventListener, routeEvent } from '../utils/navigate.js';
 
 export class Posts {
@@ -36,7 +35,7 @@ export class Posts {
   getPostData = async () => {
     try {
       const res = await fetch(
-        `${API_ADDRESS}/post-list?type=${this.state.sortKey}&countPerPage=${this.state.contentIncrease}&pageNo=${this.state.currentPage}`
+        `${process.env.API_ADDRESS}/post-list?type=${this.state.sortKey}&countPerPage=${this.state.contentIncrease}&pageNo=${this.state.currentPage}`
       );
       const resJson = await res.json();
 

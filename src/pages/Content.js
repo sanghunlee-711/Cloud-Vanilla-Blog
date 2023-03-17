@@ -1,4 +1,3 @@
-import { API_ADDRESS } from '../constants/config.js';
 import { getContentId, resetDisqus } from '../utils/index.js';
 import { addRouteEventListener } from '../utils/navigate.js';
 
@@ -25,7 +24,7 @@ class Content {
   getPostData = async () => {
     try {
       const res = await fetch(
-        `${API_ADDRESS}/post?slug=${this.contentId}&type=${this.type}`
+        `${process.env.API_ADDRESS}/post?slug=${this.contentId}&type=${this.type}`
       );
       const resJson = await res.json();
       const data = await resJson;
@@ -67,12 +66,7 @@ class Content {
       <div id="disqus_thread"></div>
     `;
 
-    resetDisqus(
-      `https://blog.cloud-sanghun.com/#!${title}`,
-      `https://blog.cloud-sanghun.com/#!${title}`,
-      title,
-      'ko'
-    );
+    resetDisqus(title);
   };
 
   addEventListeners = () => {

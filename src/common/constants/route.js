@@ -1,9 +1,10 @@
-import About from '../pages/About/index.js';
-import Content from '../pages/Content.js';
-import GuestBook from '../pages/GuestBook/index.js';
-import Home from '../pages/Home/index.js';
-import { Posts } from '../pages/Posts.js';
-import Resume from '../pages/Resume/index.js';
+import About from '../../pages/About/index.js';
+import Content from '../../pages/Content.js';
+import GuestBook from '../../pages/GuestBook/index.js';
+import Home from '../../pages/Home/index.js';
+import { Posts } from '../../pages/Posts.js';
+import Resume from '../../pages/Resume/index.js';
+
 export const ROUTES = [
   {
     path: '/',

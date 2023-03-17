@@ -1,4 +1,4 @@
-import { SHOW_ROUTE } from '../constants/route.js';
+import { SHOW_ROUTE } from '../common/constants/route.js';
 import { addRouteEventListener } from '../utils/navigate.js';
 
 class BurgerNavPopup {

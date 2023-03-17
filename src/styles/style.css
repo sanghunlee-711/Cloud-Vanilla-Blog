@@ -81,6 +81,11 @@ body {
   background-color: white;
 }
 
+.header_profile_wrapper img {
+  width: 130px;
+  height: 130px;
+}
+
 .header_profile img {
   width: 130px;
   height: 130px;

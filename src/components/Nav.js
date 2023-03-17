@@ -1,4 +1,4 @@
-import { SHOW_ROUTE } from '../constants/route.js';
+import { SHOW_ROUTE } from '../common/constants/route.js';
 import BurgerNavPopup from './BurggerNavPopup.js';
 import Modal from './Modal.js';
 
@@ -39,7 +39,7 @@ class Nav {
           `;
         }).join('')}
       </ul>
-      <button class="burger-button">
+      <button class="burger-button" role="button">
         <div class="burger-button-line"></div>
         <div class="burger-button-line"></div>
         <div class="burger-button-line"></div>

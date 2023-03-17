@@ -1,31 +1,43 @@
-import Resume from './components/Contribution.js';
-import LatestPost from './components/LatestPost.js';
-const Home = function ({ $target }) {
-  this.$target = $target;
+import Contribution from './components/Contribution/index.js';
+import LatestPost from './components/LatestPost/index.js';
+import { $ELEMENT } from './constants/element.js';
 
-  const wrapper = document.createElement('main');
-  wrapper.setAttribute('class', 'home-main-container');
-  this.$target.appendChild(wrapper);
+class Home {
+  constructor({ $target }) {
+    this.$target = $target;
+    this.$wrapper = document.createElement('main');
+    this.$wrapper.setAttribute('class', $ELEMENT.HOME_MAIN_CONTAINER);
+    this.$target.appendChild(this.$wrapper);
 
-  this.render = () => {
-    wrapper.innerHTML = `
-      <div>
-        <section class="latest-post-container"></section>
-        <section class="resume-container"></section>
-      </div>
+    this.render();
+  }
+
+  template = () => {
+    return `
+    <div>
+      <section class="${$ELEMENT.LATEST_POST_CONTAINER}"></section>
+      <section class="${$ELEMENT.RESUME_CONTAINERL}"></section>
+    </div>
     `;
   };
 
-  this.render();
+  render = () => {
+    this.$wrapper.innerHTML = this.template();
 
-  const postContainer = document.querySelector('.latest-post-container');
-  const resumeContainer = document.querySelector('.resume-container');
-  if (postContainer && resumeContainer) {
-    const latestPost = new LatestPost({
+    const postContainer = document.querySelector(
+      `.${$ELEMENT.LATEST_POST_CONTAINER}`
+    );
+    const resumeContainer = document.querySelector(
+      `.${$ELEMENT.RESUME_CONTAINERL}`
+    );
+
+    new LatestPost({
       $target: postContainer,
     });
-    new Resume({ $target: resumeContainer });
-  }
-};
+    new Contribution({ $target: resumeContainer });
+  };
+
+  addListeners = () => {};
+}
 
 export default Home;

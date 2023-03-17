@@ -1,4 +1,4 @@
-import { GA_ID, PAGE_ADDRESS } from '../constants/config.js';
+//import { GA_ID } from '../common/constants/config.js';
 
 //path를 찾기 위한 정규표현식이 들어있는 함수
 export const pathToRegex = (path) =>
@@ -27,19 +27,14 @@ export const loadCommentBox = (contentId) => {
   /* * * Disqus Reset Function * * */
 };
 
-export const resetDisqus = function (
-  newIdentifier,
-  newUrl,
-  newTitle,
-  newLanguage
-) {
+export const resetDisqus = function (title) {
   DISQUS.reset({
     reload: true,
     config: function () {
-      this.page.identifier = newIdentifier;
-      this.page.url = newUrl;
-      this.page.title = newTitle;
-      this.language = newLanguage;
+      this.page.identifier = title;
+      this.page.url = `https://blog.cloud-sanghun.com/${title}`;
+      this.page.title = title;
+      this.language = 'ko';
     },
   });
 };
@@ -48,7 +43,7 @@ export const makeGA = () => {
   const ga = document.createElement('script');
   ga.setAttribute('async', '');
   ga.setAttribute('id', 'ga-script');
-  ga.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+  ga.src = `https://www.googletagmanager.com/gtag/js?id=${process.env.GA_ID}`;
   const script = document.createElement('script');
 
   script.id = 'ga';
@@ -57,7 +52,7 @@ export const makeGA = () => {
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', '${GA_ID}');
+    gtag('config', '${process.env.GA_ID}');
   `;
 
   if (!document.getElementById('ga-script')) document.body.appendChild(ga);

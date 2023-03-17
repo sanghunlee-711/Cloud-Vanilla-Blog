@@ -18,7 +18,7 @@ export const PostCard = ({
       </h1>
       <div class="title_image" style="background-image:url(${imgUrl})"></div>
       <div class="each_post_profile">
-        <img src="../../static/images/profile/selfie_japan.jpeg" alt="profile_image">
+        <img src="../../static/images/profile/selfie_japan.jpeg" alt="profile_image" loading="lazy">
       <div class ="each_post_profile_detail">
         <span>Cloud Lee</span>
         <div>
