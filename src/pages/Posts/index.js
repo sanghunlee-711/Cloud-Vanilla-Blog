@@ -1,6 +1,9 @@
 import { POST_SELECT_MAP } from '../../common/constants/common.js';
+import {
+  addRouteEventListener,
+  routeEvent,
+} from '../../common/utils/navigate.js';
 import { PostCard } from '../../components/PostCard.js';
-import { addRouteEventListener, routeEvent } from '../../utils/navigate.js';
 
 class Posts {
   constructor({ $target }) {
@@ -38,14 +41,13 @@ class Posts {
       const pageState = resJson.pagination;
       const isContinue = resJson.success;
 
-      console.log({ data }),
-        this.setState({
-          ...this.state,
-          totalItemCount: pageState.totalCount,
-          currentPage: pageState.pageNo,
-          isContinue,
-          list: [...this.state.list, ...data],
-        });
+      this.setState({
+        ...this.state,
+        totalItemCount: pageState.totalCount,
+        currentPage: pageState.pageNo,
+        isContinue,
+        list: [...this.state.list, ...data],
+      });
     } catch (e) {
       console.error('포스팅 데이터 불러오기 에러 발생', e);
     }

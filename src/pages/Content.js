@@ -1,5 +1,6 @@
-import { getContentId, resetDisqus } from '../utils/index.js';
-import { addRouteEventListener } from '../utils/navigate.js';
+import { makeDisqus, resetDisqus } from '../common/utils/disqus.js';
+import { getContentId } from '../common/utils/index.js';
+import { addRouteEventListener } from '../common/utils/navigate.js';
 
 class Content {
   constructor({ $target }) {
@@ -44,14 +45,14 @@ class Content {
 
     this.$wrapper.innerHTML = `
       <div class="title-container">
-      <h1 class="title"> ${title}</h1>
+      <h1 class="title">${title}</h1>
       <div class="title-info">
         <div>
           <span>${author}</span>
           <span>${date?.split(' ')[0]}</span>
         </div>
         <div>
-          <a href="/post"> 목록 </a>
+          <a href="/post" data-id="route"> 목록 </a>
         </div>
       </div>
       </div>
@@ -66,6 +67,7 @@ class Content {
       <div id="disqus_thread"></div>
     `;
 
+    makeDisqus();
     resetDisqus(title);
   };
 

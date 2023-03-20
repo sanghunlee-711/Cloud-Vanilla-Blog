@@ -1,4 +1,4 @@
-import { addRouteEventListener } from '../utils/navigate.js';
+import { addRouteEventListener } from '../common/utils/navigate.js';
 import Header from './Header.js';
 import Nav from './Nav.js';
 

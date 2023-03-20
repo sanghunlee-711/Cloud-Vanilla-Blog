@@ -1,5 +1,5 @@
 import { SHOW_ROUTE } from '../common/constants/route.js';
-import { addRouteEventListener } from '../utils/navigate.js';
+import { addRouteEventListener } from '../common/utils/navigate.js';
 
 class BurgerNavPopup {
   constructor({ $target, handleModal }) {
@@ -19,7 +19,7 @@ class BurgerNavPopup {
         ${SHOW_ROUTE.map((el) => {
           return `
             <li>
-              <a class="burger-target"  href="${
+              <a class="burger-target" data-id="route"  href="${
                 el.path
               }">${el.name.toUpperCase()}</a>
             </li>

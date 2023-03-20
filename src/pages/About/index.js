@@ -1,5 +1,5 @@
+import { addRouteEventListener } from '../../common/utils/navigate.js';
 import Modal from '../../components/Modal.js';
-import { addRouteEventListener } from '../../utils/navigate.js';
 import Resume from '../Resume/index.js';
 import Explanation from './components/Explanation/index.js';
 
@@ -46,6 +46,7 @@ class About {
     // resumeButton.href = '/resume';
     postButton.className = 'post-button basic-button';
     postButton.textContent = 'More Post';
+    postButton.setAttribute('data-id', 'route');
     postButton.href = '/post';
 
     buttonWrapper.append(resumeButton, postButton);

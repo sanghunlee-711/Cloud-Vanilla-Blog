@@ -34,7 +34,7 @@ class Nav {
         ${SHOW_ROUTE.map((el) => {
           return `
             <li>
-              <a href="${el.path}">${el.name.toUpperCase()}</a>
+              <a href="${el.path}" data-id="route">${el.name.toUpperCase()}</a>
             </li>
           `;
         }).join('')}

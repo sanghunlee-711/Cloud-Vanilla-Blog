@@ -1,5 +1,5 @@
+import { addRouteEventListener } from '../../../../common/utils/navigate.js';
 import { PostCard } from '../../../../components/PostCard.js';
-import { addRouteEventListener } from '../../../../utils/navigate.js';
 import { $ELEMENT } from './constants/element.js';
 import { getLatestPostData } from './utils/api.js';
 
@@ -34,7 +34,7 @@ class LatestPost {
     <main class="${$ELEMENT.POST_CONTAINER}">
       <div class="${$ELEMENT.SEE_MORE}">
         <h1>Latest Post</h1>
-        <a href="/post" class="basic-button">See more post</a>
+        <a href="/post" class="basic-button" data-id="route">See more post</a>
       </div>
       <ul class="${$ELEMENT.POST_LIST_CONTAINER}">
       ${this.state
