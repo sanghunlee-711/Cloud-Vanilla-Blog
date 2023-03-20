@@ -67,7 +67,7 @@ class Resume {
             </ul>
           </div>
         </div>
-          <p>
+          <p class="resume-introduction">
           ${RESUME.INTRODUCTION}
           </p>
         </div>
@@ -168,7 +168,7 @@ class Resume {
         ${RESUME.PROJECT.map(
           ({ period, title, company, list, explanation, skill, link }) => {
             return `
-          <div class="resume-education-wrapper">
+          <div class="experience-wrapper">
             <div>
                 <span class="experience-period">
                   ${period}
@@ -198,8 +198,7 @@ class Resume {
                   : ''
               }
               </h2>
-              <h4>${company}</h4>
-              
+              <h4 class="corp-ex">${company}</h4>
               <ul class="experience-list-wrapper">
                 ${list
                   .map(({ title, detailList, link }) => {
@@ -237,13 +236,15 @@ class Resume {
         <h1>EDUCATION</h1>
         ${RESUME.EDUCATION.map(({ period, title, explanation }) => {
           return `
-          <div class="resume-education-wrapper">
+          <div class="experience-wrapper">
             <div>
-              <h3>${period}</h3>
+              <span class="experience-period">
+                ${period}
+              </span> 
             </div>
             <div>
               <h2>${title}</h2>
-              <h4>${explanation}</h4>
+              <h4 class="corp-ex">${explanation}</h4>
             </div>
           </div>
           `;
@@ -253,13 +254,13 @@ class Resume {
         <h1>ETC</h1>
         ${RESUME.ETC.map(({ period, title, explanation }) => {
           return `
-          <div class="resume-education-wrapper">
-            <div>
-              <h3>${period}</h3>
-            </div>
+          <div class="experience-wrapper">
+            <span class="experience-period">
+              ${period}
+            </span> 
             <div>
               <h2>${title}</h2>
-              <h4>${explanation}</h4>
+              <h4 class="corp-ex">${explanation}</h4>
             </div>
           </div>
           `;

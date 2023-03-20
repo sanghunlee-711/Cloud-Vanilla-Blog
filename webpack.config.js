@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+
 const mode = process.env.NODE_ENV;
 const isDevelopment = mode === 'development';
 const target = isDevelopment ? 'web' : 'browserslist';
@@ -11,7 +13,12 @@ const plugins = [
   new webpack.EnvironmentPlugin({
     NODE_ENV: 'development',
   }),
+  new Dotenv({
+    path: `./.env.${process.env.NODE_ENV}`,
+    safe: true,
+  }),
   new HtmlWebpackPlugin({
+    inject: false, //기본으로 두면 JS가 html에 인젝트 되어서 js가 두번불리게 됨..
     hash: true,
     template: './src/index.html', //적용될 html 경로
   }),
@@ -19,7 +26,8 @@ const plugins = [
     process: 'process/browser',
   }),
   new CleanWebpackPlugin({
-    cleanAfterEveryBuildPatterns: ['dist'],
+    cleanOnceBeforeBuildPatterns: ['dist'],
+    // cleanAfterEveryBuildPatterns: ['dist'],
   }),
   new CopyPlugin({
     patterns: [
@@ -35,7 +43,7 @@ const plugins = [
   }),
 ];
 
-module.exports = (env) => {
+module.exports = (env, options) => {
   return {
     mode,
     entry: './src/index.js',
@@ -48,6 +56,7 @@ module.exports = (env) => {
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'index.js',
+      publicPath: '',
     },
     module: {
       rules: [

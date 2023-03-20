@@ -1,4 +1,4 @@
-import { resetDisqus } from '../../utils/index.js';
+import { makeDisqus, resetDisqus } from '../../common/utils/disqus';
 
 const GuestBook = function ({ $target }) {
   this.$target = $target;
@@ -17,14 +17,10 @@ const GuestBook = function ({ $target }) {
       </div>
       <div id="disqus_thread"></div>
     `;
-
-    resetDisqus(
-      `https://blog.cloud-sanghun.com/#!${this.title}`,
-      `https://blog.cloud-sanghun.com/#!${this.title}`,
-      this.title,
-      'ko'
-    );
+    makeDisqus();
+    resetDisqus(this.title);
   };
+
   this.render();
 };
 

@@ -8,6 +8,28 @@
 
 - 언젠가는 웹표준인 web components를 적극적으로 활용해 볼 예정입니다.
 
+# UI/UX
+
+## Main page
+
+<img src="./static/gif/blog-main.gif">
+
+## Burger Navigation
+
+<img src="./static/gif/blog-burger.gif">
+
+## Categorized Post
+
+<img src="./static/gif/blog-category.gif">
+
+## Infinite Scroll
+
+<img src="./static/gif/blog-infinitescroll.gif">
+
+## Resume with printing
+
+<img src="./static/gif/blog-resume.gif">
+
 ## 개념적 목표
 
 ### 2022

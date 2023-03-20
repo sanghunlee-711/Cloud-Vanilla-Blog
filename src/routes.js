@@ -1,4 +1,4 @@
-import { ROUTES } from './constants/route.js';
+import { ROUTES } from './common/constants/route.js';
 
 export default class Router {
   constructor({ $target }) {

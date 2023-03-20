@@ -1,4 +1,5 @@
-import { $ELEMENT } from '../../../../constants/element.js';
+import { $ELEMENT } from './constants/element.js';
+import { LINK } from './constants/link.js';
 
 class Contribution {
   constructor({ $target }) {
@@ -12,28 +13,28 @@ class Contribution {
   }
 
   onSeeMore = () => {
-    window.open('https://github.com/sanghunlee-711', '_blank');
+    window.open(LINK.GITHUB, '_blank');
+  };
+
+  template = () => {
+    return `
+    <div class="${$ELEMENT.SEE_MORE}">
+      <h1>Github Contribution</h1>
+      <button class="basic-button" data-id="${$ELEMENT.SEE_GITHUB}">See more code</button>
+    </div>
+    <img class="${$ELEMENT.GITHUB_CHART}" src="${LINK.GITHUB_CHART}" alt="github-commit-log"/>
+    `;
   };
 
   render = () => {
-    wrapper.innerHTML = `
-      <div class="see-more">
-        <h1>Github Contribution</h1>
-        <button class="basic-button" data-id="see-github">See more code</button>
-      </div>
-      <img class="github-chart" src="https://ghchart.rshah.org/000C1C/sanghunlee-711"/>
-
-    `;
+    this.$wrapper.innerHTML = this.template();
   };
 
   addEventListener = () => {
     this.$wrapper.addEventListener('click', (e) => {
-      const isContributionButton =
-        e.target.className !== 'basic-button' ||
-        e.target.dataset.id !== 'see-github';
-
-      if (!isContributionButton) return;
-      this.onSeeMore(e);
+      if (e.target.dataset.id === $ELEMENT.SEE_GITHUB) {
+        this.onSeeMore(e);
+      }
     });
   };
 }

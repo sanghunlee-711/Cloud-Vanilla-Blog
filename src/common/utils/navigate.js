@@ -10,9 +10,11 @@ export const routeEvent = (to, isReplace = false) => {
 };
 
 export const addRouteEventListener = (e) => {
-  e.preventDefault();
-
   const target = e.target;
+
+  if (target.dataset.id !== 'route') return;
+
+  e.preventDefault();
 
   if (target.href && target.href.length) {
     const targetURL = e.target.href;

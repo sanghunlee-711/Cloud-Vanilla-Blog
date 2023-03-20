@@ -1,6 +1,6 @@
-import { API_ADDRESS } from '../constants/config.js';
-import { getContentId, resetDisqus } from '../utils/index.js';
-import { addRouteEventListener } from '../utils/navigate.js';
+import { makeDisqus, resetDisqus } from '../common/utils/disqus.js';
+import { getContentId } from '../common/utils/index.js';
+import { addRouteEventListener } from '../common/utils/navigate.js';
 
 class Content {
   constructor({ $target }) {
@@ -25,7 +25,7 @@ class Content {
   getPostData = async () => {
     try {
       const res = await fetch(
-        `${API_ADDRESS}/post?slug=${this.contentId}&type=${this.type}`
+        `${process.env.API_ADDRESS}/post?slug=${this.contentId}&type=${this.type}`
       );
       const resJson = await res.json();
       const data = await resJson;
@@ -45,14 +45,14 @@ class Content {
 
     this.$wrapper.innerHTML = `
       <div class="title-container">
-      <h1 class="title"> ${title}</h1>
+      <h1 class="title">${title}</h1>
       <div class="title-info">
         <div>
           <span>${author}</span>
           <span>${date?.split(' ')[0]}</span>
         </div>
         <div>
-          <a href="/post"> 목록 </a>
+          <a href="/post" data-id="route"> 목록 </a>
         </div>
       </div>
       </div>
@@ -67,12 +67,8 @@ class Content {
       <div id="disqus_thread"></div>
     `;
 
-    resetDisqus(
-      `https://blog.cloud-sanghun.com/#!${title}`,
-      `https://blog.cloud-sanghun.com/#!${title}`,
-      title,
-      'ko'
-    );
+    makeDisqus();
+    resetDisqus(title);
   };
 
   addEventListeners = () => {
