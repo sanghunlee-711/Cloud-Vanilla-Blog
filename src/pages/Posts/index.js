@@ -10,7 +10,13 @@ class Posts {
     this.$target = $target;
     this.$wrapper = document.createElement('main');
     this.$wrapper.setAttribute('class', 'post-main-container');
+    this.$endOfPage = document.createElement('p');
+    this.$endOfPage.setAttribute('class', 'end-of-page');
+    this.$endOfPage.textContent = 'End Of Contents';
+
     $target.appendChild(this.$wrapper);
+    $target.appendChild(this.$endOfPage);
+
     this.urlParams = new URLSearchParams(window.location.search);
     this.state = {
       currentPage: 1,
@@ -21,8 +27,9 @@ class Posts {
       list: [],
     };
 
-    this.getPostData();
+    // this.render();
     this.addEventListener();
+    this.getPostData();
   }
 
   setState = (nextState) => {
@@ -33,7 +40,10 @@ class Posts {
   getPostData = async () => {
     try {
       const res = await fetch(
-        `${process.env.API_ADDRESS}/post-list?type=${this.state.sortKey}&countPerPage=${this.state.contentIncrease}&pageNo=${this.state.currentPage}`
+        `${process.env.API_ADDRESS}/post-list?type=${
+          this.state.sortKey
+        }&countPerPage=${this.state.contentIncrease}&pageNo=${++this.state
+          .currentPage}`
       );
       const resJson = await res.json();
 
@@ -61,17 +71,7 @@ class Posts {
 
     if (isStop) return;
 
-    const endOfPage =
-      window.innerHeight + window.pageYOffset >=
-      document.body.offsetHeight - 10;
-
-    if (endOfPage) {
-      this.setState({
-        ...this.state,
-        currentPage: ++this.state.currentPage,
-      });
-      this.getPostData();
-    }
+    await this.getPostData();
   };
 
   onChangePostType = (value) => {
@@ -134,7 +134,22 @@ class Posts {
   };
 
   addEventListener = () => {
-    window.addEventListener('scroll', this.handleInfiniteScroll);
+    const $endOfPage = document.querySelector('.end-of-page');
+    const $root = document.querySelector('#root');
+
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+          this.handleInfiniteScroll();
+        });
+      },
+      { root: $root, threshold: 0.3 }
+    );
+
+    this.observer.observe($endOfPage);
 
     this.$wrapper.addEventListener('change', (e) => {
       if (e.target.classList.contains('post-selector')) {
