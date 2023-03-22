@@ -16,8 +16,10 @@ class ScrollTopButton {
   };
 
   addEventListeners = () => {
+    const $root = document.querySelector('#root');
+
     this.$wrapper.addEventListener('click', () => {
-      window.scrollTo({
+      $root.scrollTo({
         top: 0,
         behavior: 'smooth',
       });

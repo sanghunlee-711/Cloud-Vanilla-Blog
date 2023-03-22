@@ -12,7 +12,7 @@ class Posts {
     this.$wrapper.setAttribute('class', 'post-main-container');
     this.$endOfPage = document.createElement('p');
     this.$endOfPage.setAttribute('class', 'end-of-page');
-    this.$endOfPage.textContent = 'End Of Page';
+    this.$endOfPage.textContent = 'End Of Contents';
 
     $target.appendChild(this.$wrapper);
     $target.appendChild(this.$endOfPage);
@@ -27,7 +27,7 @@ class Posts {
       list: [],
     };
 
-    this.render();
+    // this.render();
     this.addEventListener();
     this.getPostData();
   }

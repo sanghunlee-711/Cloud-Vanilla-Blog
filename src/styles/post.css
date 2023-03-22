@@ -185,3 +185,11 @@ a {
   height: auto !important;
   aspect-ratio: auto;
 }
+
+.end-of-page {
+  text-align: center;
+  font-size: 24px;
+  color: var(--strong-gray);
+  font-weight: 700;
+  margin-bottom: 48px;
+}
