@@ -5,6 +5,12 @@ export default class Router {
     this.$target = $target;
     this.routeList = ROUTES;
 
+    /* for initial render */
+    this.renderHTML({
+      $element: this.$target,
+      routeObject: this.getRouteObject(),
+    });
+    /* */
     this.addEventListener();
   }
 
@@ -40,29 +46,24 @@ export default class Router {
     return route;
   };
 
-  addEventListener = () => {
-    /* for initial render */
+  handleRouteChange = (event) => {
+    const {
+      detail: { to, isReplace },
+    } = event;
+
+    const isReplaceable = isReplace === true || to === window.location.href;
+
+    if (!isReplaceable) window.history.pushState(null, '', to);
+    else window.history.replaceState(null, '', to);
+
     this.renderHTML({
       $element: this.$target,
       routeObject: this.getRouteObject(),
     });
-    /* */
+  };
 
-    window.addEventListener('routechange', (event) => {
-      const {
-        detail: { to, isReplace },
-      } = event;
-
-      const isReplaceable = isReplace === true || to === window.location.href;
-
-      if (!isReplaceable) window.history.pushState(null, '', to);
-      else window.history.replaceState(null, '', to);
-
-      this.renderHTML({
-        $element: this.$target,
-        routeObject: this.getRouteObject(),
-      });
-    });
+  addEventListener = () => {
+    window.addEventListener('routechange', this.handleRouteChange);
 
     window.addEventListener('popstate', () => {
       this.renderHTML({

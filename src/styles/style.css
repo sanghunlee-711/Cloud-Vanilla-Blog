@@ -37,6 +37,12 @@
 body {
   margin: 0px;
 }
+
+#root {
+  height: 100vh;
+  overflow: scroll;
+}
+
 .route_container {
   max-width: var(--basic-width);
   margin: 0 auto;

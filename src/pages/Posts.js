@@ -1,22 +1,14 @@
-import { POST_SELECT_MAP } from '../../common/constants/common.js';
-import {
-  addRouteEventListener,
-  routeEvent,
-} from '../../common/utils/navigate.js';
-import { PostCard } from '../../components/PostCard.js';
-
-class Posts {
+import { PostCard } from '../components/PostCard.js';
+import { POST_SELECT_MAP } from '../constants/common.js';
+import { API_ADDRESS } from '../constants/config.js';
+import { addRouteEventListener, routeEvent } from '../utils/navigate.js';
+export class Posts {
   constructor({ $target }) {
     this.$target = $target;
+    this.data = [];
     this.$wrapper = document.createElement('main');
     this.$wrapper.setAttribute('class', 'post-main-container');
-    this.$endOfPage = document.createElement('p');
-    this.$endOfPage.setAttribute('class', 'end-of-page');
-    this.$endOfPage.textContent = 'End Of Page';
-
     $target.appendChild(this.$wrapper);
-    $target.appendChild(this.$endOfPage);
-
     this.urlParams = new URLSearchParams(window.location.search);
     this.state = {
       currentPage: 1,
@@ -24,26 +16,26 @@ class Posts {
       totalItemCount: 1,
       sortKey: this.urlParams.get('type') || POST_SELECT_MAP[0].key,
       isContinue: false,
-      list: [],
     };
 
-    this.render();
-    this.addEventListener();
     this.getPostData();
+
+    this.addEventListener();
   }
+
+  setListData = (nextData) => {
+    this.data = [...nextData];
+    this.render();
+  };
 
   setState = (nextState) => {
     this.state = nextState;
-    this.render();
   };
 
   getPostData = async () => {
     try {
       const res = await fetch(
-        `${process.env.API_ADDRESS}/post-list?type=${
-          this.state.sortKey
-        }&countPerPage=${this.state.contentIncrease}&pageNo=${++this.state
-          .currentPage}`
+        `${API_ADDRESS}/post-list?type=${this.state.sortKey}&countPerPage=${this.state.contentIncrease}&pageNo=${this.state.currentPage}`
       );
       const resJson = await res.json();
 
@@ -51,12 +43,13 @@ class Posts {
       const pageState = resJson.pagination;
       const isContinue = resJson.success;
 
+      this.setListData([...this.data, ...data]);
+
       this.setState({
         ...this.state,
         totalItemCount: pageState.totalCount,
         currentPage: pageState.pageNo,
         isContinue,
-        list: [...this.state.list, ...data],
       });
     } catch (e) {
       console.error('포스팅 데이터 불러오기 에러 발생', e);
@@ -65,25 +58,45 @@ class Posts {
 
   handleInfiniteScroll = async () => {
     const isStop =
-      this.state.totalItemCount <= this.state.list.length ||
+      this.state.totalItemCount <= this.data.length ||
       this.state.totalItemCount <= this.state.currentPage * 3 ||
       !this.state.isContinue; //얘는 임시방편..
 
     if (isStop) return;
 
-    await this.getPostData();
+    const endOfPage =
+      window.innerHeight + window.pageYOffset >=
+      document.body.offsetHeight - 10;
+
+    if (endOfPage) {
+      let timer = null;
+      if (
+        this.state.currentPage * this.state.contentIncrease <=
+        this.state.totalItemCount
+      ) {
+        if (!timer) {
+          timer = setTimeout(() => {
+            timer = null;
+            this.setState({
+              ...this.state,
+              currentPage: ++this.state.currentPage,
+            });
+            this.getPostData();
+          }, 400);
+        }
+      }
+    }
   };
 
   onChangePostType = (value) => {
     const targetURL = `/post?type=${value}`;
-
+    this.setListData([]);
     this.setState({
       ...this.state,
       currentPage: 1,
       contentIncrease: 3,
       totalItemCount: 1,
       sortKey: value,
-      list: [],
     });
 
     routeEvent(targetURL);
@@ -104,7 +117,7 @@ class Posts {
       }).join('')}
       </select>
       <ul class="post-list-container">
-      ${this.state.list
+      ${this.data
         .map(
           ({
             slug,
@@ -134,22 +147,8 @@ class Posts {
   };
 
   addEventListener = () => {
-    const $endOfPage = document.querySelector('.end-of-page');
-    const $root = document.querySelector('#root');
-
-    this.observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            return;
-          }
-          this.handleInfiniteScroll();
-        });
-      },
-      { root: $root, threshold: 0.3 }
-    );
-
-    this.observer.observe($endOfPage);
+    //* Todo: need debounce
+    window.addEventListener('scroll', this.handleInfiniteScroll);
 
     this.$wrapper.addEventListener('change', (e) => {
       if (e.target.classList.contains('post-selector')) {
@@ -158,13 +157,7 @@ class Posts {
     });
 
     this.$wrapper.addEventListener('click', (e) => {
-      const target = e.target;
-      if (target instanceof HTMLAnchorElement) {
-        window.removeEventListener(this.handleInfiniteScroll);
-        addRouteEventListener(e);
-      }
+      addRouteEventListener(e);
     });
   };
 }
-
-export default Posts;
