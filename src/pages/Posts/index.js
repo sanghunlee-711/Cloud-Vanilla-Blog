@@ -40,10 +40,7 @@ class Posts {
   getPostData = async () => {
     try {
       const res = await fetch(
-        `${process.env.API_ADDRESS}/post-list?type=${
-          this.state.sortKey
-        }&countPerPage=${this.state.contentIncrease}&pageNo=${++this.state
-          .currentPage}`
+        `${process.env.API_ADDRESS}/post-list?type=${this.state.sortKey}&countPerPage=${this.state.contentIncrease}&pageNo=${this.state.currentPage}`
       );
       const resJson = await res.json();
 
@@ -54,7 +51,7 @@ class Posts {
       this.setState({
         ...this.state,
         totalItemCount: pageState.totalCount,
-        currentPage: pageState.pageNo,
+        currentPage: ++pageState.pageNo,
         isContinue,
         list: [...this.state.list, ...data],
       });
