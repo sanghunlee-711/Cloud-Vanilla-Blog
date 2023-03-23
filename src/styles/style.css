@@ -155,8 +155,6 @@ body {
 
 .burger-button {
   visibility: visible;
-  /* width: 0px;
-  height: 0px; */
 }
 
 @media screen and (max-width: 512px) {
@@ -171,21 +169,17 @@ body {
     width: 0px;
     height: 0px;
     margin: 0px;
-    /* display: none; */
   }
 
   .nav_list li {
     visibility: hidden;
     width: 0px;
     height: 0px;
-    /* color: transparent; */
-    /* display: none; */
   }
 
   .nav_list li a {
     width: 0px;
     height: 0px;
-    /* visibility: hidden; */
     display: none;
   }
 
@@ -271,13 +265,10 @@ body {
 
 .basic-button {
   font-size: 18px;
-  /* width: 32px; */
   height: 100%;
-
   border: 1px solid white;
   background-color: var(--basic-gray);
   color: white;
-
   border-radius: 4px;
   text-align: center;
   vertical-align: middle;
