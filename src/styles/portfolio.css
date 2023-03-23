@@ -1,0 +1,183 @@
+.portfolio-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 12px 0px;
+  border: 1px solid var(--basic-gray);
+  border-radius: 4px;
+}
+
+@page {
+  size: A4;
+  margin: auto;
+}
+
+@media print {
+  .portfolio-container {
+    width: 210mm;
+    height: 297mm;
+    page-break-after: avoid;
+    border: none;
+  }
+}
+
+.portfolio-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-radius: 4px;
+  margin-top: 4px;
+  padding: 0px 8px;
+  width: calc(100% - 8px * 2);
+}
+
+.portfolio-title-job {
+  display: flex;
+  align-items: center;
+}
+
+.portfolio-title-job > h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.portfolio-title-job > h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--basic-gray);
+  margin-left: 12px;
+}
+
+.portfolio-explanation-wrapper > p {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--basic-gray);
+  margin: 0px;
+}
+
+.portfolio-title {
+  width: 100%;
+  padding: 24px 0px;
+  background-color: white;
+  color: black;
+  font-weight: 700;
+  border-radius: 4px;
+  border-bottom: 1px solid var(--basic-gray);
+}
+
+.portfolio-title > span {
+  margin-left: 12px;
+}
+
+.portfolio-title-image {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+.portfolio-title-image > img {
+  width: 100%;
+  margin: 4px 0px;
+  max-height: 164px;
+}
+
+.portfolio-dev-techstack {
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-dev-techstack > h2 {
+  margin: 0px;
+}
+
+.portfolio-explore {
+  margin: 12px 0px;
+  border-radius: 4px;
+  padding: 0px 8px;
+  width: calc(100% - 16px);
+}
+
+.portfolio-explore > h3 {
+  margin: 0px;
+}
+
+.portfolio-explore > p {
+  all: unset;
+  margin-top: 4px;
+  text-overflow: ellipsis;
+  /* white-space: pre-line; */
+}
+
+.portfolio-explanation-container {
+  width: 70%;
+}
+
+.portfolio-dev-techstack-list-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.portfolio-dev-techstack-list-container > div {
+  margin-right: 12px;
+  width: 100%;
+}
+
+.portfolio-dev-techstack-list-container > h3 > i {
+  margin-right: 8px;
+}
+
+.portfolio-dev-techstack-list-container > div > ul {
+  max-height: 84px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.portfolio-dev-techstack-list-container > div > ul > li {
+  margin-right: 16px;
+}
+
+.dev-explanation-wrapper {
+  display: flex;
+  width: 50%;
+}
+
+.portfolio-link > ul {
+  list-style: none;
+  display: flex;
+  padding: 0px;
+}
+
+.portfolio-link > h2 {
+  margin: 0px;
+}
+
+.portfolio-link > ul > li {
+  margin-right: 12px;
+}
+
+.portfolio-dev-explanation {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid var(--basic-gray); */
+  padding: 0px 8px;
+}
+
+.dev-explanation-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.dev-explanation-wrapper {
+  display: flex;
+  flex-direction: column;
+  /* width: 45%; */
+  /* height: 100%; */
+}
+.dev-explanation-wrapper > img {
+  width: 100%;
+  max-height: 200px;
+}

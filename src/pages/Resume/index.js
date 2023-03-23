@@ -1,3 +1,4 @@
+import { layerPrint } from '../../common/utils/print.js';
 import * as RESUME from './constant.js';
 
 class Resume {
@@ -11,34 +12,10 @@ class Resume {
     this.addEventListeners();
   }
 
-  layerPrint = () => {
-    const elem = 'resume-container';
-    const printWindow = window.open('', 'PRINT', 'height=400,width=600');
-
-    printWindow.document.write(
-      '<html><head><title>' + document.title + '</title>'
-    );
-    printWindow.document.write(`
-    <link href="styles/resume.css" rel="stylesheet">
-    <link href="styles/style.css" rel="stylesheet">
-    <link href="styles/post.css" rel="stylesheet">
-    <link href="styles/mdStyle.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/eb264fff85.js" crossorigin="anonymous"></script>
-    `);
-    printWindow.document.write('</head><body >');
-    // printWindow.document.write('<h1>' + document.title + '</h1>');
-    printWindow.document.write(document.getElementById(elem).innerHTML);
-    printWindow.document.write('</body></html>');
-
-    printWindow.document.close(); // necessary for IE >= 10
-
-    setTimeout(() => {
-      printWindow.focus(); // necessary for IE >= 10*/
-      printWindow.print();
-      printWindow.close();
-    }, 1000);
-
-    return true;
+  handlePrint = () => {
+    const today = new Date();
+    const dateForm = `${today.getFullYear()}.${today.getMonth() + 1}`;
+    layerPrint('resume-container', `이상훈-이력서-${dateForm}`);
   };
 
   render = () => {
@@ -273,7 +250,7 @@ class Resume {
   addEventListeners = () => {
     this.$wrapper.addEventListener('click', (e) => {
       if (e.target.classList.contains('print-resume')) {
-        this.layerPrint();
+        this.handlePrint();
       }
     });
   };
