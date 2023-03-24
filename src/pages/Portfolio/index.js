@@ -34,11 +34,6 @@ class PortFolio {
         }) => {
           return /*html*/ `
             <section class="portfolio-container">
-              <div class="portfolio-title">
-                <span>
-                  프로젝트 경험
-                </span>
-              </div>
               <div class="portfolio-top">
                 <div class="portfolio-title-image">
                   ${titleImages
@@ -52,12 +47,10 @@ class PortFolio {
                 <div class="portfolio-explanation-container">
                   <div class="portfolio-explanation-wrapper">
                     <div class="portfolio-title-job">
-                      <h1>${title} </h1>
+                      <h1>${title} </h1>                    
                       <h2>(${job})</h2>
+                      <p>${period}</p>
                     </div>
-                    <p>
-                      ${period}
-                    </p>
                   </div>
                   <div class="portfolio-dev-highlights">
                     <h2>개발 주요사항</h2>
@@ -158,11 +151,15 @@ class PortFolio {
 
   render = () => {
     this.$wrapper.innerHTML = `
-    <button class="print print-resume">
-      <i class="print fa fa-print fa-1x"></i>
-    </button>
-    <div id="portfolio-container">
-      ${this.template()}
+    <div>
+      <div class="print-resume-wrapper print">
+        <button class="print-resume print">
+          <i class="fa fa-print fa-1x print"></i>
+        </button>
+      </div>
+      <div id="portfolio-container">
+        ${this.template()}
+      </div>
     </div>
     `;
   };

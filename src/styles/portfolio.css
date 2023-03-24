@@ -1,3 +1,8 @@
+#portfolio-container {
+  max-width: 1024px;
+  margin: 24px 12px;
+}
+
 .portfolio-container {
   display: flex;
   flex-direction: column;
@@ -34,7 +39,8 @@
 
 .portfolio-title-job {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .portfolio-title-job > h1 {
@@ -46,14 +52,12 @@
   font-size: 18px;
   font-weight: 700;
   color: var(--basic-gray);
-  margin-left: 12px;
 }
-
-.portfolio-explanation-wrapper > p {
+.portfolio-title-job > p {
   font-size: 16px;
   font-weight: 700;
   color: var(--basic-gray);
-  margin: 0px;
+  margin: 4px;
 }
 
 .portfolio-title {
@@ -110,7 +114,7 @@
 }
 
 .portfolio-explanation-container {
-  width: 70%;
+  width: 65%;
 }
 
 .portfolio-dev-techstack-list-container {

@@ -14,7 +14,7 @@ const plugins = [
     NODE_ENV: 'development',
   }),
   new Dotenv({
-    path: `./.env.${process.env.NODE_ENV}`,
+    path: `.env.${process.env.NODE_ENV}`,
     safe: true,
   }),
   new HtmlWebpackPlugin({
