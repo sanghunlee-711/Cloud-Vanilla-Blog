@@ -1,6 +1,6 @@
 ---
 slug: 2022-11-06-next-step-tdd
-title: 넥스트스텝 스터디 참여후기(1~8주차)
+title: 프로그래머스 JS 스터디 참여 후기
 summary: TDD, 클린코드에 조금 더 가까이!
 author: Sanghun lee
 date: 2022-11-06 11:33:00 +0800

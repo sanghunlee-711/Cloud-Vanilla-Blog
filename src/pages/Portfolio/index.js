@@ -120,9 +120,7 @@ class PortFolio {
               
               <div class="portfolio-explore">
                 <h3>살펴보기</h3>
-                <p>
-                  ${exploreComment}
-                </p>
+                <p>${exploreComment}</p>
               </div>
               <div class="portfolio-dev-explanation">
                 <h3>개발 관련 설명</h3>
@@ -152,7 +150,7 @@ class PortFolio {
   render = () => {
     this.$wrapper.innerHTML = `
     <div>
-      <div class="print-resume-wrapper print">
+      <div class="print-resume-wrapper">
         <button class="print-resume print">
           <i class="fa fa-print fa-1x print"></i>
         </button>

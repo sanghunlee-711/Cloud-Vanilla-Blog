@@ -77,13 +77,18 @@
 .portfolio-title-image {
   display: flex;
   flex-direction: column;
-  width: 25%;
+  justify-content: center;
+  width: 30%;
+  height: 100%;
 }
 
 .portfolio-title-image > img {
   width: 100%;
+  /* min-width: 320px; */
   margin: 4px 0px;
-  max-height: 164px;
+  max-height: 160px;
+  border: 1px solid var(--basic-gray);
+  border-radius: 4px;
 }
 
 .portfolio-dev-techstack {
@@ -103,14 +108,17 @@
 }
 
 .portfolio-explore > h3 {
-  margin: 0px;
+  margin: 16px 0px;
 }
 
 .portfolio-explore > p {
   all: unset;
   margin-top: 4px;
-  text-overflow: ellipsis;
-  /* white-space: pre-line; */
+  font-size: 16px;
+  /* text-overflow: ellipsis; */
+  white-space: pre-line;
+  height: fit-content;
+  display: block;
 }
 
 .portfolio-explanation-container {
@@ -183,5 +191,7 @@
 }
 .dev-explanation-wrapper > img {
   width: 100%;
-  max-height: 200px;
+  height: 200px;
+  border: 1px solid var(--basic-gray);
+  border-radius: 4px;
 }
