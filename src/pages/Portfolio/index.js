@@ -31,6 +31,7 @@ class PortFolio {
           libs,
           exploreComment,
           devExplains,
+          type,
         }) => {
           return /*html*/ `
             <section class="portfolio-container">
@@ -47,9 +48,9 @@ class PortFolio {
                 <div class="portfolio-explanation-container">
                   <div class="portfolio-explanation-wrapper">
                     <div class="portfolio-title-job">
-                      <h1>${title} </h1>                    
+                      <h1>${title}</h1>                    
                       <h2>(${job})</h2>
-                      <p>${period}</p>
+                      <p>${period} [${type}]</p>
                     </div>
                   </div>
                   <div class="portfolio-dev-highlights">
@@ -129,7 +130,9 @@ class PortFolio {
                     .map(({ image, explanation }, index) => {
                       return `
                       <div class="dev-explanation-wrapper">
-                        <img src="${image}" alt="${image}-${index}" />
+                        <div class="dev-explanation-image-wrapper">
+                          <img src="${image}" alt="${image}-${index}" />
+                        </div>
                         <p>
                           ${explanation}
                         </p>

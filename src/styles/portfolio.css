@@ -22,7 +22,7 @@
   .portfolio-container {
     width: 210mm;
     height: 297mm;
-    page-break-after: avoid;
+    page-break-after: always;
     border: none;
   }
 }
@@ -53,6 +53,14 @@
   font-weight: 700;
   color: var(--basic-gray);
 }
+
+.portfolio-title-job > h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--basic-gray);
+  margin: 0px;
+}
+
 .portfolio-title-job > p {
   font-size: 16px;
   font-weight: 700;
@@ -189,9 +197,18 @@
   /* width: 45%; */
   /* height: 100%; */
 }
-.dev-explanation-wrapper > img {
+.dev-explanation-image-wrapper {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  height: 200px;
+  height: 240px;
   border: 1px solid var(--basic-gray);
   border-radius: 4px;
+  overflow: hidden;
+}
+
+.dev-explanation-image-wrapper > img {
+  width: 100%;
 }
