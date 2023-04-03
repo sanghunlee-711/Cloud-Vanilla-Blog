@@ -1,5 +1,5 @@
 import { layerPrint } from '../../common/utils/print.js';
-import { PORTFOLIO_LIST } from './constants/portfolio.js';
+import { PORTFOLIO_LIST } from './constants/portfolio/index.js';
 
 class PortFolio {
   constructor({ $target }) {
@@ -27,11 +27,13 @@ class PortFolio {
           links,
           titleImages,
           devHighlights,
+          devAchivement,
           techEnvironment,
           libs,
           exploreComment,
           devExplains,
           type,
+          contribution,
         }) => {
           return /*html*/ `
             <section class="portfolio-container">
@@ -45,63 +47,16 @@ class PortFolio {
                     })
                     .join('')}
                 </div>
+                
                 <div class="portfolio-explanation-container">
                   <div class="portfolio-explanation-wrapper">
                     <div class="portfolio-title-job">
                       <h1>${title}</h1>                    
                       <h2>(${job})</h2>
-                      <p>${period} [${type}]</p>
-                    </div>
-                  </div>
-                  <div class="portfolio-dev-highlights">
-                    <h2>개발 주요사항</h2>
-                    <ul>
-                      ${devHighlights
-                        .map((highlight) => {
-                          return `
-                          <li>${highlight}</li>
-                        `;
-                        })
-                        .join('')}
-                    </ul>
-                  </div>
-                  <div class="portfolio-dev-techstack">
-                    <h2>기술 스택</h2>
-                    <div class="portfolio-dev-techstack-list-container"> 
-                      <div>
-                        <p>
-                          <i class="fab fa-dribbble"></i>
-                          <span>개발 환경</span>
-                        </p>
-                        <ul>
-                          ${techEnvironment
-                            .map((tech) => {
-                              return `
-                              <li>${tech}</li>
-                            `;
-                            })
-                            .join('')}
-                        </ul>
-                      </div>
-                      <div>
-                        <p>
-                          <i class="fab fa-grav"></i>
-                          <span>오픈소스 & 라이브러리</span>
-                        </p>
-                        <ul>
-                          ${libs
-                            .map((lib) => {
-                              return `
-                              <li>${lib}</li>
-                            `;
-                            })
-                            .join('')}
-                        </ul>
-                      </div>
-                    </div>
-                  <div class="portfolio-link">
-                    <h2>관련 링크</h2>
-                    <ul>
+                      <p>${period} [${type}] [기여도: ${
+            contribution || 100
+          }%]</p>
+                      <ul class="portfolio-link">
                       ${links
                         .map(({ link, icon }) => {
                           return `
@@ -114,17 +69,63 @@ class PortFolio {
                         })
                         .join('')}
                       </ul>
+                    </div>
                   </div>
+                  <div class="portfolio-dev-highlights">
+                    <h2>개발 사항</h2>
+                    <ul>
+                      ${devHighlights
+                        .map((highlight) => {
+                          return `
+                          <li>${highlight}</li>
+                        `;
+                        })
+                        .join('')}
+                    </ul>
+                  </div>
+                  <div class="portfolio-dev-highlights">
+                    <h2>성과</h2>
+                    <ul>
+                      ${devAchivement
+                        ?.map((achivement) => {
+                          return `
+                          <li>${achivement}</li>
+                        `;
+                        })
+                        .join('')}
+                    </ul>
+                  </div>
+                  <div class="portfolio-dev-techstack">
+                    <h2>기술 스택</h2>
+                    <div class="portfolio-dev-techstack-list-container"> 
+                      <div>
+                        <ul>
+                          ${techEnvironment
+                            .map((tech) => {
+                              return `
+                              <li>${tech}</li>
+                            `;
+                            })
+                            .join('')}
+                          ${libs
+                            .map((lib) => {
+                              return `
+                              <li>${lib}</li>
+                            `;
+                            })
+                            .join('')}
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              
               <div class="portfolio-explore">
                 <h3>살펴보기</h3>
                 <p>${exploreComment}</p>
               </div>
               <div class="portfolio-dev-explanation">
-                <h3>개발 관련 설명</h3>
+                <h3>주요 성과(설명 된 성과 중 질문유도용으로 하나 픽해서 쓰기)</h3>
                 <div class="dev-explanation-container">
                   ${devExplains
                     .map(({ image, explanation }, index) => {

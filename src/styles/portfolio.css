@@ -94,7 +94,8 @@
   width: 100%;
   /* min-width: 320px; */
   margin: 4px 0px;
-  max-height: 160px;
+  /* max-height: 160px; */
+  min-height: 160px;
   border: 1px solid var(--basic-gray);
   border-radius: 4px;
 }
@@ -164,18 +165,14 @@
   width: 50%;
 }
 
-.portfolio-link > ul {
+.portfolio-link {
   list-style: none;
   display: flex;
   padding: 0px;
 }
 
-.portfolio-link > h2 {
-  margin: 0px;
-}
-
-.portfolio-link > ul > li {
-  margin-right: 12px;
+.portfolio-link > li {
+  margin-left: 8px;
 }
 
 .portfolio-dev-explanation {
