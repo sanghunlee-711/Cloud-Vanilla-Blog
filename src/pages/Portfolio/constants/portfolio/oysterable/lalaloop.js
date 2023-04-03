@@ -13,19 +13,17 @@ export const OA_LALALOOP_PORTFOLIO = {
     '../../../../../../static/images/portfolio/oysterable/lalaloop/oa-lalaloop-main.png',
     '../../../../../../static/images/portfolio/oysterable/lalaloop/oa-lalaloop-map.png',
     '../../../../../../static/images/portfolio/oysterable/lalaloop/oa-lalaloop-account.png',
-    '../../../../../../static/images/portfolio/oysterable/lalaloop/oa-lalaloop-complete.png',
   ],
   devHighlights: [
     'Next.JS를 활용한 SEO, SSR 적극 활용',
     '모바일, 데스크탑 양방향에 친화적인 UI를 위해 반응형 적용',
     'Kakao Maps API를 이용한 지도 내 다양한 기계 확인',
-    '카카오톡 비즈톡 내부의 링크를 통해 웹에서 입금 요청을 바로 진행할 수 있도록 개발',
-    '각종 약관 별도의 html 파일로 개발하여 확장성 증대',
     'Google Anayltics를 활용한 Business Statics 수집',
   ],
   devAchivement: [
     '크로스 브라우징 시 스타일 관리를 위한 기법 학습(IOS의 Viewport문제, 버튼의 기본 CSS 등)',
     '카카오 맵 라이브러리 커스텀 오버레이등의 활용 능력 향상',
+    '각종 약관 별도의 html 파일로 개발하여 확장성 증대',
   ],
   techEnvironment: ['TypeScript'],
   libs: [

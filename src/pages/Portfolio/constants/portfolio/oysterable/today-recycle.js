@@ -12,7 +12,6 @@ export const TODAY_RECYCLE = {
   ],
   titleImages: [
     '../../../../../../static/images/portfolio/oysterable/today-recycle/tr-main.png',
-    '../../../../../../static/images/portfolio/oysterable/today-recycle/tr-product-detail.png',
     '../../../../../../static/images/portfolio/oysterable/today-recycle/tr-machine-list.png',
     '../../../../../../static/images/portfolio/oysterable/today-recycle/tr-point.png',
   ],

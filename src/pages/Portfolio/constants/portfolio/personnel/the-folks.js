@@ -17,14 +17,12 @@ export const THE_FOLKS_PORTFOLIO = {
     '../../../../../../static/images/portfolio/the-folks/thefolks-main.png',
     '../../../../../../static/images/portfolio/the-folks/thefolks-mypage.png',
     '../../../../../../static/images/portfolio/the-folks/thefolks-post-write.png',
-    '../../../../../../static/images/portfolio/the-folks/thefolks-crew.png',
   ],
   devHighlights: [
     'Next.JS를 활용한 SEO, SSR 적극 활용',
     'Tui-Editor를 커스터마이징하여 모바일 글 작성 및 대표사진 기능 추가 제작',
     '다양한 모바일 해상도 대응을 위한 반응형 적용',
     'Nest.JS, GraphQL, ApolloClient를 활용한 프론트엔드 위주의 서버 구현',
-    '백엔드 및 프론트 서버 별도 호스팅을 통해 실제 작은 서비스 규모 구현',
   ],
   devAchivement: [
     'SEO를 위한 기본적인 robot.txt, manifest.json과 같은 파일의 기능 이해',

@@ -16,6 +16,11 @@
     #fff 100%
   );
   --header-nav-bottom: 1px solid #eee;
+  --portfolio-h1: 24px;
+  --portfolio-h2: 20px;
+  --portfolio-h3: 18px;
+  --portfolio-span: 14px;
+  --portfolio-p: 14px;
 }
 
 @media print {

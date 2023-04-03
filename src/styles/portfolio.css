@@ -12,8 +12,8 @@
   border: 1px solid var(--basic-gray);
   border-radius: 4px;
   /* size: A4; */
-  width: 210mm;
-  height: 297mm;
+  /* width: 210mm;
+  height: 297mm; */
 }
 
 @media print {
@@ -25,9 +25,40 @@
   .portfolio-container {
     width: 210mm;
     height: 297mm;
-    /* page-break-after: always; */
+    page-break-after: always;
     border: none;
   }
+}
+
+#portfolio-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#portfolio-container h1 {
+  font-size: var(--portfolio-h1);
+}
+
+#portfolio-container h2 {
+  font-size: var(--portfolio-h2);
+}
+
+#portfolio-container h3 {
+  font-size: var(--portfolio-h3);
+}
+
+#portfolio-container span {
+  font-size: var(--portfolio-span);
+}
+
+#portfolio-container p {
+  font-size: var(--portfolio-p);
+}
+
+#portfolio-container ul > li {
+  font-size: var(--portfolio-p);
 }
 
 .portfolio-top {
@@ -35,7 +66,6 @@
   justify-content: space-between;
   align-items: flex-start;
   border-radius: 4px;
-  margin-top: 4px;
   padding: 0px 8px;
   width: calc(100% - 8px * 2);
 }
@@ -52,25 +82,21 @@
 }
 
 .portfolio-title-job > div > h1 {
-  font-size: 20px;
   font-weight: 700;
 }
 
 .portfolio-title-job > h2 {
-  font-size: 16px;
   font-weight: 700;
   color: var(--basic-gray);
 }
 
 .portfolio-title-job > h3 {
-  font-size: 14px;
   font-weight: 700;
   color: var(--basic-gray);
   margin: 0px;
 }
 
 .portfolio-title-job > p {
-  font-size: 16px;
   font-weight: 700;
   color: var(--basic-gray);
   margin: 4px;
@@ -130,8 +156,7 @@
 
 .portfolio-explore > p {
   all: unset;
-  margin-top: 4px;
-  font-size: 16px;
+
   /* text-overflow: ellipsis; */
   white-space: pre-line;
   height: fit-content;
@@ -150,10 +175,6 @@
 .portfolio-dev-techstack-list-container > div {
   margin-right: 12px;
   width: 100%;
-}
-
-.portfolio-dev-techstack-list-container > h3 > i {
-  margin-right: 8px;
 }
 
 .portfolio-dev-techstack-list-container > div > ul {

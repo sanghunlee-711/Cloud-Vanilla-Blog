@@ -14,7 +14,6 @@ export const APPS_CONSOLE = {
     '../../../../../../../static/images/portfolio/oysterable/apps-console/apps-console-login.png',
     '../../../../../../../static/images/portfolio/oysterable/apps-console/apps-console-authgroup.png',
     '../../../../../../../static/images/portfolio/oysterable/apps-console/apps-console-banner-register.png',
-    '../../../../../../../static/images/portfolio/oysterable/apps-console/apps-console-user-static.png',
   ],
   devHighlights: [
     '프로젝트 전체 세팅, 개발 유지 보수 진행',

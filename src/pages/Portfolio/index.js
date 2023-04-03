@@ -67,7 +67,7 @@ class PortFolio {
                             .join('')}
                           </ul>
                       </div>              
-                      <h2>(${job})</h2>
+                      <p>(${job})</p>
                       <p>${period} [${type}] [기여도: ${
             contribution || 100
           }%]</p>
@@ -123,11 +123,11 @@ class PortFolio {
                 </div>
               </div>
               <div class="portfolio-explore">
-                <h3>살펴보기</h3>
+                <h2>살펴보기</h2>
                 <p>${exploreComment}</p>
               </div>
               <div class="portfolio-dev-explanation">
-                <h3>주요 성과(설명 된 성과 중 질문유도용으로 하나 픽해서 쓰기)</h3>
+                <h2>주요 성과(설명 된 성과 중 질문유도용으로 하나 픽해서 쓰기)</h2>
                 <div class="dev-explanation-container">
                   ${devExplains
                     .map(({ image, explanation }, index) => {

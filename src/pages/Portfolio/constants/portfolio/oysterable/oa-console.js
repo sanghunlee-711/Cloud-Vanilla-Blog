@@ -14,7 +14,6 @@ export const OA_CONSOLE = {
     '../../../../../../../static/images/portfolio/oysterable/oa-console/oa-console-trend.png',
     '../../../../../../../static/images/portfolio/oysterable/oa-console/oa-console-graph.png',
     '../../../../../../../static/images/portfolio/oysterable/oa-console/oa-console-register.png',
-    '../../../../../../../static/images/portfolio/oysterable/oa-console/oa-console-realtime.png',
   ],
   devHighlights: [
     '프로젝트 전체 세팅, 개발 유지 보수 진행',
