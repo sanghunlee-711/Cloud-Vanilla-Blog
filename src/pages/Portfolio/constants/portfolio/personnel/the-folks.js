@@ -5,11 +5,11 @@ export const THE_FOLKS_PORTFOLIO = {
   period: '2021/09~2022/04',
   links: [
     {
-      icon: 'fab fa-github fa-2x',
+      icon: 'fab fa-github   ',
       link: 'https://github.com/stylefolks/stylefolks-frontend',
     },
     // {
-    //   icon: 'fa fa-globe fa-2x',
+    //   icon: 'fa fa-globe   ',
     //   link: 'http://www.the-folks.com/',
     // },
   ],

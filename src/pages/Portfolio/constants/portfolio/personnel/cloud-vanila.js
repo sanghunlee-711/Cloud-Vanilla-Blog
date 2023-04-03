@@ -5,11 +5,11 @@ export const CLOUD_VANILLA_PORTFOLIO = {
   period: '2022/01~2023/03',
   links: [
     {
-      icon: 'fab fa-github fa-2x',
+      icon: 'fab fa-github   ',
       link: 'https://github.com/sanghunlee-711/Cloud-Vanilla-Blog',
     },
     {
-      icon: 'fa fa-globe fa-2x',
+      icon: 'fa fa-globe   ',
       link: 'https://www.cloud-sanghun.com/',
     },
   ],
@@ -17,10 +17,9 @@ export const CLOUD_VANILLA_PORTFOLIO = {
     '../../../../../../static/images/portfolio/vanilla-blog/post-list.png',
     '../../../../../../static/images/portfolio/vanilla-blog/content.png',
     '../../../../../../static/images/portfolio/vanilla-blog/print.png',
-    '../../../../../../static/images/portfolio/vanilla-blog/about.png',
+    // '../../../../../../static/images/portfolio/vanilla-blog/about.png',
   ],
   devHighlights: [
-    '재사용성 증대를 위해 Vanila js를 활용한 컴포넌트 기반 개발',
     'Custom Router를 만들어 SPA의 CSR과 유사한 라우터 적용',
     'Express.js를 사용하여 Markdown을 읽어오는 api 서버 개발',
     '웹팩을 활용하여 최소한의 플러그인을 통해 빌드 시스템 구현',
@@ -37,8 +36,6 @@ export const CLOUD_VANILLA_PORTFOLIO = {
   exploreComment: `자체 프레임워크로 만든 블로그는 바닐라 JS를 공부하며 기존의 SPA의 CSR 작동방식과 유사하게 구현된 블로그입니다.
     작성자 개인의 포트폴리오, 이력서를 포함하였고 프린트 기능이 제공되며 MD파일로 작성된 글들을 렌더링 해주고 있습니다.
     게스트북과 각 게시물의 글에 댓글 기능을 disqus를 통해 제공하고 있습니다.
-    이 과정을 통해 낮은 수준에서 부터의 상태관리를 통한 렌더링 방법을 체득하고,
-    실제 라이브러리(라우터 ,CSR)의 작동방식을 조금이나마 구현할 수 있게 되었습니다.
     `,
   devExplains: [
     {

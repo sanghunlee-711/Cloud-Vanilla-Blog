@@ -5,7 +5,7 @@ export const OA_LALALOOP_PORTFOLIO = {
   period: '2022/08 ~ 2022/11',
   links: [
     {
-      icon: 'fa fa-globe fa-2x',
+      icon: 'fa fa-globe   ',
       link: 'https://dish.lalaloop.app/',
     },
   ],

@@ -5,11 +5,11 @@ export const OA_UI_LIBS = {
   period: '2022/07 ~ 2022/09',
   links: [
     {
-      icon: 'fa fa-list-alt fa-2x',
+      icon: 'fa fa-list-alt   ',
       link: 'https://www.npmjs.com/package/@oysterable_public/oysterable-ui',
     },
     {
-      icon: 'fa fa-globe fa-2x',
+      icon: 'fa fa-globe   ',
       link: 'http://15.164.231.190:83/?path=/story/bold-typography--page',
     },
   ],

@@ -19,19 +19,6 @@
 }
 
 @media print {
-  body {
-    -webkit-print-color-adjust: exact;
-  }
-  #resume-container {
-    overflow: visible;
-    width: auto;
-    height: auto;
-  }
-  .resume-common-wrapper {
-    overflow: visible;
-    width: auto;
-    height: auto;
-  }
 }
 
 body {
@@ -349,6 +336,9 @@ body {
 }
 
 @media print {
+  body {
+    -webkit-print-color-adjust: exact;
+  }
   .modal-container {
     overflow: visible;
   }

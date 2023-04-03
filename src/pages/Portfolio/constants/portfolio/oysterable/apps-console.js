@@ -6,7 +6,7 @@ export const APPS_CONSOLE = {
   contribution: 80,
   links: [
     {
-      icon: 'fa fa-globe fa-2x',
+      icon: 'fa fa-globe   ',
       link: 'https://oa-console.oysterable.com/',
     },
   ],

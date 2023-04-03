@@ -51,24 +51,26 @@ class PortFolio {
                 <div class="portfolio-explanation-container">
                   <div class="portfolio-explanation-wrapper">
                     <div class="portfolio-title-job">
-                      <h1>${title}</h1>                    
+                      <div>
+                        <h1>${title}</h1>   
+                          <ul class="portfolio-link">
+                          ${links
+                            .map(({ link, icon }) => {
+                              return `
+                              <li>
+                                <a href="${link}" target="_blank">
+                                  <i class="${icon}"></i>
+                                </a>
+                              </li>
+                            `;
+                            })
+                            .join('')}
+                          </ul>
+                      </div>              
                       <h2>(${job})</h2>
                       <p>${period} [${type}] [기여도: ${
             contribution || 100
           }%]</p>
-                      <ul class="portfolio-link">
-                      ${links
-                        .map(({ link, icon }) => {
-                          return `
-                          <li>
-                            <a href="${link}" target="_blank">
-                              <i class="${icon}"></i>
-                            </a>
-                          </li>
-                        `;
-                        })
-                        .join('')}
-                      </ul>
                     </div>
                   </div>
                   <div class="portfolio-dev-highlights">
