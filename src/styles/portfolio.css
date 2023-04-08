@@ -12,14 +12,14 @@
   border: 1px solid var(--basic-gray);
   border-radius: 4px;
   /* size: A4; */
-  /* width: 210mm;
-  height: 297mm; */
+  width: 210mm;
+  height: 297mm;
 }
 
 @media print {
   @page {
     size: A4;
-    margin: auto;
+    /* margin: auto; */
   }
 
   .portfolio-container {
@@ -27,6 +27,7 @@
     height: 297mm;
     page-break-after: always;
     border: none;
+    margin: auto;
   }
 }
 
@@ -238,5 +239,5 @@
 }
 
 .dev-explanation-image-wrapper > img {
-  width: 100%;
+  width: inherit;
 }

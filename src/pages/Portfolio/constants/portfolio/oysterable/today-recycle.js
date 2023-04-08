@@ -16,35 +16,36 @@ export const TODAY_RECYCLE = {
     '../../../../../../static/images/portfolio/oysterable/today-recycle/tr-point.png',
   ],
   devHighlights: [
-    '기존 개발 완료된 프로젝트의 개선 및 추가 UI 진행',
-    '기존의 유저 플로우 대비 API 호출 회수 66프로 감소',
-    '지역 및 전역 상태관리가 혼재된 지도 페이지의 상태관리 구조를 일원화하며 변경 해 확장성 및 코드 퀄리티 상승',
-    '기기 리스트 내부 리스트 클릭 시 지도 페이지 내 해당 기기로 이동하는 UI/UX 진행',
-    'Static파일 및 백엔드팀과 협업하여 API 캐시세팅을 진행하여 최적화 진행',
+    '지도 내 검색된 기기 리스트',
+    '위치별 검색을 통한 기기 리스트',
+    'API 호출 간소화 및 로더 제공을 통해 구매 및 반납 어뷰징 제거',
   ],
   devAchivement: [
-    '브라우저 자원 활용능력 향상 및 백엔드와 협업능력 증대',
-    '폴리필의 역할 및 오래된 버전의 웹뷰 대응 방식 학습',
+    '복잡한 상태관리 구조를 일원화하며 확장성 및 코드 퀄리티 상승 및 UX 개선',
+    '브라우저의 자원을 활용하여 최적화 진행',
+    '폴리필을 활용한 구버전의 웹뷰 대응',
   ],
   techEnvironment: ['TypeScript'],
   libs: ['React.js', 'redux-toolkit', 'styled-components'],
-  exploreComment: `
-    아 여긴 뭘적냐 쫌..
+  exploreComment: `  
+  오늘의 분리수거 앱 서비스는 자사에서 제공되는 배출함을 통해 시민들이 오늘의 지구를 지키기 위해 매일 실천하는 분리배출이 즐거운 경험이 되도록 돕습니다.
+  캔, 투명 페트, 종이팩등의 반납기기가 제공되며 분리배출을 실천 시 포인트 제공 및 기업, 지역 등에서 제공해 준 다양한 보상품을 구매할 수 있는 서비스를 제공합니다.
+  회원 코드와 재활용품의 바코드를 스캔하면 간단하게 분리배출을 할 수 있도록 서비스를 제공하고 있습니다.
   `,
   devExplains: [
     {
       image:
         '../../../../../../static/images/portfolio/oysterable/today-recycle/tr-map.png',
       explanation: `
-        지역 및 전역 상태관리가 혼재된 지도 페이지의 상태관리 구조를 일원화하며 변경 해 확장성 및 코드 퀄리티 상승
+        자주 변경이 일어나는 API의 캐시를 제공 및 적절한 상태관리 패턴으로의 변경을 통해 기존에 무분별하게 호출되던 토큰 변경 API, 유저정보 호출, 포인트 정보 호출등의 API를
+        50회(라우팅 기준의 유저플로우)에서 6회(로그인,구매, 기부 등의 일부 시점)로 90%감소 시켰으며 이로 인해 서버자원의 낭비를 방지하고 UX가 크게 개선되었습니다.
       `,
     },
     {
       image:
-        '../../../../../../static/images/portfolio/oysterable/today-recycle/react-polymer.png',
+        '../../../../../../static/images/portfolio/oysterable/today-recycle/polyfill.png',
       explanation: `
-      폴리머 썰을 적자.
-      Android 과거 버전 쓰시는 분들에게 array의 some, every메서드가 먹히지 않아서 react폴리머 사용해서 대체한 경험 고고
+      비즈니스의 주 고객이 구 버전의 Android기기 사용이 다수 있어 웹뷰 내부의 일부 메서드(Array의 some, every 등)가 지원되지 않아 기능의 누락이 되는 것을 발견하였고 react-app-polyfill의 일부 항목을 적용시켜 이를 해결하였습니다.
       `,
     },
   ],

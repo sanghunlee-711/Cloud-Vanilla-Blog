@@ -127,7 +127,7 @@ class PortFolio {
                 <p>${exploreComment}</p>
               </div>
               <div class="portfolio-dev-explanation">
-                <h2>주요 성과(설명 된 성과 중 질문유도용으로 하나 픽해서 쓰기)</h2>
+                <h2>주요 성과</h2>
                 <div class="dev-explanation-container">
                   ${devExplains
                     .map(({ image, explanation }, index) => {

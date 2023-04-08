@@ -1,5 +1,5 @@
 export const OA_UI_LIBS = {
-  title: '백오피스 공통 UI 라이브러리',
+  title: '사내 관리 시스템 UI 라이브러리',
   job: '프론트엔드 개발',
   type: 'Oysterable',
   period: '2022/07 ~ 2022/09',
@@ -20,7 +20,7 @@ export const OA_UI_LIBS = {
   ],
   devHighlights: [
     'Storybook을 이용한 디자인시스템 페이지를 통해 디자인팀과 협업',
-    '백오피스 프로젝트에 적용할 수 있도록 제공되는 UI 라이브러리 개발',
+    '백오피스 프로젝트에 일관적으로 UI를 적용할 수 있도록 UI라이브러리 제공',
     'Rollup.js를 통한 라이브러리 번들 진행',
   ],
   devAchivement: [
@@ -41,7 +41,7 @@ export const OA_UI_LIBS = {
       image:
         '../../../../../../static/images/portfolio/oysterable/oa-ui/rollup.js.jpg',
       explanation: `
-        트리쉐이킹 및 다양한 샘플코드의 존재 등의 이점이 있어 Webpack이 아닌 Rollup.js를 통해 번들링을 진행하였습니다.
+        트리쉐이킹 및 다양한 샘플코드의 존재 등의 이점이 있어 Webpack이 아닌 Rollup.js를 통해 번들링을 진행하며 번들링 툴에 대한 이해도 증가.
       `,
     },
     {

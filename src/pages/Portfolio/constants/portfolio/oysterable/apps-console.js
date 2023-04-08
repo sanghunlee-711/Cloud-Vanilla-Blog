@@ -16,15 +16,13 @@ export const APPS_CONSOLE = {
     '../../../../../../../static/images/portfolio/oysterable/apps-console/apps-console-banner-register.png',
   ],
   devHighlights: [
-    '프로젝트 전체 세팅, 개발 유지 보수 진행',
-    'ApexChart를 이용한 차트 UI 개발',
-    'React-Query를 사용하여 도메인상태와 UI상태 분리를 진행',
-    '권한별로 메뉴 접근 및 버튼 접근이 변경되는 요구사항이 있으므로 HashMap을 이용하여 권한 별 체크 진행',
-    '중복 UI 및 로직은 각각 UI라이브러리 및 Hooks로 분리하여 재활용 진행',
+    '가입자 현황, 프로모션 관리, CS 관리 등의 운영관리',
+    '앱 내 배너 및 상품정보 등 앱 내 UI 변경 등의 앱 관리',
+    '쇼핑 및 캠페인 수정 및 추가를 위한 보상관리',
   ],
   devAchivement: [
-    'react-query라이브러리 활용 능력 향상',
-    '도메인 상태와 화면상태 구분을 위한 기반지식 습득',
+    'React-Query를 사용하여 도메인상태와 UI상태 분리를 진행',
+    '중복 UI 및 로직은 각각 UI라이브러리 및 Hooks로 분리하여 재활용 진행',
   ],
   techEnvironment: ['TypeScript'],
   libs: [
@@ -35,25 +33,22 @@ export const APPS_CONSOLE = {
     '@testing-library',
   ],
   exploreComment: `
-    IoT 기반 데이터 관리를 위한 사내 관리 시스템은 내부 임직원들의 업무 진행 시 작성 또는 수정이 필요한 데이터를 손쉽게 관리하기 위해 시작된 프로젝트입니다.
-    기기별 상태 관제 및 액셀로 데이터 제공, 기기의 설정값 수정 등 다양한 기능을 제공하며 업무효율의 상승을 도모하고 있습니다.
-    이 과정을 통해 차트라이브러리의 활용법 및 도메인상태와 UI상태의 개념 및 이의 관리가 퍼포먼스 향상에 도움이 된다는 점을 학습했습니다.
+    오늘의 분리수거 앱의 효율적 관리를 위한 내부관리시스템으로 시작된 프로젝트입니다.
+    앱 내 제공되는 다양한 이벤트 및 배너, 공지사항 등의 수정 및 작성을 위한 기능이 제공되며 내부 임직원의 업무효율 향상을 도모하였습니다.
   `,
   devExplains: [
     {
       image:
         '../../../../../../../static/images/portfolio/oysterable/apps-console/apps-console-shopping-guide.png',
       explanation: `
-      react-modal-sheet 라이브러리를 활용하여 입금 은행 선택을 할 수 있도록 리스트를 제공하였습니다. 
-      모바일 친화적인 UI에 통상적으로 자주 쓰이는 Bottom Sheet의 UX를 제공하며 사용경험을 좋게 만들었습니다.
+      React-Query를 사용하여 도메인상태와 UI상태 분리를 진행
       `,
     },
     {
       image:
         '../../../../../../../static/images/portfolio/oysterable/apps-console/react-query.jpeg',
       explanation: `
-      추후 검색 최적화를 위해 Next.js를 활용한 SSR로 개발을 진행하였습니다.
-      내부 기획 및 마케팅 팀의 결정으로 검색최적화는 지연되었습니다.
+      중복 UI 및 로직은 각각 UI라이브러리 및 Hooks로 분리하여 재활용 진행
       `,
     },
   ],
