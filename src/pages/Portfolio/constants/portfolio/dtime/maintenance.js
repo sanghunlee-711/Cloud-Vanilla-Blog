@@ -1,9 +1,9 @@
 export const DTIME_MAINTENANCE = {
-  title: '협력사 제공을 위한 커스텀 엘리먼츠',
+  title: '인싸이트 프로젝트 유지 보수 및 신규 개발',
   job: '프론트엔드 개발',
   type: 'Dtime',
   period: '2022/02 ~ 2022/11',
-  contribution: 100,
+  contribution: 50,
   links: [
     {
       icon: 'fa fa-globe   ',
@@ -16,44 +16,40 @@ export const DTIME_MAINTENANCE = {
     '../../../../../../../static/images/portfolio/dtime/maintenance/dtime-worktype.png',
   ],
   devHighlights: [
-    '프로젝트 전체 세팅, 개발 유지 보수 진행',
-    'ApexChart를 이용한 차트 UI 개발',
-    'React-Query를 사용하여 도메인상태와 UI상태 분리를 진행',
-    '권한별로 메뉴 접근 및 버튼 접근이 변경되는 요구사항이 있으므로 HashMap을 이용하여 권한 별 체크 진행',
-    '중복 UI 및 로직은 각각 UI라이브러리 및 Hooks로 분리하여 재활용 진행',
+    '근무유형, 근무 형태 추가 및 수정 기능',
+    '새로운 부서, 휴가, 공지사항 등 생성 및 관리기능',
+    '로그인, 회원가입 기능',
   ],
   devAchivement: [
-    '커스텀 엘리먼츠와 커스텀이벤트의 개념 및 사용방법',
-    '웹팩을 통한 번들링 세팅 방법',
+    'Redux-Saga, Redux-Toolkit을 활용한 Flux패턴의 적용으로 상태관리 패턴 변경',
+    'Testing-library의 활용을 통한 일부 복잡한 로직 테스트 작성',
+    '비즈니스 활용을 위한 유입 경로 추적 기능',
   ],
   techEnvironment: ['TypeScript'],
   libs: [
     'React.js',
     'redux-toolkit',
-    'react-query',
+    'redux-saga',
     'styled-components',
     '@testing-library',
+    'jest',
   ],
   exploreComment: `
-    IoT 기반 데이터 관리를 위한 사내 관리 시스템은 내부 임직원들의 업무 진행 시 작성 또는 수정이 필요한 데이터를 손쉽게 관리하기 위해 시작된 프로젝트입니다.
-    기기별 상태 관제 및 액셀로 데이터 제공, 기기의 설정값 수정 등 다양한 기능을 제공하며 업무효율의 상승을 도모하고 있습니다.
-    이 과정을 통해 차트라이브러리의 활용법 및 도메인상태와 UI상태의 개념 및 이의 관리가 퍼포먼스 향상에 도움이 된다는 점을 학습했습니다.
+    근태관리, 결재 관리, 연락처 조회, 시간외 근무신청, 부서 직원 관리 및 설정 등을 통합 제공하는 웹 서비스의 일부 UI/UX를 개발하며 상태관리 패턴의 정립 및 UI 테스트 및 비즈니스 로직 테스트를 도입하여 주니어로 구성된 개발팀에 안정성을 증대
   `,
   devExplains: [
     {
       image:
         '../../../../../../../static/images/portfolio/dtime/maintenance/react-testing-library.png',
       explanation: `
-      react-modal-sheet 라이브러리를 활용하여 입금 은행 선택을 할 수 있도록 리스트를 제공하였습니다. 
-      모바일 친화적인 UI에 통상적으로 자주 쓰이는 Bottom Sheet의 UX를 제공하며 사용경험을 좋게 만들었습니다.
+        testing-library를 활용하여 테스트가 용이하게 설정된 Flux패턴에서 여러가지 테스트 케이스 일관성 있게 정립 및 테스트를 진행하며 근무유형의 다양한 케이스 등에 적용되는 복잡한 로직의 안정성 증대
       `,
     },
     {
       image:
         '../../../../../../../static/images/portfolio/dtime/maintenance/redux-saga.png',
       explanation: `
-      추후 검색 최적화를 위해 Next.js를 활용한 SSR로 개발을 진행하였습니다.
-      내부 기획 및 마케팅 팀의 결정으로 검색최적화는 지연되었습니다.
+        Generator를 통해 순수함수로 제공되는 전역 비동기 상태관리를 위한 redux-saga와 전역 상태관리인 Redux-toolkit을 활용하여 Flux패턴으로 상태관리 패턴을 정착하여 추후 로직의 추가 및 제거 또는 테스트에 일관성 제공
       `,
     },
   ],
