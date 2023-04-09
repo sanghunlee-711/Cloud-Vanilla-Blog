@@ -31,6 +31,7 @@ export const APPS_CONSOLE = {
     'react-query',
     'styled-components',
     '@testing-library',
+    'Cypress',
   ],
   exploreComment: `
     오늘의 분리수거 앱의 효율적 관리를 위한 내부관리시스템으로 시작된 프로젝트이며 

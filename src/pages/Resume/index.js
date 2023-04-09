@@ -49,7 +49,13 @@ class Resume {
           </p>
         </div>
         <div class="resume-common-wrapper">
-          <h1>SKILL</h1>
+          <div class="resume-common-title-wrapper">
+            <h1>SKILL</h1>
+            <ul class="resume-skill-introduce">
+              <li class="resume-wellknown">Well Known</li>
+              <li class="resume-knowledgeable">Knowledgeable</li>
+            </ul>
+          </div>
             ${RESUME.SKILL.map(({ title, skill }, idx) => {
               return `
               <div class="skill-wrapper">
@@ -58,7 +64,11 @@ class Resume {
                 ${skill
                   .map((name) => {
                     return `
-                    <li>
+                    <li class="${
+                      RESUME.WELL_KNOWN_LIST.includes(name)
+                        ? 'resume-wellknown'
+                        : 'resume-knowledgeable'
+                    }">
                       ${name}
                     </li>
                   `;

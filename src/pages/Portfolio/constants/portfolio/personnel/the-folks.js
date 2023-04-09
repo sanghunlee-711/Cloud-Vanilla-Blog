@@ -38,6 +38,7 @@ export const THE_FOLKS_PORTFOLIO = {
     'Nest.js',
     'GraphQL',
     'Apollo-Client',
+    'type-orm',
     'EC2',
     'S3',
   ],

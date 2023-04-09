@@ -28,7 +28,7 @@ export const OA_UI_LIBS = {
     'NPM 라이브러리 배포 방법 및 유지보수에 대한 지식',
   ],
   techEnvironment: ['TypeScript'],
-  libs: ['Next.js', 'react-kakao-maps-sdk', 'styled-components'],
+  libs: ['React.js', 'styled-components', 'Rollup.js', 'Storybook'],
   exploreComment: `
     입사 초기 다양한 백오피스가 개발되며 여러 프로젝트로 분리된 상황에서 UI 코드의 일관성을 지키기 위해 라이브러리의 개발을 진행,
     현재 두가지의 콘솔 프로젝트에 사용되고 있다.

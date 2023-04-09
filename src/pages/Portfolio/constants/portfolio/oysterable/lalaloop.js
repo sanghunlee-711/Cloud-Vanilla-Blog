@@ -28,8 +28,8 @@ export const OA_LALALOOP_PORTFOLIO = {
   techEnvironment: ['TypeScript'],
   libs: [
     'Next.js',
-    'react-kakao-maps-sdk',
     'styled-components',
+    'react-kakao-maps-sdk',
     'react-modal-sheet',
   ],
   exploreComment: `

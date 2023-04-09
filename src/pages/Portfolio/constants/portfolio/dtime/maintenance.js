@@ -42,7 +42,8 @@ export const DTIME_MAINTENANCE = {
       image:
         '../../../../../../../static/images/portfolio/dtime/maintenance/react-testing-library.png',
       explanation: `
-        testing-library를 활용하여 테스트가 용이하게 설정된 Flux패턴에서 여러가지 테스트 케이스 일관성 있게 정립 및 테스트를 진행하며 근무유형의 다양한 케이스 등에 적용되는 복잡한 로직의 안정성 증대
+        testing-library를 활용하여 테스트가 용이하게 설정된 Flux패턴에서 여러가지 테스트 케이스 일관성 있게 정립 및 테스트를 진행하며 근무유형의 다양한 케이스 등에 적용되는 복잡한 로직의 안정성 증대 및
+        Cypress로 일부페이지의 E2E테스트를 진행하며 프론트엔드 파트의 퀄리티 상승
       `,
     },
     {

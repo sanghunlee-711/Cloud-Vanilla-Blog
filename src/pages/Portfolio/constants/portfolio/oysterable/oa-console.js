@@ -6,7 +6,7 @@ export const OA_CONSOLE = {
   contribution: 70,
   links: [
     {
-      icon: 'fa fa-globe   ',
+      icon: 'fa fa-globe',
       link: 'https://oa-console.oysterable.com/',
     },
   ],
@@ -30,9 +30,10 @@ export const OA_CONSOLE = {
     'React.js',
     'redux-toolkit',
     'react-query',
+    'apexcharts',
     'styled-components',
     '@testing-library',
-    'apexcharts',
+    'Cypress',
   ],
   exploreComment: `
     IoT 기반 데이터 관리를 위한 사내 관리 시스템은 내부 임직원들의 업무 진행 시 작성 또는 수정이 필요한 데이터를 손쉽게 관리하기 위해 시작된 프로젝트이며

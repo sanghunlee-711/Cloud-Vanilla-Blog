@@ -28,6 +28,7 @@
 
 .resume-common-wrapper > h1 {
   color: var(--strong-blue);
+  margin: 0px;
 }
 
 .resume-common-wrapper p {
@@ -300,4 +301,47 @@
   .skill-wrapper > h2 {
     word-break: break-word;
   }
+}
+
+.resume-common-title-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.resume-common-title-wrapper > h1 {
+  color: var(--strong-blue);
+  margin: 0px;
+}
+
+.resume-skill-introduce {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  list-style: none;
+  margin-left: 12px;
+  padding: 0px;
+  gap: 8px;
+}
+
+.resume-skill-introduce > li {
+  border-radius: 5px;
+  padding: 4px 8px;
+  color: white;
+  font-size: var(--portfolio-span);
+}
+
+.resume-skill-introduce > .resume-wellknown {
+  background-color: var(--strong-blue);
+}
+
+.resume-skill-introduce > .resume-knowledgeable {
+  background-color: var(--strong-gray);
+}
+
+.resume-wellknown {
+  color: var(--strong-blue);
+}
+
+.resume-knowledgeable {
+  color: var(--strong-gray);
 }
