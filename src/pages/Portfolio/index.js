@@ -36,7 +36,7 @@ class PortFolio {
           contribution,
         }) => {
           return /*html*/ `
-            <section class="portfolio-container">
+            <section class="portfolio-wrapper">
               <div class="portfolio-top">
                 <div class="portfolio-title-image">
                   ${titleImages

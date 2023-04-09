@@ -3,10 +3,10 @@
   margin: 24px 12px;
 }
 
-.portfolio-container {
+.portfolio-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   margin: 12px 0px;
   border: 1px solid var(--basic-gray);
@@ -19,14 +19,13 @@
 @media print {
   @page {
     size: A4;
-    /* margin: auto; */
   }
 
-  .portfolio-container {
+  .portfolio-wrapper {
     width: 210mm;
     height: 297mm;
     page-break-after: always;
-    border: none;
+    border: 1px solid white;
     margin: auto;
   }
 }
