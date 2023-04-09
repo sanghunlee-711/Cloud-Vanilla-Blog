@@ -2,7 +2,7 @@ export const APPS_CONSOLE = {
   title: '앱 관리를 위한 사내 관리 시스템 ',
   job: '프론트엔드 개발',
   type: 'Oysterable',
-  period: '2022/02 ~ 2022/11',
+  period: '2022/02~2022/08',
   contribution: 80,
   links: [
     {

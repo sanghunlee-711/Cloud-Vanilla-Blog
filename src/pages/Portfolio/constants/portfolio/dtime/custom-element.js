@@ -2,7 +2,7 @@ export const CUSTOM_ELEMENT = {
   title: '협력사 제공을 위한 커스텀 엘리먼츠',
   job: '프론트엔드 개발',
   type: 'Dtime',
-  period: '2022/02 ~ 2022/11',
+  period: '2021/08~2021/08',
   contribution: 100,
   links: [
     {

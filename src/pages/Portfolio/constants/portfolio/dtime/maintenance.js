@@ -2,7 +2,7 @@ export const DTIME_MAINTENANCE = {
   title: '인싸이트 프로젝트 유지 보수 및 신규 개발',
   job: '프론트엔드 개발',
   type: 'Dtime',
-  period: '2022/02 ~ 2022/11',
+  period: '2021/04 ~ 2022/01',
   contribution: 50,
   links: [
     {

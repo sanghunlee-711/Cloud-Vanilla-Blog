@@ -2,7 +2,7 @@ export const TODAY_RECYCLE = {
   title: '오늘의 분리수거 개선',
   job: '프론트엔드 개발',
   type: 'Oysterable',
-  period: '2023/02 ~ 2023/03',
+  period: '2023/02~2023/03',
   contribution: 100,
   links: [
     {
@@ -21,7 +21,7 @@ export const TODAY_RECYCLE = {
     'API 호출 간소화 및 로더 제공을 통해 구매 및 반납 어뷰징 제거',
   ],
   devAchivement: [
-    '복잡한 상태관리 구조를 일원화하며 확장성 및 코드 퀄리티 상승 및 UX 개선',
+    '복잡한 상태관리 구조를 일원화하며 확장성 및 코드 퀄리티 상승 및 성능 개선',
     '브라우저의 자원을 활용하여 최적화 진행',
     '폴리필을 활용한 구버전의 웹뷰 대응',
   ],
