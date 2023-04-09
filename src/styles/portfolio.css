@@ -1,0 +1,242 @@
+#portfolio-container {
+  max-width: 1024px;
+  margin: 24px 12px;
+}
+
+.portfolio-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 12px 0px;
+  border: 1px solid var(--basic-gray);
+  border-radius: 4px;
+  /* size: A4; */
+  width: 210mm;
+  height: 297mm;
+}
+
+@media print {
+  @page {
+    size: A4;
+  }
+
+  .portfolio-wrapper {
+    width: 210mm;
+    height: 297mm;
+    page-break-after: always;
+    border: 1px solid white;
+    margin: auto;
+  }
+}
+
+#portfolio-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#portfolio-container h1 {
+  font-size: var(--portfolio-h1);
+}
+
+#portfolio-container h2 {
+  font-size: var(--portfolio-h2);
+}
+
+#portfolio-container h3 {
+  font-size: var(--portfolio-h3);
+}
+
+#portfolio-container span {
+  font-size: var(--portfolio-span);
+}
+
+#portfolio-container p {
+  font-size: var(--portfolio-p);
+}
+
+#portfolio-container ul > li {
+  font-size: var(--portfolio-p);
+}
+
+.portfolio-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-radius: 4px;
+  padding: 0px 8px;
+  width: calc(100% - 8px * 2);
+}
+
+.portfolio-title-job {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.portfolio-title-job > div {
+  display: flex;
+  justify-content: center;
+}
+
+.portfolio-title-job > div > h1 {
+  font-weight: 700;
+}
+
+.portfolio-title-job > h2 {
+  font-weight: 700;
+  color: var(--basic-gray);
+}
+
+.portfolio-title-job > h3 {
+  font-weight: 700;
+  color: var(--basic-gray);
+  margin: 0px;
+}
+
+.portfolio-title-job > p {
+  font-weight: 700;
+  color: var(--basic-gray);
+  margin: 4px;
+}
+
+.portfolio-title {
+  width: 100%;
+  padding: 24px 0px;
+  background-color: white;
+  color: black;
+  font-weight: 700;
+  border-radius: 4px;
+  border-bottom: 1px solid var(--basic-gray);
+}
+
+.portfolio-title > span {
+  margin-left: 12px;
+}
+
+.portfolio-title-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 30%;
+  height: 100%;
+}
+
+.portfolio-title-image > img {
+  width: 100%;
+  /* min-width: 320px; */
+  margin: 4px 0px;
+  /* max-height: 160px; */
+  min-height: 160px;
+  border: 1px solid var(--basic-gray);
+  border-radius: 4px;
+}
+
+.portfolio-dev-techstack {
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-dev-techstack > h2 {
+  margin: 0px;
+}
+
+.portfolio-explore {
+  margin: 12px 0px;
+  border-radius: 4px;
+  padding: 0px 8px;
+  width: calc(100% - 16px);
+}
+
+.portfolio-explore > h3 {
+  margin: 16px 0px;
+}
+
+.portfolio-explore > p {
+  all: unset;
+
+  /* text-overflow: ellipsis; */
+  white-space: pre-line;
+  height: fit-content;
+  display: block;
+}
+
+.portfolio-explanation-container {
+  width: 65%;
+}
+
+.portfolio-dev-techstack-list-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.portfolio-dev-techstack-list-container > div {
+  margin-right: 12px;
+  width: 100%;
+}
+
+.portfolio-dev-techstack-list-container > div > ul {
+  max-height: 84px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.portfolio-dev-techstack-list-container > div > ul > li {
+  margin-right: 16px;
+}
+
+.dev-explanation-wrapper {
+  display: flex;
+  width: 50%;
+}
+
+.portfolio-link {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 0px;
+}
+
+.portfolio-link > li {
+  margin-left: 8px;
+}
+
+.portfolio-dev-explanation {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid var(--basic-gray); */
+  padding: 0px 8px;
+}
+
+.dev-explanation-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.dev-explanation-wrapper {
+  display: flex;
+  flex-direction: column;
+  /* width: 45%; */
+  /* height: 100%; */
+}
+.dev-explanation-image-wrapper {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 180px;
+  /* height: 20%; */
+  border: 1px solid var(--basic-gray);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.dev-explanation-image-wrapper > img {
+  width: inherit;
+}

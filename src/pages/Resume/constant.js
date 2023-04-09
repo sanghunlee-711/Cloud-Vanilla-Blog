@@ -16,44 +16,24 @@ export const LINKS = [
   },
 ];
 
-// 우대사항
-// State 관리 라이브러리를 이용한 개발 및 운영 경험이 있으신 분
-
-// Node.js 개발 및 운영 경험이 있으신 분
-
-// 프론트엔드 성능 최적화 경험 및 모바일/PC 환경의 크로스브라우징 경험이 있으신 분
-
-// TypeScript 를 이용한 개발 및 운영 경험이 있으신 분
-
-// SSR 서비스를 만들고 운영한 경험이 있으신 분
-
-// 우대사항
-// • Full JavaScript Web Application을 설계하고 개발해보신 분
-// • JavaScript Framework를 활용해 개발업무를 경험해보신 분
-// • 고난도 성능 문제를 진단하고 해결해본 경험을 가지신 분
-// • 오픈소스 공헌 혹은 관련 활동을 경험해보신 분
-// • JavaScript 교육 및 기술 아티클 작성 관련 활동을 경험해보신 분
-
-// 우대사항
-// Webpack, Rollup 등의 도구 경험이 있으신 분
-
-// 배포 경험이 있으신 분
-
-// Storybook, 오픈 소스 적용 및 사용 경험이 있으신 분
-
-// Agile, 코드리뷰 경험이 있으신 분
-
-// GitHub, Jira, Confluence, Zeplin, Google Drive 등 업무 협업 툴 사용 경험이 있으신 분
-
-// 백엔드 개발 경험이 있으신 분
-
 export const INTRODUCTION = `
 <strong>3년차</strong> 프론트엔드 개발자 이상훈입니다.\n
-프론트엔드개발은 웹개발의 일부라는 생각으로 웹 개발 전반에 대한 기본지식을 놓치지 않기 위해 노력합니다.
+프론트엔드개발은 웹개발의 일부라는 생각으로 웹 개발 전반에 대한 기본지식을 갖추고 있습니다.
 JavaScript 프레임워크 및 라이브러리의 구현원리와 함께 웹 표준에 알맞는 개발에 관심이 많습니다.
 모든 최적화를 위한 첫 걸음은 R&R의 분리라는 생각을 가지며 설계하고 리팩토링합니다.
-비즈니스 요구사항 만족과 동시에 사람이 읽을 수 있는 코드의 최대 퍼포먼스를 내는 개발자가 되기 위해 고민하고 노력하고 있습니다.
+비즈니스 요구사항 만족과 동시에 사람이 읽을 수 있는 코드의 최대 퍼포먼스를 내는 개발자가 되기 위해 고민하며 정진하고 있습니다.
 `;
+
+export const WELL_KNOWN_LIST = [
+  'ES5/ES6',
+  'TypeScript',
+  'React.js',
+  'Next.js',
+  'Redux',
+  'Redux-Toolkit',
+  'Redux-saga',
+  'styled-components',
+];
 
 export const SKILL = [
   {
@@ -77,17 +57,17 @@ export const SKILL = [
   },
   {
     title: 'STYLE',
-    skill: ['Styled-components', 'SCSS'],
+    skill: ['styled-components', 'SCSS'],
   },
   {
     title: 'TEST',
-    skill: ['Cypress', 'Jest', 'testing-library'],
+    skill: ['Cypress', 'Jest', 'testing-library', 'msw'],
   },
-  { title: 'SERVER', skill: ['Express.js', 'Nest.js', 'Nginx'] },
+  { title: 'SERVER', skill: ['Express.js', 'Nest.js', 'Nginx', 'type-orm'] },
   { title: 'DATABASE', skill: ['Postgresql', 'MySQL'] },
   {
     title: 'CI/CD',
-    skill: ['Jenkins', 'Github Action'],
+    skill: ['Jenkins'],
   },
   {
     title: 'ETC',
@@ -191,14 +171,6 @@ export const EXPERIENCE = [
     explanation:
       '디타임은 기업이 겪는 조직에 관한 다양한 어려움을 해결하는것을 목표로 교보생명의 엑셀러레이팅 프로그램에 선발된 스타트업입니다.',
     list: [
-      {
-        title: '상태관리 패턴 변경',
-        detailList: [
-          'Props drilling 개선 위한 패턴 변경',
-          '뷰 ,로직 분리 위한 비동기 전역 상태관리 도입(Redux-Saga) 및 hooks 적극 활용',
-          '비동기와 동기 상태 관리 일관성을 만들어 테스트의 용이성 상승',
-        ],
-      },
       {
         title: '커스텀엘리먼트 개발',
         detailList: [

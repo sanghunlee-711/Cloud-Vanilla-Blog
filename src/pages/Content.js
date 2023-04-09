@@ -1,4 +1,4 @@
-import { makeDisqus, resetDisqus } from '../common/utils/disqus.js';
+import { makeDisqus } from '../common/utils/disqus.js';
 import { getContentId } from '../common/utils/index.js';
 import { addRouteEventListener } from '../common/utils/navigate.js';
 
@@ -9,8 +9,12 @@ class Content {
     this.type = getContentId().type;
     this.$wrapper = document.createElement('main');
     this.$wrapper.setAttribute('class', 'content-main-container');
-    $target.appendChild(this.$wrapper);
+    // <div id="disqus_thread"></div>
+    this.$disqus = document.createElement('div');
+    this.$disqus.setAttribute('id', 'disqus_thread');
 
+    $target.appendChild(this.$wrapper);
+    $target.appendChild(this.$disqus);
     this.data = {};
 
     this.getPostData();
@@ -64,11 +68,10 @@ class Content {
       <div class="hljs">
         ${JSON.parse(this.data.content)}
       </div>
-      <div id="disqus_thread"></div>
     `;
 
     makeDisqus();
-    resetDisqus(title);
+    // resetDisqus(title);
   };
 
   addEventListeners = () => {

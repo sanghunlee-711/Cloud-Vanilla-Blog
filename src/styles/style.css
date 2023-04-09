@@ -16,22 +16,14 @@
     #fff 100%
   );
   --header-nav-bottom: 1px solid #eee;
+  --portfolio-h1: 24px;
+  --portfolio-h2: 20px;
+  --portfolio-h3: 18px;
+  --portfolio-span: 14px;
+  --portfolio-p: 14px;
 }
 
 @media print {
-  body {
-    -webkit-print-color-adjust: exact;
-  }
-  #resume-container {
-    overflow: visible;
-    width: auto;
-    height: auto;
-  }
-  .resume-common-wrapper {
-    overflow: visible;
-    width: auto;
-    height: auto;
-  }
 }
 
 body {
@@ -155,8 +147,6 @@ body {
 
 .burger-button {
   visibility: visible;
-  /* width: 0px;
-  height: 0px; */
 }
 
 @media screen and (max-width: 512px) {
@@ -171,21 +161,17 @@ body {
     width: 0px;
     height: 0px;
     margin: 0px;
-    /* display: none; */
   }
 
   .nav_list li {
     visibility: hidden;
     width: 0px;
     height: 0px;
-    /* color: transparent; */
-    /* display: none; */
   }
 
   .nav_list li a {
     width: 0px;
     height: 0px;
-    /* visibility: hidden; */
     display: none;
   }
 
@@ -271,13 +257,10 @@ body {
 
 .basic-button {
   font-size: 18px;
-  /* width: 32px; */
   height: 100%;
-
   border: 1px solid white;
   background-color: var(--basic-gray);
   color: white;
-
   border-radius: 4px;
   text-align: center;
   vertical-align: middle;
@@ -358,6 +341,9 @@ body {
 }
 
 @media print {
+  body {
+    -webkit-print-color-adjust: exact;
+  }
   .modal-container {
     overflow: visible;
   }
@@ -469,9 +455,9 @@ body {
   margin-bottom: 24px;
 }
 
-.about-main-container a:first-child {
+/* .about-main-container a:first-child {
   margin-right: 12px;
-}
+} */
 
 .guest-book-wrapper {
   display: flex;
