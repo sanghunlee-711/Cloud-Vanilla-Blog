@@ -31,8 +31,8 @@ export const CLOUD_VANILLA_PORTFOLIO = {
   techEnvironment: ['ES5/6', 'HTML5', 'CSS3'],
   libs: ['Express.js', 'marked.js', 'highlight.js', 'Nginx', 'EC2', 'Route53'],
   exploreComment: `자체 프레임워크로 만든 블로그는 Vanilla JS를 공부하며 SPA 라이브러리의 CSR 작동방식과 유사하게 구현된 블로그이며
-    작성자 개인의 포트폴리오, 이력서를 포함하였고 프린트 기능이 제공되며 Markdown파일로 작성된 글들을 렌더링 해주고 있다.
-    게스트북과 각 게시물의 글에 댓글 기능을 disqus를 통해 제공하고 있다.
+    작성자 개인의 포트폴리오, 이력서를 포함하였고 프린트 기능이 제공되며 Markdown파일로 작성된 글들을 렌더링 해주고 있습니다.
+    게스트북과 각 게시물의 글에 댓글 기능을 disqus를 통해 제공하고 있습니다.
     `,
   devExplains: [
     {
