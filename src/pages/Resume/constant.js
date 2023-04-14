@@ -14,6 +14,11 @@ export const LINKS = [
     href: 'https://blog.cloud-sanghun.com',
     name: 'https://blog.cloud-sanghun.com',
   },
+  {
+    icon: 'fas fa-briefcase',
+    href: 'https://blog.cloud-sanghun.com/portfolio',
+    name: 'Portfolio',
+  },
 ];
 
 export const INTRODUCTION = `
@@ -178,30 +183,16 @@ export const EXPERIENCE = [
           '커스텀엘리먼트 및 웹팩을 활용한 하나의 번들된 JavaScript파일을 협력업체에 제공',
         ],
       },
-      {
-        title: '메인페이지 리뉴얼',
-        link: 'http://trial.inssait.info.s3-website.ap-northeast-2.amazonaws.com/personnel',
-        detailList: [
-          '모바일 사이즈에 대응하는 새로운 컴포넌트 구성',
-          '앵귤러와 로그인 연동을 위한 로그인페이지 개발',
-          '마케팅 비즈니스 활용을 위해 랜딩시 유입되는 쿼리를 통해 유입처를 로깅하는 로직 구현',
-        ],
-      },
+
       {
         title: 'UI/UX 유지보수 및 개발',
         link: '',
         detailList: [
           '앵귤러로 되어있던 메인페이지들의 디자인개선 작업과 동시에 리액트로 전환',
+          'Redux-Saga, Redux-Toolkit을 활용한 Flux패턴의 적용으로 상태관리 패턴 변경',
           '30여가지 경우의수를 가진 휴가생성 케이스에 대해 UI/UX 및 테스트 코드 작성',
-          '달력 컴포넌트 커스터마이징',
-        ],
-      },
-      {
-        title: '프론트 테스트 환경 구축',
-        detailList: [
-          'Unit Test 위한 jest 도입',
-          'Business logic test를 위한 testing-library 활용',
-          'E2E 테스트를 위한 Cypress 도입',
+          '모바일 사이즈에 대응하는 새로운 컴포넌트 구성',
+          '비즈니스 활용을 위한 유입 경로 추적 기능',
         ],
       },
     ],
