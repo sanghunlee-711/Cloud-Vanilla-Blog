@@ -46,7 +46,7 @@ export const OA_UI_LIBS = {
       image:
         '../../../../../../static/images/portfolio/oysterable/oa-ui/storybook.png',
       explanation: `
-        스토리북을 통해 디자인팀에서 요구한 실제 디자인과 활용이 맞는지 상호 확인하는 것이 더욱 편해지며 업무효율이 증대
+        스토리북을 통해 디자인팀에서 요구한 실제 디자인과 활용이 맞는지 상호 확인하는 것이 더욱 편해지며 업무효율이 증대되었습니다.
       `,
     },
   ],

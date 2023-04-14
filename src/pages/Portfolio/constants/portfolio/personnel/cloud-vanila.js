@@ -40,14 +40,14 @@ export const CLOUD_VANILLA_PORTFOLIO = {
         '../../../../../../static/images/portfolio/vanilla-blog/cloud-vanilla-render.png',
       explanation: `
         CSR의 Routing시스템을 위해 Web HistoryAPI를 이용해 구현하였고 각 컴포넌트는 state기반 렌더링의 일관성을 가지는 class형태로 구성,
-        기본적인 SPA feature들에 대한 공부와 동시에 시간이 지나도 유지 보수가 용이하게 가장 단순하고 낮은 레벨에서의 구현을 진행
+        기본적인 SPA feature들에 대한 공부와 동시에 시간이 지나도 유지 보수가 용이하게 가장 단순하고 낮은 레벨에서의 구현을 진행했습니다.
       `,
     },
     {
       image:
         '../../../../../../static/images/portfolio/vanilla-blog/diagram.png',
       explanation: `하나의 EC2서버에서 Nginx의 포트포워딩을 통해 백엔드와 프론트를 제공,
-      규모가 크지 않은 프로젝트이므로 불필요한 낭비를 지양하기 위해 내부 폴더를 DB처럼 활용하여 MD파일들을 불러오며 프론트엔드에서 호출하는 API를 통해 파싱된 객체를 반환`,
+      규모가 크지 않은 프로젝트이므로 불필요한 낭비를 지양하기 위해 내부 폴더를 DB처럼 활용하여 MD파일들을 불러오며 프론트엔드에서 호출하는 API를 통해 파싱된 객체를 반환합니다.`,
     },
   ],
 };
