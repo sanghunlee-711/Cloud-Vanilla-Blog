@@ -4,19 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preload" href="styles/resume.css" as="style" />
-  <link rel="preload" href="styles/style.css" as="style" />
-  <link rel="preload" href="styles/post.css" as="style" />
-  <link rel="preload" href="styles/mdStyle.css" as="style" />
-  <link rel="preload" href="styles/portfolio.css" as="style">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
+  <link rel="preload stylesheet" href="styles/resume.css" as="style">
+  <link rel="preload stylesheet" href="styles/style.css" as="style">
+  <link rel="preload stylesheet" href="styles/post.css" as="style">
+  <link rel="preload stylesheet" href="styles/mdStyle.css" as="style">
+  <link rel="preload stylesheet" href="styles/portfolio.css" as="style">
 
-
-  <link href="styles/resume.css" rel="stylesheet">
-  <link href="styles/style.css" rel="stylesheet">
-  <link href="styles/post.css" rel="stylesheet">
-  <link href="styles/mdStyle.css" rel="stylesheet">
-  <link href="styles/portfolio.css" rel="stylesheet">
   <!-- SE enroll tag -->
   <meta name="google-site-verification" content="h-_LDSGz1TTQSKkI-YugMEwQTvahSxXJ1VWlrtJteos" />
   <meta name="naver-site-verification" content="a0fdabfc6323df0758509fbddff45d26cf571d81" />
@@ -27,23 +21,23 @@
   <meta name="author" content="Cloud Lee" />
 
   <!-- open graph for share link -->
-  <meta name="og:title" content="Vanilla js blog by Cloud lee" />
+  <meta name="og:title" content="Vanilla javascript blog by Cloud Sanghun lee" />
   <meta name="og:site_name" content="프론트엔드 개발자 이상훈 블로그" />
-  <meta name="og:description" content="이것저것 많이써보려고 노력중인 블로그입니다." />
+  <meta name="og:description" content="언젠가는 이것 저것 많이 써보려는 블로그입니다." />
   <meta name="og:type" content="website" />
   <meta name="og:url" content="https://blog.cloud-sanghun.com" />
   <!--For device-->
-  <meta name="viewport" content="initial-scale=1, user-scalable=no, width=device-width\" />
-
 
   <!-- Will add thumbnail image -->
   <!-- <meta name="og:image" content="https://blog.cloud-sanghun.com" /> -->
   <!-- Representative link -->
   <link rel="canonical" href="https://blog.cloud-sanghun.com">
-
+  <!-- main module -->
+  <script type="module" src="index.js" defer></script>
   <!-- Google Adsense-->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3623647147400569"
     crossorigin="anonymous"></script>
+
 
 
   <title>Cloud-Vanila-Blog</title>
@@ -52,26 +46,10 @@
 <body>
   <div id="root"></div>
   <div id="modal"></div>
-  <script src="https://kit.fontawesome.com/eb264fff85.js" crossorigin="anonymous"></script>
-  <!-- <script>
-    (function () { // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
-      var d = document, s = d.createElement('script') // IMPORTANT: Replace EXAMPLE with your forum shortname!
-      s.src = 'https://cloud-vanila-blog.disqus.com/recommendations.js'; s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s)
-    })();
-  </script> -->
-  <!-- <script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'cloud-vanila-blog'; // required: replace example with your forum shortname
+  <script preloading src="https://kit.fontawesome.com/eb264fff85.js" crossorigin="anonymous"></script>
 
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
-    })();
-  </script> -->
-  <script type="module" src="index.js"></script>
+
+
 
 </body>
 
