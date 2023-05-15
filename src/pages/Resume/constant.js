@@ -132,8 +132,8 @@ export const EXPERIENCE = [
         detailList: [
           '개발된 앱 내 웹뷰의 문제점 개선을 진행',
           '브라우저 캐시 활용 및 상태관리 개선을 통해 기존 대비 API호출 횟수 66% 감소',
-          'Dynamic import 및 static파일 캐싱을 통해 LightHouse점수 퍼포먼스 50점 상승',
-          '앱 내 웹뷰의 크로스 브라우저 대응을 위해 Polymer 활용',
+          'Dynamic import 및 렌더링블락 옵션 개선을 통해 LightHouse점수 퍼포먼스 50점 상승',
+          '앱 내 웹뷰의 크로스 브라우저 대응을 위해 Polyfill 활용',
         ],
       },
       {
