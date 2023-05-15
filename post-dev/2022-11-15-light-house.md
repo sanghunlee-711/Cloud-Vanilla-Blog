@@ -116,14 +116,16 @@ FCP로 문제재기가 되었던 것은 폰트를 link를 통해 불러오는 �
 />
 ```
 
-이를 media옵션을 통해 미디어쿼리가 그러하듯 뷰포트 사이즈가 정해진 뒤 링크를 불러오게 함으로서 렌더링 블락을 최소화 할 수 있게 되었다.
+외부 요소의 링크를 미리 읽어오기 위해서 link 태그의 `preconnect` 설정을 통해 폰트와 관련된 것을 불러오도록 설정하였다.
+
+`preconnect`를 사용하면 브라우저가 사이트에 필요한 연결을 미리 예상할 수 있게 되므로 브라우저는 필요한 소켓을 미리 설정할 수 있기 때문에 DNS(Domain Network Server), TCP(or UDP), TLS(TransportLayer Security Protocol) 왕복에 필요한 시간을 절약할 수 있게 된다고 한다.
 
 ```html
 <link
   href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
-  rel="stylesheet"
+  rel="preconnect stylesheet"
   type="text/css"
-  media="orientation:portrait"
+/>
 />
 ```
 
