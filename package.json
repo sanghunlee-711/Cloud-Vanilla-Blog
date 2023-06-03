@@ -3,11 +3,15 @@
   "version": "1.0.1",
   "description": "Vanila js 를 통해 SPA 개념으로 만드는 개인 블로그",
   "homepage": "www.cloud-sanghun.com",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "NODE_ENV=development webpack-dev-server &  node server.js",
-    "build:deploy": "NODE_ENV=production webpack --config webpack.config.js",
+    "start:csr": "node server.js",
+    "dev:csr": "NODE_ENV=development webpack-dev-server &  node server.js",
+    "build:deploy-csr": "NODE_ENV=production webpack --config webpack.config.js",
+    "start:ssr": "node ssr-server.js",
+    "dev:ssr": "NODE_ENV=development & node server-ssr.js",
+    "build:deploy-ssr": "NODE_ENV=production webpack --config webpack.config.js",
     "server": "node server.js &webpack-dev-server --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
