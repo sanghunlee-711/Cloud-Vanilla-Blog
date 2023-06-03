@@ -1,15 +1,20 @@
 import express from 'express';
-import { TodoList } from './src-ssr/component.js';
-import { render } from './src-ssr/serverRender.js';
+import { App } from './src-ssr/component.js';
+import { serverRender } from './src-ssr/main-ssr.js';
+import { store } from './src-ssr/store.js';
 
 const app = express();
 
-//static file import등 처리를 위함
-app.use('/src-ssr', express.static('./src-ssr'));
+app.use(express.json()); // Server, Client 상태 동기화를 위함
+app.use('/src-ssr', express.static('./src-ssr')); //static file import등 처리를 위함
 
-app.get('/', (req, res) => {
-  console.log(req);
-  res.send(render(TodoList())); // HTML문자열로 변경하여 서버 -> 브라우저로 전송
+app.put('/api/state', (req, res) => {
+  store.hydration(req.body);
+  res.status(204).send(store.state);
+});
+
+app.get('/*', (req, res) => {
+  res.send(serverRender(App({ req }), store.state)); // HTML문자열로 변경하여 + 서버의 State를 서버에서 브라우저로 전송
 });
 
 app.listen(3000, () => {
