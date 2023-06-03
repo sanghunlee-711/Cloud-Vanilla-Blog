@@ -19,3 +19,37 @@ export const TodoList = () => {
     </ul>
   `;
 };
+
+export const NavigationBar = () => {
+  return /* html */ `
+    <nav>
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/todo-list">Todo List</a>
+        </li>
+      </ul>
+    </nav>
+  `;
+};
+
+const Router = (path) => {
+  if (path === '/todo-list') return TodoList();
+  return '404 NotFound';
+};
+
+export const App = ({ req }) => {
+  const path = req.path;
+  return /* html */ `
+    <header>
+      <a href="/">SSR Blog!!</a>
+      ${NavigationBar()}
+    </header>
+    ${Router(path)}
+    <footer>
+      Test SSR Blog with SSR Sample by 황준일
+    </footer>
+  `;
+};
