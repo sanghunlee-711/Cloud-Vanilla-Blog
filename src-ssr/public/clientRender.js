@@ -1,4 +1,4 @@
-import { store } from '../store.js';
+import { store } from '/src-ssr/store.js';
 
 const addTodoEventListeners = ($todoContainer, triggerRender) => {
   $todoContainer.querySelectorAll('li').forEach(($list) => {
@@ -16,7 +16,7 @@ const addTodoEventListeners = ($todoContainer, triggerRender) => {
 
 export const render = () => {
   const $app = document.querySelector('#app');
-  console.log('@@@RENDER $APP', $app);
+
   addTodoEventListeners($app, render);
 };
 

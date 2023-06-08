@@ -22,7 +22,6 @@ export const store = {
   },
 
   hydration(state) {
-    console.log({ globalThis });
     this.state = state;
   },
 

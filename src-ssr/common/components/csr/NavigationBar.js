@@ -8,6 +8,9 @@ export const NavigationBar = () => {
         <li>
           <a href="/todo-list">Todo List</a>
         </li>
+        <li>
+          <a href="/post-list">Post List</a>
+        </li>
       </ul>
     </nav>
   `;

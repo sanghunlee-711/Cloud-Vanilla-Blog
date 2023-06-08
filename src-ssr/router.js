@@ -1,8 +1,15 @@
 import { ROUTE_MAP } from './common/constants/router.js';
 
-export const Router = (path) => {
+export const Router = (request) => {
+  const path = request?.path;
+
   const Component = ROUTE_MAP.has(path) ? ROUTE_MAP.get(path) : null;
-  console.log('@@@@@', Component);
-  if (!Component) return '404 NotFound';
-  return Component();
+
+  if (!Component)
+    return {
+      render: () => {
+        return '404 NotFound';
+      },
+    };
+  return new Component(request);
 };

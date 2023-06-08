@@ -2,10 +2,16 @@
 import { store } from '../../store.js';
 import { TodoItem } from './components/csr/TodoItem.js';
 
-export const TodoList = () => {
-  return /* html */ `
+export class TodoList {
+  constructor(req) {
+    this.render();
+  }
+
+  render = () => {
+    return /* html */ `
     <ul>
       ${store.state.todoItems.map(TodoItem).join('')}
     </ul>
   `;
-};
+  };
+}

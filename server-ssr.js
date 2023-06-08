@@ -6,11 +6,17 @@ import { store } from './src-ssr/store.js';
 const app = express();
 
 app.use(express.json()); // Server, Client 상태 동기화를 위함
-app.use('/public', express.static('./src-ssr/public')); //static file import등 처리를 위함
+app.use('/src-ssr', express.static('./src-ssr/')); //static file import등 처리를 위함
 
 app.put('/api/state', (req, res) => {
   store.hydration(req.body);
   res.status(204).send(store.state);
+});
+
+app.get('/post-list', (req, res) => {
+  req.test = 'Hello There!! this is new State';
+
+  res.send(serverRender(App({ req }), store.state));
 });
 
 app.get('/*', (req, res) => {
