@@ -1,4 +1,4 @@
-import { store } from './store.js';
+import { store } from '../store.js';
 
 const addTodoEventListeners = ($todoContainer, triggerRender) => {
   $todoContainer.querySelectorAll('li').forEach(($list) => {

@@ -1,7 +1,6 @@
 export const store = {
   //서버에서 This는 Window가 아닌 {}로 module.exports를 가리키게 된다고 함
   //따라서 런타임시점에서 제대로 가져오기 위해 globalThis를 사용한다
-
   state: globalThis.state || {
     todoItems: [
       {

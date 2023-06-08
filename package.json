@@ -10,7 +10,7 @@
     "dev:csr": "NODE_ENV=development webpack-dev-server &  node server.js",
     "build:deploy-csr": "NODE_ENV=production webpack --config webpack.config.js",
     "start:ssr": "node ssr-server.js",
-    "dev:ssr": "NODE_ENV=development & node server-ssr.js",
+    "dev:ssr": "NODE_ENV=development & nodemon server-ssr.js",
     "build:deploy-ssr": "NODE_ENV=production webpack --config webpack.config.js",
     "server": "node server.js &webpack-dev-server --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -42,6 +42,7 @@
     "html-webpack-plugin": "^5.5.0",
     "jest": "^27.5.1",
     "mini-css-extract-plugin": "^2.6.0",
+    "nodemon": "^2.0.22",
     "process": "^0.11.10",
     "style-loader": "^3.3.1",
     "webpack": "^5.11.1",
