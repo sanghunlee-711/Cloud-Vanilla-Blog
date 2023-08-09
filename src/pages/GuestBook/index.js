@@ -1,14 +1,19 @@
-import { makeDisqus, resetDisqus } from '../../common/utils/disqus';
+import { makeDisqus } from '../../common/utils/disqus';
 
-const GuestBook = function ({ $target }) {
-  this.$target = $target;
-  this.title = 'guest-book-cloud';
-  const wrapper = document.createElement('div');
-  wrapper.setAttribute('class', 'guest-book-container');
-  this.$target.appendChild(wrapper);
+export default class GuestBook {
+  constructor({ $target }) {
+    this.$target = $target;
+    this.title = 'guest-book-cloud';
+    this.wrapper = document.createElement('div');
+    this.$target.appendChild(this.wrapper);
+    this.wrapper.setAttribute('class', 'guest-book-container');
 
-  this.render = () => {
-    wrapper.innerHTML = `
+    this.render();
+    makeDisqus();
+  }
+
+  render = () => {
+    this.wrapper.innerHTML = `
       <div class="guest-book-wrapper">
         <h1>This is Guest book</h1>
         <h2>
@@ -17,11 +22,5 @@ const GuestBook = function ({ $target }) {
       </div>
       <div id="disqus_thread"></div>
     `;
-    makeDisqus();
-    resetDisqus(this.title);
   };
-
-  this.render();
-};
-
-export default GuestBook;
+}
