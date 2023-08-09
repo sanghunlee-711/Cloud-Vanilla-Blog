@@ -71,7 +71,6 @@ class Content {
     `;
 
     makeDisqus();
-    // resetDisqus(title);
   };
 
   addEventListeners = () => {
