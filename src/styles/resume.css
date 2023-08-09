@@ -187,9 +187,13 @@
   list-style: inside;
 }
 
-.experience-detail-list-wrapper > li {
+.experience-detail-list-wrapper li {
   margin: 8px 0px;
   font-size: 14px;
+}
+
+.experience-detail-list-target {
+  font-weight: 700;
 }
 
 .experience-period {
