@@ -1,5 +1,4 @@
 import { layerPrint } from '../../common/utils/print.js';
-
 import Profile from './components/Profile.js';
 import Skills from './components/Skills.js';
 import Careers from './components/Careers.js';
@@ -27,7 +26,7 @@ class Resume {
   render = () => {
     this.$wrapper.innerHTML = /* html */ `
       <div class="print-resume-wrapper">
-        <button class="print-resume">
+        <button class="print-button">
           <i class="fa fa-print fa-1x"></i>
         </button>
       </div>
@@ -43,10 +42,10 @@ class Resume {
   };
 
   addEventListeners = () => {
-    this.$wrapper.addEventListener('click', (e) => {
-      if (e.target.classList.contains('print-resume')) {
-        this.handlePrint();
-      }
+    const $printButton = this.$wrapper.querySelector('.print-button');
+
+    $printButton.addEventListener('click', (e) => {
+      this.handlePrint();
     });
   };
 }

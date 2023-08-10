@@ -1,4 +1,5 @@
 import { EXPERIENCE } from '../constants/experience.js';
+import ExperienceList from './ExperiencsList.js';
 
 export default class Careers {
   constructor() {}
@@ -38,41 +39,7 @@ export default class Careers {
             <div>
               <h2>${corporation}</h2>
               <h4 class="corp-ex">${coprEx}</h4>
-              <ul class="experience-list-wrapper">
-                ${list
-                  .map(({ title, detailList, link }) => {
-                    return /* html */ `
-                    <li>
-                      ${title} ${
-                      link
-                        ? `<a href=${link} target="_blank"><i class="fa fa-globe experience-list-link-icon"></i></a>`
-                        : ''
-                    }
-                      <ul class="experience-detail-list-wrapper">
-                      ${detailList
-                        .map(({ target, actions }) => {
-                          return `
-                          <li class="experience-detail-list-target">
-                            ${target}
-                          </li>
-                            <ul>
-                              ${actions
-                                .map((action) => {
-                                  return `
-                                <li class="experience-detail-list-action">${action}</li>
-                              `;
-                                })
-                                .join('')}
-                            </ul>
-                        `;
-                        })
-                        .join('')}
-                      </ul>
-                    </li>
-                  `;
-                  })
-                  .join('')}
-              </ul>
+              ${new ExperienceList(list).render()}
             </div>
           </div>
           ${index !== EXPERIENCE.length - 1 ? `<hr class="divider">` : ''}
