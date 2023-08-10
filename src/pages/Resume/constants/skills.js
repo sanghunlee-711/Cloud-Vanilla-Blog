@@ -7,6 +7,7 @@ export const WELL_KNOWN_LIST = [
   'Redux-Toolkit',
   'Redux-saga',
   'styled-components',
+  'testing-library',
 ];
 
 export const SKILL = [
