@@ -9,7 +9,9 @@ jobs: # 작동할 일
   deploy:
     name: deploy #github 아이콘에 나타날 과정 이름
     runs-on: self-hosted # GitHub Actions의 일부로 사용자 정의된 머신으로 self-hosted runner라 불림
-
+    defaults:
+      run:
+        working-directory: ../..
     steps:
       - name: excuting remote ssh commands # 각 단계 이름
         uses: appleboy/ssh-action@v0.1.9 # ssh 접속하는 오픈소스
