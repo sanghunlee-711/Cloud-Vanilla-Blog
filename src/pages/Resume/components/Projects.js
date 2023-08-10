@@ -1,4 +1,5 @@
 import { PROJECT } from '../constants/projects.js';
+import ExperienceList from './ExperiencsList.js';
 
 export default class Projects {
   constructor() {}
@@ -8,7 +9,16 @@ export default class Projects {
     <div class="resume-common-wrapper">
       <h1>PROJECT</h1>
       ${PROJECT.map(
-        ({ period, title, company, list, explanation, skill, link }) => {
+        ({
+          period,
+          title,
+          company,
+          list,
+          explanation,
+          skill,
+          deployLink,
+          githubLink,
+        }) => {
           return /* html */ `
         <div class="experience-wrapper">
           <div>
@@ -35,38 +45,18 @@ export default class Projects {
             <h2>
             ${title}
             ${
-              link
-                ? `<a href=${link} target="_blank"><i class="fa fa-globe experience-list-link-icon"></i></a>`
+              deployLink
+                ? `<a href=${deployLink} target="_blank"><i class="fa fa-globe experience-list-link-icon"></i></a>`
+                : ''
+            }
+            ${
+              githubLink
+                ? `<a href=${githubLink} target="_blank"><i class="fab fa-github experience-list-link-icon"></i></a>`
                 : ''
             }
             </h2>
             <h4 class="corp-ex">${company}</h4>
-            <ul class="experience-list-wrapper">
-              ${list
-                .map(({ title, detailList, link }) => {
-                  return /* html */ `
-                  <li>
-                    ${title} ${
-                    link
-                      ? `<a href=${link} target="_blank"><i class="fa fa-globe experience-list-link-icon"></i></a>`
-                      : ''
-                  }
-                    <ul class="experience-detail-list-wrapper">
-                    ${detailList
-                      .map((detail) => {
-                        return `
-                        <li>
-                          ${detail}
-                        </li>
-                      `;
-                      })
-                      .join('')}
-                    </ul>
-                  </li>
-                `;
-                })
-                .join('')}
-            </ul>
+            ${new ExperienceList(list).render()}
           </div>
         </div>
         `;

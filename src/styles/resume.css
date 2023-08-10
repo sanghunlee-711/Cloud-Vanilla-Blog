@@ -262,7 +262,7 @@
   min-height: 48px;
 }
 
-.print-resume {
+.print-button {
   background-color: var(--basic-gray);
   border: none;
   border-radius: 100%;
@@ -277,7 +277,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.print-resume:hover {
+.print-button:hover {
   background-color: var(--basic-blue);
   border: 1px solid var(--basic-blue);
 }
