@@ -157,7 +157,7 @@ class PortFolio {
     this.$wrapper.innerHTML = `
     <div>
       <div class="print-resume-wrapper">
-        <button class="print-resume print">
+        <button class="print-button print">
           <i class="fa fa-print fa-1x print"></i>
         </button>
       </div>
@@ -169,10 +169,10 @@ class PortFolio {
   };
 
   addEventListeners = () => {
-    this.$wrapper.addEventListener('click', (e) => {
-      if (e.target.classList.contains('print')) {
-        this.handlePrint();
-      }
+    const $printButton = this.$wrapper.querySelector('.print-button');
+
+    $printButton.addEventListener('click', (e) => {
+      this.handlePrint();
     });
   };
 }
