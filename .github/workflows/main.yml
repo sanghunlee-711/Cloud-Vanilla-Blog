@@ -16,11 +16,7 @@ jobs: # 작동할 일
         run: |
           cd /home/ubuntu/Cloud-Vanilla-Blog/
           git pull origin main
-      - name: Install package and rebuild modules
-        run: |
           npm i
+          pm2 stop all
           npm run build:deploy
-      - name: Restart api server
-        run: |
-          pm2 kill
-          pm2 start npm -- run start
+          pm2 restart all

@@ -15,7 +15,7 @@ export const EXPERIENCE = [
             target: '유사 백오피스 서비스 내의 중복 컴포넌트 및 로직 코드 제거',
             actions: [
               '공통 UI, 로직 분리를 하여 Git diff 기준 중복코드 65,000 여 줄 제거',
-              'yarn work space를 통해 각 프로젝트 별 코드 사용 가능하게 변경',
+              'yarn work space를 통해 각 프로젝트 별 코드 공유 사용 가능하게 변경',
             ],
           },
           {

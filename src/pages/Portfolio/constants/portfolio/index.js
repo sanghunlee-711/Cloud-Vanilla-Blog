@@ -7,15 +7,16 @@ import { TODAY_RECYCLE } from './oysterable/today-recycle.js';
 import { OA_UI_LIBS } from './oysterable/ui-libs.js';
 import { CLOUD_VANILLA_PORTFOLIO } from './personnel/cloud-vanila.js';
 import { THE_FOLKS_PORTFOLIO } from './personnel/the-folks.js';
+import { BACK_OFFICE_MONOREPO } from './oysterable/mono-repo.js';
 
 export const PORTFOLIO_LIST = [
+  //BACK_OFFICE_MONOREPO,
   CLOUD_VANILLA_PORTFOLIO,
   THE_FOLKS_PORTFOLIO,
   OA_LALALOOP_PORTFOLIO,
   OA_UI_LIBS,
   OA_CONSOLE,
   TODAY_RECYCLE,
-  // APPS_CONSOLE,
   CUSTOM_ELEMENT,
   DTIME_MAINTENANCE,
 ];
