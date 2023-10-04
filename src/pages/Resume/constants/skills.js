@@ -8,6 +8,7 @@ export const WELL_KNOWN_LIST = [
   'Redux-saga',
   'styled-components',
   'testing-library',
+  'Jest',
 ];
 
 export const SKILL = [
@@ -34,18 +35,10 @@ export const SKILL = [
     title: 'STYLE',
     skill: ['styled-components', 'SCSS'],
   },
-  {
-    title: 'TEST',
-    skill: ['Cypress', 'Jest', 'testing-library', 'msw'],
-  },
   { title: 'SERVER', skill: ['Express.js', 'Nest.js', 'Nginx', 'type-orm'] },
   { title: 'DATABASE', skill: ['Postgresql', 'MySQL'] },
   {
-    title: 'CI/CD',
-    skill: ['Jenkins'],
-  },
-  {
-    title: 'ETC',
-    skill: ['Git', 'Jira'],
+    title: 'TEST',
+    skill: ['Cypress', 'Jest', 'testing-library', 'msw'],
   },
 ];
