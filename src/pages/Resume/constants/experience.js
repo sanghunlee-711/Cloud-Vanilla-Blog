@@ -19,52 +19,11 @@ export const EXPERIENCE = [
             ],
           },
           {
-            target: 'UI 일원화',
-            actions: [
-              'Storybook을 활용하여 디자이너와 컴포넌트 협업을 위한 Static사이트 개발로 협업능력 증대',
-            ],
-          },
-          {
             target: '반복 개발 업무 개선',
             deployLink:
               'https://www.cloud-sanghun.com/content?id=2023-07-25-Node-folders&type=post-dev',
             actions: [
               '반복되는 UI의 폴더구조와 컴포넌트 코드를 생성해주는 자동화 스크립트를 작성하여 1,500여줄이 자동 작성이 되도록 DX 개선',
-            ],
-          },
-        ],
-      },
-      {
-        title: '배달음식 일회용기 반납 후 보증금 반환을 위한 서비스',
-        deployLink: 'https://dish.lalaloop.app/',
-        githubLink: '',
-        detailList: [
-          {
-            target: '크로스 브라우징 및 디바이스 대응',
-            actions: [
-              '시멘틱 태그와 다양한 css기법을 이용하여 웹 & 모바일 및 크로스브라우징 대응',
-            ],
-          },
-        ],
-      },
-      {
-        title: 'IoT 기반 데이터 관리를 위한 사내 관리 시스템',
-        deployLink: 'https://oa-console.oysterable.com/',
-        githubLink: '',
-        detailList: [
-          {
-            target: '프로젝트 초기 구조 세팅',
-            actions: [
-              'React, Hooks, ContextAPI, React-Query를 적극 활용하여  도메인, 클라이언트 상태 분리 개념 적용으로 상태 구조 생성',
-              '테이블, 페이지네이션 등의 기반 컴포넌트와 그에 해당하는 재 사용될 로직들 구축으로 코드 재사용성 증대',
-            ],
-          },
-          {
-            target: '사내 업무 효율 증진',
-            actions: [
-              'ApexChart를 활용하여 다양한 데이터를 시각화 UX 제공',
-              '권한별 메뉴, 버튼 접근 등의 렌더링을 통한 다양한 UX 제공',
-              '앱의 실제 렌더 모습과 싱크로율을 맞춘 다양한 미리보기 기능 제공',
             ],
           },
         ],
@@ -145,8 +104,6 @@ export const EXPERIENCE = [
             target: 'UI/UX 유지보수',
             actions: [
               '앵귤러로 되어있던 메인페이지들의 디자인개선 작업과 동시에 리액트로 전환',
-              '모바일 사이즈에 대응하는 새로운 컴포넌트 구성',
-              '비즈니스 활용을 위한 유입 경로 추적 기능',
             ],
           },
         ],

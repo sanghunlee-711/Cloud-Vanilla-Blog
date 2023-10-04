@@ -22,9 +22,7 @@ const VANILA_BLOG = {
         {
           target: '커스텀 라우팅 시스템',
           actions: [
-            'Custom Router를 만들어 CSR과 유사한 라우터 개발',
-            'V1: HashChange이벤트를 활용한 라우터',
-            'V2: History API를 활용한 라우터',
+            'History API를 활용한 커스텀 라우터 클래스를 만들어 CSR과 유사한 라우팅 시스템 적용',
           ],
         },
       ],
@@ -39,11 +37,6 @@ const VANILA_BLOG = {
           actions: [
             'Express.js를 사용하여 Markdown을 읽어오는 api 서버 개발',
             'highlight.js 라이브러리를 이용해 Markdown에서 Html로 변환',
-          ],
-        },
-        {
-          target: '비용 절감',
-          actions: [
             'Nginx의 포트 포워딩을 통해 하나의 EC2만 활용하여 운영 비용 절감',
           ],
         },
@@ -101,15 +94,6 @@ const THE_FOLKS = {
             '다양한 형태의 글 작성을 위한 ToastUI의 Editor 도입 및 커스터마이징을 통해 대표사진 등록 기능 추가',
           ],
         },
-        {
-          target: '다양한 UI/UX 제공',
-          actions: [
-            '유저 상호 팔로우 & 팔로잉 UX 제공',
-            '특정 등급의 유저는 개별적 크루 생성이 가능하게 구현',
-            '크루원으로 가입된 인원과 팔로우하는 인원의 글은 별도 탭에서 보여지게 구현',
-            '모바일 퍼스트를 위해 Intersection Observer를 이용한 Infinite scroll 제공',
-          ],
-        },
       ],
     },
     {
@@ -143,4 +127,30 @@ const THE_FOLKS = {
   ],
 };
 
-export const PROJECT = [VANILA_BLOG, THE_FOLKS];
+const IRON_MATE = {
+  period: '2023.08 ~ ',
+  title: 'Iron mate',
+  company: '개인 프로젝트',
+  explanation:
+    '중량운동 시 나만의 일지를 작성할 기록노트입니다. 월간 요약 및 하루 요약 기능이 있습니다. 웹스토리지를 활용한 저장을 사용하고 있습니다.',
+  deployLink: 'https://www.iron-mate.com',
+  skill: ['Next.js', 'Vercel', 'Tailwind', 'Route53'],
+  list: [
+    {
+      title: '클라이언트 개발',
+      deployLink: '',
+      githubLink: 'https://github.com/sanghunlee-711/iron-mate',
+      detailList: [
+        {
+          target: '데이터 관리',
+          actions: [
+            '테이블카드 UI에 기재한 데이터를 액셀로 저장하여 반환',
+            '적합한 형태의 액셀을 저장 시 테이블카드 UI를 제공해주며 해당 데이터에 대한 CRUD가 가능',
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+export const PROJECT = [VANILA_BLOG, THE_FOLKS, IRON_MATE];
