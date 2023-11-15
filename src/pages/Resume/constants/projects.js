@@ -153,4 +153,4 @@ const IRON_MATE = {
   ],
 };
 
-export const PROJECT = [VANILA_BLOG, THE_FOLKS, IRON_MATE];
+export const PROJECT = [IRON_MATE, VANILA_BLOG, THE_FOLKS];
