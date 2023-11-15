@@ -37,17 +37,21 @@ export const OA_UI_LIBS = {
     {
       image:
         '../../../../../../static/images/portfolio/oysterable/oa-ui/rollup.js.jpg',
-      explanation: `
-        트리쉐이킹 및 다양한 샘플코드의 존재 등의 이점이 있어 Webpack이 아닌 Rollup.js를 통해 번들링을 진행하며 번들링 툴에 대한 이해도 증가,
-        이 과정을 통해 번들링 프로세스에 대한 이해도가 증가 및 번들링 단계의 최적화에 대한 고민이 심화 되었습니다.
-      `,
+      explanation: [
+        `
+      트리쉐이킹 및 다양한 샘플코드의 존재 등의 이점이 있어 Webpack이 아닌 Rollup.js를 통해 번들링을 진행하며 번들링 툴에 대한 이해도 증가,
+      이 과정을 통해 번들링 프로세스에 대한 이해도가 증가 및 번들링 단계의 최적화에 대한 고민이 심화 되었습니다.
+    `,
+      ],
     },
     {
       image:
         '../../../../../../static/images/portfolio/oysterable/oa-ui/storybook.png',
-      explanation: `
-        스토리북을 통해 디자인팀에서 요구한 실제 디자인과 활용이 맞는지 상호 확인하는 것이 더욱 편해지며 업무효율이 증대되었습니다.
-      `,
+      explanation: [
+        `
+      스토리북을 통해 디자인팀에서 요구한 실제 디자인과 활용이 맞는지 상호 확인하는 것이 더욱 편해지며 업무효율이 증대되었습니다.
+    `,
+      ],
     },
   ],
 };
