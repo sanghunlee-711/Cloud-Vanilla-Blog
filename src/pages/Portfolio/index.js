@@ -37,18 +37,7 @@ class PortFolio {
         }) => {
           return /*html*/ `
             <section class="portfolio-wrapper">
-              <div class="portfolio-top">
-                <div class="portfolio-title-image">
-                  ${titleImages
-                    .map((image, index) => {
-                      return `
-                      <img src="${image}" alt="${image}-${index}"/>
-                    `;
-                    })
-                    .join('')}
-                </div>
-                
-                <div class="portfolio-explanation-container">
+              
                   <div class="portfolio-explanation-wrapper">
                     <div class="portfolio-title-job">
                       <div>
@@ -67,11 +56,15 @@ class PortFolio {
                             .join('')}
                           </ul>
                       </div>              
-                      <p>(${job})</p>
-                      <p>${period} [${type}] [기여도: ${
+                      <p>[${job}]</p>
+                      <p>[${type}] [기여도: ${
             contribution || 100
-          }%]</p>
+          }%] ${period}</p>
                     </div>
+                  </div>
+                  <div class="portfolio-explore">
+                    <h2>살펴보기</h2>
+                    <p>${exploreComment}</p>
                   </div>
                   <div class="portfolio-dev-highlights">
                     <h2>개발 사항</h2>
@@ -120,32 +113,35 @@ class PortFolio {
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="portfolio-explore">
-                <h2>살펴보기</h2>
-                <p>${exploreComment}</p>
-              </div>
-              <div class="portfolio-dev-explanation">
-                <h2>주요 성과</h2>
-                <div class="dev-explanation-container">
-                  ${devExplains
-                    .map(({ image, explanation }, index) => {
-                      return `
-                      <div class="dev-explanation-wrapper">
-                        <div class="dev-explanation-image-wrapper">
-                          <img src="${image}" alt="${image}-${index}" />
-                        </div>
-                        <p>
-                          ${explanation}
-                        </p>
-                      </div>
-                    `;
-                    })
-                    .join('')}
-                </div>
-              </div>
-            </section>
+                  <div class="portfolio-dev-explanation">
+                    <h2>주요 성과</h2>
+                    <div class="dev-explanation-container">
+                      ${devExplains
+                        .map(({ image, explanation }, index) => {
+                          return `
+                          <div class="dev-explanation-wrapper">
+                            <div class="dev-explanation-image-wrapper">
+                              <img src="${image}" alt="${image}-${index}" />
+                            </div>
+                            <ul>
+                              ${explanation
+                                .map((text) => {
+                                  return `
+                                  <li>
+                                    ${text}
+                                  </li>
+                                `;
+                                })
+                                .join('')}
+                            </ul>
+                          </div>
+                        `;
+                        })
+                        .join('')}
+                    </div>
+                  </div>
+                
+              </section>
           `;
         }
       ).join('')}
