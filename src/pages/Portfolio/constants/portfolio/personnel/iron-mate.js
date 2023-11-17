@@ -20,7 +20,7 @@ export const IRON_MATE_PORTFOLIO = {
     'PWA 세팅으로 접근 용이한 UX 제공',
   ],
   devAchivement: [
-    'serviceworker를 사용한 브라우저 멀티 프로세스 활용으로 정확한 타이머 기능 제공',
+    'serviceworker를 사용한 브라우저 백그라운드 스레드 활용으로 정확한 타이머 기능 제공',
     'next-pwa를 통한 PWA세팅',
     'react-hook-form의 유연한 활용',
     'xlsx로 정해진 포맷의 액셀데이터 제공',
@@ -35,8 +35,8 @@ export const IRON_MATE_PORTFOLIO = {
       image:
         '../../../../../../static/images/portfolio/iron-mate/singlethread.png',
       explanation: [
-        '싱글스레드로 인해 다른 탭 또는 외부 프로그램 시행 시 타이머가 정상작동하지 않는 현상이 발생 되었습니다.',
-        '서비스워커를 활용해 별도 프로세스를 실행하여 타이머의 정합성을 유지하여 UX를 증대하였습니다.',
+        '싱글스레드로 인해 다른 탭 또는 외부 프로그램 실행 시 타이머가 정상작동하지 않는 현상이 발생 되었습니다.',
+        '서비스워커를 활용해 백그라운드 스레드를 실행하여 운동시간 측정 타이머의 정합성을 유지하여 UX를 증대하였습니다.',
       ],
     },
     {
