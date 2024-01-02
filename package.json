@@ -1,7 +1,7 @@
 {
   "name": "cloud-vanila-blog",
-  "version": "1.0.1",
-  "description": "Vanila js 를 통해 SPA 개념으로 만드는 개인 블로그",
+  "version": "1.0.2",
+  "description": "Vanila js 를 통해 SPA  개념으로 만드는 개인 블로그",
   "homepage": "www.cloud-sanghun.com",
   "main": "index.js",
   "scripts": {
