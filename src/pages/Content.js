@@ -1,17 +1,17 @@
-import { makeDisqus } from '../common/utils/disqus.js';
-import { getContentId } from '../common/utils/index.js';
-import { addRouteEventListener } from '../common/utils/navigate.js';
+import { makeDisqus } from "../common/utils/disqus.js";
+import { getContentId } from "../common/utils/index.js";
+import { addRouteEventListener } from "../common/utils/navigate.js";
 
 class Content {
   constructor({ $target }) {
     this.$target = $target;
     this.contentId = getContentId().contentId;
     this.type = getContentId().type;
-    this.$wrapper = document.createElement('main');
-    this.$wrapper.setAttribute('class', 'content-main-container');
+    this.$wrapper = document.createElement("main");
+    this.$wrapper.setAttribute("class", "content-main-container");
     // <div id="disqus_thread"></div>
-    this.$disqus = document.createElement('div');
-    this.$disqus.setAttribute('id', 'disqus_thread');
+    this.$disqus = document.createElement("div");
+    this.$disqus.setAttribute("id", "disqus_thread");
 
     $target.appendChild(this.$wrapper);
     $target.appendChild(this.$disqus);
@@ -29,13 +29,13 @@ class Content {
   getPostData = async () => {
     try {
       const res = await fetch(
-        `${process.env.API_ADDRESS}/post?slug=${this.contentId}&type=${this.type}`
+        `/api/post?slug=${this.contentId}&type=${this.type}`
       );
       const resJson = await res.json();
       const data = await resJson;
       this.setData(data);
     } catch (e) {
-      console.error('게시물 데이터 불러오기 에러', e);
+      console.error("게시물 데이터 불러오기 에러", e);
     }
   };
 
@@ -53,7 +53,7 @@ class Content {
       <div class="title-info">
         <div>
           <span>${author}</span>
-          <span>${date?.split(' ')[0]}</span>
+          <span>${date?.split(" ")[0]}</span>
         </div>
         <div>
           <a href="/post" data-id="route"> 목록 </a>
@@ -74,7 +74,7 @@ class Content {
   };
 
   addEventListeners = () => {
-    this.$wrapper.addEventListener('click', (e) => {
+    this.$wrapper.addEventListener("click", (e) => {
       addRouteEventListener(e);
     });
   };

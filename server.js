@@ -32,9 +32,45 @@ marked.setOptions({
 });
 
 app.use(cors());
+app.use(express.static("dist"));
 app.options("*", cors());
 
+app.get("/", (req, res) => {
+  const indexPath = path.join("dist", "index" + ".html");
+  fs.readFile(indexPath, (err, file) => {
+    res.send(file.toString().replace("<!--app-->", "LALALA"));
+  });
+});
+
+app.get("/about", (req, res) => {
+  const indexPath = path.join("dist", "index" + ".html");
+  fs.readFile(indexPath, (err, file) => {
+    res.send(file.toString().replace("<!--app-->", "LALALA"));
+  });
+});
+
 app.get("/post", (req, res) => {
+  const indexPath = path.join("dist", "index" + ".html");
+  fs.readFile(indexPath, (err, file) => {
+    res.send(file.toString().replace("<!--app-->", "LALALA"));
+  });
+});
+
+app.get("/content", (req, res) => {
+  const indexPath = path.join("dist", "index" + ".html");
+  fs.readFile(indexPath, (err, file) => {
+    res.send(file.toString().replace("<!--app-->", "LALALA"));
+  });
+});
+
+app.get("/guest", (req, res) => {
+  const indexPath = path.join("dist", "index" + ".html");
+  fs.readFile(indexPath, (err, file) => {
+    res.send(file.toString().replace("<!--app-->", "LALALA"));
+  });
+});
+
+app.get("/api/post", (req, res) => {
   const prefix = "posts";
   const slug = req.query.slug;
   if (!slug) res.send(400);
@@ -54,7 +90,7 @@ app.get("/post", (req, res) => {
   });
 });
 
-app.get("/post-list", (req, res) => {
+app.get("/api/post-list", (req, res) => {
   //페이지 크기
   const prefix = "posts";
   const type = req.query.type ? req.query.type : "post-dev";
@@ -126,7 +162,7 @@ app.get("/post-list", (req, res) => {
   });
 });
 
-app.get("/post-latest", (req, res) => {
+app.get("/api/post-latest", (req, res) => {
   try {
     //효율이 너무하다..
     const prefix = "posts";
