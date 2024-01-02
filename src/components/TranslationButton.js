@@ -1,3 +1,8 @@
+const TRANSLATION_LANGUAGE_LIST = [
+  { value: "ko", name: "Ko" },
+  { value: "eng", name: "Eng" },
+];
+
 class TranslationButton {
   constructor({ $target }) {
     this.$target = $target;
@@ -13,16 +18,17 @@ class TranslationButton {
     this.$wrapper.innerHTML = `
     <i class="fas fa-language"></i>
     <ul class="language-list hidden">
-        <li>Ko</li>
-        <li>Eng</li>
+        ${TRANSLATION_LANGUAGE_LIST.map(({ name, value }) => {
+          return `<li data-value=${value}>${name}</li>`;
+        }).join("")}
     </ul>
     `;
   };
 
   addEventListeners = () => {
     this.$wrapper.addEventListener("click", (e) => {
-      const value = e.target.textContent;
-      console.log(e.target.tagName);
+      const value = e.target.dataset.value;
+
       if (e.target.tagName === "BUTTON" || e.target.tagName === "I") {
         const ulWrapper = this.$wrapper.querySelector(".language-list");
         if (ulWrapper.classList.contains("hidden")) {
