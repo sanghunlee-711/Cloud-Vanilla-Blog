@@ -1,8 +1,6 @@
-import { EDUCATION } from '../constants/etc.js';
+import { EDUCATION } from "../constants/etc.js";
 
 export default class Education {
-  constructor() {}
-
   render = () => {
     return /* html */ `
     <div class="resume-common-wrapper">
@@ -21,7 +19,7 @@ export default class Education {
           </div>
         </div>
         `;
-      }).join('')}
+      }).join("")}
     </div>
     `;
   };

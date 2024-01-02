@@ -5,7 +5,7 @@ export const caculateYears = (jobStart) => {
   const interval = today - startDate;
 
   if (interval < 0) {
-    throw new Error('초기 날짜가 오늘보다 과거입니다. 입력이 잘못 되었습니다.');
+    throw new Error("초기 날짜가 오늘보다 과거입니다. 입력이 잘못 되었습니다.");
   }
 
   const day = 1000 * 60 * 60 * 24;
