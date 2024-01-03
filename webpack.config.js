@@ -27,13 +27,16 @@ const plugins = [
   }),
   new CleanWebpackPlugin({
     cleanOnceBeforeBuildPatterns: ['dist'],
-    // cleanAfterEveryBuildPatterns: ['dist'],
   }),
   new CopyPlugin({
     patterns: [
       {
         from: path.resolve(__dirname, 'static/images'),
         to: path.resolve(__dirname, 'dist/static/images'),
+      },
+      {
+        from: path.resolve(__dirname, 'public'),
+        to: path.resolve(__dirname, 'dist/public'),
       },
       {
         from: path.resolve(__dirname, 'src/styles'),
