@@ -1,7 +1,7 @@
-import { PostCard } from "../../../components/PostCard.js";
-import { POST_SELECT_MAP } from "../../../constants/common.js";
-import { API_ADDRESS } from "../../../constants/config.js";
-import { addRouteEventListener } from "../../../utils/navigate.js";
+import { PostCard } from '../../../components/PostCard.js';
+import { POST_SELECT_MAP } from '../../../constants/common.js';
+import { API_ADDRESS } from '../../../constants/config.js';
+import { addRouteEventListener } from '../../../utils/navigate.js';
 
 class LatestPost {
   constructor({ $target }) {
@@ -9,8 +9,8 @@ class LatestPost {
     this.state = {
       sortKey: POST_SELECT_MAP[0].key,
     };
-    this.$wrapper = document.createElement("main");
-    this.$wrapper.setAttribute("class", "main-post-container");
+    this.$wrapper = document.createElement('main');
+    this.$wrapper.setAttribute('class', 'main-post-container');
     $target.appendChild(this.$wrapper);
 
     this.data = [];
@@ -26,7 +26,7 @@ class LatestPost {
   };
 
   getPostData = async () => {
-    const res = await fetch(`/api/post-latest`);
+    const res = await fetch(`/test-post-latest`);
     const resJson = await res.json();
 
     const data = await resJson.data;
@@ -75,14 +75,14 @@ class LatestPost {
           `;
         }
       )
-      .join("")}
+      .join('')}
       </ul>
   </main>
     `;
   };
 
   addEventListeners = () => {
-    this.$wrapper.addEventListener("click", (e) => {
+    this.$wrapper.addEventListener('click', (e) => {
       addRouteEventListener(e);
     });
   };

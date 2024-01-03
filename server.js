@@ -1,15 +1,15 @@
-const express = require("express");
-const path = require("path");
-const fs = require("fs");
-const matter = require("gray-matter");
+const express = require('express');
+const path = require('path');
+const fs = require('fs');
+const matter = require('gray-matter');
 const app = express();
-const marked = require("marked");
-const hljs = require("highlight.js");
-const cors = require("cors");
+const marked = require('marked');
+const hljs = require('highlight.js');
+const cors = require('cors');
 
 marked.setOptions({
   highlight: function (code, lang) {
-    const language = hljs.getLanguage(lang) ? lang : "plaintext";
+    const language = hljs.getLanguage(lang) ? lang : 'plaintext';
     return hljs.highlight(code, { language }).value;
   },
   baseUrl: null,
@@ -17,8 +17,8 @@ marked.setOptions({
   extensions: null,
   gfm: true,
   headerIds: true,
-  headerPrefix: "",
-  langPrefix: "hljs language-",
+  headerPrefix: '',
+  langPrefix: 'hljs language-',
   mangle: true,
   pedantic: false,
   sanitize: false,
@@ -32,53 +32,107 @@ marked.setOptions({
 });
 
 app.use(cors());
-app.use(express.static("dist"));
-app.options("*", cors());
+app.use(express.static('dist'));
+app.use(express.static('posts'));
+app.options('*', cors());
 
-app.get("/", (req, res) => {
-  const indexPath = path.join("dist", "index" + ".html");
+app.get('/', (req, res) => {
+  const indexPath = path.join('dist', 'index' + '.html');
   fs.readFile(indexPath, (err, file) => {
-    res.send(file.toString().replace("<!--app-->", "LALALA"));
+    res.send(file.toString().replace('<!--app-->', 'LALALA'));
   });
 });
 
-app.get("/about", (req, res) => {
-  const indexPath = path.join("dist", "index" + ".html");
+app.get('/about', (req, res) => {
+  const indexPath = path.join('dist', 'index' + '.html');
   fs.readFile(indexPath, (err, file) => {
-    res.send(file.toString().replace("<!--app-->", "LALALA"));
+    res.send(file.toString().replace('<!--app-->', 'LALALA'));
   });
 });
 
-app.get("/post", (req, res) => {
-  const indexPath = path.join("dist", "index" + ".html");
+app.get('/post', (req, res) => {
+  const indexPath = path.join('dist', 'index' + '.html');
   fs.readFile(indexPath, (err, file) => {
-    res.send(file.toString().replace("<!--app-->", "LALALA"));
+    res.send(file.toString().replace('<!--app-->', 'LALALA'));
   });
 });
 
-app.get("/content", (req, res) => {
-  const indexPath = path.join("dist", "index" + ".html");
+app.get('/content', (req, res) => {
+  const indexPath = path.join('dist', 'index' + '.html');
   fs.readFile(indexPath, (err, file) => {
-    res.send(file.toString().replace("<!--app-->", "LALALA"));
+    res.send(file.toString().replace('<!--app-->', 'LALALA'));
   });
 });
 
-app.get("/guest", (req, res) => {
-  const indexPath = path.join("dist", "index" + ".html");
+app.get('/guest', (req, res) => {
+  const indexPath = path.join('dist', 'index' + '.html');
   fs.readFile(indexPath, (err, file) => {
-    res.send(file.toString().replace("<!--app-->", "LALALA"));
+    res.send(file.toString().replace('<!--app-->', 'LALALA'));
   });
 });
 
-app.get("/api/post", (req, res) => {
-  const prefix = "posts";
+app.get('/test-post-latest', (req, res) => {
+  try {
+    //효율이 너무하다..
+    const prefix = 'posts';
+    const types = ['post-algorithm', 'post-dev', 'post-personnel'];
+    let posts = [];
+
+    //3개 타입 게시물 다 가져오기..
+    //O(N^2)
+    types.forEach((type) => {
+      const files = fs.readdirSync(path.join(prefix, type));
+
+      //slug 과 formatter를 posts로부터 가져옴
+      posts = [
+        ...posts,
+        ...files.map((filename) => {
+          const slug = filename.replace('.md', '');
+
+          //frontMatter를 가져옴
+          const markdownWithMeta = fs.readFileSync(
+            path.join(prefix, type, filename),
+            'utf-8'
+          );
+
+          //gray-matter라이브러리가 알아서 md파일을 객체화 해줌
+          const { data: frontMatter, content } = matter(markdownWithMeta);
+
+          return {
+            slug,
+            frontMatter,
+            content: JSON.stringify(marked.parse(content)),
+          };
+        }),
+      ];
+    });
+
+    //정렬..
+    posts.sort(
+      (a, b) => new Date(b?.frontMatter?.date) - new Date(a?.frontMatter?.date)
+    );
+
+    res.json({
+      success: true,
+      data: posts.slice(0, 3),
+    });
+  } catch (e) {
+    res.json({
+      success: false,
+      data: null,
+    });
+  }
+});
+
+app.get('/api/post', (req, res) => {
+  const prefix = 'posts';
   const slug = req.query.slug;
   if (!slug) res.send(400);
 
-  const type = req.query.type ? req.query.type : "post-dev";
+  const type = req.query.type ? req.query.type : 'post-dev';
   const markdonwWithMeta = fs.readFileSync(
-    path.join(prefix, type, slug + ".md"),
-    "utf-8"
+    path.join(prefix, type, slug + '.md'),
+    'utf-8'
   );
 
   const { data: frontMatter, content } = matter(markdonwWithMeta);
@@ -90,10 +144,10 @@ app.get("/api/post", (req, res) => {
   });
 });
 
-app.get("/api/post-list", (req, res) => {
+app.get('/api/post-list', (req, res) => {
   //페이지 크기
-  const prefix = "posts";
-  const type = req.query.type ? req.query.type : "post-dev";
+  const prefix = 'posts';
+  const type = req.query.type ? req.query.type : 'post-dev';
   const countPerPage = req.query.countPerPage ? +req.query.countPerPage : 10;
   const pageNo = req.query.pageNo ? +req.query.pageNo : 0;
 
@@ -105,12 +159,12 @@ app.get("/api/post-list", (req, res) => {
   //slug 과 formatter를 posts로부터 가져옴
   let posts = files
     .map((filename) => {
-      const slug = filename.replace(".md", "");
+      const slug = filename.replace('.md', '');
 
       //frontMatter를 가져옴
       const markdownWithMeta = fs.readFileSync(
         path.join(prefix, type, filename),
-        "utf-8"
+        'utf-8'
       );
 
       //gray-matter라이브러리가 알아서 md파일을 객체화 해줌
@@ -135,7 +189,7 @@ app.get("/api/post-list", (req, res) => {
   if (pageCondition) {
     return res.json({
       success: false,
-      message: "page out of range",
+      message: 'page out of range',
       data: [],
       pagination: {
         totalCount,
@@ -162,11 +216,11 @@ app.get("/api/post-list", (req, res) => {
   });
 });
 
-app.get("/api/post-latest", (req, res) => {
+app.get('/api/post-latest', (req, res) => {
   try {
     //효율이 너무하다..
-    const prefix = "posts";
-    const types = ["post-algorithm", "post-dev", "post-personnel"];
+    const prefix = 'posts';
+    const types = ['post-algorithm', 'post-dev', 'post-personnel'];
     let posts = [];
 
     //3개 타입 게시물 다 가져오기..
@@ -178,12 +232,12 @@ app.get("/api/post-latest", (req, res) => {
       posts = [
         ...posts,
         ...files.map((filename) => {
-          const slug = filename.replace(".md", "");
+          const slug = filename.replace('.md', '');
 
           //frontMatter를 가져옴
           const markdownWithMeta = fs.readFileSync(
             path.join(prefix, type, filename),
-            "utf-8"
+            'utf-8'
           );
 
           //gray-matter라이브러리가 알아서 md파일을 객체화 해줌
