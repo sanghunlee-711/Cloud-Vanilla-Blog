@@ -12,7 +12,7 @@ post.get('/post', async function (req, res) {
 
   const type = req.query.type ? req.query.type : 'post-dev';
   const markdonwWithMeta = fs.readFileSync(
-    path.join(public, prefix, type, slug + '.md'),
+    path.join(__dirname, '..', public, prefix, type, slug + '.md'),
     'utf-8'
   );
 

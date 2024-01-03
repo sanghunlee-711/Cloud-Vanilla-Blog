@@ -15,7 +15,9 @@ postLatest.get('/post-latest', (req, res) => {
     //3개 타입 게시물 다 가져오기..
     //O(N^2)
     types.forEach((type) => {
-      const files = fs.readdirSync(path.join(public, prefix, type));
+      const files = fs.readdirSync(
+        path.join(__dirname, '..', public, prefix, type)
+      );
 
       //slug 과 formatter를 posts로부터 가져옴
       posts = [
@@ -25,7 +27,7 @@ postLatest.get('/post-latest', (req, res) => {
 
           //frontMatter를 가져옴
           const markdownWithMeta = fs.readFileSync(
-            path.join(public, prefix, type, filename),
+            path.join(__dirname, '..', public, prefix, type, filename),
             'utf-8'
           );
 

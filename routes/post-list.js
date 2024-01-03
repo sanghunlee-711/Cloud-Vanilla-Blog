@@ -15,7 +15,9 @@ postList.get('/post-list', (req, res) => {
   //파일을 루트의 post directoriy로부터 가져옴
   //readdirsync에서 특정 갯수만 가져오는 것이 불가능하므로 서버에서 핸들링하는걸로 ..(효율 최악일듯)
 
-  const files = fs.readdirSync(path.join(public, prefix, type));
+  const files = fs.readdirSync(
+    path.join(__dirname, '..', public, prefix, type)
+  );
 
   //slug 과 formatter를 posts로부터 가져옴
   let posts = files
@@ -24,7 +26,7 @@ postList.get('/post-list', (req, res) => {
 
       //frontMatter를 가져옴
       const markdownWithMeta = fs.readFileSync(
-        path.join(public, prefix, type, filename),
+        path.join(__dirname, '..', public, prefix, type, filename),
         'utf-8'
       );
 
