@@ -1,6 +1,4 @@
 const express = require('express');
-const path = require('path');
-const fs = require('fs');
 const app = express();
 const marked = require('marked');
 const hljs = require('highlight.js');
@@ -32,50 +30,7 @@ marked.setOptions({
 
 app.use(cors());
 app.use(express.static('dist'));
-app.use(express.static('posts'));
+// app.use(express.static('posts'));
 app.options('*', cors());
-
-/* For SSR paging*/
-app.get('/', (req, res) => {
-  const indexPath = path.join('dist', 'index' + '.html');
-  fs.readFile(indexPath, (err, file) => {
-    res.send(file.toString().replace('<!--app-->', 'LALALA'));
-  });
-});
-
-app.get('/about', (req, res) => {
-  const indexPath = path.join('dist', 'index' + '.html');
-  fs.readFile(indexPath, (err, file) => {
-    res.send(file.toString().replace('<!--app-->', 'LALALA'));
-  });
-});
-
-app.get('/post', (req, res) => {
-  const indexPath = path.join('dist', 'index' + '.html');
-  fs.readFile(indexPath, (err, file) => {
-    res.send(file.toString().replace('<!--app-->', 'LALALA'));
-  });
-});
-
-app.get('/content', (req, res) => {
-  const indexPath = path.join('dist', 'index' + '.html');
-  fs.readFile(indexPath, (err, file) => {
-    res.send(file.toString().replace('<!--app-->', 'LALALA'));
-  });
-});
-
-app.get('/guest', (req, res) => {
-  const indexPath = path.join('dist', 'index' + '.html');
-  fs.readFile(indexPath, (err, file) => {
-    res.send(file.toString().replace('<!--app-->', 'LALALA'));
-  });
-});
-
-//start server locally
-app.listen(4000, function () {
-  console.log('Server started. Go to http://localhost:4000/');
-});
-
-/* For SSR paging*/
 
 module.exports = app;

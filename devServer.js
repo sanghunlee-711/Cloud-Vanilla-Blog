@@ -1,6 +1,8 @@
 const app = require('./server');
 const routes = require('./routes/router');
+const pageRoutes = require('./routes/page-router');
 
+app.use('/', pageRoutes);
 app.use('/api/', routes);
 /* app.use("/api/", routes);  //for API backend*/
 
