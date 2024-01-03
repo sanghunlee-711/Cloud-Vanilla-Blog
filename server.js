@@ -71,6 +71,11 @@ app.get('/guest', (req, res) => {
   });
 });
 
+//start server locally
+app.listen(4000, function () {
+  console.log('Server started. Go to http://localhost:4000/');
+});
+
 /* For SSR paging*/
 
 module.exports = app;
