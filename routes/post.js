@@ -5,13 +5,14 @@ const path = require('path');
 const post = require('express').Router();
 
 post.get('/post', async function (req, res) {
+  const public = 'public';
   const prefix = 'posts';
   const slug = req.query.slug;
   if (!slug) res.send(400);
 
   const type = req.query.type ? req.query.type : 'post-dev';
   const markdonwWithMeta = fs.readFileSync(
-    path.join(prefix, type, slug + '.md'),
+    path.join(public, prefix, type, slug + '.md'),
     'utf-8'
   );
 

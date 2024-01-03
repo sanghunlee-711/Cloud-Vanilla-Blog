@@ -7,6 +7,7 @@ const postLatest = require('express').Router();
 postLatest.get('/post-latest', (req, res) => {
   try {
     //효율이 너무하다..
+    const public = 'public';
     const prefix = 'posts';
     const types = ['post-algorithm', 'post-dev', 'post-personnel'];
     let posts = [];
@@ -14,7 +15,7 @@ postLatest.get('/post-latest', (req, res) => {
     //3개 타입 게시물 다 가져오기..
     //O(N^2)
     types.forEach((type) => {
-      const files = fs.readdirSync(path.join(prefix, type));
+      const files = fs.readdirSync(path.join(public, prefix, type));
 
       //slug 과 formatter를 posts로부터 가져옴
       posts = [
@@ -24,7 +25,7 @@ postLatest.get('/post-latest', (req, res) => {
 
           //frontMatter를 가져옴
           const markdownWithMeta = fs.readFileSync(
-            path.join(prefix, type, filename),
+            path.join(public, prefix, type, filename),
             'utf-8'
           );
 
