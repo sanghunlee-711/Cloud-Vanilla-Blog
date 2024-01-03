@@ -5,6 +5,7 @@
   "homepage": "www.cloud-sanghun.com",
   "main": "index.js",
   "scripts": {
+    "dev:ssr": "nodemon devServer.js",
     "start": "node server.js",
     "dev": "NODE_ENV=development webpack-dev-server &  nodemon server.js",
     "build:deploy": "NODE_ENV=production webpack --config webpack.config.js",
