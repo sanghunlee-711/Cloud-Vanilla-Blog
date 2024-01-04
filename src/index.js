@@ -1,4 +1,5 @@
 import App from './app.js';
+
 import { makeGA } from './common/utils/ga.js';
 
 try {
@@ -15,4 +16,6 @@ try {
   console.error(e);
 }
 
-export default {};
+export default {
+  App,
+};
