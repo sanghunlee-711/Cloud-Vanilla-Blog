@@ -1,6 +1,6 @@
 const app = require('./app');
 const routes = require('./routes/router');
-const pageRoutes = require('./routes/page-router');
+const pageRoutes = require('./routes/pages/index');
 
 app.use('/', pageRoutes);
 app.use('/api/', routes);
