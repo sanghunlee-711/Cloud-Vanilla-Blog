@@ -1,4 +1,4 @@
-const app = require('./server');
+const app = require('./app');
 const routes = require('./routes/router');
 const pageRoutes = require('./routes/page-router');
 
