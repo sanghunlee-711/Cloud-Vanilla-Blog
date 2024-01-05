@@ -8,6 +8,13 @@
 
 - 언젠가는 웹표준인 web components를 적극적으로 활용해 볼 예정입니다.
 
+## CSR with Vercel 작동 방식
+
+- CSR과 Vercel의 serverless api funtion으로 제공되는 api를 조합한 것입니다.
+- 개발서버는 `npm run dev`를 통해 실행할 수 있습니다.
+- vercel에서는 other framework로서 제공하기에 별도의 실행코드가 필요 없는 상태입니다.
+- CSR라우팅에서 404인경우 index.html로 리다이렉트를 하기 위한 설정은 vercel.json에 있습니다.
+
 # UI/UX
 
 ## Main page
