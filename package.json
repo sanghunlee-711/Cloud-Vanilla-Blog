@@ -5,11 +5,10 @@
   "homepage": "www.cloud-sanghun.com",
   "main": "index.js",
   "scripts": {
-    "dev:ssr": "nodemon devServer.js",
+    "dev:ssr": "node devServer.js",
     "start": "NODE_ENV=production node app.js",
-    "dev": "NODE_ENV=development webpack-dev-server &  nodemon app.js",
+    "dev": "NODE_ENV=development webpack-dev-server & node devServer.js",
     "build:deploy": "NODE_ENV=production webpack --config webpack.config.js",
-    "server": "node server.js &webpack-dev-server --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "cloud-sanghun-lee",

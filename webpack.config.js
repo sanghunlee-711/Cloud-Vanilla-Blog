@@ -1,17 +1,17 @@
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
-const webpack = require('webpack');
-const CopyPlugin = require('copy-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+const webpack = require("webpack");
+const CopyPlugin = require("copy-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
-const mode = process.env.NODE_ENV;
-const isDevelopment = mode === 'development';
-const target = isDevelopment ? 'web' : 'browserslist';
+const mode = process.env.NODE_ENV || "development";
+const isDevelopment = mode === "development";
+const target = isDevelopment ? "web" : "browserslist";
 
 const plugins = [
   new webpack.EnvironmentPlugin({
-    NODE_ENV: 'development',
+    NODE_ENV: "development",
   }),
   new Dotenv({
     path: `.env.${process.env.NODE_ENV}`,
@@ -20,27 +20,27 @@ const plugins = [
   new HtmlWebpackPlugin({
     inject: false, //기본으로 두면 JS가 html에 인젝트 되어서 js가 두번불리게 됨..
     hash: true,
-    template: './src/index.html', //적용될 html 경로
+    template: "./src/index.html", //적용될 html 경로
   }),
   new webpack.ProvidePlugin({
-    process: 'process/browser',
+    process: "process/browser",
   }),
   new CleanWebpackPlugin({
-    cleanOnceBeforeBuildPatterns: ['dist'],
+    cleanOnceBeforeBuildPatterns: ["dist"],
   }),
   new CopyPlugin({
     patterns: [
       {
-        from: path.resolve(__dirname, 'static/images'),
-        to: path.resolve(__dirname, 'dist/static/images'),
+        from: path.resolve(__dirname, "static/images"),
+        to: path.resolve(__dirname, "dist/static/images"),
       },
       {
-        from: path.resolve(__dirname, 'public'),
-        to: path.resolve(__dirname, 'dist/public'),
+        from: path.resolve(__dirname, "public"),
+        to: path.resolve(__dirname, "dist/public"),
       },
       {
-        from: path.resolve(__dirname, 'src/styles'),
-        to: path.resolve(__dirname, 'dist/styles'),
+        from: path.resolve(__dirname, "src/styles"),
+        to: path.resolve(__dirname, "dist/styles"),
       },
     ],
   }),
@@ -49,7 +49,7 @@ const plugins = [
 module.exports = (env, options) => {
   return {
     mode,
-    entry: './src/index.js',
+    entry: "./src/index.js",
     target,
     performance: {
       hints: false,
@@ -57,37 +57,42 @@ module.exports = (env, options) => {
       maxAssetSize: 512000,
     },
     output: {
-      path: path.resolve(__dirname, 'dist'),
-      filename: 'index.js',
-      publicPath: '',
+      path: path.resolve(__dirname, "dist"),
+      filename: "index.js",
+      publicPath: "",
     },
     module: {
       rules: [
         {
           test: /\.js$/,
-          include: path.resolve(__dirname, 'src'),
+          include: path.resolve(__dirname, "src"),
           exclude: /node_modules/,
-          loader: 'babel-loader', // 바벨 로더를 추가한다
+          loader: "babel-loader", // 바벨 로더를 추가한다
         },
         {
           test: /\.(s[ac]|c)ss$/i,
-          use: ['style-loader', 'css-loader', 'sass-loader'],
+          use: ["style-loader", "css-loader", "sass-loader"],
         },
       ],
     },
     plugins,
     devServer: {
       static: {
-        directory: path.join(__dirname, 'src'),
+        directory: path.join(__dirname, "src"),
       },
       open: true,
       hot: true,
-      host: 'localhost',
+      host: "localhost",
       port: 8800,
       historyApiFallback: isDevelopment,
+      proxy: {
+        context: ["/api"],
+        target: "http://localhost:4000",
+        // pathRewrite: { "^/api": "" }, // 경로 재작성
+      },
     },
     resolve: {
-      extensions: ['.js'],
+      extensions: [".js"],
     },
   };
 };
