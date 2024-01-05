@@ -105,7 +105,15 @@ class Posts {
         .map(
           ({
             slug,
-            frontMatter: { title, date, image, categories, tags, summary },
+            frontMatter: {
+              title,
+              date,
+              image,
+              categories,
+              tags,
+              summary,
+              folder,
+            },
             content,
           }) => {
             return `
@@ -113,7 +121,7 @@ class Posts {
               ${PostCard({
                 imgUrl: image?.src,
                 slug,
-                sortKey: this.state.sortKey,
+                sortKey: folder[0],
                 title,
                 categories,
                 date,

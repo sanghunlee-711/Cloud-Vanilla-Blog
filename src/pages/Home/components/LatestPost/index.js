@@ -1,13 +1,13 @@
-import { addRouteEventListener } from '../../../../common/utils/navigate.js';
-import { PostCard } from '../../../../components/PostCard.js';
-import { $ELEMENT } from './constants/element.js';
-import { getLatestPostData } from './utils/api.js';
+import { addRouteEventListener } from "../../../../common/utils/navigate.js";
+import { PostCard } from "../../../../components/PostCard.js";
+import { $ELEMENT } from "./constants/element.js";
+import { getLatestPostData } from "./utils/api.js";
 
 class LatestPost {
   constructor({ $target }) {
     this.$target = $target;
-    this.$wrapper = document.createElement('main');
-    this.$wrapper.setAttribute('class', $ELEMENT.MAIN_POST_CONTAINER);
+    this.$wrapper = document.createElement("main");
+    this.$wrapper.setAttribute("class", $ELEMENT.MAIN_POST_CONTAINER);
     $target.appendChild(this.$wrapper);
 
     this.state = [];
@@ -24,7 +24,10 @@ class LatestPost {
 
   getPostData = async () => {
     await getLatestPostData({
-      onSuccess: (data) => this.setState(data),
+      onSuccess: (data) => {
+        console.log("DATA!!", data);
+        this.setState(data);
+      },
       onError: (e) => console.error(e),
     });
   };
@@ -71,7 +74,7 @@ class LatestPost {
             `;
           }
         )
-        .join('')}
+        .join("")}
         </ul>
     </main>
     `;
@@ -82,7 +85,7 @@ class LatestPost {
   };
 
   addEventListeners = () => {
-    this.$wrapper.addEventListener('click', (e) => {
+    this.$wrapper.addEventListener("click", (e) => {
       addRouteEventListener(e);
     });
   };

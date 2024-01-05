@@ -1,4 +1,4 @@
-@import './style.css';
+@import "./style.css";
 
 .post-list-container {
   list-style: none;
@@ -75,12 +75,14 @@ a:active {
 }
 a {
   color: var(--basic-gray);
+  text-decoration: none !important;
 }
 
 .each_post_container {
   width: 100%;
   margin-bottom: 50px;
   padding-bottom: 50px;
+  text-decoration-line: none;
   z-index: 2;
 }
 
@@ -168,7 +170,7 @@ a {
 }
 
 .each_post_profile_detail_date:before {
-  content: '___';
+  content: "___";
   margin: 0px 8px;
   color: var(--basic-gray);
 }
