@@ -8,6 +8,12 @@
 
 - 언젠가는 웹표준인 web components를 적극적으로 활용해 볼 예정입니다.
 
+## SSR 작동방식
+
+- `npm run start` 를 통해 routes폴더 아래에서 api serving과 컨텐츠를 ssr로 페이징 합니다.
+- hydration이 아직 진행되어 있지 않은 방식이며 ec2를 별도로 세팅하는 경우 서버에서 npm run build:deploy 후 npm run start를 진행하면 - 4000번 포트에서 제공 됩니다.
+- 루트에 있는 api폴더는 추후 vercel에서 호스팅되는 경우 요구사항에 맞추기 위함 입니다.(ec2에서는 별도로 사용 필요가 없습니다.)
+
 # UI/UX
 
 ## Main page
