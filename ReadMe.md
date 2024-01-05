@@ -8,6 +8,13 @@
 
 - 언젠가는 웹표준인 web components를 적극적으로 활용해 볼 예정입니다.
 
+## CSR with EC2
+
+- CSR방식의 라우팅으로 제공되는 서비스 입니다.
+- EC2내의 Nginx 별도 리다이렉팅 설정을 통해 404 -> Index.html을 바라보게 되어있습니다.
+- .github/workflows/main.yml에서의 설정과 github이 제공해주는 `Self-hosted runner` 를 ec2에 설치함으로서 CI/CD가 진행됩니다.
+- [관련 게시글](https://www.cloud-sanghun.com/content?id=2023-08-30-blog-ci-cd&type=post-dev)
+
 # UI/UX
 
 ## Main page
