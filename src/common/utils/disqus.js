@@ -14,6 +14,7 @@ export const resetDisqus = function (title) {
 };
 
 export const makeDisqus = function () {
+  return null;
   var disqus_shortname = 'cloud-vanila-blog'; // required: replace example with your forum shortname
 
   /* * * DON'T EDIT BELOW THIS LINE * * */

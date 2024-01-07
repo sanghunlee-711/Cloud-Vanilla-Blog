@@ -12,31 +12,31 @@ export const ROUTES = [
     name: 'Home',
     components: Home,
   },
-  {
-    path: '/about',
-    name: 'About',
-    components: About,
-  },
+  // {
+  //   path: '/about',
+  //   name: 'About',
+  //   components: About,
+  // },
   {
     path: '/post',
     name: 'Post',
     components: Posts,
   },
-  {
-    path: '/guest',
-    name: 'GuestBook',
-    components: GuestBook,
-  },
-  {
-    path: '/resume',
-    name: 'Resume',
-    components: Resume,
-  },
-  {
-    path: '/portfolio',
-    name: 'Portfolio',
-    components: PortFolio,
-  },
+  // {
+  //   path: '/guest',
+  //   name: 'GuestBook',
+  //   components: GuestBook,
+  // },
+  // {
+  //   path: '/resume',
+  //   name: 'Resume',
+  //   components: Resume,
+  // },
+  // {
+  //   path: '/portfolio',
+  //   name: 'Portfolio',
+  //   components: PortFolio,
+  // },
   {
     path: '/content',
     name: 'Content',
