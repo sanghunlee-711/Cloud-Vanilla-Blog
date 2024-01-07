@@ -1,3 +1,18 @@
+const LINK_LIST = [
+  {
+    class: 'fab fa-instagram',
+    href: 'https://www.instagram.com/hun__hoon/',
+  },
+  {
+    class: 'fab fa-github',
+    href: 'https://github.com/sanghunlee-711',
+  },
+  {
+    class: 'fab fa-google',
+    href: 'mailto:cloudlee711@gmail.com',
+  },
+];
+
 class Header {
   constructor({ $target }) {
     this.$target = $target;
@@ -9,25 +24,21 @@ class Header {
   }
 
   render = () => {
-    this.$wrapper.innerHTML = `
+    this.$wrapper.innerHTML = /* html */ `
     <div class="header_profile_wrapper">
       <img src="/static/images/profile/selfie_japan.jpeg" alt="profile_image" />
       <ul>
+      ${[]
+        .map((el) => {
+          return /* html */ `
         <li>
-          <a href="https://www.instagram.com/hun__hoon/" target="_blank" aria-label="See More SNS Contents">
-            <i class="fab fa-instagram"></i>
+          <a href="${el?.href}" target="_blank" aria-label="See More SNS Contents">
+            <i class="${el?.class}"></i>
           </a>
         </li>
-        <li>
-          <a href="https://github.com/sanghunlee-711" target="_blank" aria-label="See More Code Contents">
-            <i class="fab fa-github"></i>
-          </a>
-        </li>
-        <li>
-          <a href="mailto:cloudlee711@gmail.com" aria-label="Send Me Mail By Google">
-            <i class="fab fa-google"></i>
-          </a>
-        </li>
+        `;
+        })
+        .join('')}
       </ul>
     </div>
   `;
