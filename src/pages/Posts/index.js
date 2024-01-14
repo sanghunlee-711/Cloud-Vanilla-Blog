@@ -1,18 +1,19 @@
-import { POST_SELECT_MAP } from "../../common/constants/common.js";
+import { POST_SELECT_MAP } from '../../common/constants/common.js';
 import {
   addRouteEventListener,
   routeEvent,
-} from "../../common/utils/navigate.js";
-import { PostCard } from "../../components/PostCard.js";
+} from '../../common/utils/navigate.js';
+import { PostCard } from '../../components/PostCard.js';
+import Loader from '../../components/Loader.js';
 
 class Posts {
   constructor({ $target }) {
     this.$target = $target;
-    this.$wrapper = document.createElement("main");
-    this.$wrapper.setAttribute("class", "post-main-container");
-    this.$endOfPage = document.createElement("p");
-    this.$endOfPage.setAttribute("class", "end-of-page");
-    this.$endOfPage.textContent = "End Of Contents";
+    this.$wrapper = document.createElement('main');
+    this.$wrapper.setAttribute('class', 'post-main-container');
+    this.$endOfPage = document.createElement('p');
+    this.$endOfPage.setAttribute('class', 'end-of-page');
+    this.$endOfPage.textContent = 'End Of Contents';
 
     $target.appendChild(this.$wrapper);
     $target.appendChild(this.$endOfPage);
@@ -22,7 +23,7 @@ class Posts {
       currentPage: 1,
       contentIncrease: 3,
       totalItemCount: 1,
-      sortKey: this.urlParams.get("type") || POST_SELECT_MAP[0].key,
+      sortKey: this.urlParams.get('type') || POST_SELECT_MAP[0].key,
       isContinue: false,
       list: [],
     };
@@ -38,7 +39,10 @@ class Posts {
   };
 
   getPostData = async () => {
+    const loader = new Loader({ $target: this.$target });
+
     try {
+      loader.handleLoader(true);
       const res = await fetch(
         `/api/post-list?type=${this.state.sortKey}&countPerPage=${this.state.contentIncrease}&pageNo=${this.state.currentPage}`
       );
@@ -55,8 +59,11 @@ class Posts {
         isContinue,
         list: [...this.state.list, ...data],
       });
+      loader.handleLoader(false);
     } catch (e) {
-      console.error("포스팅 데이터 불러오기 에러 발생", e);
+      console.error('포스팅 데이터 불러오기 에러 발생', e);
+      alert('Error for getting new posts', JSON.stringify(e));
+      loader.handleLoader(false);
     }
   };
 
@@ -93,12 +100,12 @@ class Posts {
       ${POST_SELECT_MAP.map(({ name, key }) => {
         return `
           <option ${
-            key === this.state.sortKey ? "selected" : ""
+            key === this.state.sortKey ? 'selected' : ''
           } value=${key} data-key=${key}>
             ${name}
           </option>
         `;
-      }).join("")}
+      }).join('')}
       </select>
       <ul class="post-list-container">
       ${this.state.list
@@ -132,15 +139,15 @@ class Posts {
         `;
           }
         )
-        .join("")}
+        .join('')}
       </ul>
   </div>
     `;
   };
 
   addEventListener = () => {
-    const $endOfPage = document.querySelector(".end-of-page");
-    const $root = document.querySelector("#root");
+    const $endOfPage = document.querySelector('.end-of-page');
+    const $root = document.querySelector('#root');
 
     this.observer = new IntersectionObserver(
       (entries) => {
@@ -156,13 +163,13 @@ class Posts {
 
     this.observer.observe($endOfPage);
 
-    this.$wrapper.addEventListener("change", (e) => {
-      if (e.target.classList.contains("post-selector")) {
+    this.$wrapper.addEventListener('change', (e) => {
+      if (e.target.classList.contains('post-selector')) {
         this.onChangePostType(e.target.value);
       }
     });
 
-    this.$wrapper.addEventListener("click", (e) => {
+    this.$wrapper.addEventListener('click', (e) => {
       const target = e.target;
       if (target instanceof HTMLAnchorElement) {
         window.removeEventListener(this.handleInfiniteScroll);
