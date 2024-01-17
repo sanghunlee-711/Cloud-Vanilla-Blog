@@ -22,11 +22,11 @@ export const ROUTES = [
     name: 'Post',
     components: Posts,
   },
-  // {
-  //   path: '/guest',
-  //   name: 'GuestBook',
-  //   components: GuestBook,
-  // },
+  {
+    path: '/guest',
+    name: 'GuestBook',
+    components: GuestBook,
+  },
   // {
   //   path: '/resume',
   //   name: 'Resume',
