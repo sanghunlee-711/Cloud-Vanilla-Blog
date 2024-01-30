@@ -1,12 +1,21 @@
-import TRANSLATION_MAP from "../../../languages/index.js";
+import TRANSLATION_MAP from '../../../languages/index.js';
 
 const EXPERIENCES = TRANSLATION_MAP.RESUME.EXPERIENCES;
 
-const { OYSTERABLE, DTIME, BRANDI } = EXPERIENCES;
+const { SOCAR, OYSTERABLE, DTIME, BRANDI } = EXPERIENCES;
 
 export const EXPERIENCE = [
   {
-    period: "2022.02 ~ ",
+    period: '2024.01 ~ ',
+    tenure: SOCAR.tenure,
+    corporation: SOCAR.name,
+    explanation: SOCAR.explanation,
+    coprEx: SOCAR.coprEx,
+    list: [],
+    skill: ['React.js', 'Next.js', 'Typescript'],
+  },
+  {
+    period: '2022.02 ~ 2024.01 ',
     tenure: OYSTERABLE.tenure,
     corporation: OYSTERABLE.name,
     explanation: OYSTERABLE.explanation,
@@ -14,7 +23,7 @@ export const EXPERIENCE = [
     list: [
       {
         title: OYSTERABLE.monorepo.title,
-        deployLink: "",
+        deployLink: '',
         detailList: [
           {
             target: OYSTERABLE.monorepo.dupCodeTitle,
@@ -26,15 +35,15 @@ export const EXPERIENCE = [
           {
             target: OYSTERABLE.repeatImprovement.title,
             deployLink:
-              "https://www.cloud-sanghun.com/content?id=2023-07-25-Node-folders&type=post-dev",
+              'https://www.cloud-sanghun.com/content?id=2023-07-25-Node-folders&type=post-dev',
             actions: [OYSTERABLE.repeatImprovement.script],
           },
         ],
       },
       {
         title: OYSTERABLE.trApp.title,
-        deployLink: "",
-        githubLink: "",
+        deployLink: '',
+        githubLink: '',
         detailList: [
           {
             target: OYSTERABLE.trApp.speedImprovement,
@@ -62,18 +71,18 @@ export const EXPERIENCE = [
       },
     ],
     skill: [
-      "React.js",
-      "Next.js",
-      "PWA",
-      "Cypress",
-      "Jest",
-      "React-Query",
-      "Redux-toolkit",
-      "Typescript",
+      'React.js',
+      'Next.js',
+      'PWA',
+      'Cypress',
+      'Jest',
+      'React-Query',
+      'Redux-toolkit',
+      'Typescript',
     ],
   },
   {
-    period: "2021.04 ~ 2022.01",
+    period: '2021.04 ~ 2022.01',
     tenure: DTIME.tenure,
     corporation: DTIME.name,
     coprEx: DTIME.coprEx,
@@ -91,7 +100,7 @@ export const EXPERIENCE = [
 
       {
         title: DTIME.serviceMaintenance.title,
-        link: "",
+        link: '',
         detailList: [
           {
             target: DTIME.serviceMaintenance.codeQuality,
@@ -108,17 +117,17 @@ export const EXPERIENCE = [
       },
     ],
     skill: [
-      "React.js",
-      "Redux-toolkit",
-      "Redux-Saga",
-      "Cypress",
-      "Jest",
-      "msw",
-      "Typescript",
+      'React.js',
+      'Redux-toolkit',
+      'Redux-Saga',
+      'Cypress',
+      'Jest',
+      'msw',
+      'Typescript',
     ],
   },
   {
-    period: "2020.09 ~ 2020.10",
+    period: '2020.09 ~ 2020.10',
     tenure: BRANDI.tenure,
     corporation: BRANDI.name,
     coprEx: BRANDI.coprEx,
@@ -134,6 +143,6 @@ export const EXPERIENCE = [
         ],
       },
     ],
-    skill: ["Vue.js 2.xx", "Vuex"],
+    skill: ['Vue.js 2.xx', 'Vuex'],
   },
 ];

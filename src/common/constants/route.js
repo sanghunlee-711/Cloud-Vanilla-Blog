@@ -12,11 +12,11 @@ export const ROUTES = [
     name: 'Home',
     components: Home,
   },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   components: About,
-  // },
+  {
+    path: '/about',
+    name: 'About',
+    components: About,
+  },
   {
     path: '/post',
     name: 'Post',
@@ -27,16 +27,16 @@ export const ROUTES = [
     name: 'GuestBook',
     components: GuestBook,
   },
-  // {
-  //   path: '/resume',
-  //   name: 'Resume',
-  //   components: Resume,
-  // },
-  // {
-  //   path: '/portfolio',
-  //   name: 'Portfolio',
-  //   components: PortFolio,
-  // },
+  {
+    path: '/resume',
+    name: 'Resume',
+    components: Resume,
+  },
+  {
+    path: '/portfolio',
+    name: 'Portfolio',
+    components: PortFolio,
+  },
   {
     path: '/content',
     name: 'Content',
