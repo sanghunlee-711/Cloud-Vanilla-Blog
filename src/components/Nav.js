@@ -1,5 +1,6 @@
 import { SHOW_ROUTE } from '../common/constants/route.js';
 import BurgerNavPopup from './BurggerNavPopup.js';
+
 import Modal from './Modal.js';
 
 class Nav {
@@ -29,7 +30,7 @@ class Nav {
 
   render = () => {
     this.$wrapper.innerHTML = `
-      <h1>Sanghun(Cloud) Lee</h1>
+      <h1>Sanghun Lee</h1>
       <ul class="nav_list">
         ${SHOW_ROUTE.map((el) => {
           return `
