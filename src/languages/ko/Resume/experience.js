@@ -4,6 +4,17 @@ export const SOCAR = {
   explanation:
     '모든 사람이 자유롭고 행복하게 이동하는 세상을 만들기 위해 노력하는 회사입니다.',
   coprEx: '마케팅엔지니어링팀, 커먼 리소스팀 프론트엔드 개발자',
+  documentation: {
+    title: "테스트코드 문서화",
+    titleFunc: "Unit, 컴포넌트, E2E 테스트 방법론 사내 문서화",
+    newBe: "신규 입사자의 프론트엔드 테스트 방법론 및 질의응답 온보딩 교육 진행"
+  },
+  raffleBackoffice: {
+    title: '래플 이벤트 백오피스',
+    titleFunc: "미리보기 및 드래그앤 드랍을 통한 간단한 페이지 빌더",
+    dupCodeRemoveLines:
+      'URL Search Params활용을 통한 중북 컴포넌트 생성 방지',
+  },
 };
 
 export const OYSTERABLE = {

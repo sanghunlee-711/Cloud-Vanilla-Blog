@@ -6,6 +6,7 @@ export const WELL_KNOWN_LIST = [
   'Redux',
   'Redux-Toolkit',
   'Redux-saga',
+  'React-Query',
   'styled-components',
   'testing-library',
   'Jest',
@@ -33,7 +34,7 @@ export const SKILL = [
   },
   {
     title: 'STYLE',
-    skill: ['styled-components', 'SCSS'],
+    skill: ['styled-components', 'SCSS', 'tailwind'],
   },
   { title: 'SERVER', skill: ['Express.js', 'Nest.js', 'Nginx', 'type-orm'] },
   { title: 'DATABASE', skill: ['Postgresql', 'MySQL'] },
@@ -41,4 +42,8 @@ export const SKILL = [
     title: 'TEST',
     skill: ['Cypress', 'Jest', 'testing-library', 'msw'],
   },
+  // {
+  //   title: 'ETC',
+  //   skill: ["Docker", 'Kubernetes']
+  // }
 ];
