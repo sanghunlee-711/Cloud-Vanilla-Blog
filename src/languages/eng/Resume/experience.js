@@ -1,10 +1,20 @@
 export const SOCAR = {
   name: 'SOCAR',
-  tenure: 'Working',
+  tenure: 'Currently Employed',
   explanation:
-    'company that strives to create a world where everyone moves happily.',
-  coprEx:
-    'Marketing Engineering Team, Common Resource Team Front-end Developer',
+    'A company striving to create a world where everyone can move freely and happily.',
+  coprEx: 'Frontend Developer, Marketing Engineering Team & Common Resources Team',
+  documentation: {
+    title: "Documentation on Testing Code",
+    titleFunc: "Internal documentation on Unit, Component, and E2E testing methodologies",
+    newBe: "Conducted onboarding training for new hires on frontend testing methodologies and Q&A sessions"
+  },
+  raffleBackoffice: {
+    title: 'Raffle Event Back Office',
+    titleFunc: "Simple page builder with preview and drag-and-drop functionality",
+    dupCodeRemoveLines:
+      'Prevented duplicate component creation using URL Search Params',
+  },
 };
 
 export const OYSTERABLE = {

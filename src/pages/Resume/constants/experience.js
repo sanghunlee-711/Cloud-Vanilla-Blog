@@ -11,7 +11,32 @@ export const EXPERIENCE = [
     corporation: SOCAR.name,
     explanation: SOCAR.explanation,
     coprEx: SOCAR.coprEx,
-    list: [],
+    list: [
+      {
+        title: SOCAR.raffleBackoffice.title,
+        deployLink: '',
+        detailList: [
+          {
+            target: SOCAR.raffleBackoffice.titleFunc,
+            actions: [
+              SOCAR.raffleBackoffice.dupCodeRemoveLines,
+            ],
+          },
+        ],
+      },
+      {
+        title: SOCAR.documentation.title,
+        deployLink: '',
+        detailList: [
+          {
+            target: SOCAR.documentation.titleFunc,
+            actions: [
+              SOCAR.documentation.newBe,
+            ],
+          },
+        ],
+      }
+    ],
     skill: ['React.js', 'Next.js', 'Typescript'],
   },
   {
