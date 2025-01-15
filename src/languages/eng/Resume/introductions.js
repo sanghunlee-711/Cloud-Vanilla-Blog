@@ -1,8 +1,9 @@
-import { caculateYears } from '../../../common/utils/year.js';
+import { calculateYears } from '../../../common/utils/year.js';
+import {DEV_START_DATE} from '../../../common/constants/date.js'
 
 const INTRODUCTIONS = `
-Hello, I'm Sanghunlee with <strong>${caculateYears(
-  '2020-09-01'
+Hello, I'm Sanghunlee with <strong>${calculateYears(
+  DEV_START_DATE
 )}years</strong> experience as Web front-end developer .\n
 I believe that front-end development is a part of web development, and I have basic knowledge of web development in general.
 Very interested in the implementation principles of JavaScript frameworks and libraries, as well as development suited to web standards.
