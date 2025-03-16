@@ -10,6 +10,7 @@ export const WELL_KNOWN_LIST = [
   'styled-components',
   'testing-library',
   'Jest',
+  'tailwind',
 ];
 
 export const SKILL = [
@@ -26,11 +27,12 @@ export const SKILL = [
       'Apollo-client',
       'GraphQL',
       'React-Query',
+      'Zustand'
     ],
   },
   {
     title: 'BUILD SYSTEM',
-    skill: ['Webpack', 'Rollup.js'],
+    skill: ['Webpack', 'Rollup.js', 'tsup'],
   },
   {
     title: 'STYLE',
@@ -40,10 +42,10 @@ export const SKILL = [
   { title: 'DATABASE', skill: ['Postgresql', 'MySQL'] },
   {
     title: 'TEST',
-    skill: ['Cypress', 'Jest', 'testing-library', 'msw'],
+    skill: ['Cypress', 'Jest', 'testing-library', 'vitest', 'playwright', 'msw'],
   },
-  // {
-  //   title: 'ETC',
-  //   skill: ["Docker", 'Kubernetes']
-  // }
+  {
+    title: 'ETC',
+    skill: ["Docker", 'K9S']
+  }
 ];

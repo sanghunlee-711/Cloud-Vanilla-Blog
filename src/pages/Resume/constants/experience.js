@@ -35,9 +35,37 @@ export const EXPERIENCE = [
             ],
           },
         ],
+      },
+      {
+        title: SOCAR.reduceWorkflow.title,
+        deployLink: '',
+        detailList: [
+          {
+            target: SOCAR.reduceWorkflow.titleFunc,
+            actions: [
+              SOCAR.reduceWorkflow.matrix,
+              SOCAR.reduceWorkflow.cache,
+              SOCAR.reduceWorkflow.turbo,
+            ],
+          },
+        ],
+      },
+      {
+        title: SOCAR.designSystem.title,
+        deployLink: '',
+        detailList: [
+          {
+            target: SOCAR.designSystem.titleFunc,
+            actions: [
+              SOCAR.designSystem.structure,
+              SOCAR.designSystem.design,
+              SOCAR.designSystem.component,
+            ],
+          },
+        ],
       }
     ],
-    skill: ['React.js', 'Next.js', 'Typescript'],
+    skill: ['React.js', 'Next.js', 'Typescript', 'k9s', "ArgoCD", "Docker"],
   },
   {
     period: '2022.02 ~ 2024.01 ',

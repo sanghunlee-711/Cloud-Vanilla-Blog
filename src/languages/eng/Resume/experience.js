@@ -3,18 +3,32 @@ export const SOCAR = {
   tenure: 'Currently Employed',
   explanation:
     'A company striving to create a world where everyone can move freely and happily.',
-  coprEx: 'Frontend Developer, Marketing Engineering Team & Common Resources Team',
-  documentation: {
-    title: "Documentation on Testing Code",
-    titleFunc: "Internal documentation on Unit, Component, and E2E testing methodologies",
-    newBe: "Conducted onboarding training for new hires on frontend testing methodologies and Q&A sessions"
-  },
+  coprEx: 'Frontend Developer, Marketing Engineering Team -> FE CORE Team',
   raffleBackoffice: {
     title: 'Raffle Event Back Office',
     titleFunc: "Simple page builder with preview and drag-and-drop functionality",
     dupCodeRemoveLines:
       'Prevented duplicate component creation using URL Search Params',
   },
+  documentation: {
+    title: "Documentation on Testing Code",
+    titleFunc: "Internal documentation on Unit, Component, and E2E testing methodologies",
+    newBe: "Conducted onboarding training for new hires on frontend testing methodologies and Q&A sessions"
+  },
+  reduceWorkflow: {
+    title: "Improving CI Pipeline capability up to 47%",
+    titleFunc: "Applying workflow matrix and turborepo dry run with remote cache server",
+    turbo: "Avoiding duplicate build by identifying stability build test with turborepo run dry feature",
+    cache: "Uploading newly made artifact to remote cache server for avoiding useless re-build",
+    matrix: "Reducing building time by Making Paralle build with workflow matrix",
+  },
+  designSystem: {
+    title: "System design, operate, develop Socar-frame",
+    titleFunc: "Carrying out with Native and Product design team as a memeber of FE CORE team",
+    design: "Synchronize design language and development language as much as possible with meaningful tokens",
+    structure: "Designed with Pulling and Pushing systems in mind",
+    component: "Designed as a headless component to maximize reuse"
+  }
 };
 
 export const OYSTERABLE = {

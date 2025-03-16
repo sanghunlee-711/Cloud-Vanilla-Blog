@@ -3,18 +3,33 @@ export const SOCAR = {
   tenure: '재직중',
   explanation:
     '모든 사람이 자유롭고 행복하게 이동하는 세상을 만들기 위해 노력하는 회사입니다.',
-  coprEx: '마케팅엔지니어링팀, 커먼 리소스팀 프론트엔드 개발자',
-  documentation: {
-    title: "테스트코드 문서화",
-    titleFunc: "Unit, 컴포넌트, E2E 테스트 방법론 사내 문서화",
-    newBe: "신규 입사자의 프론트엔드 테스트 방법론 및 질의응답 온보딩 교육 진행"
-  },
+  coprEx: '마케팅엔지니어링팀 -> FE CORE팀 프론트엔드 개발자',
   raffleBackoffice: {
     title: '래플 이벤트 백오피스',
     titleFunc: "미리보기 및 드래그앤 드랍을 통한 간단한 페이지 빌더",
     dupCodeRemoveLines:
       'URL Search Params활용을 통한 중북 컴포넌트 생성 방지',
   },
+  documentation: {
+    title: "테스트코드 문서화",
+    titleFunc: "Unit, 컴포넌트, E2E 테스트 방법론 사내 문서화",
+    newBe: "신규 입사자의 프론트엔드 테스트 방법론 및 질의응답 온보딩 교육 진행"
+  },
+  //TODO: 캐시 서버 운영을 쓸지 말지 고민해보자
+  reduceWorkflow: {
+    title: "CI 파이프라인 성능 47% 개선",
+    titleFunc: "github workflow의 workflow matrix 및 turborepo dry run과 remote-cache서버를 통해 개선",
+    turbo: "turborepo dry run을 통해 30여개의 프로젝트 중 새로 빌드를 통한 안정성 테스트가 필요한 항목 확인하며 중복 빌드 회피",
+    cache: "새로 빌드가 진행된 후 캐시 서버에 새로운 빌드에 해당하는 파일 저장하며 다음 빌드 시 불필요한 재 빌드 방지",
+    matrix: "워크플로우 매트릭스를 통해 병렬로 빌드를 진행하며 시간 감소",
+  },
+  designSystem: {
+    title: "socar-frame 디자인 시스템 설계, 개발 및 운영",
+    titleFunc: "네이티브, 프로덕트 디자인팀과 함께 개발 진행",
+    design: "디자인언어와 개발언어를 토큰으로 최대한 싱크 맞춤",
+    structure: "Pulling, Pushing 시스템을 염두에 두고 설계",
+    component: "재활용의 최대화를 위해 Headless 컴포넌트로 설계"
+  }
 };
 
 export const OYSTERABLE = {
