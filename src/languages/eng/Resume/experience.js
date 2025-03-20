@@ -4,16 +4,16 @@ export const SOCAR = {
   explanation:
     'A company striving to create a world where everyone can move freely and happily.',
   coprEx: 'Frontend Developer, Marketing Engineering Team -> FE CORE Team',
-  raffleBackoffice: {
-    title: 'Raffle Event Back Office',
-    titleFunc: "Simple page builder with preview and drag-and-drop functionality",
-    dupCodeRemoveLines:
-      'Prevented duplicate component creation using URL Search Params',
-  },
   documentation: {
     title: "Documentation on Testing Code",
     titleFunc: "Internal documentation on Unit, Component, and E2E testing methodologies",
     newBe: "Conducted onboarding training for new hires on frontend testing methodologies and Q&A sessions"
+  },
+  turborepo: {
+    title: "Monorepository system that has about 30 projects develop and maintain",
+    titleFunc: "Develop and maintain monorepository system with turborepo and pnpm",
+    server: "Develop and maintain remote cache server based on k8s environment",
+    workflow: "Develop and Maintain various pipeline made with github workflow",
   },
   reduceWorkflow: {
     title: "Improving CI Pipeline capability up to 47%",
@@ -23,8 +23,8 @@ export const SOCAR = {
     matrix: "Reducing building time by Making Paralle build with workflow matrix",
   },
   designSystem: {
-    title: "System design, operate, develop Socar-frame",
-    titleFunc: "Carrying out with Native and Product design team as a memeber of FE CORE team",
+    title: "System design, operate, develop socar-frame 2.0 design system",
+    titleFunc: "Carrying out develop with Native and Product design team as a member of FE CORE team",
     design: "Synchronize design language and development language as much as possible with meaningful tokens",
     structure: "Designed with Pulling and Pushing systems in mind",
     component: "Designed as a headless component to maximize reuse"

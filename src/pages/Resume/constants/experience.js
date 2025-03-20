@@ -13,18 +13,6 @@ export const EXPERIENCE = [
     coprEx: SOCAR.coprEx,
     list: [
       {
-        title: SOCAR.raffleBackoffice.title,
-        deployLink: '',
-        detailList: [
-          {
-            target: SOCAR.raffleBackoffice.titleFunc,
-            actions: [
-              SOCAR.raffleBackoffice.dupCodeRemoveLines,
-            ],
-          },
-        ],
-      },
-      {
         title: SOCAR.documentation.title,
         deployLink: '',
         detailList: [
@@ -32,6 +20,19 @@ export const EXPERIENCE = [
             target: SOCAR.documentation.titleFunc,
             actions: [
               SOCAR.documentation.newBe,
+            ],
+          },
+        ],
+      },
+      {
+        title: SOCAR.turborepo.title,
+        deployLink: '',
+        detailList: [
+          {
+            target: SOCAR.turborepo.titleFunc,
+            actions: [
+              SOCAR.turborepo.server,
+              SOCAR.turborepo.workflow,
             ],
           },
         ],
