@@ -137,3 +137,7 @@ PS. 다만 스냅샷이 여러번 비교되는 테스트 케이스의 경우 하
 ![issue-result](static/images/posts/playwright-ui-mode/issue-result.png)
 
 결론은 빠른 시일내에 다른 이슈로 다시 한번 도전해보고 싶은 상태가 되었다. 
+
+# 참고
+- [Issue-27721](https://github.com/microsoft/playwright/issues/27721)
+- [PR-35249](https://github.com/microsoft/playwright/pull/35249)
