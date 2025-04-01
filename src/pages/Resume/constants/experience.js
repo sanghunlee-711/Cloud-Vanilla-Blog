@@ -66,7 +66,7 @@ export const EXPERIENCE = [
         ],
       }
     ],
-    skill: ['React.js', 'Next.js', 'Typescript', 'k9s', "ArgoCD", "Docker"],
+    skill: ['React.js', 'Next.js', 'Typescript', 'k8s', "ArgoCD", "Docker"],
   },
   {
     period: '2022.02 ~ 2024.01 ',

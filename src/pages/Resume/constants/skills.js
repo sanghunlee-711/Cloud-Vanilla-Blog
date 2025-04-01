@@ -46,6 +46,6 @@ export const SKILL = [
   },
   {
     title: 'ETC',
-    skill: ["Docker", 'K9S']
+    skill: ["Docker", 'k8s']
   }
 ];
