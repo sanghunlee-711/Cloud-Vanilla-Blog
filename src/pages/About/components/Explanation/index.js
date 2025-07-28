@@ -1,9 +1,9 @@
-import * as EXPLANATION from './constant.js';
+import * as EXPLANATION from "./constant.js";
 
 class Explanation {
   constructor({ $target }) {
     this.$target = $target;
-    this.$wrapper = document.createElement('div');
+    this.$wrapper = document.createElement("div");
     $target.appendChild(this.$wrapper);
 
     this.render();

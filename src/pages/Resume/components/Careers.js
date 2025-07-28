@@ -1,5 +1,5 @@
-import { EXPERIENCE } from '../constants/experience.js';
-import ExperienceList from './ExperiencsList.js';
+import { EXPERIENCE } from "../constants/experience.js";
+import ExperienceList from "./ExperiencsList.js";
 
 export default class Careers {
   constructor() {}
@@ -33,7 +33,7 @@ export default class Careers {
                       </li>
                     `;
                   })
-                  .join('')}
+                  .join("")}
               </ul>
             </div>
             <div>
@@ -42,10 +42,10 @@ export default class Careers {
               ${new ExperienceList(list).render()}
             </div>
           </div>
-          ${index !== EXPERIENCE.length - 1 ? `<hr class="divider">` : ''}
+          ${index !== EXPERIENCE.length - 1 ? `<hr class="divider">` : ""}
         `;
         }
-      ).join('')}
+      ).join("")}
     </div>
     `;
   };

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  * @param jobStart Date String
  * @returns Int
  */
@@ -16,7 +16,10 @@ export const calculateYears = (jobStart) => {
   const currentMonth = today.getMonth();
 
   // 아직 시작 월에 도달하지 않은 경우, 1년을 빼야 함
-  if (currentMonth < startMonth || (currentMonth === startMonth && today.getDate() < startDate.getDate())) {
+  if (
+    currentMonth < startMonth ||
+    (currentMonth === startMonth && today.getDate() < startDate.getDate())
+  ) {
     years--;
   }
 

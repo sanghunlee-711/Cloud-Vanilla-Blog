@@ -1,8 +1,8 @@
 class ScrollTopButton {
   constructor({ $target }) {
     this.$target = $target;
-    this.$wrapper = document.createElement('button');
-    this.$wrapper.setAttribute('class', 'scroll-top-button');
+    this.$wrapper = document.createElement("button");
+    this.$wrapper.setAttribute("class", "scroll-top-button");
     $target.appendChild(this.$wrapper);
 
     this.render();
@@ -16,12 +16,12 @@ class ScrollTopButton {
   };
 
   addEventListeners = () => {
-    const $root = document.querySelector('#root');
+    const $root = document.querySelector("#root");
 
-    this.$wrapper.addEventListener('click', () => {
+    this.$wrapper.addEventListener("click", () => {
       $root.scrollTo({
         top: 0,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     });
   };

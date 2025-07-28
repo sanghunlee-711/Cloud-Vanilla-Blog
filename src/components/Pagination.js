@@ -21,8 +21,8 @@ export default function Pagination({ target, initialState, onNext, onPrev }) {
     this.render();
   };
 
-  const wrapper = document.createElement('div');
-  wrapper.setAttribute('class', 'pagination-container');
+  const wrapper = document.createElement("div");
+  wrapper.setAttribute("class", "pagination-container");
   wrapper.innerHTML = `
   <button id="decrease">&larr;</button>
     <div id="page-wrapper">
@@ -32,7 +32,7 @@ export default function Pagination({ target, initialState, onNext, onPrev }) {
   this.target.appendChild(wrapper);
 
   this.render = () => {
-    document.querySelector('#page-wrapper').innerHTML = `
+    document.querySelector("#page-wrapper").innerHTML = `
         ${Array.from(
           { length: this.pages.last - this.pages.start },
           (_, i) => i + 1
@@ -40,19 +40,19 @@ export default function Pagination({ target, initialState, onNext, onPrev }) {
           .map(
             (el) => `
           <span class="${
-            el === this.state.currentPage ? 'current-page' : ''
+            el === this.state.currentPage ? "current-page" : ""
           }">${el}</span>
         `
           )
-          .join(' ')}
+          .join(" ")}
     `;
   };
 
-  document.querySelector('#decrease').addEventListener('click', (e) => {
+  document.querySelector("#decrease").addEventListener("click", (e) => {
     onPrev(e);
   });
 
-  document.querySelector('#increase').addEventListener('click', (e) => {
+  document.querySelector("#increase").addEventListener("click", (e) => {
     onNext(e);
   });
 

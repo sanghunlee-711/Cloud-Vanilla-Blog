@@ -1,50 +1,50 @@
-import About from '../../pages/About/index.js';
-import Content from '../../pages/Content.js';
-import GuestBook from '../../pages/GuestBook/index.js';
-import Home from '../../pages/Home/index.js';
-import PortFolio from '../../pages/Portfolio/index.js';
-import Posts from '../../pages/Posts/index.js';
-import Resume from '../../pages/Resume/index.js';
+import About from "../../pages/About/index.js";
+import Content from "../../pages/Content.js";
+import GuestBook from "../../pages/GuestBook/index.js";
+import Home from "../../pages/Home/index.js";
+import PortFolio from "../../pages/Portfolio/index.js";
+import Posts from "../../pages/Posts/index.js";
+import Resume from "../../pages/Resume/index.js";
 
 export const ROUTES = [
   {
-    path: '/',
-    name: 'Home',
+    path: "/",
+    name: "Home",
     components: Home,
   },
   {
-    path: '/about',
-    name: 'About',
+    path: "/about",
+    name: "About",
     components: About,
   },
   {
-    path: '/post',
-    name: 'Post',
+    path: "/post",
+    name: "Post",
     components: Posts,
   },
   {
-    path: '/guest',
-    name: 'GuestBook',
+    path: "/guest",
+    name: "GuestBook",
     components: GuestBook,
   },
   {
-    path: '/resume',
-    name: 'Resume',
+    path: "/resume",
+    name: "Resume",
     components: Resume,
   },
   {
-    path: '/portfolio',
-    name: 'Portfolio',
+    path: "/portfolio",
+    name: "Portfolio",
     components: PortFolio,
   },
   {
-    path: '/content',
-    name: 'Content',
+    path: "/content",
+    name: "Content",
     components: Content,
   },
 ];
 
-export const UNWATCHABLE_LIST = ['Content', 'Resume', 'Portfolio'];
+export const UNWATCHABLE_LIST = ["Content", "Resume", "Portfolio"];
 
 export const SHOW_ROUTE = ROUTES.filter(
   (el) => !UNWATCHABLE_LIST.includes(el.name)

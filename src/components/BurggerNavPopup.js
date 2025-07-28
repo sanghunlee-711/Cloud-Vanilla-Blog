@@ -1,12 +1,12 @@
-import { SHOW_ROUTE } from '../common/constants/route.js';
-import { addRouteEventListener } from '../common/utils/navigate.js';
+import { SHOW_ROUTE } from "../common/constants/route.js";
+import { addRouteEventListener } from "../common/utils/navigate.js";
 
 class BurgerNavPopup {
   constructor({ $target, handleModal }) {
     this.$target = $target;
 
-    this.$wrapper = document.createElement('ul');
-    this.$wrapper.className = 'burger-list';
+    this.$wrapper = document.createElement("ul");
+    this.$wrapper.className = "burger-list";
     this.handleModal = handleModal;
     $target.appendChild(this.$wrapper);
 
@@ -24,12 +24,12 @@ class BurgerNavPopup {
               }">${el.name.toUpperCase()}</a>
             </li>
           `;
-        }).join('')}
+        }).join("")}
     `;
   };
 
   addEventListeners = () => {
-    this.$wrapper.addEventListener('click', (e) => {
+    this.$wrapper.addEventListener("click", (e) => {
       const target = e.target;
       if (target instanceof HTMLAnchorElement) {
         addRouteEventListener(e);

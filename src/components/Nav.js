@@ -1,13 +1,13 @@
-import { SHOW_ROUTE } from '../common/constants/route.js';
-import BurgerNavPopup from './BurggerNavPopup.js';
+import { SHOW_ROUTE } from "../common/constants/route.js";
+import BurgerNavPopup from "./BurggerNavPopup.js";
 
-import Modal from './Modal.js';
+import Modal from "./Modal.js";
 
 class Nav {
   constructor({ $target }) {
     this.$target = $target;
-    this.$wrapper = document.createElement('nav');
-    this.$wrapper.setAttribute('class', 'nav');
+    this.$wrapper = document.createElement("nav");
+    this.$wrapper.setAttribute("class", "nav");
     $target.appendChild(this.$wrapper);
 
     this.state = {
@@ -38,7 +38,7 @@ class Nav {
               <a href="${el.path}" data-id="route">${el.name.toUpperCase()}</a>
             </li>
           `;
-        }).join('')}
+        }).join("")}
       </ul>
       <button class="burger-button" role="button">
         <div class="burger-button-line"></div>
@@ -57,10 +57,10 @@ class Nav {
   };
 
   addListeners = () => {
-    document.addEventListener('click', (e) => {
+    document.addEventListener("click", (e) => {
       if (
-        e.target.classList.contains('burger-button') ||
-        e.target.classList.contains('burger-button-line')
+        e.target.classList.contains("burger-button") ||
+        e.target.classList.contains("burger-button-line")
       ) {
         this.handleBurgerButton();
       }
