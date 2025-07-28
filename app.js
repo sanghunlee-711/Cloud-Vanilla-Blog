@@ -1,13 +1,12 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const marked = require('marked');
-const hljs = require('highlight.js');
-const cors = require('cors');
-const pageRoutes = require('./routes/pages/index');
+const marked = require("marked");
+const hljs = require("highlight.js");
+const cors = require("cors");
 
 marked.setOptions({
   highlight: function (code, lang) {
-    const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+    const language = hljs.getLanguage(lang) ? lang : "plaintext";
     return hljs.highlight(code, { language }).value;
   },
   baseUrl: null,
@@ -15,8 +14,8 @@ marked.setOptions({
   extensions: null,
   gfm: true,
   headerIds: true,
-  headerPrefix: '',
-  langPrefix: 'hljs language-',
+  headerPrefix: "",
+  langPrefix: "hljs language-",
   mangle: true,
   pedantic: false,
   sanitize: false,
@@ -30,15 +29,13 @@ marked.setOptions({
 });
 
 app.use(cors());
-app.use(express.static('dist'));
+app.use(express.static("dist"));
 // app.use(express.static('posts'));
-app.options('*', cors());
+app.options("*", cors());
 
-app.use('/', pageRoutes); //for SSR frontend
-
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   app.listen(4000, function () {
-    console.log('Server started. Go to http://localhost:4000/');
+    console.log("Server started. Go to http://localhost:4000/");
   });
 }
 
