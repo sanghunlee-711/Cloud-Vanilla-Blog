@@ -8,6 +8,8 @@
   --strong-gray: #1e262f;
   --basic-blue: #4a7fd5;
   --strong-blue: #2a70db;
+  --primary-color: #9ac1ff;
+  --accent-color: #d0e7ff;
   --header-border-bottom: -webkit-linear-gradient(
     left,
     #fff 0,
@@ -36,6 +38,7 @@ body {
   max-width: var(--basic-width);
   margin: 0 auto;
   padding: 0px 24px;
+  border: 1px solid var(--primary-color);
 }
 
 #disqus_thread {
@@ -52,6 +55,7 @@ body {
   background-color: white;
   padding-top: 12px;
   margin: 0 auto;
+  border: 1px solid var(--primary-color);
 }
 .header {
   border-bottom: var(--header-nav-bottom);
@@ -117,6 +121,7 @@ body {
   margin-bottom: 12px;
   max-width: var(--basic-width);
   margin: 0px auto 12px auto;
+  border: 1px solid var(--primary-color);
 }
 
 .nav_list {
@@ -139,7 +144,7 @@ body {
 
 .nav_list li a:hover {
   text-decoration: none;
-  color: var(--basic-gray);
+  color: var(--primary-color);
 }
 
 .burger-button {
@@ -151,6 +156,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid var(--primary-color);
   }
 
   .nav_list {
@@ -270,9 +276,9 @@ body {
 }
 
 .basic-button:hover {
-  border: 1px solid var(--basic-gray);
-  background-color: white;
-  color: var(--basic-gray);
+  border: 1px solid var(--primary-color);
+  background-color: var(--accent-color);
+  color: var(--strong-gray);
   border-radius: 4px;
   text-align: center;
   vertical-align: middle;
@@ -299,8 +305,8 @@ body {
 }
 
 .pagination-container button:hover {
-  background-color: black;
-  color: white;
+  background-color: var(--accent-color);
+  color: var(--strong-gray);
 }
 
 .current-page {
@@ -376,9 +382,9 @@ body {
 
 .quit-modal-button:hover {
   border-radius: 100%;
-  background-color: gray;
-  color: white;
-  border: 1px solid gray;
+  background-color: var(--accent-color);
+  color: var(--strong-gray);
+  border: 1px solid var(--primary-color);
   transition: all 0.3s ease-in-out;
 }
 
@@ -397,14 +403,14 @@ body {
   font-weight: 700;
   padding: 4px 8px;
   border: none;
-  border: 1px solid var(--basic-gray);
+  border: 1px solid var(--primary-color);
   border-radius: 6px;
   background-color: white;
 }
 
 .post-selector:hover {
-  background-color: var(--basic-gray);
-  color: white;
+  background-color: var(--accent-color);
+  color: var(--strong-gray);
   transition: all 0.3s ease-in-out;
 }
 
@@ -422,14 +428,14 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid gray;
+  border: 1px solid var(--primary-color);
   cursor: pointer;
   transition: color 0.3s ease-in-out;
 }
 
 .post-selector-container > li:hover {
-  background-color: black;
-  color: white;
+  background-color: var(--accent-color);
+  color: var(--strong-gray);
 }
 
 @media screen and (max-width: 512px) {
@@ -444,8 +450,8 @@ body {
 }
 
 .active {
-  background-color: black;
-  color: white;
+  background-color: var(--accent-color);
+  color: var(--strong-gray);
 }
 
 .about-main-container {
@@ -478,8 +484,8 @@ body {
 }
 
 .scroll-top-button:hover {
-  background-color: black;
-  color: white;
+  background-color: var(--accent-color);
+  color: var(--strong-gray);
 }
 
 @media screen and (max-width: 512px) {
@@ -499,9 +505,15 @@ body {
   height: 42px;
   background-color: white;
   border-radius: 100%;
-  border: 1px solid gray;
+  border: 1px solid var(--primary-color);
   cursor: pointer;
   color: black;
+}
+
+.translation-button:hover {
+  background-color: var(--accent-color);
+  color: var(--strong-gray);
+  border: 1px solid var(--primary-color);
 }
 
 @media screen and (max-width: 512px) {
