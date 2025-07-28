@@ -1,5 +1,5 @@
 export const routeEvent = (to, isReplace = false) => {
-  const customRouteEvent = new CustomEvent('routechange', {
+  const customRouteEvent = new CustomEvent("routechange", {
     detail: {
       to,
       isReplace,
@@ -12,7 +12,7 @@ export const routeEvent = (to, isReplace = false) => {
 export const addRouteEventListener = (e) => {
   const target = e.target;
 
-  if (target.dataset.id !== 'route') return;
+  if (target.dataset.id !== "route") return;
 
   e.preventDefault();
 

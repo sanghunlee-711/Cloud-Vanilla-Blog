@@ -1,23 +1,8 @@
-const LINK_LIST = [
-  {
-    class: 'fab fa-instagram',
-    href: 'https://www.instagram.com/hun__hoon/',
-  },
-  {
-    class: 'fab fa-github',
-    href: 'https://github.com/sanghunlee-711',
-  },
-  {
-    class: 'fab fa-google',
-    href: 'mailto:cloudlee711@gmail.com',
-  },
-];
-
 class Header {
   constructor({ $target }) {
     this.$target = $target;
-    this.$wrapper = document.createElement('section');
-    this.$wrapper.setAttribute('class', 'header_profile');
+    this.$wrapper = document.createElement("section");
+    this.$wrapper.setAttribute("class", "header_profile");
     $target.appendChild(this.$wrapper);
 
     this.render();
@@ -38,7 +23,7 @@ class Header {
         </li>
         `;
         })
-        .join('')}
+        .join("")}
       </ul>
     </div>
   `;

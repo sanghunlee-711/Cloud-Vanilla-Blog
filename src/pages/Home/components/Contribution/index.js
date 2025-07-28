@@ -1,11 +1,11 @@
-import { $ELEMENT } from './constants/element.js';
-import { LINK } from './constants/link.js';
+import { $ELEMENT } from "./constants/element.js";
+import { LINK } from "./constants/link.js";
 
 class Contribution {
   constructor({ $target }) {
     this.$target = $target;
-    this.$wrapper = document.createElement('div');
-    this.$wrapper.setAttribute('class', $ELEMENT.CONTRIBUTION_WRAPPER);
+    this.$wrapper = document.createElement("div");
+    this.$wrapper.setAttribute("class", $ELEMENT.CONTRIBUTION_WRAPPER);
     $target.appendChild(this.$wrapper);
 
     this.render();
@@ -13,7 +13,7 @@ class Contribution {
   }
 
   onSeeMore = () => {
-    window.open(LINK.GITHUB, '_blank');
+    window.open(LINK.GITHUB, "_blank");
   };
 
   template = () => {
@@ -31,7 +31,7 @@ class Contribution {
   };
 
   addEventListener = () => {
-    this.$wrapper.addEventListener('click', (e) => {
+    this.$wrapper.addEventListener("click", (e) => {
       if (e.target.dataset.id === $ELEMENT.SEE_GITHUB) {
         this.onSeeMore(e);
       }

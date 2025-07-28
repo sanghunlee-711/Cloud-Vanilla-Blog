@@ -1,16 +1,16 @@
 export const setVhVWForIOS = () => {
   const setVhVW = () => {
     document.documentElement.style.setProperty(
-      '--vh',
+      "--vh",
       `${window.innerHeight}px`
     );
 
     document.documentElement.style.setProperty(
-      '--vw',
+      "--vw",
       `${window.innerWidth}px`
     );
   };
 
-  window.addEventListener('resize', setVhVW);
+  window.addEventListener("resize", setVhVW);
   setVhVW();
 };
