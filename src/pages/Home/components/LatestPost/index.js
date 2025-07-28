@@ -1,14 +1,14 @@
-import Loader from '../../../../components/Loader.js';
-import { addRouteEventListener } from '../../../../common/utils/navigate.js';
-import { PostCard } from '../../../../components/PostCard.js';
-import { $ELEMENT } from './constants/element.js';
-import { getLatestPostData } from './utils/api.js';
+import Loader from "../../../../components/Loader.js";
+import { addRouteEventListener } from "../../../../common/utils/navigate.js";
+import { PostCard } from "../../../../components/PostCard.js";
+import { $ELEMENT } from "./constants/element.js";
+import { getLatestPostData } from "./utils/api.js";
 
 class LatestPost {
   constructor({ $target }) {
     this.$target = $target;
-    this.$wrapper = document.createElement('main');
-    this.$wrapper.setAttribute('class', $ELEMENT.MAIN_POST_CONTAINER);
+    this.$wrapper = document.createElement("main");
+    this.$wrapper.setAttribute("class", $ELEMENT.MAIN_POST_CONTAINER);
     $target.appendChild(this.$wrapper);
 
     this.state = [];
@@ -49,22 +49,11 @@ class LatestPost {
       <ul class="${$ELEMENT.POST_LIST_CONTAINER}">
       ${this.state
         .map(
-          (
-            {
-              slug,
-              frontMatter: {
-                title,
-                date,
-                image,
-                categories,
-                tags,
-                folder,
-                summary,
-              },
-              content,
-            },
-            index
-          ) => {
+          ({
+            slug,
+            frontMatter: { title, date, image, categories, folder, summary },
+            content,
+          }) => {
             return `
               <li>
                 ${PostCard({
@@ -81,7 +70,7 @@ class LatestPost {
             `;
           }
         )
-        .join('')}
+        .join("")}
         </ul>
     </main>
     `;
@@ -92,7 +81,7 @@ class LatestPost {
   };
 
   addEventListeners = () => {
-    this.$wrapper.addEventListener('click', (e) => {
+    this.$wrapper.addEventListener("click", (e) => {
       addRouteEventListener(e);
     });
   };

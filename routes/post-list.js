@@ -10,7 +10,7 @@ postList.get("/post-list", (req, res) => {
   const prefix = "posts";
   const type = req.query.type ? req.query.type : "post-dev";
   const countPerPage = req.query.countPerPage ? +req.query.countPerPage : 10;
-  const pageNo = req.query.pageNo ? +req.query.pageNo : 0;
+  const pageNo = req.query.pageNo ? +req.query.pageNo : 1;
 
   //파일을 루트의 post directoriy로부터 가져옴
   //readdirsync에서 특정 갯수만 가져오는 것이 불가능하므로 서버에서 핸들링하는걸로 ..(효율 최악일듯)
@@ -85,14 +85,10 @@ postList.get("/post-list", (req, res) => {
   //slug 과 formatter를 posts로부터 가져옴
 
   //*todo: 리팩토링 필요
-  const totalCount = posts.length;
-  const pageCondition = countPerPage * pageNo > totalCount;
-  const start = pageCondition
-    ? (pageNo - 2) * countPerPage
-    : (pageNo - 1) * countPerPage;
-  const end = pageCondition ? totalCount : countPerPage * pageNo;
+    const totalCount = posts.length;
+    const totalPageCount = Math.ceil(totalCount / countPerPage);
 
-  if (pageCondition) {
+    if (pageNo < 1 || pageNo > totalPageCount) {
     return res.json({
       success: false,
       message: "page out of range",
@@ -104,6 +100,9 @@ postList.get("/post-list", (req, res) => {
     });
   }
 
+    const start = (pageNo - 1) * countPerPage;
+  const end = Math.min(start + countPerPage, totalCount);
+  
   if (pageNo > 0) {
     return res.json({
       success: true,

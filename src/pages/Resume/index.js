@@ -1,16 +1,16 @@
-import { layerPrint } from '../../common/utils/print.js';
-import Profile from './components/Profile.js';
-import Skills from './components/Skills.js';
-import Careers from './components/Careers.js';
-import Projects from './components/Projects.js';
-import Education from './components/Education.js';
-import Etc from './components/Etc.js';
+import { layerPrint } from "../../common/utils/print.js";
+import Profile from "./components/Profile.js";
+import Skills from "./components/Skills.js";
+import Careers from "./components/Careers.js";
+import Projects from "./components/Projects.js";
+import Education from "./components/Education.js";
+import Etc from "./components/Etc.js";
 
 class Resume {
   constructor({ $target }) {
     this.$target = $target;
-    this.$wrapper = document.createElement('div');
-    this.$wrapper.className = '';
+    this.$wrapper = document.createElement("div");
+    this.$wrapper.className = "";
     this.$target.appendChild(this.$wrapper);
 
     this.render();
@@ -20,7 +20,7 @@ class Resume {
   handlePrint = () => {
     const today = new Date();
     const dateForm = `${today.getFullYear()}.${today.getMonth() + 1}`;
-    layerPrint('resume-container', `이상훈-이력서-${dateForm}`);
+    layerPrint("resume-container", `이상훈-이력서-${dateForm}`);
   };
 
   render = () => {
@@ -42,9 +42,9 @@ class Resume {
   };
 
   addEventListeners = () => {
-    const $printButton = this.$wrapper.querySelector('.print-button');
+    const $printButton = this.$wrapper.querySelector(".print-button");
 
-    $printButton.addEventListener('click', (e) => {
+    $printButton.addEventListener("click", () => {
       this.handlePrint();
     });
   };

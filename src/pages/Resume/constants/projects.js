@@ -115,7 +115,6 @@ const THE_FOLKS = {
             FOLKS.server.posts.jwt,
             FOLKS.server.posts.s3,
             FOLKS.server.posts.categories,
-            ,
           ],
         },
       ],

@@ -23,9 +23,6 @@
   --portfolio-p: 14px;
 }
 
-@media print {
-}
-
 body {
   margin: 0px;
 }
@@ -543,8 +540,4 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-}
-
-.hits-wrapper {
-  margin: 36px 0px;
 }

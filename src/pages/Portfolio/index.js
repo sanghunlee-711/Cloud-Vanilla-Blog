@@ -1,10 +1,10 @@
-import { layerPrint } from '../../common/utils/print.js';
-import { PORTFOLIO_LIST } from './constants/portfolio/index.js';
+import { layerPrint } from "../../common/utils/print.js";
+import { PORTFOLIO_LIST } from "./constants/portfolio/index.js";
 
 class PortFolio {
   constructor({ $target }) {
     this.$target = $target;
-    this.$wrapper = document.createElement('div');
+    this.$wrapper = document.createElement("div");
     $target.appendChild(this.$wrapper);
 
     this.render();
@@ -14,7 +14,7 @@ class PortFolio {
   handlePrint = () => {
     const today = new Date();
     const dateForm = `${today.getFullYear()}.${today.getMonth() + 1}`;
-    layerPrint('portfolio-container', `이상훈-포트폴리오-${dateForm}`);
+    layerPrint("portfolio-container", `이상훈-포트폴리오-${dateForm}`);
   };
 
   template = () => {
@@ -25,7 +25,6 @@ class PortFolio {
           job,
           period,
           links,
-          titleImages,
           devHighlights,
           devAchivement,
           techEnvironment,
@@ -53,7 +52,7 @@ class PortFolio {
                               </li>
                             `;
                             })
-                            .join('')}
+                            .join("")}
                           </ul>
                       </div>              
                       <p>[${job}]</p>
@@ -75,7 +74,7 @@ class PortFolio {
                           <li>${highlight}</li>
                         `;
                         })
-                        .join('')}
+                        .join("")}
                     </ul>
                   </div>
                   <div class="portfolio-dev-highlights">
@@ -87,7 +86,7 @@ class PortFolio {
                           <li>${achivement}</li>
                         `;
                         })
-                        .join('')}
+                        .join("")}
                     </ul>
                   </div>
                   <div class="portfolio-dev-techstack">
@@ -101,14 +100,14 @@ class PortFolio {
                               <li>${tech}</li>
                             `;
                             })
-                            .join('')}
+                            .join("")}
                           ${libs
                             .map((lib) => {
                               return `
                               <li>${lib}</li>
                             `;
                             })
-                            .join('')}
+                            .join("")}
                         </ul>
                       </div>
                     </div>
@@ -132,19 +131,19 @@ class PortFolio {
                                   </li>
                                 `;
                                 })
-                                .join('')}
+                                .join("")}
                             </ul>
                           </div>
                         `;
                         })
-                        .join('')}
+                        .join("")}
                     </div>
                   </div>
                 
               </section>
           `;
         }
-      ).join('')}
+      ).join("")}
 
     `;
   };
@@ -165,9 +164,9 @@ class PortFolio {
   };
 
   addEventListeners = () => {
-    const $printButton = this.$wrapper.querySelector('.print-button');
+    const $printButton = this.$wrapper.querySelector(".print-button");
 
-    $printButton.addEventListener('click', (e) => {
+    $printButton.addEventListener("click", () => {
       this.handlePrint();
     });
   };
