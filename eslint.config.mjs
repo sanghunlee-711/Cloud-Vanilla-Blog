@@ -22,6 +22,15 @@ export default defineConfig([
     plugins: { markdown },
     language: "markdown/commonmark",
     extends: ["markdown/recommended"],
+    rules: {
+      "markdown/line-length": "off",
+      "markdown/no-inline-html": "off",
+      "markdown/no-multiple-blanks": "off",
+      "markdown/no-multiple-h1": "off",
+      "markdown/no-trailing-spaces": "off",
+      "markdown/first-heading-h1": "off",
+      "markdown/no-missing-label-refs": "off",
+    },
   },
   {
     files: ["**/*.css"],

@@ -6,7 +6,7 @@ const postList = require("express").Router();
 
 postList.get("/post-list", (req, res) => {
   //페이지 크기
-  const public = "public";
+  const _public = "public";
   const prefix = "posts";
   const type = req.query.type ? req.query.type : "post-dev";
   const countPerPage = req.query.countPerPage ? +req.query.countPerPage : 10;
@@ -23,7 +23,7 @@ postList.get("/post-list", (req, res) => {
     //O(N^2)
     types.forEach((type) => {
       const files = fs.readdirSync(
-        path.join(__dirname, "..", public, prefix, type)
+        path.join(__dirname, "..", _public, prefix, type)
       );
 
       //slug 과 formatter를 posts로부터 가져옴
@@ -35,7 +35,7 @@ postList.get("/post-list", (req, res) => {
 
             //frontMatter를 가져옴
             const markdownWithMeta = fs.readFileSync(
-              path.join(__dirname, "..", public, prefix, type, filename),
+              path.join(__dirname, "..", _public, prefix, type, filename),
               "utf-8"
             );
 
@@ -53,7 +53,7 @@ postList.get("/post-list", (req, res) => {
     });
   } else {
     const files = fs.readdirSync(
-      path.join(__dirname, "..", public, prefix, type)
+      path.join(__dirname, "..", _public, prefix, type)
     );
 
     posts = files
@@ -62,7 +62,7 @@ postList.get("/post-list", (req, res) => {
 
         //frontMatter를 가져옴
         const markdownWithMeta = fs.readFileSync(
-          path.join(__dirname, "..", public, prefix, type, filename),
+          path.join(__dirname, "..", _public, prefix, type, filename),
           "utf-8"
         );
 
@@ -85,10 +85,10 @@ postList.get("/post-list", (req, res) => {
   //slug 과 formatter를 posts로부터 가져옴
 
   //*todo: 리팩토링 필요
-    const totalCount = posts.length;
-    const totalPageCount = Math.ceil(totalCount / countPerPage);
+  const totalCount = posts.length;
+  const totalPageCount = Math.ceil(totalCount / countPerPage);
 
-    if (pageNo < 1 || pageNo > totalPageCount) {
+  if (pageNo < 1 || pageNo > totalPageCount) {
     return res.json({
       success: false,
       message: "page out of range",
@@ -100,9 +100,9 @@ postList.get("/post-list", (req, res) => {
     });
   }
 
-    const start = (pageNo - 1) * countPerPage;
+  const start = (pageNo - 1) * countPerPage;
   const end = Math.min(start + countPerPage, totalCount);
-  
+
   if (pageNo > 0) {
     return res.json({
       success: true,
