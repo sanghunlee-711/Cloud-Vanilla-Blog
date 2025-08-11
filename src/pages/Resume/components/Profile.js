@@ -23,10 +23,9 @@ export default class Profile {
           </ul>
         </div>
       </div>
-        <p class="resume-introduction">
-        ${INTRODUCTION}
-        </p>
-      </div>
+      <p class="resume-introduction">
+      ${INTRODUCTION}
+      </p>
     `;
   };
 }
