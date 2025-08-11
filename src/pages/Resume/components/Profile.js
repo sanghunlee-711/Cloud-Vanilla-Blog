@@ -1,5 +1,5 @@
-import { PROFILE_LINK } from '../constants/links.js';
-import { INTRODUCTION } from '../constants/introductions.js';
+import { PROFILE_LINK } from "../constants/links.js";
+import { INTRODUCTION } from "../constants/introductions.js";
 
 export default class Profile {
   constructor() {}
@@ -8,19 +8,18 @@ export default class Profile {
     return /* html */ `
       <div class="resume-common-wrapper">
         <h1>INTRODUCTION</h1>
-        <div class="resume-header">
-          <img src="https://avatars.githubusercontent.com/u/57477415?v=4" alt="profile">
-        <div>
+        <div class="resume-links-wrapper">
           <h1>이상훈</h1>
-          <ul>
+          <ul class="resume-links">
           ${PROFILE_LINK.map(({ icon, href, name }) => {
             return `
               <li>
-                <i class="${icon}"></i>
-                <a href="${href}" target="_blank">${name}</a>                
+                <a href="${href}" target="_blank">
+                  <i class="${icon}"></i>
+                </a>
               </li>
             `;
-          }).join('')}
+          }).join("")}
           </ul>
         </div>
       </div>
