@@ -65,16 +65,7 @@ export const EXPERIENCE = [
           },
         ],
       },
-      {
-        title: SOCAR.project.title,
-        deployLink: "",
-        detailList: [
-          {
-            target: SOCAR.project.titleFunc,
-            actions: [],
-          },
-        ],
-      },
+
       {
         title: SOCAR.documentation.title,
         deployLink: "",
