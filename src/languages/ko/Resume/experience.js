@@ -44,8 +44,6 @@ export const SOCAR = {
     title: "frontend-packages",
     titleFunc: "utils, hooks 등 공통 패키지 개발 및 유지 보수",
     testCode: "테스트 코드 작성 및 문서화",
-    treeShaking:
-      "tree shaking을 통한 번들 크기 최적화 (next bundle analyzer 기반 특정 페이지 utils 60%이상 크기 감소)",
     using: "파이프라인 작성으로 배포 및 테스트 자동화",
   },
 };

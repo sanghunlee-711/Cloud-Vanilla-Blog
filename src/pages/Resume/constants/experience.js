@@ -45,7 +45,6 @@ export const EXPERIENCE = [
             target: SOCAR.commonPackages.titleFunc,
             actions: [
               SOCAR.commonPackages.testCode,
-              SOCAR.commonPackages.treeShaking,
               SOCAR.commonPackages.using,
             ],
           },
