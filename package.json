@@ -4,6 +4,9 @@
   "description": "Vanila js 를 통해 SPA 개념으로 만드는 개인 블로그",
   "homepage": "www.cloud-sanghun.com",
   "main": "index.js",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "start": "NODE_ENV=production node app.js",
     "dev": "NODE_ENV=development webpack-dev-server & node devServer.js",
