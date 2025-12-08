@@ -14,6 +14,7 @@ class Posts {
     this.$endOfPage = document.createElement("p");
     this.$endOfPage.setAttribute("class", "end-of-page");
     this.$endOfPage.textContent = "End Of Contents";
+    this.loader = new Loader({ $target: this.$target });
 
     $target.appendChild(this.$wrapper);
     $target.appendChild(this.$endOfPage);
@@ -26,6 +27,7 @@ class Posts {
       sortKey: this.urlParams.get("type") || POST_SELECT_MAP[0].key,
       isContinue: false,
       list: [],
+      isLoading: false,
     };
 
     // this.render();
@@ -34,15 +36,19 @@ class Posts {
   }
 
   setState = (nextState) => {
-    this.state = nextState;
+    this.state = { ...this.state, ...nextState };
     this.render();
   };
 
   getPostData = async () => {
-    const loader = new Loader({ $target: this.$target });
+    if (this.state.isLoading) {
+      return;
+    }
+
+    this.setState({ isLoading: true });
 
     try {
-      loader.handleLoader(true);
+      this.loader.handleLoader(true);
       const res = await fetch(
         `/api/post-list?type=${this.state.sortKey}&countPerPage=${this.state.contentIncrease}&pageNo=${this.state.currentPage}`
       );
@@ -53,29 +59,30 @@ class Posts {
       const isContinue = resJson.success;
 
       this.setState({
-        ...this.state,
         totalItemCount: pageState.totalCount,
-        currentPage: ++pageState.pageNo,
+        currentPage: pageState.pageNo + 1,
         isContinue,
         list: [...this.state.list, ...data],
       });
-      loader.handleLoader(false);
     } catch (e) {
       console.error("포스팅 데이터 불러오기 에러 발생", e);
       alert("Error for getting new posts", JSON.stringify(e));
-      loader.handleLoader(false);
+    } finally {
+      this.loader.handleLoader(false);
+      this.setState({ isLoading: false });
     }
   };
 
   handleInfiniteScroll = async () => {
-    const isStop =
-      this.state.list.length >= this.state.totalItemCount ||
-      !this.state.isContinue;
-
-    if (isStop) return;
+    if (this.shouldStopLoading()) return;
 
     await this.getPostData();
   };
+
+  shouldStopLoading = () =>
+    this.state.list.length >= this.state.totalItemCount ||
+    !this.state.isContinue ||
+    this.state.isLoading;
 
   onChangePostType = (value) => {
     const targetURL = `/post?type=${value}`;
@@ -137,7 +144,6 @@ class Posts {
   };
 
   addEventListener = () => {
-    const $endOfPage = document.querySelector(".end-of-page");
     const $root = document.querySelector("#root");
 
     this.observer = new IntersectionObserver(
@@ -152,7 +158,7 @@ class Posts {
       { root: $root, threshold: 0.3 }
     );
 
-    this.observer.observe($endOfPage);
+    this.observer.observe(this.$endOfPage);
 
     this.$wrapper.addEventListener("change", (e) => {
       if (e.target.classList.contains("post-selector")) {
@@ -163,7 +169,7 @@ class Posts {
     this.$wrapper.addEventListener("click", (e) => {
       const target = e.target;
       if (target instanceof HTMLAnchorElement) {
-        window.removeEventListener(this.handleInfiniteScroll);
+        this.observer?.disconnect();
         addRouteEventListener(e);
       }
     });

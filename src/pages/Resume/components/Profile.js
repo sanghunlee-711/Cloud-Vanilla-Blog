@@ -11,7 +11,7 @@ export default class Profile {
         <div class="resume-links-wrapper">
           <h1>이상훈</h1>
           <ul class="resume-links">
-          ${PROFILE_LINK.map(({ icon, href, name }) => {
+          ${PROFILE_LINK.map(({ icon, href }) => {
             return `
               <li>
                 <a href="${href}" target="_blank">
