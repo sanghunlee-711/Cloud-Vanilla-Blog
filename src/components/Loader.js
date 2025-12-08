@@ -1,11 +1,18 @@
 class Loader {
   constructor({ $target }) {
     this.$target = $target;
-    this.$wrapper = document.createElement('div');
-    this.$wrapper.setAttribute('id', 'global-loader');
-    $target.appendChild(this.$wrapper);
+    this.$wrapper = document.getElementById('global-loader');
 
-    this.render();
+    if (!this.$wrapper) {
+      this.$wrapper = document.createElement('div');
+      this.$wrapper.setAttribute('id', 'global-loader');
+      this.$target.appendChild(this.$wrapper);
+      this.render();
+    }
+
+    if (!this.$wrapper.innerHTML.trim()) {
+      this.render();
+    }
   }
 
   handleLoader(isShow) {
