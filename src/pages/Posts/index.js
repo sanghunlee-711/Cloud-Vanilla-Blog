@@ -119,7 +119,7 @@ class Posts {
           ({
             slug,
             frontMatter: { title, date, image, categories, summary, folder },
-            content,
+            preview,
           }) => {
             return `
             <li>
@@ -131,7 +131,7 @@ class Posts {
                 categories,
                 date,
                 summary,
-                content,
+                preview,
               })}
           </li>
         `;

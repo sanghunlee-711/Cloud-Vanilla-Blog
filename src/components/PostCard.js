@@ -1,5 +1,3 @@
-import { setPreview } from "../common/utils/index.js";
-
 export const PostCard = ({
   imgUrl,
   slug,
@@ -8,8 +6,10 @@ export const PostCard = ({
   categories,
   date,
   summary,
-  content,
+  preview,
 }) => {
+  const previewContent = summary || preview || "";
+
   return `
   <a href="/content?id=${slug}&type=${sortKey}" data-id="route">
     <article class="each_post_container">
@@ -33,7 +33,7 @@ export const PostCard = ({
         </div>
         </div>
         <div class="preview_content">
-            ${summary ? summary : setPreview(JSON.parse(content))}
+            ${previewContent}
         </div>
       </div>
     </article>
