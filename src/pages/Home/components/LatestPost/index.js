@@ -52,7 +52,7 @@ class LatestPost {
           ({
             slug,
             frontMatter: { title, date, image, categories, folder, summary },
-            content,
+            preview,
           }) => {
             return `
               <li>
@@ -64,7 +64,7 @@ class LatestPost {
                   categories,
                   date,
                   summary,
-                  content,
+                  preview,
                 })}
               </li>
             `;
