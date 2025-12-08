@@ -16,10 +16,10 @@ class Loader {
   }
 
   handleLoader(isShow) {
-    if (isShow) {
-      document.getElementById('global-loader').style.display = 'flex';
-    } else {
-      document.getElementById('global-loader').style.display = 'none';
+    const displayValue = isShow ? 'flex' : 'none';
+
+    if (this.$wrapper.style.display !== displayValue) {
+      this.$wrapper.style.display = displayValue;
     }
   }
 
