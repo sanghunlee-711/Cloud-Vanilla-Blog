@@ -9,42 +9,38 @@ export const SOCAR = {
     titleFunc: "쿠폰, 래플 백오피스 등..",
   },
   documentation: {
-    title: "테스트코드 문서화",
-    titleFunc: "Unit, 컴포넌트, E2E 테스트 방법론 사내 문서화",
+    title: "테스트 문화 및 품질 기준 정착",
+    titleFunc: "프런트엔드 테스트 품질 기준을 팀 단위로 정리하고 문화로 정착",
+    docs: "Unit / E2E 테스트 전략을 정리하여 사내 프런트엔드 테스트 방법론 문서화",
     newBe:
-      "신규 입사자의 프론트엔드 테스트 방법론 및 질의응답 온보딩 교육 진행",
-  },
-  turborepo: {
-    title:
-      "30여개의 상용 서비스가 존재하는 모노레포지토리 시스템 개발 및 유지 보수",
-    titleFunc:
-      "turborepo, pnpm으로 구성된 모노레포지토리 시스템 개발 및 유지 보수",
-    server: "k8s 환경 내 remote cache server 개발 및 유지 보수",
-    workflow: "github workflow를 활용한 자동화 파이프라인 개발 및 유지 보수",
-  },
-  reduceWorkflow: {
-    title: "CI 파이프라인 성능 47% 개선",
-    titleFunc:
-      "github workflow의 workflow matrix 및 turborepo dry run과 remote-cache서버를 통해 개선",
-    turbo:
-      "turborepo dry run을 통해 30여개의 프로젝트 중 새로 빌드를 통한 안정성 테스트가 필요한 항목 확인하며 중복 빌드 회피",
-    cache:
-      "빌드 진행 후 캐시 서버를 통해 아티팩트 저장 후 불필요한 re-build 방지",
-    matrix: "워크플로우 매트릭스를 통해 병렬로 빌드를 진행하며 시간 감소",
+      "신규 입사자를 대상으로 온보딩 및 질의응답 세션을 진행하며 팀 단위 품질 기준 정착에 기여",
   },
   designSystem: {
     title: "socar-frame 2.0 디자인 시스템 설계, 개발 및 운영",
-    titleFunc: "네이티브, 프로덕트 디자인팀과 함께 개발 진행",
-    design: "토큰화를 통해 디자인 및 개발의 커뮤니케이션 비용 감소",
-    structure: "Figma plugin기반 pulling, pushing을 염두에 두고 설계",
-    component: "재활용 및 생산성 증대를 위한 Headless 컴포넌트 설계",
-    using: "설계 및 컴포넌트, 테스트코드 작성 등 80% 이상 기여",
+    titleFunc:
+      "네이티브 및 프로덕트 디자인팀과 협업하여 플랫폼 단위 UI 기준을 제공하는 디자인 시스템(socar-frame 2.0)을 설계·운영",
+    design:
+      "UI와 비즈니스 로직을 분리한 Headless 컴포넌트 패턴을 적용해 변경과 확장에 유연한 구조 구축",
+    structure:
+      "Figma Plugin 기반 디자인–코드 연계를 고려한 구조 설계 및 디자인 토큰화를 통해 커뮤니케이션 비용 감소",
+  },
+  turborepo: {
+    title: "프런트엔드 공통 플랫폼 설계 및 개발 생산성 개선",
+    titleFunc:
+      "30여 개 상용 프런트엔드 서비스가 공존하는 환경에서, 공통 빌드·배포·패키지 기준을 제공하는 프런트엔드 플랫폼을 설계·운영",
+    server:
+      "turborepo, pnpm 기반 모노레포 환경에서 각 PR마다 반복되던 빌드 병목을 개별 설정 문제가 아닌 공통 플랫폼 구조의 한계로 정의하고 CI 파이프라인을 재설계",
+    workflow:
+      "Kubernetes 환경에 Remote Cache Server를 직접 구성하고, GitHub Actions Workflow Matrix 및 turborepo dry-run을 활용해 변경된 패키지만 선별적으로 빌드·검증",
+    result:
+      "CI 파이프라인 평균 수행 시간을 약 47% 단축하여 다수 팀의 배포 리드타임 감소에 기여",
   },
   commonPackages: {
-    title: "frontend-packages",
-    titleFunc: "utils, hooks 등 공통 패키지 개발 및 유지 보수",
-    testCode: "테스트 코드 작성 및 문서화",
-    using: "파이프라인 작성으로 배포 및 테스트 자동화",
+    title: "프런트엔드 공통 패키지 개선",
+    titleFunc:
+      "여러 서비스에서 반복적으로 사용되던 공통 패키지(utils, hooks) 개선 및 운영",
+    testCode: "테스트 코드 및 문서화를 통해 재사용성과 안정성을 확보",
+    using: "공통 패키지의 배포·테스트 자동화를 구축하여 유지보수 비용 감소",
   },
 };
 

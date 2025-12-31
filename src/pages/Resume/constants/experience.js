@@ -13,26 +13,26 @@ export const EXPERIENCE = [
     coprEx: SOCAR.coprEx,
     list: [
       {
-        title: SOCAR.turborepo.title,
-        deployLink: "",
+        title: SOCAR.designSystem.title,
+        deployLink: "https://socarframe.socar.me/",
         detailList: [
           {
-            target: SOCAR.turborepo.titleFunc,
-            actions: [SOCAR.turborepo.server, SOCAR.turborepo.workflow],
+            target: SOCAR.designSystem.titleFunc,
+            actions: [SOCAR.designSystem.structure, SOCAR.designSystem.design],
           },
         ],
       },
       {
-        title: SOCAR.reduceWorkflow.title,
+        title: SOCAR.turborepo.title,
         deployLink:
           "https://tech.socarcorp.kr/fe/2025/06/10/monorepo-ci-cd-pipeline.html",
         detailList: [
           {
-            target: SOCAR.reduceWorkflow.titleFunc,
+            target: SOCAR.turborepo.titleFunc,
             actions: [
-              SOCAR.reduceWorkflow.matrix,
-              SOCAR.reduceWorkflow.cache,
-              SOCAR.reduceWorkflow.turbo,
+              SOCAR.turborepo.server,
+              SOCAR.turborepo.workflow,
+              SOCAR.turborepo.result,
             ],
           },
         ],
@@ -50,31 +50,17 @@ export const EXPERIENCE = [
           },
         ],
       },
-      {
-        title: SOCAR.designSystem.title,
-        deployLink: "",
-        detailList: [
-          {
-            target: SOCAR.designSystem.titleFunc,
-            actions: [
-              SOCAR.designSystem.structure,
-              SOCAR.designSystem.design,
-              SOCAR.designSystem.component,
-            ],
-          },
-        ],
-      },
 
-      {
-        title: SOCAR.documentation.title,
-        deployLink: "",
-        detailList: [
-          {
-            target: SOCAR.documentation.titleFunc,
-            actions: [SOCAR.documentation.newBe],
-          },
-        ],
-      },
+      // {
+      //   title: SOCAR.documentation.title,
+      //   deployLink: "",
+      //   detailList: [
+      //     {
+      //       target: SOCAR.documentation.titleFunc,
+      //       actions: [SOCAR.documentation.docs, SOCAR.documentation.newBe],
+      //     },
+      //   ],
+      // },
     ],
     skill: [
       "React.js",
