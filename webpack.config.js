@@ -21,6 +21,9 @@ const plugins = [
     inject: false, //기본으로 두면 JS가 html에 인젝트 되어서 js가 두번불리게 됨..
     hash: true,
     template: "./src/index.html", //적용될 html 경로
+    templateParameters: {
+      GA_ID: process.env.GA_ID,
+    },
   }),
   new webpack.ProvidePlugin({
     process: "process/browser",
