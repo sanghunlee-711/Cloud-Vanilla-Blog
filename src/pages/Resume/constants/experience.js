@@ -14,7 +14,7 @@ export const EXPERIENCE = [
     list: [
       {
         title: SOCAR.designSystem.title,
-        deployLink: "https://socarframe.socar.me/",
+        deployLink: "https://socarframe.socar.kr/",
         detailList: [
           {
             target: SOCAR.designSystem.titleFunc,
