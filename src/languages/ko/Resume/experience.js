@@ -22,7 +22,7 @@ export const SOCAR = {
     design:
       "UI와 비즈니스 로직을 분리한 Headless 컴포넌트 패턴을 적용해 변경과 확장에 유연한 구조 구축",
     structure:
-      "Figma Plugin 기반 디자인–코드 연계를 고려한 구조 설계 및 디자인 토큰화를 통해 커뮤니케이션 비용 감소",
+      "Figma 기반 디자인–코드 연계를 고려한 구조 설계 및 코드커넥트와 LLM활용을 통해 생산성 증대",
   },
   turborepo: {
     title: "프런트엔드 공통 플랫폼 설계 및 개발 생산성 개선",
