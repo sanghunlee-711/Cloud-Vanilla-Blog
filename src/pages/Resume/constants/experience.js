@@ -18,7 +18,20 @@ export const EXPERIENCE = [
         detailList: [
           {
             target: SOCAR.designSystem.titleFunc,
-            actions: [SOCAR.designSystem.structure, SOCAR.designSystem.design],
+            actions: [
+              {
+                text: SOCAR.designSystem.structure,
+                deployLink:
+                  "https://tech.socarcorp.kr/fe/2026/02/23/socar-frame2-web.html",
+              },
+              {
+                text: SOCAR.designSystem.design,
+                deployLink:
+                  "https://tech.socarcorp.kr/fe/2026/02/24/socar-frame2-web-part2.html",
+              },
+              ,
+              SOCAR.designSystem.accessibility,
+            ],
           },
         ],
       },

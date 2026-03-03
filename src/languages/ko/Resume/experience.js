@@ -20,9 +20,11 @@ export const SOCAR = {
     titleFunc:
       "네이티브 및 프로덕트 디자인팀과 협업하여 플랫폼 단위 UI 기준을 제공하는 디자인 시스템(socar-frame 2.0)을 설계·운영",
     design:
-      "UI와 비즈니스 로직을 분리한 Headless 컴포넌트 패턴을 적용해 변경과 확장에 유연한 구조 구축",
+      "UI와 비즈니스 로직을 분리한 Headless 컴포넌트 패턴을 적용해 변경과 확장에 유연한 구조 구축 및 번들 사이즈 최적화(static/chunk 61% 감소)",
     structure:
       "Figma 기반 디자인–코드 연계를 고려한 구조 설계 및 코드커넥트와 LLM활용을 통해 생산성 증대",
+    accessibility:
+      "반응형·접근성(A11y)·웹 표준 준수 UI를 개발하고, ARIA/키보드 내비게이션/Resize 대응 설계",
   },
   turborepo: {
     title: "프런트엔드 공통 플랫폼 설계 및 개발 생산성 개선",

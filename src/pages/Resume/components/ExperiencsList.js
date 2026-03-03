@@ -25,8 +25,17 @@ export default class ExperienceList {
                   <ul>
                     ${actions
                       .map((action) => {
+                        const normalizedAction =
+                          typeof action === 'string'
+                            ? { text: action }
+                            : action;
+                        const { text, deployLink, githubLink } =
+                          normalizedAction || {};
                         return `
-                      <li class="experience-detail-list-action">${action}</li>
+                      <li class="experience-detail-list-action">
+                        ${text ?? ''} 
+                        ${new LinkIcons({ deployLink, githubLink }).render()}
+                      </li>
                     `;
                       })
                       .join('')}
