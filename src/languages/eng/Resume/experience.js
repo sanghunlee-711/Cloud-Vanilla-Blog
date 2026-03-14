@@ -28,7 +28,26 @@ export const SOCAR = {
     design: "Synchronize design language and development language as much as possible with meaningful tokens",
     structure: "Designed with Pulling and Pushing systems in mind",
     component: "Designed as a headless component to maximize reuse"
+  },
+  raffleBackoffice: {
+    title: "Lightweight CMS for Raffle Backoffice",
+    titleFunc: "Designed and built a simple CMS for raffle operations to reduce repetitive manual workflows",
+    delivery: "Backoffice handled form editing, while preview rendering was separated via an embedded <object> page",
+    impact: "Split data sources (API for production, previewdata query for preview) to enable faster QA and operations"
+  },
+  couponWebview: {
+    title: "In-app WebView Development for My Coupon Page",
+    titleFunc: "Developed and operated a coupon WebView with web-bridge integration across iOS and Android",
+    bridge: "Used structured app-web event and state-passing contracts to support feature additions and maintenance",
+    ux: "Implemented context-aware UX such as deep-link entry scrolling to a target coupon and opening details in a BottomSheet"
+  },
+  bundlingProject: {
+    title: "Bundling Project (Accommodation + Vehicle Reservation)",
+    titleFunc: "Joined from the early planning phase and proposed an implementation strategy based on composing existing View components",
+    package: "Added an intermediate View Package to the internal monorepo to improve cross-screen reusability",
+    result: "Improved development speed and reusability through QA round 3; project was later dropped by internal prioritization"
   }
+
 };
 
 export const OYSTERABLE = {
