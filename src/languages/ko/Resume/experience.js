@@ -44,6 +44,33 @@ export const SOCAR = {
     testCode: "테스트 코드 및 문서화를 통해 재사용성과 안정성을 확보",
     using: "공통 패키지의 배포·테스트 자동화를 구축하여 유지보수 비용 감소",
   },
+  raffleBackoffice: {
+    title: "래플 서비스 백오피스용 경량 CMS 개발",
+    titleFunc:
+      "운영팀의 반복 업무를 줄이기 위한 래플 운영용 백오피스 CMS를 빠르게 설계·개발",
+    delivery:
+      "백오피스는 폼 편집을 담당하고, 프리뷰 페이지는 <object> 임베딩으로 분리 운영",
+    impact:
+      "실서비스는 API, 미리보기는 previewdata 쿼리 기반으로 분리해 빠른 검수/운영 흐름을 구축",
+  },
+  couponWebview: {
+    title: "내 쿠폰 페이지 인앱 웹뷰 개발",
+    titleFunc:
+      "웹브릿지 연동 및 iOS/Android 플랫폼 차이를 고려한 쿠폰 페이지 웹뷰를 개발·운영",
+    bridge:
+      "앱-웹 간 이벤트 정리된 상태 전달 로직 규격을 활용해 기능 추가/유지보수에 활용",
+    ux:
+      "외부 딥링크 진입 시 특정 쿠폰으로 스크롤하고 상세를 BottomSheet로 노출하는 등 진입 맥락 기반 UX를 구현",
+  },
+  bundlingProject: {
+    title: "번들링(숙소+차량 동시 예약) 프로젝트",
+    titleFunc:
+      "초기 기획 단계부터 참여해 기존 View 컴포넌트 조합 기반의 구현 전략을 제안",
+    package:
+      "내부 모노레포에 중간 View Package를 추가해 여러 화면에서 재사용 가능한 합성 레이어를 구축",
+    result:
+      "재사용성 및 개발 속도를 높였고, 3차 QA 단계까지 검증 후 사업 우선순위 변경으로 프로젝트가 중단",
+  },
 };
 
 export const OYSTERABLE = {

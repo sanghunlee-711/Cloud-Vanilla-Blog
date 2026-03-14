@@ -29,7 +29,6 @@ export const EXPERIENCE = [
                 deployLink:
                   "https://tech.socarcorp.kr/fe/2026/02/24/socar-frame2-web-part2.html",
               },
-              ,
               SOCAR.designSystem.accessibility,
             ],
           },
@@ -59,6 +58,43 @@ export const EXPERIENCE = [
             actions: [
               SOCAR.commonPackages.testCode,
               SOCAR.commonPackages.using,
+            ],
+          },
+        ],
+      },
+
+      {
+        title: SOCAR.raffleBackoffice.title,
+        deployLink: "",
+        detailList: [
+          {
+            target: SOCAR.raffleBackoffice.titleFunc,
+            actions: [
+              SOCAR.raffleBackoffice.delivery,
+              SOCAR.raffleBackoffice.impact,
+            ],
+          },
+        ],
+      },
+      {
+        title: SOCAR.couponWebview.title,
+        deployLink: "",
+        detailList: [
+          {
+            target: SOCAR.couponWebview.titleFunc,
+            actions: [SOCAR.couponWebview.bridge, SOCAR.couponWebview.ux],
+          },
+        ],
+      },
+      {
+        title: SOCAR.bundlingProject.title,
+        deployLink: "",
+        detailList: [
+          {
+            target: SOCAR.bundlingProject.titleFunc,
+            actions: [
+              SOCAR.bundlingProject.package,
+              SOCAR.bundlingProject.result,
             ],
           },
         ],
