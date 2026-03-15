@@ -189,6 +189,7 @@
   font-weight: 700;
   padding: 0px;
 }
+
 .experience-list-wrapper > li {
   margin: 32px 0px;
   min-height: 40px;
@@ -202,13 +203,27 @@
   list-style: inside;
 }
 
-.experience-detail-list-wrapper li {
+.experience-detail-list-item {
   margin: 8px 0px;
+}
+
+.experience-detail-list-wrapper li {
   font-size: 14px;
 }
 
 .experience-detail-list-target {
   font-weight: 700;
+  display: inline;
+}
+
+.experience-detail-action-list {
+  margin: 8px 0px 0px 20px;
+  padding: 0px;
+  list-style: disc;
+}
+
+.experience-detail-list-action {
+  margin: 8px 0px;
 }
 
 .experience-period {
