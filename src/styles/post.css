@@ -9,6 +9,7 @@
   padding: 24px;
   max-width: var(--basic-width);
   margin: 0px auto;
+  min-height: calc(100vh - 240px);
 }
 
 .post_container {
@@ -81,9 +82,14 @@ a {
 .each_post_container {
   width: 100%;
   margin-bottom: 50px;
-  padding-bottom: 50px;
+  padding-bottom: 22px;
   text-decoration-line: none;
   z-index: 2;
+  border: 1px solid #d8dfef;
+  border-radius: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 20px rgba(30, 43, 69, 0.08);
+  overflow: hidden;
 }
 
 .each_post_container .title_image {
@@ -118,12 +124,12 @@ a {
 
 .each_post_contents {
   padding: 12px 0px;
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15);
 }
 
 .each_post_contents h1 {
   margin-bottom: 8px;
-  margin-left: 12px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .each_post_contents h1 a {
@@ -137,11 +143,14 @@ a {
 
 .each_post_profile {
   display: flex;
-  margin-left: 12px;
+  margin-left: 20px;
 }
 
 .preview_content {
-  margin-left: 12px;
+  margin-left: 20px;
+  margin-right: 20px;
+  color: #4f5c78;
+  line-height: 1.7;
 }
 
 .each_post_profile img {

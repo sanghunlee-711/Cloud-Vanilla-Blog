@@ -21,7 +21,7 @@ export const PostCard = ({
         <div class="each_post_profile">
           <img src="../../static/images/profile/selfie_japan.jpeg" alt="profile_image" loading="lazy">
         <div class ="each_post_profile_detail">
-          <span>Cloud Lee</span>
+          <span>Sanghun Lee</span>
           <div>
             <div class="post_category_$wrapper">
               ${categories?.map((category) => `<span>${category}</span>`)}
