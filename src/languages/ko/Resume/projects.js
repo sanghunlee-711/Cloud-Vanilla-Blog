@@ -2,35 +2,37 @@ const VANILLA_BLOG = {
   period: "2022.07 ~ ",
   title: "바닐라JS로 만들어보는 개인블로그",
   company: "개인프로젝트",
-  explanation: "바닐라 자바스크립트로 만든 자체 프레임 워크로 개발",
+  explanation:
+    "바닐라 JavaScript 기반 자체 프레임워크를 설계해 콘텐츠/이력/포트폴리오를 운영하는 개인 블로그",
   client: {
     title: "클라이언트 개발",
     customComponent: {
       title: "커스텀 컴포넌트 기반 개발",
       reuse:
-        "재사용성 증대를 위해 Vanila js의 클래스를 활용한 컴포넌트 기반 개발",
-      stateManagement: "상태기반 렌더링을 통해 일관성 있는 컴포넌트 형태 유지",
+        "중복 UI 구현 문제를 줄이기 위해 Vanilla JS 클래스 기반 컴포넌트 패턴을 도입해 재사용성을 확보",
+      stateManagement:
+        "상태 기반 렌더링 구조를 설계해 화면 일관성과 변경 대응력을 높임",
     },
     routing: {
       title: "커스텀 라우팅 시스템",
       historyAPI:
-        "History API를 활용한 커스텀 라우터 클래스를 만들어 CSR과 유사한 라우팅 시스템 적용",
+        "History API 기반 커스텀 라우터 클래스를 구현해 CSR과 유사한 내비게이션 경험을 제공",
     },
   },
   server: {
     title: "서버 개발",
     markdown: {
       title: "마크다운 파일 전송 API 서버 개발",
-      express: "Express.js를 사용하여 Markdown을 읽어오는 api 서버 개발",
+      express: "Express.js로 Markdown 파일 조회 API 서버를 구현",
       highlight: "highlight.js 라이브러리를 이용해 Markdown에서 Html로 변환",
-      nginx: "Nginx의 포트 포워딩을 통해 하나의 EC2만 활용하여 운영 비용 절감",
+      nginx: "Nginx 포트 포워딩 구성으로 단일 EC2 운영 환경을 구성해 인프라 비용을 절감",
     },
   },
   bundling: {
     title: "번들링 시스템",
     clientBuild: "클라이언트 빌드 시스템",
     webpack:
-      "웹팩을 활용하여 최소한의 플러그인을 통해 로컬 개발서버와 상용 빌드 시스템 구현",
+      "Webpack 기반으로 로컬 개발 서버/상용 빌드 파이프라인을 구성",
   },
 };
 
