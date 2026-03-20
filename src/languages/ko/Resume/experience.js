@@ -20,9 +20,9 @@ export const SOCAR = {
     titleFunc:
       "네이티브 및 프로덕트 디자인팀과 협업하여 플랫폼 단위 UI 기준을 제공하는 디자인 시스템(socar-frame 2.0)을 설계·운영",
     design:
-      "UI와 비즈니스 로직을 분리한 Headless 컴포넌트 패턴을 적용해 변경과 확장에 유연한 구조 구축 및 번들 사이즈 최적화(static/chunk 61% 감소)",
+      "UI/비즈니스 로직 결합으로 컴포넌트 확장이 어려운 문제를 Headless 패턴으로 해결해 구조 유연성을 높이고, 번들 사이즈(static/chunk) 61%를 감소",
     structure:
-      "Figma 기반 디자인–코드 연계를 고려한 구조 설계 및 코드커넥트와 LLM활용을 통해 생산성 증대",
+      "Figma 기반 디자인-코드 연계 구조를 설계하고 코드커넥트·LLM 활용 워크플로를 도입해 구현/검수 생산성을 향상",
     accessibility:
       "반응형·접근성(A11y)·웹 표준 준수 UI를 개발하고, ARIA/키보드 내비게이션/Resize 대응 설계",
   },
@@ -31,11 +31,11 @@ export const SOCAR = {
     titleFunc:
       "30여 개 상용 프런트엔드 서비스가 공존하는 환경에서, 공통 빌드·배포·패키지 기준을 제공하는 프런트엔드 플랫폼을 설계·운영",
     server:
-      "turborepo, pnpm 기반 모노레포 환경에서 각 PR마다 반복되던 빌드 병목을 개별 설정 문제가 아닌 공통 플랫폼 구조의 한계로 정의하고 CI 파이프라인을 재설계",
+      "turborepo, pnpm 기반 모노레포에서 PR 검증 지연의 원인을 개별 설정이 아닌 공통 플랫폼 병목으로 정의하고 CI 파이프라인을 재설계",
     workflow:
-      "Kubernetes 환경에 Remote Cache Server를 직접 구성하고, GitHub Actions Workflow Matrix 및 turborepo dry-run을 활용해 변경된 패키지만 선별적으로 빌드·검증",
+      "Kubernetes 환경에 Remote Cache Server를 구성하고 GitHub Actions Workflow Matrix + turborepo dry-run으로 변경 패키지만 선별 빌드·검증",
     result:
-      "CI 파이프라인 평균 수행 시간을 약 47% 단축하여 다수 팀의 배포 리드타임 감소에 기여",
+      "CI 파이프라인 평균 수행 시간을 약 47% 단축해 다수 팀의 배포 리드타임과 피드백 사이클을 개선",
   },
   commonPackages: {
     title: "프런트엔드 공통 패키지 개선",
@@ -58,9 +58,9 @@ export const SOCAR = {
     titleFunc:
       "웹브릿지 연동 및 iOS/Android 플랫폼 차이를 고려한 쿠폰 페이지 웹뷰를 개발·운영",
     bridge:
-      "앱-웹 간 이벤트 정리된 상태 전달 로직 규격을 활용해 기능 추가/유지보수에 활용",
+      "앱-웹 이벤트와 상태 전달 규격을 표준화해 플랫폼별 동작 차이로 인한 예외를 줄이고 기능 확장/유지보수 효율을 개선",
     ux:
-      "외부 딥링크 진입 시 특정 쿠폰으로 스크롤하고 상세를 BottomSheet로 노출하는 등 진입 맥락 기반 UX를 구현",
+      "외부 딥링크 진입 시 특정 쿠폰 스크롤 및 상세 BottomSheet 노출을 구현해 진입 맥락 기반 UX를 제공",
   },
   bundlingProject: {
     title: "번들링(숙소+차량 동시 예약) 프로젝트",
@@ -77,28 +77,28 @@ export const OYSTERABLE = {
   name: "오이스터에이블(Oysterable)",
   tenure: "1년 11개월",
   explanation:
-    "지구를 지키는 히어로들의 플랫폼이라는 명목으로 일회용컵, 도시락 반납기 등을 Iot, Sass기술 개념 기반으로 개발하며 환경보호 플랫폼으로 거듭나고 있는 회사입니다.",
+    "일회용컵·도시락 반납기 등 IoT/SaaS 기반의 친환경 서비스를 운영하는 플랫폼입니다.",
   coprEx: "개발팀 프론트엔드 개발자, <strong>프론트엔드 팀 리더</strong>",
   monorepo: {
     title: "사내 관리 서비스 통합 모노레포지토리 시스템 도입",
     dupCodeTitle: "유사 백오피스 서비스 내의 중복 컴포넌트 및 로직 코드 제거",
     dupCodeRemoveLines:
-      "공통 UI, 로직 분리를 하여 Git diff 기준 중복코드 65,000 여 줄 제거",
+      "유사 서비스 간 중복 UI/로직 문제를 공통 모듈 분리로 해결해 Git diff 기준 약 65,000줄의 중복 코드를 제거",
     dupCodeUsingYarn:
-      "yarn work space를 통해 각 프로젝트 별 코드 공유 사용 가능하게 변경",
+      "yarn workspace 체계로 프로젝트 간 코드 공유 구조를 표준화해 유지보수 비용을 낮춤",
   },
   repeatImprovement: {
     title: "반복 개발 업무 개선",
     script:
-      "반복되는 UI의 폴더구조와 컴포넌트 코드를 생성해주는 자동화 스크립트를 작성하여 1,500여줄이 자동 작성이 되도록 DX 개선",
+      "반복 UI의 폴더/컴포넌트 보일러플레이트 생성을 자동화해 약 1,500줄 수작업을 대체하고 DX를 개선",
   },
   trApp: {
     title: "오늘의 분리수거 앱 개선",
     speedImprovement: "앱 작동 속도 개선",
     imporvementCache:
-      "브라우저 캐시 활용 및 상태관리 개선을 통해 기존 대비 API 호출 횟수 66% 감소",
+      "과도한 네트워크 호출 문제를 캐시 전략·상태관리 개선으로 해결해 API 호출 횟수를 66% 감소",
     lightHouse:
-      "Dynamic import 및 렌더링 블락 옵션 개선을 통해 LightHouse점수 퍼포먼스 50점 상승",
+      "Dynamic import와 렌더링 블로킹 개선으로 Lighthouse 성능 점수를 50점 향상",
     polyfill: "앱 내 웹뷰의 크로스 브라우저 대응을 위해 Polyfill 활용",
   },
   teamLead: {
@@ -106,11 +106,11 @@ export const OYSTERABLE = {
     dxImprovementTitle: "팀 개발 문화 정착 및 기술 증진",
     usingJira: "팀원 업무 일정 관리 및 분배를 위해 Jira 티켓을 활용",
     codeReview:
-      "코드 리뷰문화 도입을 통해 소수 인원 및 주니어로 구성된 팀의 제품 품질 유지",
+      "코드 리뷰 프로세스를 정착시켜 소수/주니어 중심 팀에서도 품질 기준을 일관되게 유지",
     codeQuality:
-      "github actions와 husky를 활용한 자동 Lint 체크 적용으로 코드 일관성을 강화",
+      "GitHub Actions + Husky 기반 자동 lint 검증을 도입해 코드 일관성과 배포 안정성을 강화",
     testSetting:
-      "Cypress, testing-library, Jest 환경 세팅 및 코드 작성으로 제품 안정성 증대",
+      "Cypress·testing-library·Jest 테스트 체계를 구축해 회귀 이슈를 사전에 탐지하는 기반을 마련",
   },
 };
 
@@ -118,25 +118,25 @@ export const DTIME = {
   name: "디타임(Dtime)",
   tenure: "10개월",
   explanation:
-    "디타임은 기업이 겪는 조직에 관한 다양한 어려움을 해결하는것을 목표로 교보생명의 엑셀러레이팅 프로그램에 선발된 스타트업입니다.",
+    "조직 운영 문제 해결을 목표로 한 HR 도메인 스타트업(교보생명 엑셀러레이팅 선발)입니다.",
   coprEx: "개발팀 프론트엔드 개발자",
   calculate: {
     title: "인싸이트 지원금 계산기",
     coworkTitle: "협력업체에 자사 서비스 제공",
     webpack:
-      "커스텀엘리먼트 및 웹팩을 활용한 하나의 번들된 JavaScript 파일을 협력업체에 제공",
+      "협력사 도입 편의성을 위해 커스텀 엘리먼트 + Webpack 단일 번들 형태로 제공해 설치/배포 복잡도를 낮춤",
   },
   serviceMaintenance: {
     title: "인싸이트 유지 보수 및 개발",
     codeQuality: "코드 품질 개선",
     ReduxSaga:
-      "Redux-Saga, Redux-Toolkit을 활용한 Flux패턴의 적용으로 상태관리 패턴 변경",
-    QA: "30여가지 경우의 수를 가진 휴가생성 케이스에 대해 UI/UX 및 테스트 코드으로 5-10분의 QA 소모 시간 제거",
+      "상태 복잡도 증가 문제를 Redux-Saga/Redux-Toolkit 기반 Flux 패턴으로 재정의해 예측 가능한 상태 흐름을 구축",
+    QA: "휴가 생성 30여 케이스를 UI/UX 개선과 테스트 코드로 표준화해 건당 5~10분의 수동 QA 소요를 절감",
   },
   serviceAngular: {
     title: "UI/UX 유지보수",
     contents:
-      "앵귤러로 되어있던 메인페이지들의 디자인개선 작업과 동시에 리액트로 전환",
+      "Angular 기반 메인 페이지의 디자인 개선과 React 전환을 병행해 유지보수성과 개발 속도를 개선",
   },
 };
 
@@ -145,12 +145,12 @@ export const BRANDI = {
   name: "브랜디(BRANDI)",
   coprEx: "프론트엔드 개발 인턴",
   explanation:
-    "빅데이터를 활용한 새벽배송 서비스를 제공하는 쇼핑 플랫폼 브랜디에서 프론트엔드 개발 인턴으로 참여하였습니다.",
+    "빅데이터 기반 이커머스 플랫폼 브랜디에서 프론트엔드 인턴으로 참여했습니다.",
   clone: {
     title: "클론 프로젝트 진행",
     uiux: "UI/UX 개발",
-    vue: "Vue.js 기반으로 기존 쇼핑몰 사이트 클론 개발 진행",
-    caroucel: "캐러셀, GNB, 제품리스트 렌더 등 다양한 UI/UX를 개발",
+    vue: "Vue.js 기반 쇼핑몰 클론을 구현하며 컴포넌트 단위 개발·상태 연동 기초를 확보",
+    caroucel: "캐러셀/GNB/상품 리스트 등 핵심 UI를 구현해 화면 단위 완성도를 높임",
   },
 };
 
