@@ -4,10 +4,10 @@
 :root {
   --basic-width: 1024px;
   --phone-width: 512px;
-  --basic-gray: #adbac7;
-  --strong-gray: #1e262f;
-  --basic-blue: #4a7fd5;
-  --strong-blue: #2a70db;
+  --basic-gray: #7e8aa3;
+  --strong-gray: #1e2b45;
+  --basic-blue: #2f4b86;
+  --strong-blue: #1c3362;
   --header-border-bottom: -webkit-linear-gradient(
     left,
     #fff 0,
@@ -33,6 +33,8 @@ body {
     "Noto Sans KR",
     "Segoe UI",
     sans-serif;
+  color: var(--strong-gray);
+  background-color: #f6f8fc;
 }
 
 button,
@@ -69,7 +71,10 @@ textarea {
   margin: 0 auto;
 }
 .header {
-  border-bottom: var(--header-nav-bottom);
+  border: 1px solid #dde3f0;
+  border-radius: 0 0 16px 16px;
+  background-color: #ffffff;
+  box-shadow: 0 10px 22px rgba(30, 43, 69, 0.08);
   padding: 0px 24px;
   transition: all 0.3s ease-in-out;
   max-height: 352px;
@@ -89,6 +94,7 @@ textarea {
   width: 100%;
   margin-bottom: 0.5px;
   background-color: white;
+  gap: 4px;
 }
 
 .header_profile_wrapper img {
@@ -102,6 +108,21 @@ textarea {
   border-radius: 65px;
   margin-top: 24px;
   margin-bottom: 8px;
+  border: 4px solid #e5eafa;
+  box-shadow: 0 8px 18px rgba(33, 61, 118, 0.18);
+}
+
+.header_profile h2 {
+  margin: 0;
+  color: var(--strong-gray);
+  font-size: 36px;
+}
+
+.header_profile p {
+  margin: 0;
+  color: var(--basic-gray);
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .header_profile ul {
@@ -149,12 +170,13 @@ textarea {
 
 .nav_list li a {
   text-decoration: none;
-  color: black;
+  color: var(--strong-gray);
+  font-weight: 600;
 }
 
 .nav_list li a:hover {
   text-decoration: none;
-  color: var(--basic-gray);
+  color: var(--basic-blue);
 }
 
 .burger-button {
@@ -166,6 +188,10 @@ textarea {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .nav h1 {
+    font-size: 34px;
   }
 
   .nav_list {
@@ -194,7 +220,7 @@ textarea {
     position: fixed;
     left: 12px;
     top: 12px;
-    background-color: white;
+    background-color: #f8faff;
     border: none;
     z-index: 3;
     display: flex;
@@ -205,7 +231,7 @@ textarea {
   }
 
   .burger-button > div {
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid var(--strong-gray);
     width: 100%;
     margin: 2px 0;
     transition: all 0.15s ease-in-out;
@@ -219,7 +245,7 @@ textarea {
   position: fixed;
   left: 12px;
   top: 12px;
-  background-color: white;
+  background-color: #f8faff;
   border: none;
   z-index: 3;
   display: flex;
@@ -230,7 +256,7 @@ textarea {
 }
 
 .burger-button > div {
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid var(--strong-gray);
   width: 100%;
   margin: 2px 0;
   transition: all 0.15s ease-in-out;
@@ -270,8 +296,8 @@ textarea {
 .basic-button {
   font-size: 18px;
   height: 100%;
-  border: 1px solid white;
-  background-color: var(--basic-gray);
+  border: 1px solid var(--basic-blue);
+  background-color: var(--basic-blue);
   color: white;
   border-radius: 4px;
   text-align: center;
@@ -285,9 +311,9 @@ textarea {
 }
 
 .basic-button:hover {
-  border: 1px solid var(--basic-gray);
+  border: 1px solid var(--basic-blue);
   background-color: white;
-  color: var(--basic-gray);
+  color: var(--basic-blue);
   border-radius: 4px;
   text-align: center;
   vertical-align: middle;
@@ -324,6 +350,19 @@ textarea {
 }
 .contribution-wrapper {
   width: 100%;
+}
+
+.nav h1 {
+  margin: 0;
+  color: var(--strong-gray);
+  font-size: 50px;
+  letter-spacing: -0.5px;
+}
+
+.nav h1 span {
+  font-size: 18px;
+  color: var(--basic-gray);
+  font-weight: 500;
 }
 
 .github-chart {

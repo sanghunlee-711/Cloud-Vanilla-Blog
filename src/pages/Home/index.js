@@ -1,4 +1,3 @@
-import Contribution from './components/Contribution/index.js';
 import LatestPost from './components/LatestPost/index.js';
 import { $ELEMENT } from './constants/element.js';
 
@@ -16,7 +15,6 @@ class Home {
     return `
     <div>
       <section class="${$ELEMENT.LATEST_POST_CONTAINER}"></section>
-      <section class="${$ELEMENT.RESUME_CONTAINERL}"></section>
     </div>
     `;
   };
@@ -27,14 +25,9 @@ class Home {
     const postContainer = document.querySelector(
       `.${$ELEMENT.LATEST_POST_CONTAINER}`
     );
-    const resumeContainer = document.querySelector(
-      `.${$ELEMENT.RESUME_CONTAINERL}`
-    );
-
     new LatestPost({
       $target: postContainer,
     });
-    new Contribution({ $target: resumeContainer });
   };
 
   addListeners = () => {};

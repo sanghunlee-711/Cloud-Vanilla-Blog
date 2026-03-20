@@ -12,6 +12,8 @@ class Header {
     this.$wrapper.innerHTML = /* html */ `
     <div class="header_profile_wrapper">
       <img src="/static/images/profile/selfie_japan.jpeg" alt="profile_image" />
+      <h2>Sanghun Lee</h2>
+      <p>Developer Blog</p>
       <ul>
       ${[]
         .map((el) => {

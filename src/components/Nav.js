@@ -30,7 +30,7 @@ class Nav {
 
   render = () => {
     this.$wrapper.innerHTML = `
-      <h1>Sanghun Lee</h1>
+      <h1>sanghun.dev <span>devlog</span></h1>
       <ul class="nav_list">
         ${SHOW_ROUTE.map((el) => {
           return `
